@@ -30,7 +30,7 @@
 	
 	        <h1 class="text-center" style="color:deepskyblue">회원가입</h1>
 			<div class="d-flex mt-4">
-		        <input type="text" placeholder="login ID" class="form-control">
+		        <input type="text" placeholder="login ID" class="form-control" id="IdInput">
 		        <button type="button" class="btn btn-secondary ml-2">중복확인</button>
 			</div>
 			
@@ -41,7 +41,7 @@
 			
 			
 			<div class="d-flex mt-4">
-		        <input type="text" class="form-control" placeholder="닉네임">
+		        <input type="text" class="form-control" placeholder="닉네임" id="nicknameInput">
 		        <button type="button" class="btn btn-secondary ml-2">중복확인</button>
 			</div>
 			
@@ -51,7 +51,7 @@
 			</div>
 			
 			<div class="d-flex mt-4">
-		        <input type="text" class="form-control" placeholder="이메일">
+		        <input type="text" class="form-control" placeholder="이메일" id="emailInput">
 		        <button type="button" class="btn btn-secondary ml-2">중복확인</button>
 			</div>
 			
@@ -60,11 +60,11 @@
 			    <label class="text-primary small d-none">사용 가능한 이메일입니다.</label>
 			</div>
 			
-	        <input type="password" placeholder="비밀번호" class=" form-control"> <br>
+	        <input type="password" placeholder="비밀번호" class=" form-control" id="passwordInput"> <br>
 	
-	        <input type="password" placeholder="비밀번호 확인" class="form-control"> <br>
+	        <input type="password" placeholder="비밀번호 확인" class="form-control" id="passwordConfirmInput"> <br>
 	
-	        <button type="button" style="background-color:deepskyblue" class="btn btn-block text-white">가입하기</button>
+	        <button type="button" style="background-color:deepskyblue" class="btn btn-block text-white" id="singupBtn">가입하기</button>
 	
 	      </div>
 	
@@ -79,6 +79,77 @@
     	<label><a href="http://localhost:8080/user/signin/view" style="color:deepskyblue">메인페이지로 돌아가기</a></label>
     </div>
 
+<script>
+	
+	$(document).ready(function() {
+		
+		
+		$("#singupBtn").on("click", function(){
+		
+			let loginId = $("#IdInput").val();
+			let nickname = $("#nicknameInput").val();
+			let email = $("#emailInput").val();
+			let password = $("#passwordInput").val();
+			let passwordConfirm = $("#passwordConfirmInput").val();
+			
+			// 유효성 검사
+			
+			if(loginId == ""){
+				alert("아이디를 입력하세요");
+				return;
+			}
+			
+			if(nickname == ""){
+				alert("닉네임을 입력하세요");
+				return;
+			}
+			
+			if(email == ""){
+				alert("이메일을 입력하세요");
+				return;
+			}
+			
+			if(password == ""){
+				alert("비밀번호를 입력하세요");
+				return;
+			}
+			
+			if(passwordConfirm == ""){
+				alert("비밀번호를 확인하세요");
+				return;
+			}
+			
+			$.ajax({
+				type:"post"
+				, url: "/user/signup"
+				, data: {"loginId":loginId, "nickname":nickname, "email":email, "password":password}
+				, success: function(data) {
+					
+					if(data.result == "success"){
+						location.href="/user/signin/view";
+					} else {
+						alert("회원가입 실패");
+					}
+				}
+				, error: function() {
+					alert("회원가입 에러");
+				}
+				
+			});
+			
+		});
+		
+		
+		
+		
+		
+		
+		
+		
+	});
+
+
+</script>
 
 
 

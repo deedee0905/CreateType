@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.amita.createType.ex.user.dao.UserDAO">
+  
+  	<insert id="insertSignup" parameterType="map">
+  		INSERT INTO
+  			`user`
+  		(
+  			`loginId`
+  			,`nickname`
+  			,`email`
+  			,`password`
+  			,`profileImagePath`
+  			,`createdAt`
+  			,`updatedAt`
+  		)
+  		VALUES
+  		(
+  			#{loginId}
+  			, #{nickname}
+  			, #{email}
+  			, #{password}
+  			, Null
+  			,now()
+  			,now()
+  		)
+  	
+  	</insert>
+  
+  </mapper>
+
