@@ -31,33 +31,33 @@
 	        <h1 class="text-center" style="color:deepskyblue">회원가입</h1>
 			<div class="d-flex mt-4">
 		        <input type="text" placeholder="login ID" class="form-control" id="IdInput">
-		        <button type="button" class="btn btn-secondary ml-2">중복확인</button>
+		        <button type="button" class="btn btn-secondary ml-2" id="idCheckBtn">중복확인</button>
 			</div>
 			
 			<div class="mb-2">
-				<label class="text-danger small d-none">중복된 ID입니다.</label>
-			    <label class="text-primary small d-none">사용 가능한 ID입니다.</label>
+				<label class="text-danger small d-none" id="duplicateIdText">중복된 ID입니다.</label>
+			    <label class="text-primary small d-none" id="availableIdText">사용 가능한 ID입니다.</label>
 			</div>
 			
 			
 			<div class="d-flex mt-4">
 		        <input type="text" class="form-control" placeholder="닉네임" id="nicknameInput">
-		        <button type="button" class="btn btn-secondary ml-2">중복확인</button>
+		        <button type="button" class="btn btn-secondary ml-2" id="nicknameCheckBtn">중복확인</button>
 			</div>
 			
 			<div class="mb-2">
-				<label class="text-danger small d-none">중복된 닉네임입니다.</label>
-			    <label class="text-primary small d-none">사용 가능한 닉네임입니다.</label>
+				<label class="text-danger small d-none" id="duplicateNicknameText">중복된 닉네임입니다.</label>
+			    <label class="text-primary small d-none" id="availableNicknameText">사용 가능한 닉네임입니다.</label>
 			</div>
 			
 			<div class="d-flex mt-4">
 		        <input type="text" class="form-control" placeholder="이메일" id="emailInput">
-		        <button type="button" class="btn btn-secondary ml-2">중복확인</button>
+		        <button type="button" class="btn btn-secondary ml-2" id="emailCheckBtn">중복확인</button>
 			</div>
 			
 			<div class="mb-2">
-				<label class="text-danger small d-none">중복된 이메일입니다.</label>
-			    <label class="text-primary small d-none">사용 가능한 이메일입니다.</label>
+				<label class="text-danger small d-none" id="duplicateEmailText">중복된 이메일입니다.</label>
+			    <label class="text-primary small d-none" id="availableEmailText">사용 가능한 이메일입니다.</label>
 			</div>
 			
 	        <input type="password" placeholder="비밀번호" class=" form-control" id="passwordInput"> <br>
@@ -82,6 +82,71 @@
 <script>
 	
 	$(document).ready(function() {
+		
+		$("#idCheckBtn").on("click", function() {
+			let loginId = $("#IdInput").val();
+			
+			//유효성 검사
+			if(loginId == ""){
+				alert("아이디를 입력하세요");
+				return;
+			}
+			
+			$.ajax({
+				type:"get"
+				, url: "/user/signin/duplicateId"
+				, data: {"loginId":loginId}
+				, success: function(data) {
+					
+					if(data.is_duplicate){ // 중복시
+						$("#duplicateIdText").addClass("d-none");
+						$("#availableIdText").removeClass("d-none");
+						
+					} else { // 중복이 아닐시
+						$("#duplicateIdText").removeClass("d-none");
+						$("#availableIdText").addClass("d-none");
+					}
+					
+				}
+				, error: function() {
+					alert("아이디 중복확인 에러");
+				}
+				
+			});
+			
+		});
+		
+		$("#nicknameCheckBtn").on("click", function() {
+			let nickname = $("#nicknameInput").val();
+			// 유효성 검사
+			if(nickname == ""){
+				alert("닉네임을 입력하세요");
+				return;
+			}
+				
+			$.ajax({
+				type:"get"
+				, url:"/user/signin/duplicateNickname"
+				, data:{"nickname":nickname}
+				,success:function(data){
+					
+					if(data.is_duplicateNickname){ // 중복시
+						$("duplicateNicknameText").addClass("d-none");
+						$("availableNicknameText").removeClass("d-none")
+					} else {
+						$("duplicateNicknameText").removeClass("d-none");
+						$("availableNicknameText").addClass("d-none")
+					}
+					
+				}
+				,error:function(){
+					alert("닉네임 중복검사 에러");
+				}
+			});
+				
+					
+			});
+			
 		
 		
 		$("#singupBtn").on("click", function(){
