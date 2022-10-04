@@ -47,7 +47,7 @@
 			
 			<div class="mb-2">
 				<label class="text-danger small d-none" id="duplicateNicknameText">중복된 닉네임입니다.</label>
-			    <label class="text-primary small d-none" id="availableNicknameText">사용 가능한 닉네임입니다.</label>
+			    <label class="text-primary small d-none " id="availableNicknameText">사용 가능한 닉네임입니다.</label>
 			</div>
 			
 			<div class="d-flex mt-4">
@@ -125,21 +125,22 @@
 			}
 				
 			$.ajax({
-				type:"get"
-				, url:"/user/signin/duplicateNickname"
-				, data:{"nickname":nickname}
-				,success:function(data){
+				type: "get"
+				, url: "/user/signin/duplicateNickname"
+				, data: {"nickname":nickname}
+				,success: function(data){
 					
 					if(data.is_duplicateNickname){ // 중복시
-						$("duplicateNicknameText").addClass("d-none");
-						$("availableNicknameText").removeClass("d-none")
-					} else {
-						$("duplicateNicknameText").removeClass("d-none");
-						$("availableNicknameText").addClass("d-none")
+						$("#duplicateNicknameText").addClass("d-none");
+						$("#availableNicknameText").removeClass("d-none");
+					} else { // 중복이 아닐시
+						$("#duplicateNicknameText").removeClass("d-none");
+						$("#availableNicknameText").addClass("d-none");
+						
 					}
 					
 				}
-				,error:function(){
+				,error: function(){
 					alert("닉네임 중복검사 에러");
 				}
 			});
