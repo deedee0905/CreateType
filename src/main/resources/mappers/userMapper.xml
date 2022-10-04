@@ -52,6 +52,17 @@
   	
   	
   	</select>
+  	
+  	<select id="selectCountEmail" parameterType="String" resultType="int">
+  		SELECT
+  			count(1)
+  		FROM
+  			`user`
+  		WHERE
+  			`email` = #{email}
+  	
+  	
+  	</select>
   
   </mapper>
 

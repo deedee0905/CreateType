@@ -147,6 +147,40 @@
 				
 					
 			});
+		
+		
+		$("#emailCheckBtn").on("click", function() {
+			let email = $("#emailInput").val();
+			
+			//유효성 검사
+			if(email == ""){
+				alert("이메일을 입력하세요.");
+				return;
+			}
+			
+			$.ajax({
+				type: "get"
+				, url: "/user/signin/duplicateEmail"
+				, data: {"email":email}
+				, success: function(data){
+					
+					if(data.is_duplicateEmail){ // 중복시
+						$("#duplicateEmailText").addClass("d-none");
+						$("#availableEmailText").removeClass("d-none");
+					} else { // 중복이 아닐시
+						$("#duplicateEmailText").removeClass("d-none");
+						$("#availableEmailText").addClass("d-none");
+						
+					}
+					
+				}
+				, error: function(){
+					alert("이메일 중복검사 에러");
+				}
+			});
+			
+		});
+		
 			
 		
 		

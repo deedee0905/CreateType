@@ -1,5 +1,6 @@
 package com.amita.createType.ex.user.bo;
 
+import org.apache.catalina.realm.UserDatabaseRealm.UserDatabasePrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,6 +46,19 @@ public class UserBO {
 		}
 		
 	}
+	
+	// 이메일 중복검사 api
+	public boolean isEmailDuplicate(String email) {
+		int count = userDAO.selectCountEmail(email);
+		
+		if(count == 0) {
+			return false;
+		} else {
+			return true;
+		}
+		
+	}
+	
 	
 
 }

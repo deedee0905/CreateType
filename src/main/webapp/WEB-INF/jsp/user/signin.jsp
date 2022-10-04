@@ -22,8 +22,8 @@
 
 <style>
     .box1 {
-      width: 300px;
-      height: 300px;
+      width: 350px;
+      height: 350px;
     }
     
     .logo{
@@ -46,12 +46,12 @@
 			
 	      <div class="d-flex">
 	
-	        <div class="box1 border border-primary rounded p-2">
+	        <div class="box1 mt-3 border border-primary rounded p-2">
 	          <h1 class="mt-3 logo text-center">CreateType</h1>
 	          <form id="loginForm">
-		          <input type="text" placeholder="login ID" class="mt-3 form-control" id="userIdInput"> <br>
-		          <input type="password" class="mt-1 form-control" id="passwordInput">
-		          <button type="submit" style="background-color:deepskyblue" class="mt-2 btn btn-block text-white" id="loginBtn">로그인</button>
+		          <input type="text" placeholder="login ID" class="mt-4 form-control" id="userIdInput"> <br>
+		          <input type="password" class="form-control" id="passwordInput">
+		          <button type="submit" style="background-color:deepskyblue" class="mt-4 btn btn-block text-white" id="loginBtn">로그인</button>
 	          </form>
 	
 	          <div class="mt-4 text-center">

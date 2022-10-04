@@ -79,5 +79,20 @@ public class UserRestController {
 		return result;
 	}
 	
+	// 이메일 중복검사 기능 api
+	@GetMapping("/signin/duplicateEmail")
+	public Map<String, Boolean> isEmailDuplicate(@RequestParam("email") String email){
+		
+		boolean isDuplicate = userBO.isEmailDuplicate(email);
+		
+		Map<String, Boolean> result = new HashMap<>();
+		
+		if(isDuplicate) {
+			result.put("is_duplicateEmail", false);
+		} else {
+			result.put("is_duplicateEmail", true);
+		}
+		return result;
+	}
 
 }
