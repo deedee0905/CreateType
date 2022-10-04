@@ -19,6 +19,14 @@
 
 <meta charset="UTF-8">
 <title>CreateType -Main page </title>
+
+<style>
+nav {
+	width:150px;
+	
+}
+</style>
+
 </head>
 <body>
 
