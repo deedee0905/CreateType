@@ -1,1 +1,14 @@
 @charset "UTF-8";
+
+.box1 {
+      width: 350px;
+      height: 350px;
+    }
+
+.logo {
+	color:deepskyblue;
+}
+
+.searchLoginSignupBox{
+	height:45px;
+}

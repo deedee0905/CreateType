@@ -20,21 +20,6 @@
 <meta charset="UTF-8">
 <title>CreateType Signin</title>
 
-<style>
-    .box1 {
-      width: 350px;
-      height: 350px;
-    }
-    
-    .logo{
-    	color:deepskyblue
-    }
-    
-   
-    
-
-</style>
-
 </head>
 <body>
 
@@ -50,7 +35,7 @@
 	          <h1 class="mt-3 logo text-center">CreateType</h1>
 	          <form id="loginForm">
 		          <input type="text" placeholder="login ID" class="mt-4 form-control" id="userIdInput"> <br>
-		          <input type="password" class="form-control" id="passwordInput">
+		          <input type="password" class="form-control" id="passwordInput" type="password">
 		          <button type="submit" style="background-color:deepskyblue" class="mt-4 btn btn-block text-white" id="loginBtn">로그인</button>
 	          </form>
 	

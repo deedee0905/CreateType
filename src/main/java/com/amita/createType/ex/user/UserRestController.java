@@ -118,7 +118,7 @@ public class UserRestController {
 			// 세션에 로그인한 사용자의 정보 저장하기
 			HttpSession session = request.getSession();
 			session.setAttribute("userId", user.getId());
-			session.setAttribute("userLoginId", user.getLoginId());
+			session.setAttribute("userNickname", user.getNickname());
 			
 		} else { // 로그인 실패시, 어떠한 값이 제대로 전달되지 못했을 때
 			result.put("result", "fail");

@@ -26,7 +26,7 @@
 
 	    <div class="mt-5 d-flex justify-content-center">
 	
-	      <div class="box1 border border-primary rounded p-3">
+	      <div class="border border-primary rounded p-3">
 	
 	        <h1 class="text-center" style="color:deepskyblue">회원가입</h1>
 			<div class="d-flex mt-4">
