@@ -54,9 +54,9 @@ public class UserRestController {
 		Map<String, Boolean> result = new HashMap<>();
 		
 		if(isDuplicate) {
-			result.put("is_duplicate", false);
-		} else {
 			result.put("is_duplicate", true);
+		} else {
+			result.put("is_duplicate", false);
 		}
 		
 		return result;
@@ -72,9 +72,9 @@ public class UserRestController {
 		Map<String, Boolean> result = new HashMap<>();
 		
 		if(isDuplicate) {
-			result.put("is_duplicateNickname", false);
-		} else {
 			result.put("is_duplicateNickname", true);
+		} else {
+			result.put("is_duplicateNickname", false);
 		}
 		return result;
 	}
@@ -88,9 +88,9 @@ public class UserRestController {
 		Map<String, Boolean> result = new HashMap<>();
 		
 		if(isDuplicate) {
-			result.put("is_duplicateEmail", false);
-		} else {
 			result.put("is_duplicateEmail", true);
+		} else {
+			result.put("is_duplicateEmail", false);
 		}
 		return result;
 	}

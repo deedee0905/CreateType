@@ -82,6 +82,45 @@
 <script>
 	
 	$(document).ready(function() {
+		// isDuplicateCheck가 false면 중복검사 하기 전 상태
+		// isDuplicateCheck가 true면 중복검사 한 상태
+		var isDuplicateCheck1 = false;
+		var isDuplicateCheck2 = false;
+		var isDuplicateCheck3 = false;
+		
+		// true면 중복, false면 중복 아님
+		var isDuplicateId = true;
+		var isDuplicateNickname = true;
+		var isDuplicateEmail = true;
+		
+		// 아이디 입력 인풋을 건드리는 순간 기본값 초기화
+		$("#IdInput").on("input", function() {
+		
+			isDuplicateCheck1 = false;
+			isDuplicateId = true;
+			
+			$("#duplicateIdText").addClass("d-none");
+			$("#availableIdText").addClass("d-none");
+		});
+		
+		// 닉네임 입력 인풋을 건드리는 순간 기본값 초기화
+		$("#nicknameInput").on("input", function() {
+			isDuplicateCheck2 = false;
+			isDuplicateNickname = true;
+			
+			$("#duplicateNicknameText").addClass("d-none");
+			$("#availableNicknameText").addClass("d-none");
+		});
+		
+		// 이메일 입력 인풋을 건드리는 순간 기본값 초기화
+		$("#emailInput").on("input", function() {
+			isDuplicateCheck3 = false;
+			isDuplicateEmail = true;
+			
+			$("#duplicateEmailText").addClass("d-none");
+			$("#availableEmailText").addClass("d-none");
+		});
+		
 		
 		$("#idCheckBtn").on("click", function() {
 			let loginId = $("#IdInput").val();
@@ -98,13 +137,19 @@
 				, data: {"loginId":loginId}
 				, success: function(data) {
 					
-					if(data.is_duplicate){ // 중복시
-						$("#duplicateIdText").addClass("d-none");
-						$("#availableIdText").removeClass("d-none");
+					isDuplicateCheck1 = true;
+					
+					if(data.is_duplicate){ // 중복일시
 						
-					} else { // 중복이 아닐시
+						isDuplicateId = true;
 						$("#duplicateIdText").removeClass("d-none");
 						$("#availableIdText").addClass("d-none");
+						
+						
+					} else { // 중복이 아닐시
+						$("#duplicateIdText").addClass("d-none");
+						$("#availableIdText").removeClass("d-none");
+						isDuplicateId = false;
 					}
 					
 				}
@@ -130,12 +175,17 @@
 				, data: {"nickname":nickname}
 				,success: function(data){
 					
-					if(data.is_duplicateNickname){ // 중복시
-						$("#duplicateNicknameText").addClass("d-none");
-						$("#availableNicknameText").removeClass("d-none");
-					} else { // 중복이 아닐시
+					isDuplicateCheck2 = true;
+					
+					if(data.is_duplicateNickname){ // 중복일시
+						isDuplicateNickname = true;
 						$("#duplicateNicknameText").removeClass("d-none");
 						$("#availableNicknameText").addClass("d-none");
+						
+					} else { // 중복이 아닐시
+						$("#duplicateNicknameText").addClass("d-none");
+						$("#availableNicknameText").removeClass("d-none");
+						isDuplicateNickname = false;
 						
 					}
 					
@@ -164,13 +214,17 @@
 				, data: {"email":email}
 				, success: function(data){
 					
-					if(data.is_duplicateEmail){ // 중복시
-						$("#duplicateEmailText").addClass("d-none");
-						$("#availableEmailText").removeClass("d-none");
-					} else { // 중복이 아닐시
+					isDuplicateCheck3 = true;
+					
+					if(data.is_duplicateEmail){ // 중복일시
+						isDuplicateEmail = true;
 						$("#duplicateEmailText").removeClass("d-none");
 						$("#availableEmailText").addClass("d-none");
 						
+					} else { // 중복이 아닐시
+						$("#duplicateEmailText").addClass("d-none");
+						$("#availableEmailText").removeClass("d-none");
+						isDuplicateEmail = false;
 					}
 					
 				}
@@ -192,8 +246,35 @@
 			let password = $("#passwordInput").val();
 			let passwordConfirm = $("#passwordConfirmInput").val();
 			
-			// 유효성 검사
 			
+			
+			// 중복체크 여부 확인(중복체크가 진행되지 않으면 return)
+			if(isDuplicateCheck1 == false || isDuplicateCheck2 == false || isDuplicateCheck3 == false){
+				alert("중복체크를 진행해주세요");
+				return
+			}
+			
+			// 아이디 중복확인(중복된 상태면 return)
+			if(isDuplicateId) {
+				alert("아이디가 중복되었습니다");
+				return;
+			}
+			
+			// 닉네임 중복확인(중복된 상태면 return)
+			if(isDuplicateNickname) {
+				alert("닉네임이 중복되었습니다");
+				return;
+			}
+			
+			// 이메일 중복확인(중복된 상태면 return)
+			if(isDuplicateEmail) {
+				alert("이메일이 중복되었습니다");
+				return;
+			}
+			
+		
+			
+			// 유효성 검사
 			if(loginId == ""){
 				alert("아이디를 입력하세요");
 				return;
@@ -225,7 +306,14 @@
 				, data: {"loginId":loginId, "nickname":nickname, "email":email, "password":password}
 				, success: function(data) {
 					
-					if(data.result == "success"){
+					if(data.result == "success"
+							&& isDuplicateCheck1
+							&& isDuplicateCheck2
+							&& isDuplicateCheck3
+							&& !isDuplicateId
+							&& !isDuplicateNickname
+							&& !isDuplicateEmail
+							){
 						location.href="/user/signin/view";
 					} else {
 						alert("회원가입 실패");
