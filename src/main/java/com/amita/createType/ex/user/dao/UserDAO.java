@@ -3,6 +3,8 @@ package com.amita.createType.ex.user.dao;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import com.amita.createType.ex.user.model.User;
+
 @Repository
 public interface UserDAO {
 	
@@ -22,5 +24,7 @@ public interface UserDAO {
 	// 회원가입 이메일 중복검사
 	public int selectCountEmail(@Param("email") String email);
 	
+	// 로그인 기능
+	public User selectUserIdPassword(@Param("loginId") String loginId, @Param("password") String password);
 
 }

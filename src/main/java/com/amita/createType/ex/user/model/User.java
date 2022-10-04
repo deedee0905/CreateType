@@ -1,0 +1,64 @@
+package com.amita.createType.ex.user.model;
+
+import java.util.Date;
+
+public class User {
+	private int id;
+	private String loginId;
+	private String nickname;
+	private String email;
+	private String password;
+	private String profileImagePath;
+	private Date CreatedAt;
+	private Date updatedAt;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getLoginId() {
+		return loginId;
+	}
+	public void setLoginId(String loginId) {
+		this.loginId = loginId;
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getProfileImagePath() {
+		return profileImagePath;
+	}
+	public void setProfileImagePath(String profileImagePath) {
+		this.profileImagePath = profileImagePath;
+	}
+	public Date getCreatedAt() {
+		return CreatedAt;
+	}
+	public void setCreatedAt(Date createdAt) {
+		CreatedAt = createdAt;
+	}
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+}

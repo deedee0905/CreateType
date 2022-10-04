@@ -76,7 +76,7 @@
     </div>
     
     <div class="text-center">
-    	<label><a href="http://localhost:8080/user/signin/view" style="color:deepskyblue">메인페이지로 돌아가기</a></label>
+    	<label><a href="http://localhost:8080/post/main/view" style="color:deepskyblue">메인페이지로 돌아가기</a></label>
     </div>
 
 <script>

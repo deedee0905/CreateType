@@ -1,11 +1,11 @@
 package com.amita.createType.ex.user.bo;
 
-import org.apache.catalina.realm.UserDatabaseRealm.UserDatabasePrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.amita.createType.ex.common.EncryptUtils;
 import com.amita.createType.ex.user.dao.UserDAO;
+import com.amita.createType.ex.user.model.User;
 
 @Service
 public class UserBO {
@@ -59,6 +59,14 @@ public class UserBO {
 		
 	}
 	
+	// 로그인 api
+	public User getUserLogin(String loginId, String password) {
+		
+		//암호화된 비밀번호 전달
+		String encryptPassword = EncryptUtils.md5(password);
+		
+		return userDAO.selectUserIdPassword(loginId, encryptPassword);
+	}
 	
 
 }

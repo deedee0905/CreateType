@@ -3,6 +3,9 @@ package com.amita.createType.ex.user;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.amita.createType.ex.user.bo.UserBO;
+import com.amita.createType.ex.user.model.User;
 
 @RestController
 @RequestMapping("/user")
@@ -95,4 +99,33 @@ public class UserRestController {
 		return result;
 	}
 
+	
+	// 로그인 api
+	@PostMapping("/signin")
+	public Map<String, String> getLogin(
+			@RequestParam("loginId") String loginId
+			, @RequestParam("password") String password
+			, HttpServletRequest request
+			){
+			
+		User user = userBO.getUserLogin(loginId, password);
+		
+		Map<String, String> result = new HashMap<>();
+		
+		if(user != null) { //로그인 성공시, 모든 값이 잘 전달 되었을 때
+			result.put("result", "success");
+			
+			// 세션에 로그인한 사용자의 정보 저장하기
+			HttpSession session = request.getSession();
+			session.setAttribute("userId", user.getId());
+			session.setAttribute("userLoginId", user.getLoginId());
+			
+		} else { // 로그인 실패시, 어떠한 값이 제대로 전달되지 못했을 때
+			result.put("result", "fail");
+		}
+		return result;
+	}
+				
+	
+	
 }

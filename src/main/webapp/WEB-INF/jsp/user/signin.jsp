@@ -64,9 +64,59 @@
     	</div>
     	
     		<div class="mt-3">
-    			<a href="#" style="color:deepskyblue"><h5 class="text-center">메인 페이지로 돌아가기</h5></a>
+    			<a href="http://localhost:8080/post/main/view" style="color:deepskyblue"><h5 class="text-center">메인 페이지로 돌아가기</h5></a>
     		</div>
   	</div>
+  	
+  	<script>
+  	
+  		$(document).ready(function() {
+  			
+  			$("#loginForm").on("submit", function(e) {
+  				e.preventDefault();
+  				
+  				let loginId = $("#userIdInput").val();
+  				let password = $("#passwordInput").val();
+  				
+  				// 유효성 검사
+  				
+  				if(loginId == ""){
+  					alert("아이디를 입력하세요.");
+  					return;
+  				}
+  				
+  				if(password == ""){
+  					alert("비밀번호를 입력하세요.");
+  					return;
+  				}
+  				
+  				$.ajax({
+  					type: "post"
+  					, url: "/user/signin"
+  					, data: {"loginId":loginId, "password":password}
+  					, success: function(data) {
+  						
+  						if(data.result == "success"){
+  							location.href = "/post/main/view";
+  						} else {
+  							alert("아이디와 패스워드를 확인하세요.");
+  						}
+  						
+  					}
+  					, error: function() {
+  						alert("로그인 에러");
+  					}
+  					
+  				});
+  				
+  				
+  			});
+  			
+  			
+  		});
+  	
+  	
+  	</script>
 
 
 </body>
