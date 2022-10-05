@@ -12,5 +12,10 @@ public class IndividualController {
 	public String profileMainView() {
 		return "individual/profile";
 	}
+	
+	@GetMapping("/profile/setting/view")
+	public String profileChangeView() {
+		return "individual/profileChange";
+	}
 
 }

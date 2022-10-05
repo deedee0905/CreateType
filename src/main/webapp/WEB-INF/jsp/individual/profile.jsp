@@ -36,9 +36,8 @@
 						<img class="rounded" width="100" height="100" alt="프로필 사진" src="https://cdn.pixabay.com/photo/2015/03/30/12/37/jellyfish-698521_960_720.jpg">
 						<br>
 						<h5 class="mt-3 font-weight-bold">사용자 닉네임</h5>
-						<p>사용자 자기소개(ex. 네이버 브런치 작가, 컨택 이메일 test01@gmail.com )</p>
 						
-						<button class="btn btn-outline-secondary mt-2 mb-5" type="button">프로필 편집</button>
+						<a href="/individual/profile/setting/view" class="btn btn-outline-secondary mt-3 mb-5">프로필 편집</a>
 					</div>
 				</div>
 				
