@@ -13,5 +13,11 @@ public class PostController {
 		
 		return "post/mainView";
 	}
+	
+	@GetMapping("/createList/view")
+	public String createListView() {
+		
+		return "post/createContents";
+	}
 
 }
