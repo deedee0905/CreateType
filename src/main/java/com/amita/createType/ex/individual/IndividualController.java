@@ -17,5 +17,10 @@ public class IndividualController {
 	public String profileChangeView() {
 		return "individual/profileChange";
 	}
+	
+	@GetMapping("/channel/view")
+	public String channeMainlView() {
+		return "individual/channelView";
+	}
 
 }
