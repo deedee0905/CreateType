@@ -7,7 +7,7 @@
 	<header>
 				<div class="d-flex justify-content-between">
 					<div class="d-flex">
-						<h1 class="mt-3 logo text-center ml-1">CreateType</h1>
+						<a href="/post/main/view" style="text-decoration:none"><h1 class="mt-3 logo text-center ml-1">CreateType</h1></a>
 						<div class="dropdown mt-4 ml-3">
 						  <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" >
 						    카테고리
@@ -37,7 +37,7 @@
 											<img class="rounded ml-3" width="55" height="55" src="https://cdn.pixabay.com/photo/2017/09/25/13/12/cocker-spaniel-2785074_960_720.jpg">
 										</button>
 										<div class="dropdown-menu user-wrapper">
-											<a class="dropdown-item text-center" href="#">MY채널</a>
+											<a class="dropdown-item text-center" href="/individual/profile/view">MY채널</a>
 											<a class="dropdown-item text-center" href="#">구독채널</a>
 											<a class="dropdown-item text-center" href="#">보관함</a>
 											<a class="dropdown-item text-center" href="#">마이포인트</a>

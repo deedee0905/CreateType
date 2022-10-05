@@ -5,27 +5,21 @@
 <html>
 <head>
 
-<script
-  src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous"></script>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+	<script
+	  src="https://code.jquery.com/jquery-3.6.0.min.js"
+	  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+	  crossorigin="anonymous"></script>
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
 
 <meta charset="UTF-8">
 <title>CreateType -Main page </title>
 
-<style>
-nav {
-	width:150px;
-	
-}
-</style>
 
 </head>
 <body>
@@ -63,19 +57,9 @@ nav {
 			
 		</section>
 	
-		<hr>
 	
-		<footer class="mt-5">
-			<div class="text-center text-center text-secondary">
-				서비스 소개 | 이용약관 | 개인정보처리방침 | 채용 | 도움 | 권리침해신고센터 | 크리에이트타입 회사 소개・문의 | © CreateType, INC.
-			</div>
-				
-			<div class="mt-4 mb-4 text-center text-secondary">
-				 사업자등록번호: 123-444-56789 통신판매업신고번호: 2022-경기도광주-1004 대표자명: 남상아 <br>
-				 개인정보관리 책임자: 남상아 | 주소: 서울시 강남구 테헤란로111길, 7층 연락처: 02-1234-5678, 팩스: 02-1234-5678 <br>
-				 크리에이트타입은 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서 크리에이트타입은 콘텐츠, 거래정보 및 거래에 대하여 책임을 지지 않습니다. <br>
-			</div>
-		
+		<footer>
+			<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 		</footer>
 		
 	</div>
