@@ -25,6 +25,7 @@
 			,#{channelImagePath}
 			, now()
 			, now()
+			
 		)
 	
 	</insert>

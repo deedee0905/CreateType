@@ -11,28 +11,29 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
-import com.amita.createType.ex.individual.dao.IndividualDAO;
+import com.amita.createType.ex.individual.bo.IndividualBO;
 
 @RestController
 @RequestMapping("/individual")
 public class IndividualRestController {
 	
 	@Autowired
-	private IndividualDAO individualDAO;
+	private IndividualBO individualBO;
 	
 	@PostMapping("/create/channel")
 	public Map<String, String> createChannel(
 			@RequestParam("channelName") String channelName
 			, @RequestParam("channelInfo") String channelInfo
-			, @RequestParam("channelImagePath") String channelImagePath
+			, @RequestParam("file") MultipartFile file
 			, HttpServletRequest request
 			){
 		
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
 		
-		int count = individualDAO.insertChannel(channelName, channelInfo, channelImagePath, userId);
+		int count = individualBO.addChannel(channelName, channelInfo, file, userId);
 		
 		Map<String, String> result = new HashMap<>();
 		

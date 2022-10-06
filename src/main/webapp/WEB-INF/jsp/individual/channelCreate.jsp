@@ -92,7 +92,7 @@
 				var formData = new FormData();
 				formData.append("channelName", channelName);
 				formData.append("channelInfo", channelInfo);
-				formData.append("channelImagePath", $("#imageInput")[0].files[0]);
+				formData.append("file", $("#imageInput")[0].files[0]);
 				
 				$.ajax({
 					type:"post"
