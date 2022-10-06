@@ -19,5 +19,10 @@ public class PostController {
 		
 		return "post/createContents";
 	}
+	
+	@GetMapping("/create/newPost/view")
+	public String newPostView() {
+		return "post/newPost";
+	}
 
 }
