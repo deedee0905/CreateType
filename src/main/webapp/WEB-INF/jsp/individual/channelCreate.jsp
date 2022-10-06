@@ -36,7 +36,7 @@
 						<h5 class="mt-4">채널 프로필 사진</h5>
 						<div class="profile-section">
 							<input id="imageInput" class="form-control form-control-sm mt-2" type="file">
-							<a href="#" class="text-secondary text-end" style="float: right">이미지 삭제</a>
+							<a id="imageDelete" href="#" class="text-secondary text-end" style="float: right">이미지 삭제</a>
 						</div>
 					</div>
 					
@@ -70,6 +70,15 @@
 	<script>
 		
 		$(document).ready(function() {
+		
+			
+			
+			$("#imageDelete").on("click", function(e) {
+				e.preventDefault();
+				
+				$("#imageInput").val("");
+				
+			});
 			
 			$("#createBtn").on("click", function() {
 				

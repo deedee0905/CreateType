@@ -6,7 +6,7 @@
 					<h4>채널</h4>
 					<hr>
 					<c:choose>
-						<c:when test="${not empty userId}">
+						<c:when test="${not empty userId and not empty channelId}">
 							<div class="d-flex">
 								<a href="/individual/channel/view"><img class="rounded" width="100" height="100" alt="채널 프로필 이미지" src="https://cdn.pixabay.com/photo/2017/06/24/16/57/peony-2438192_960_720.jpg"></a>
 								<div class="mt-3 ml-2">
