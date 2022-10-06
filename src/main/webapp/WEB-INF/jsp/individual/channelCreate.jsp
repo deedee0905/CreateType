@@ -35,27 +35,27 @@
 						<h2>내 채널 만들기</h2>
 						<h5 class="mt-4">채널 프로필 사진</h5>
 						<div class="profile-section">
-							<input class="form-control form-control-sm mt-2" type="file">
+							<input id="imageInput" class="form-control form-control-sm mt-2" type="file">
 							<a href="#" class="text-secondary text-end" style="float: right">이미지 삭제</a>
 						</div>
 					</div>
 					
 					<div class="mt-5">
 						<h5>채널 제목</h5>
-						<input class="form-control form-control-sm mt-2">
+						<input id="nameInput" class="form-control form-control-sm mt-2">
 						<label class="text-secondary">크리에이터님의 채널에 이름을 붙여주세요. (최대32자)</label>
 					</div>
 					
 					<div class="mt-1">
 						<h5>채널 소개</h5>
-						<textarea class="form-control"></textarea>
+						<textarea id="infoInput" class="form-control"></textarea>
 						
 					</div>
 					
 					<div class="mt-5 mb-3">
 						<div class="d-flex justify-content-between">
 							<a class="btn btn-outline-secondary text-dark" href="/individual/profile/view">취소</a>
-							<button class="btn text-white" type="button" style="background-color:deepskyblue">채널 생성</button>
+							<button id="createBtn" class="btn text-white" type="button" style="background-color:deepskyblue">채널 생성</button>
 						</div>
 					</div>
 				</div>
@@ -66,6 +66,63 @@
 			<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 		</footer>
 	</div>
+	
+	<script>
+		
+		$(document).ready(function() {
+			
+			$("#createBtn").on("click", function() {
+				
+				let profileImage = $("#imageInput").val();
+				let channelName = $("#nameInput").val();
+				let channelInfo = $("#infoInput").val();
+				
+				// 유효성 검사
+				
+				if(profileImage == ""){
+					alert("프로필 이미지를 설정해주세요.");
+					return;
+				}
+				
+				if(channelName == ""){
+					alert("채널 제목을 설정해주세요.");
+					return;
+				}
+				
+				var formData = new FormData();
+				formData.append("channelName", channelName);
+				formData.append("channelInfo", channelInfo);
+				formData.append("channelImagePath", $("#imageInput")[0].files[0]);
+				
+				$.ajax({
+					type:"post"
+					, url: "/individual/create/channel"
+					, data: formData
+					, enctype: "multipart/form-data"
+					,processData: false
+					,contentType: false
+					,success: function(data) {
+						if(data.result == "success"){
+							alert("채널이 생성되었습니다.");
+							location.href="/individual/profile/view"
+						} else {
+							alert("채널생성 실패");
+						}
+					}
+					,error: function() {
+						alert("채널생성 에러");
+					}
+				
+					
+				});
+				
+				
+			});
+			
+			
+		});
+	
+	</script>
 
 </body>
 </html>
