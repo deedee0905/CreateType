@@ -67,10 +67,10 @@
 				
 				<div>
 					<div class="border border-outline-secondary p-2 mt-2">
-						<span class="font-weight-bold" style="font-size:20px">컨텐츠 제목1</span> <br>
-						<p>
+						<a href="#" style="text-decoration: none"><span class="font-weight-bold text-dark" style="font-size:20px;">컨텐츠 제목1</span> <br>
+						<p class="text-dark">
 							컨텐츠 내용 (ex.처음으로 나만의 집이 생긴다면? 자까 작가의 나혼자 사는 이야기)
-						</p>
+						</p></a>
 						<hr>
 						<span><i class="bi bi-heart-fill text-danger"></i></span>
 						<label>30</label>
@@ -79,10 +79,10 @@
 					</div>
 					
 					<div class="border border-outline-secondary p-2 mt-2">
-						<span class="font-weight-bold" style="font-size:20px">컨텐츠 제목2</span> <br>
-						<p>
+						<a href="#" style="text-decoration: none"><span class="font-weight-bold text-dark" style="font-size:20px">컨텐츠 제목2</span> <br>
+						<p class="text-dark">
 							컨텐츠 내용 (ex.'치즈인더트랩' 순끼 작가의 신작!)
-						</p>
+						</p></a>
 						<hr>
 						<span><i class="bi bi-heart-fill text-danger"></i></span>
 						<label>30</label>
@@ -91,10 +91,10 @@
 					</div>
 					
 					<div class="border border-outline-secondary p-2 mt-3">
-						<span class="font-weight-bold" style="font-size:20px">컨텐츠 제목3</span> <br>
-						<p>
+						<a href="#" style="text-decoration: none"><span class="font-weight-bold text-dark" style="font-size:20px">컨텐츠 제목3</span> <br>
+						<p class="text-dark">
 							컨텐츠 내용 (ex.연구에 꿈을 가지고 대학원을 선택한 병아리 요다. 예상과는 다르게 연구에 관심 없는 교수님과 똥군기의 연구실 분위기에 당황한다.)
-						</p>
+						</p></a>
 						<hr>
 						<span><i class="bi bi-heart-fill text-danger"></i></span>
 						<label>30</label>
