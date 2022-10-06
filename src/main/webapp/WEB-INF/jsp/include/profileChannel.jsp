@@ -22,7 +22,7 @@
 						<c:otherwise>
 							<div>
 								<span class="text-secondary">아직 채널이 없습니다.</span> <br>
-								<a class="btn btn-outline-secondary mt-3" href="#">채널 만들기</a>
+								<a href="/individual/channel/create/view" class="btn btn-outline-secondary mt-3" href="#">채널 만들기</a>
 							</div>
 						</c:otherwise>
 					
