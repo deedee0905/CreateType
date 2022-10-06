@@ -22,5 +22,10 @@ public class IndividualController {
 	public String channeMainlView() {
 		return "individual/channelView";
 	}
+	
+	@GetMapping("/channel/setting/view")
+	public String channelProfileChangeView() {
+		return "individual/channelProfileChange";
+	}
 
 }

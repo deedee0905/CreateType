@@ -32,11 +32,11 @@
 			<div class="d-flex justify-content-center mt-4" >
 				<div>
 					<div>
-						<h3>현재 프로필 수정</h3>
+						<h3>채널 프로필 수정</h3>
 						<h5 class="mt-3">프로필 사진</h5>
 						
 						<div class="profile-section">
-							<img class="rounded" width="100" height="100" alt="프로필 사진" src="https://cdn.pixabay.com/photo/2015/03/30/12/37/jellyfish-698521_960_720.jpg">
+							<img class="rounded" width="100" height="100" alt="프로필 사진" src="https://cdn.pixabay.com/photo/2017/06/24/16/57/peony-2438192_960_720.jpg">
 							<input class="form-control form-control-sm mt-2" type="file">
 							<a href="#" class="text-secondary text-end" style="float: right">이미지 삭제</a>
 						</div>
@@ -46,6 +46,12 @@
 						<h5>닉네임</h5>
 						<input class="form-control form-control-sm mt-2">
 						<label class="text-secondary">1자 이상 32자 이내로 입력해주세요.</label>
+					</div>
+					
+					<div class="mt-1">
+						<h5>자기소개</h5>
+						<textarea class="form-control" placeholder="자기소개"></textarea>
+						
 					</div>
 					
 					<div class="mt-5 mb-3">

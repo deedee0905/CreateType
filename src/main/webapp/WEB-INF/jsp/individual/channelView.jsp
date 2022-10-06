@@ -38,7 +38,7 @@
 					<h5 class="font-weight-bold mt-2 ml-1">채널 제목</h5>
 					<div class="d-flex mt-2 mb-3 ml-1">
 						<span class="text-secondary">구독자 30명</span>
-						<a class="btn btn-sm btn-primary ml-3 text-white">프로필 편집</a>
+						<a href="/individual/channel/setting/view" class="btn btn-sm btn-primary ml-3 text-white">프로필 편집</a>
 					</div>
 					<div class="border border-secondary p-2 rounded introduce-box">
 						이상한 변호사 우영우<br>
@@ -51,7 +51,7 @@
 					<div id="empty-box">
 						<label></label>
 					</div>
-					<a class="btn btn-outline-secondary" href="#" style="position: relative">새 포스트</a>
+					<a class="btn btn-outline-secondary" href="/post/create/newPost/view" style="position: relative">새 포스트</a>
 					<a class="btn btn-outline-secondary ml-3" href="#">새 커미션</a>
 				</div>
 			</div>

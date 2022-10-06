@@ -35,12 +35,15 @@
 	<div class="container">
 	
 		<header class="d-flex justify-content-between">
-			<div></div>
+			<div class="mr-2 mt-4">
+				<a href="/individual/channel/view" style="text-decoration: none; font-size:20px" class="text-secondary">뒤로가기</a>
+			</div>
 			<div>
-				<a href="#" style="text-decoration:none"><h1 class="text-center mt-3 mb-3" style="color:deepskyblue">CreateType</h1></a>
+				<a href="/post/main/view" style="text-decoration:none"><h1 class="text-center mt-3 mb-3" style="color:deepskyblue">CreateType</h1></a>
 			</div>
 			<div class="mr-2 mt-4">
-				<a href="#" style="text-decoration: none; font-size:20px" class="text-secondary">저장</a>
+				
+				<a id="saveBtn" href="#" style="text-decoration: none; font-size:20px" class="text-secondary">저장</a>
 				<a href="#" style="text-decoration: none; font-size:20px" class="text-secondary ml-3" data-target="#modal" data-toggle="modal">발행<i class="ml-1 bi bi-three-dots"></i></a>
 			</div>
 		</header>
@@ -135,6 +138,11 @@
 				  $("#postReservationDate").addClass("d-none");
 				  
 			  });
+			  
+			  $("#saveBtn").on("click", function() {
+				  alert("저장 완료");
+			  });
+			  
 			  
 			});
 	</script>
