@@ -126,27 +126,28 @@
 	</div>
 
 	<script>
-		$(document).ready(function() {
-			
-			  $('#summernote').summernote();
+	
+	$(document).ready(function() {
+		
+		$('#summernote').summernote();
+		  
+		  $(".reservation").on("click", function() {
+			  $("#postReservationDate").removeClass("d-none");
 			  
-			  $(".reservation").on("click", function() {
-				  $("#postReservationDate").removeClass("d-none");
-				  
-			  });
-
-			  $(".now").on("click", function() {
-				  $("#postReservationDate").addClass("d-none");
-				  
-			  });
+		  });
+		  $(".now").on("click", function() {
+			  $("#postReservationDate").addClass("d-none");
 			  
-			  $("#saveBtn").on("click", function() {
-				  alert("저장 완료");
-			  });
-			  
-			
-		}
+		  });
+		  
+		  $("#saveBtn").on("click", function() {
+			  alert("저장 완료");
+		  });
+		
+	});
+	
+	
+		
 	</script>
-
 </body>
 </html>
