@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.amita.createType.ex.individual.bo.IndividualBO;
+import com.amita.createType.ex.individual.model.Channel;
 import com.amita.createType.ex.user.bo.UserBO;
 import com.amita.createType.ex.user.model.User;
 
@@ -22,6 +24,8 @@ public class UserRestController {
 	
 	@Autowired
 	private UserBO userBO;
+	
+	private IndividualBO individualBO;
 	
 	// 회원가입 api
 	@PostMapping("/signup")
@@ -107,8 +111,10 @@ public class UserRestController {
 			, @RequestParam("password") String password
 			, HttpServletRequest request
 			){
+		
 			
 		User user = userBO.getUserLogin(loginId, password);
+		
 		
 		Map<String, String> result = new HashMap<>();
 		
@@ -120,9 +126,11 @@ public class UserRestController {
 			session.setAttribute("userId", user.getId());
 			session.setAttribute("userNickname", user.getNickname());
 			
-		} else { // 로그인 실패시, 어떠한 값이 제대로 전달되지 못했을 때
-			result.put("result", "fail");
 		}
+		else {
+				result.put("result", "fail");
+			}
+
 		return result;
 	}
 				

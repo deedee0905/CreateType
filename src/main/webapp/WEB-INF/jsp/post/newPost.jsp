@@ -54,9 +54,12 @@
 			<div class="mt-2">
 				<input class=" mt-3 form-control form-control-lg" placeholder="제목을 입력하세요" type="text"> <br>
 				<input class="ml-1 mb-5 form-control form-control-sm" placeholder="부제목을 입력하세요" type="text">
+				
 			</div>
+
 			
 			<div id="summernote"></div> 
+			
 			
 			
 			
@@ -125,8 +128,6 @@
 	<script>
 		$(document).ready(function() {
 			
-			
-	
 			  $('#summernote').summernote();
 			  
 			  $(".reservation").on("click", function() {
@@ -143,8 +144,8 @@
 				  alert("저장 완료");
 			  });
 			  
-			  
-			});
+			
+		}
 	</script>
 
 </body>
