@@ -124,27 +124,24 @@ public class UserRestController {
 			result.put("result", "success");
 			
 			// 세션에 로그인한 사용자의 정보 저장하기
-			HttpSession session = request.getSession();
-			session.setAttribute("userId", user.getId());
-			session.setAttribute("userNickname", user.getNickname());
-			
-			int userId = (Integer)session.getAttribute("userId");
-			Channel channel = userBO.getUserById(userId);
-			
-			int channelUserId = channel.getUserId();
-		
-			
-			
-			if(userId == channelUserId) {
-				session.setAttribute("channelId", channel.getId());
-			} else {
-				session.setAttribute("channelId", 0);
-			}
-			
-		}
-		else {
-				result.put("result", "fail");
-			}
+						HttpSession session = request.getSession();
+						session.setAttribute("userId", user.getId());
+						session.setAttribute("userNickname", user.getNickname());
+						
+						int userId = (Integer)session.getAttribute("userId");
+						Channel channel = userBO.getUserById(userId);
+						
+						
+						if(channel != null) {
+							session.setAttribute("channelId", channel.getId());
+						} else {
+							session.setAttribute("channelId", null);
+						}
+						
+					}
+					else {
+							result.put("result", "fail");
+						}
 
 		return result;
 	}

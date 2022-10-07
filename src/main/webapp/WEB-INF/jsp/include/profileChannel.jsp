@@ -5,7 +5,6 @@
  				<div class="mb-5">
 					<h4>채널</h4>
 					<hr>
-					
 						<c:choose>
 							<c:when test="${channelId == 1}">
 								<div class="d-flex">
