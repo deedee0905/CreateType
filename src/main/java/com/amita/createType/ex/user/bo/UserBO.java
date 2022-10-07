@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.amita.createType.ex.common.EncryptUtils;
+import com.amita.createType.ex.individual.model.Channel;
 import com.amita.createType.ex.user.dao.UserDAO;
 import com.amita.createType.ex.user.model.User;
 
@@ -68,6 +69,9 @@ public class UserBO {
 		return userDAO.selectUserIdPassword(loginId, encryptPassword);
 	}
 	
+	public Channel getUserById(int id) {
+		return userDAO.selectUserById(id);
+	}
 	
 
 }

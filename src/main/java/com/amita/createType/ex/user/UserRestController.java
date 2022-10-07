@@ -18,6 +18,7 @@ import com.amita.createType.ex.individual.model.Channel;
 import com.amita.createType.ex.user.bo.UserBO;
 import com.amita.createType.ex.user.model.User;
 
+
 @RestController
 @RequestMapping("/user")
 public class UserRestController {
@@ -116,6 +117,7 @@ public class UserRestController {
 		User user = userBO.getUserLogin(loginId, password);
 		
 		
+		
 		Map<String, String> result = new HashMap<>();
 		
 		if(user != null) { //로그인 성공시, 모든 값이 잘 전달 되었을 때
@@ -125,6 +127,19 @@ public class UserRestController {
 			HttpSession session = request.getSession();
 			session.setAttribute("userId", user.getId());
 			session.setAttribute("userNickname", user.getNickname());
+			
+			int userId = (Integer)session.getAttribute("userId");
+			Channel channel = userBO.getUserById(userId);
+			
+			int channelUserId = channel.getUserId();
+		
+			
+			
+			if(userId == channelUserId) {
+				session.setAttribute("channelId", channel.getId());
+			} else {
+				session.setAttribute("channelId", 0);
+			}
 			
 		}
 		else {

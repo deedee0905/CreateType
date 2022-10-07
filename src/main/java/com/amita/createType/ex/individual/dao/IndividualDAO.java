@@ -15,6 +15,6 @@ public interface IndividualDAO {
 			,@Param("channelImagePath") String channelImagePath
 			,@Param("userId") int userId);
 	
-	public Channel selectChannelById(@Param("userId") int userId);
+	
 
 }

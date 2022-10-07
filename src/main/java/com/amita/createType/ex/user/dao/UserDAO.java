@@ -3,6 +3,7 @@ package com.amita.createType.ex.user.dao;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import com.amita.createType.ex.individual.model.Channel;
 import com.amita.createType.ex.user.model.User;
 
 @Repository
@@ -27,6 +28,6 @@ public interface UserDAO {
 	// 로그인 기능
 	public User selectUserIdPassword(@Param("loginId") String loginId, @Param("password") String password);
 	
-	public User selectUserById(@Param("id") int id);
+	public Channel selectUserById(@Param("userId") int userId);
 
 }

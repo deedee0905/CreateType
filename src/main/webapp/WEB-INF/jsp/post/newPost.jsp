@@ -60,6 +60,8 @@
 			
 			<div id="summernote"></div> 
 			
+			<button id="testBtn" class="btn btn-info">테스트</button>
+			
 		
 		</section>
 	
@@ -134,7 +136,8 @@
 				minHeight : null, 
 				maxHeight : null, 
 				focus : true,
-				lang : 'ko-KR' 
+				lang : 'ko-KR',
+				
 			});
     
 	   
@@ -154,7 +157,10 @@
 			  return;
 		  });
 	    
-		 
+		 $("#testBtn").on("click", function() {
+			 alert($('#summernote').summernote("code"));
+			 
+		 });
 	    
 	    
 	 });

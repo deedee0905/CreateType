@@ -30,9 +30,7 @@ public class IndividualBO {
 	}
 
 	
-	public Channel getChannelById(int userId) {
-		return individualDAO.selectChannelById(userId);
-	}
+	
 	
 
 }
