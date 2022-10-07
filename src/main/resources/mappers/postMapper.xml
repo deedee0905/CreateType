@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.amita.createType.ex.post.dao.PostDAO">
+  	<insert id="insertNewPost" parameterType="map">
+  		INSERT INTO
+  			`post`
+  		(
+			`userId`
+			,`channelId`
+			,`title`
+			,`subtitle`
+			,`content`
+			,`category`
+			,`price`
+			,`createdAt`
+			,`updatedAt`	  
+  		)
+  		VALUES
+  		(
+  			#{userId}
+  			,#{channelId}
+  			,#{title}
+  			,#{subtitle}
+  			,#{content}
+  			,#{category}
+  			,#{price}
+  			,now()
+  			,now()
+  		)
+  			
+  	
+  	
+  	</insert>
+  
+  </mapper>
+  

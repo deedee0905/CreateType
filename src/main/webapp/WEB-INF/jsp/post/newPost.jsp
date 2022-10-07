@@ -52,8 +52,8 @@
 		
 		<section>
 			<div class="mt-2">
-				<input class=" mt-3 form-control form-control-lg" placeholder="제목을 입력하세요" type="text"> <br>
-				<input class="ml-1 mb-5 form-control form-control-sm" placeholder="부제목을 입력하세요" type="text">
+				<input id="titleInput" class=" mt-3 form-control form-control-lg" placeholder="제목을 입력하세요" type="text"> <br>
+				<input id="subtitleInput" class="ml-1 mb-5 form-control form-control-sm" placeholder="부제목을 입력하세요" type="text">
 				
 			</div>
 
@@ -85,7 +85,7 @@
 		        
 		        <div class="mt-5 d-flex" style="height:30px">
 		        	<span class="font-weight-bold mt-2" style="font-size:15px">카테고리</span>
-		        	<select class="custom-select custom-select-lg mb-3 col-7 ml-3">
+		        	<select id="category" class="custom-select custom-select-lg mb-3 col-7 ml-3">
 					  <option selected value="1">웹툰</option>
 					  <option value="2">웹소설</option>
 					  <option value="3">디자인</option>
@@ -95,7 +95,7 @@
 		        
 		        <div class="d-flex mt-5">
 		        	<span class="font-weight-bold mt-2" style="font-size:15px">판매가격</span>
-		        	<input class="form-control col-8 ml-3" type="text">
+		        	<input id="priceInput" class="form-control col-8 ml-3" type="text">
 		        </div>
 		        
 		        <div class="d-flex mt-5">
@@ -115,7 +115,7 @@
 		        
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-primary">발행하기</button>
+		        <button id="publishBtn" type="button" class="btn btn-primary">발행하기</button>
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
 		      </div>
 		    </div>
@@ -156,11 +156,53 @@
 			  alert("저장 완료");
 			  return;
 		  });
+		  
+		  $("#publishBtn").on("click", function() {
+				 let title = $("#titleInput").val();
+				 let subtitle = $("#subtitleInput").val();
+				 let category= $("#category").val();
+				 let price= $("#priceInput").val();
+				 let content = $('#summernote').summernote("code");
+				 
+				 if(title == ""){
+					 alert("제목을 입력하세요");
+					 return;
+				 }
+				 
+				 if(content == "" || content == ("<p><br></p>")){
+					 alert("내용을 입력하세요");
+					 return;
+				 }
+				 
+				 if(price == ""){
+					 alert("가격을 입력하세요.");
+					 return;
+				 }
+				 
+				$.ajax({
+					type:"post"
+					,url:"/post/create/newPost"
+					,data:{"title":title, "subtitle":subtitle, "category":category, "price":price, "content":content}
+					,success: function(data) {
+						
+						if(data.result == "success"){
+							location.reload()
+						} else {
+							alert("포스트 발행 실패");
+						}
+					}
+					,error: function() {
+						alert("포스트 발행 에러");
+					}
+					
+				});
+
+				 
+			 });
 	    
-		 $("#testBtn").on("click", function() {
-			 alert($('#summernote').summernote("code"));
-			 
-		 });
+		 
+		 
+		 
 	    
 	    
 	 });
