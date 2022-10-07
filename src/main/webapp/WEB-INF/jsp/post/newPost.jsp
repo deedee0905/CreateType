@@ -60,9 +60,7 @@
 			
 			<div id="summernote"></div> 
 			
-			
-			
-			
+		
 		</section>
 	
 		<%--모달~--%>	
@@ -127,14 +125,25 @@
 
 	<script>
 	
-	$(document).ready(function() {
-		
-		$('#summernote').summernote();
-		  
-		  $(".reservation").on("click", function() {
+	 $(document).ready(function(){
+		 
+		 
+		 	// 썸머노트 기초값 셋팅
+			$('#summernote').summernote({
+				height : 400, // set editor height
+				minHeight : null, 
+				maxHeight : null, 
+				focus : true,
+				lang : 'ko-KR' 
+			});
+    
+	   
+	    $(".reservation").on("click", function() {
 			  $("#postReservationDate").removeClass("d-none");
 			  
 		  });
+		  
+		
 		  $(".now").on("click", function() {
 			  $("#postReservationDate").addClass("d-none");
 			  
@@ -142,12 +151,14 @@
 		  
 		  $("#saveBtn").on("click", function() {
 			  alert("저장 완료");
+			  return;
 		  });
-		
-	});
+	    
+		 
+	    
+	    
+	 });
 	
-	
-		
 	</script>
 </body>
 </html>
