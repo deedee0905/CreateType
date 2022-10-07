@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.amita.createType.ex.individual.bo.IndividualBO;
+import com.amita.createType.ex.individual.model.Channel;
 
 @RestController
 @RequestMapping("/individual")
@@ -21,6 +22,7 @@ public class IndividualRestController {
 	
 	@Autowired
 	private IndividualBO individualBO;
+	
 	
 	@PostMapping("/create/channel")
 	public Map<String, String> createChannel(
@@ -39,6 +41,8 @@ public class IndividualRestController {
 		
 		if(count == 1) {
 			result.put("result", "success");
+			
+			
 		} else {
 			result.put("result", "fail");
 		}
