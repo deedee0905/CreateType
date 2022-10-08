@@ -21,6 +21,7 @@ public class PostRestController {
 	@Autowired
 	private PostBO postBO;
 	
+	// 포스트 발행 api
 	@PostMapping("/create/newPost")
 	public Map<String, String> addNewPost(
 			HttpServletRequest request
@@ -48,4 +49,7 @@ public class PostRestController {
 		return result;
 	}
 
+	
+	
+	
 }

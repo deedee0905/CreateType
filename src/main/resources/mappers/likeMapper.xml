@@ -22,6 +22,15 @@
 		
 	
 	</insert>
+	
+	<delete id="deleteLike" parameterType="map">
+		DELETE FROM
+			`like`
+		WHERE
+			`userId` = #{userId}
+			AND `postId` = #{postId}
+	
+	</delete>
 
 
 </mapper>

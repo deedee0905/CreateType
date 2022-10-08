@@ -218,6 +218,36 @@
 			
 		});
 		
+		
+		
+		$("#deleteLike").on("click", function(e) {
+			e.preventDefault();
+			
+			let postId = 1;
+			
+			$.ajax({
+				type:"get"
+				,url:"/post/like/delete"
+				,data:{"postId":postId}
+				,success: function(data) {
+					
+					if(data.result == "success"){
+						alert("좋아요 삭제 성공");
+						location.reload();
+					} else {
+						alert("좋아요 삭제 실패");
+					}
+				}
+				,error: function() {
+					alert("좋아요 삭제 에러");
+				}
+			});
+		});
+		
+		
+		
+		
+		
 	});
 	
 

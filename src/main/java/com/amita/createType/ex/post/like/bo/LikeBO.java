@@ -11,8 +11,14 @@ public class LikeBO {
 	@Autowired
 	private LikeDAO likeDAO;
 	
+	// 좋아요 insert api
 	public int addLike(int userId, int postId) {
 		return likeDAO.insertLike(userId, postId);
+	}
+	
+	// 좋아요 delete api
+	public int deleteLike(int userId, int postId) {
+		return likeDAO.deleteLike(userId, postId);
 	}
 
 }
