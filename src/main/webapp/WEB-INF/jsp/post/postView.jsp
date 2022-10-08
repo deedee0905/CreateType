@@ -1,0 +1,227 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+	<script
+	  src="https://code.jquery.com/jquery-3.6.0.min.js"
+	  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+	  crossorigin="anonymous"></script>
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
+<title>포스트</title>
+</head>
+<body>
+	<div class="container">
+	
+		<header>
+			<c:import url="/WEB-INF/jsp/include/header.jsp" />
+		</header>
+	
+		<section>
+			<div>
+				<%--헤더 --%>
+				<div class="d-flex justify-content-between mt-3">
+					<div>
+						<div><h2>글 제목(ex.소나기)</h2></div>
+						<div><h4>부제목(없으면 빈칸)</h4></div>
+					</div>
+					
+					<div>
+						<a href="#" class="btn btn-outline-secondary btn-sm mt-5"> 수정하기</a>
+					</div>
+				</div>
+				
+				<hr>
+				
+				<%--본문 --%>
+				<div>
+					<div>
+						<p>
+							3년 만에 거리두기 없이 정상 개최된 부산국제영화제가 연일 화제 몰이를 하고 있습니다. <br>
+
+							조금 전에는 홍콩의 간판스타 양조위가 팬들과 직접 만나 뜨거운 호응을 얻었는데요.<br>
+							
+							현장에 나가 있는 취재기자 연결하겠습니다.<br>
+							
+							박효정 기자.<br>
+							<br>
+							[기자]<br>
+							<br>
+							네, 부산영화제가 열리고 있는 해운대 영화의전당입니다. <br>
+							
+							말씀하신것 처럼 올해 영화제의 최대 화제는 배우 양조위라고 할 수 있는데요.<br>
+							
+							조금 전 양조위는 야외무대에서 팬들과 만났습니다.<br>
+							
+							가죽 셔츠에 청바지를 입고 무대에 오른 양조위는 "그동안 한국에 매우 오고 싶었는데 별다른 핑계를 찾지 못했다"며 반가운 얼굴로 인사를 건넸습니다.<br>
+							
+							3천여 석이 빼곡히 채워진 가운데, 이동진 영화평론가가 양조위와의 대담을 진행했습니다.<br>
+						</p>
+					</div>
+				</div>
+				
+				<hr>
+				<%--프로필 영역 --%>
+				<div class="d-flex justify-content-center mt-2 mb-2">
+					<div class="text-center post-detail-channelbox border border-secondary rounded p-4" >
+						<img class="rounded" width="80" height="80" alt="프로필사진" src="https://cdn.pixabay.com/photo/2022/09/15/06/14/pattern-7455773_960_720.png"><br>
+						<label class="mt-1 font-weight-bold">채널이름(My channel)</label> <br>
+						<span>상태메세지 (ex. 개발은 롤러코스터)</span>
+					</div>
+				</div>
+				
+				<%-- 좋아요, view 카운트 --%>
+				<div class="mt-2">
+					<a id="addLike" href="#"><i class="bi bi-heart text-danger"></i></a>
+					<a id="deleteLike" href="#"><i class="bi bi-heart-fill text-danger ml-2"></i></a>
+					<span class="ml-2">조회수 777회</span>
+					<span class="ml-2"> 2022.10.05</span>
+				</div>
+				
+				<hr>
+				
+				<%--덧글 영역 --%>
+				<div>
+					<div>
+						<span class="font-weight-bold" style="font-size:20px">덧글</span> <br>
+						
+						<div class="d-flex justify-content-between mt-3">
+							<div class="d-flex">
+								<img class="rounded" width="50" height="50" alt="" src="https://cdn.pixabay.com/photo/2016/04/06/10/08/background-1311251_960_720.jpg">
+								<span class="font-weight-bold ml-2 mt-2">너부리</span>
+								<span class="ml-1 mt-2">재밌어요!!!</span>
+							</div>
+							
+							<div>
+								<span><i class="bi bi-three-dots mr-3"></i></span>
+							</div>
+						</div>
+						
+						<hr>
+						
+						<div class="d-flex justify-content-between mt-3">
+							<div class="d-flex">
+								<img class="rounded" width="50" height="50" alt="" src="https://cdn.pixabay.com/photo/2021/07/03/08/44/leaves-6383340_960_720.png">
+								<span class="font-weight-bold ml-2 mt-2">포로리</span>
+								<span class="ml-1 mt-2">우와 짱!</span>
+							</div>
+							
+							<div>
+								<span><i class="bi bi-three-dots mr-3"></i></span>
+							</div>
+						</div>
+						<hr>
+						
+						<div>
+							<div class="d-flex">
+								<input id="commentInput" class="form-control" type="text" placeholder="댓글을 입력하세요">
+								<button class="btn btn-primary text-white ml-3">덧글입력</button>
+								<button class="btn btn-primary text-white ml-1" data-toggle="modal" data-target="#exampleModal">후원하기</button>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				
+			</div>
+		</section>
+	
+		<footer>
+			<c:import url="/WEB-INF/jsp/include/footer.jsp" />
+		</footer>
+	</div>
+	
+	<%-- 모달 --%>
+	<div class="modal fade" id="exampleModal" tabindex="-1">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">후원하기</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	      
+	        <table class="table text-center">
+	        	<thead>
+	        		<tr>
+	        			<th>보유 포인트</th>
+	        			<th>사용할 포인트</th>
+	        			<th>남은 포인트</th>
+	        		</tr>
+	        	</thead>
+	        		
+	        	<tbody>
+	        		<tr>
+	        			<c:set var="point" value="5000"/>
+	        			<td><fmt:formatNumber value="${point }" type="number" /></td>
+	        			<td><input class="form-control form-control-sm"></td>
+	        			<td><fmt:formatNumber value="${point }" type="number"/></td>
+	        		</tr>
+	        	</tbody>
+	        </table>
+	        
+	        <hr>
+	        
+	        <div class="mt-2" style="font-size:12px">
+	        	주식회사 크리에이트타입은 회원 상호 간 콘텐츠 거래를 위한 중개 시스템을 제공할 뿐, 회원을 대리하지 않습니다. 
+	        	환급, 취소 등 회원 간 성립된 거래에 대한 모든 책임은 회원이 직접 부담합니다. <br>
+	        	자세한 내용은 서비스 이용 전 동의하신 <span class="text-primary">이용약관</span>을 참고해주세요.
+	        </div>
+	        
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+	        <button id="btn" type="button" class="btn btn-primary">후원하기</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+<script>
+
+	$(document).ready(function() {
+		
+		$("#addLike").on("click", function(e) {
+			e.preventDefault();
+			
+			let postId = 1;
+			
+			$.ajax({
+				type:"get"
+				, url:"/post/like/insert"
+				, data:{"postId":postId}
+				, success:function(data) {
+					
+					if(data.result == "success"){
+						alert("좋아요 체크 완료");
+						location.reload();
+					} else{
+						alert("좋아요 체크 실패");
+					}
+				}
+				, error:function() {
+					alert("좋아요 체크 에러");
+				}
+			});
+			
+		});
+		
+	});
+	
+
+</script>
+
+</body>
+</html>
