@@ -63,6 +63,20 @@
 		</footer>
 		
 	</div>
+	
+	<script>
+		$(document).ready(function() {
+			
+			$(".down").on("click", function() {
+				let test = $(this).data("category");
+				
+				alert(test);
+				return;
+			});
+			
+			
+		});
+	</script>
 
 </body>
 </html>

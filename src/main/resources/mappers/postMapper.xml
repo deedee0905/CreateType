@@ -54,6 +54,27 @@
   			`id` = #{id}
   	
   	</select>
+  	
+  	<select id="selectCategory" parameterType="int" resultType="com.amita.createType.ex.post.model.Post">
+  		SELECT
+  			`id`
+  			,`userId`
+  			,`channelId`
+  			,`title`
+  			,`subtitle`
+  			,`content`
+  			,`category`
+  			,`price`
+  			,`createdAt`
+  			,`updatedAt`
+  		FROM
+  			`post`
+  		WHERE
+  			`category` = #{category}
+  		ORDER BY `id` DESC
+  	
+  	</select>
+  	
   
   </mapper>
   

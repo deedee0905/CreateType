@@ -13,10 +13,10 @@
 						    카테고리
 						  </button>
 						  <div class="dropdown-menu" >
-						    <a class="dropdown-item" href="#">웹툰</a>
-						    <a class="dropdown-item" href="#">웹소설</a>
-						    <a class="dropdown-item" href="#">디자인</a>
-						    <a class="dropdown-item" href="#">레디메이드</a>
+						    <a class="dropdown-item down" href="#" data-category="1">웹툰</a>
+						    <a class="dropdown-item down" href="#" data-category="2">웹소설</a>
+						    <a class="dropdown-item down" href="#" data-category="3">디자인</a>
+						    <a class="dropdown-item down" href="#" data-category="4">레디메이드</a>
 						  </div>
 						</div>
 					</div>

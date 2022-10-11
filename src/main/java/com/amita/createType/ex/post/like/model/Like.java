@@ -5,6 +5,7 @@ public class Like {
 	private int id;
 	private int userId;
 	private int postId;
+	
 	public boolean isLike() {
 		return isLike;
 	}

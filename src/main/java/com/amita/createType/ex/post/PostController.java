@@ -43,7 +43,14 @@ public class PostController {
 	
 	// 창작 컨텐츠 전체 view
 	@GetMapping("/createList/view")
-	public String createListView() {
+	public String createListView(
+			@RequestParam("category") int category
+			, Model model
+			) {
+		
+		List<Post> postCategory = postBO.getCategory(category);
+		
+		model.addAttribute("postCategory", postCategory);
 		
 		return "post/createContents";
 	}

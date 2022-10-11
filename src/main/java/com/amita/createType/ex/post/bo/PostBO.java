@@ -2,9 +2,10 @@ package com.amita.createType.ex.post.bo;
 
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 import com.amita.createType.ex.post.dao.PostDAO;
 import com.amita.createType.ex.post.model.Post;
@@ -28,6 +29,10 @@ public class PostBO {
 		return postDAO.selectPost(id);
 	}
 	
+	// 포스트 카테고리 view 출력
+	public List<Post> getCategory(int category) {
+		return postDAO.selectCategory(category);
+	}
 	
 	
 	

@@ -40,6 +40,22 @@
 			
 			<hr>
 			
+			<
+				<div class="d-flex mt-3">
+					<div>
+						<img class="rounded" width="200" height="300" alt="웹툰1" src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA4MTlfODQg%2FMDAxNjI5MzU4NTkxMzU4.3O0IpV-v8xO2DuUKFzqqAhiH_TVIXxkzkvaJkCUzp3Yg.OYVighh4OoGTwoQ-hJ0NQyVYVO-mpbYQzSAZmvV_jWog.PNG.skymoon2319%2Fimage.png&type=sc960_832">
+					</div>
+					
+					<div class="ml-3">
+						<h4>${postCategory }</h4>
+						<h5>닉네임 / view 34 / 덧글 4 / ♡ 5</h5>
+						<p>
+						${postCategory }
+						</p>
+					</div>
+				</div>
+		
+			
 			<div>
 				<div class="d-flex mt-3">
 					<div>
