@@ -1,5 +1,7 @@
 package com.amita.createType.ex.post.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -19,7 +21,7 @@ public interface PostDAO {
 			);
 	
 
-	public Post selectPost(@Param("id") int id);
+	public List<Post> selectPost(@Param("id") int id);
 	
 	
 }

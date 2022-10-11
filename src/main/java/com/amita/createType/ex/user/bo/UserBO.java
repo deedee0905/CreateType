@@ -69,7 +69,12 @@ public class UserBO {
 		return userDAO.selectUserIdPassword(loginId, encryptPassword);
 	}
 	
-	public Channel getUserById(int id) {
+	public Channel getChannelUserById(int id) {
+		return userDAO.selectChannelUserById(id);
+	}
+	
+	// 유저id를 기반으로 정보 가져오기
+	public User getUserById(int id) {
 		return userDAO.selectUserById(id);
 	}
 	

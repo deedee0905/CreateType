@@ -25,6 +25,22 @@
 		)
 	
 	</insert>
+	
+	<select id="selectPostList" parameterType="int" resultType="com.amita.createType.ex.post.comment.model.Comment">
+		SELECT
+			`id`
+			,`userId`
+			,`postId`
+			,`comment`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`comment`
+		WHERE
+			`postId` = #{postId}
+			
+	
+	</select>
 
 </mapper>
 

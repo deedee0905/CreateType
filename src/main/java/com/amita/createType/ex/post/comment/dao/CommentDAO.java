@@ -1,7 +1,11 @@
 package com.amita.createType.ex.post.comment.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import com.amita.createType.ex.post.comment.model.Comment;
 
 @Repository
 public interface CommentDAO {
@@ -11,5 +15,7 @@ public interface CommentDAO {
 		,@Param("postId") int postId
 		, @Param("comment") String comment);
 	
+	
+	public List<Comment> selectPostList(@Param("postId") int postId);
 	
 }

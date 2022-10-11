@@ -128,7 +128,7 @@ public class UserRestController {
 						session.setAttribute("userNickname", user.getNickname());
 						
 						int userId = (Integer)session.getAttribute("userId");
-						Channel channel = userBO.getUserById(userId);
+						Channel channel = userBO.getChannelUserById(userId);
 						
 						
 						if(channel != null) {

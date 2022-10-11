@@ -28,6 +28,9 @@ public interface UserDAO {
 	// 로그인 기능
 	public User selectUserIdPassword(@Param("loginId") String loginId, @Param("password") String password);
 	
-	public Channel selectUserById(@Param("userId") int userId);
+	public Channel selectChannelUserById(@Param("userId") int userId);
+	
+	// 유저id 기반으로 정보 가져오기
+	public User selectUserById(@Param("id") int id);
 
 }

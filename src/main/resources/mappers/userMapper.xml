@@ -82,7 +82,7 @@
   	
   	</select>
   	
-  	<select id="selectUserById" parameterType="int" resultType="com.amita.createType.ex.individual.model.Channel">
+  	<select id="selectChannelUserById" parameterType="int" resultType="com.amita.createType.ex.individual.model.Channel">
 		SELECT
 			`id`
 			,`userId`
@@ -96,6 +96,23 @@
 		WHERE
 			`userId` = #{userId}
 	
+	</select>
+	
+	<select id="selectUserById" parameterType="int" resultType="com.amita.createType.ex.user.model.User">
+		SELECT
+			`id`
+			,`loginId`
+			,`nickname`
+			,`email`
+			,`password`
+			,`profileImagePath`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`user`
+		WHERE
+			`id` = #{id}
+		
 	</select>
   	
   	
