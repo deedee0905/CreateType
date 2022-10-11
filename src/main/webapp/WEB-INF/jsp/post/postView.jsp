@@ -86,7 +86,7 @@
 							</div>
 							
 							<div>
-								<a href="#" data-toggle="modal" data-target="#deleteModal"><i class="bi bi-three-dots mr-3 text-dark"></i></a>
+								<a href="#" data-toggle="modal" data-target="#deleteModal" class="more-btn" data-comment-id="${comment.id }"><i class="bi bi-three-dots mr-3 text-dark"></i></a>
 							</div>
 						</div>
 						<hr>
@@ -197,9 +197,38 @@
 		
 		
 		$("#commentDeleteBtn").on("click", function() {
-			alert("유효성 검사");
+			let id = $(this).data("comment-id");
+			
+			$.ajax({
+				type:"get"
+				, url:"/post/comment/delete"
+				, data:{"id":id}
+				,success: function(data) {
+					if(data.result == "success"){
+						location.reload();
+						return;
+					} else {
+						alert("덧글삭제 실패");
+					}
+						
+				}
+				,error: function() {
+					alert("덧글삭제 에러");
+				}
+			});
+			
+		});
+		
+		
+		$(".more-btn").on("click", function(e) {
+			e.preventDefault();
+			
+			let id = $(this).data("comment-id");
+			
+			$("#commentDeleteBtn").data("comment-id", id);
 			return;
 		});
+		
 		
 		$("#commentSaveBtn").on("click", function(e) {
 			e.preventDefault();
@@ -219,7 +248,7 @@
 				, success:function(data) {
 					
 					if(data.result == "success"){
-						alert("덧글입력 성공");
+						location.reload();
 					} else {
 						alert("덧글입력 실패");
 					}

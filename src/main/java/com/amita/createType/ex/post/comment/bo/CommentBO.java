@@ -29,5 +29,10 @@ public class CommentBO {
 		
 	}
 	
+	// 덧글 삭제
+	public int deleteComment(int userId, int id) {
+		return commentDAO.deleteComment(userId, id);
+	}
+	
 	
 }

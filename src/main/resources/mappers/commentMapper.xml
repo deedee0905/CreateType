@@ -41,6 +41,16 @@
 			
 	
 	</select>
+	
+	<delete id="deleteComment" parameterType="map">
+		DELETE FROM
+			`comment`
+		WHERE
+			`userId` = #{userId}
+			AND `id`= #{id}
+			
+	</delete>
+	
 
 </mapper>
 
