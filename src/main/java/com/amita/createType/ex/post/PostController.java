@@ -1,8 +1,6 @@
 package com.amita.createType.ex.post;
 
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +20,7 @@ public class PostController {
 	@Autowired
 	private PostBO postBO;
 	
+	@Autowired
 	private CommentBO commentBO;
 	
 	
@@ -53,10 +52,14 @@ public class PostController {
 			) {
 	
 		Post post = postBO.getPost(id);
-		List<Comment> commentList = commentBO.getCommentList(id);
+		Comment comment = commentBO.getCommentList(id);
+		
+		
 		
 		model.addAttribute("post", post);
-		model.addAttribute("commentList", commentList);
+		model.addAttribute("comment", comment);
+		
+		
 		
 		return "post/postView";
 	}

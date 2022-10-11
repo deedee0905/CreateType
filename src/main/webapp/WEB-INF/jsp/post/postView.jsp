@@ -81,7 +81,7 @@
 							<div class="d-flex">
 								<img class="rounded" width="50" height="50" alt="" src="https://cdn.pixabay.com/photo/2016/04/06/10/08/background-1311251_960_720.jpg">
 								<span class="font-weight-bold ml-2 mt-2">너부리</span>
-								<span class="ml-1 mt-2">재밌어요!!!</span>
+								<span class="ml-1 mt-2">${comment.comment }</span>
 							</div>
 							
 							<div>

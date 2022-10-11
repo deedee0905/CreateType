@@ -23,9 +23,8 @@ public class CommentBO {
 	}
 	
 	// 덧글 조회
-	public List<Comment> getCommentList(int postId){
+	public Comment getCommentList(int postId){
 	
-		//덧글은 여러개가 저장될 수 있으므로 List
 		return commentDAO.selectCommentList(postId);
 		
 	}
