@@ -77,23 +77,20 @@
 					<div>
 						<span class="font-weight-bold" style="font-size:20px">덧글</span> <br>
 						
-						
+						<c:forEach var="comment" items="${commentList }">
 						<div class="d-flex justify-content-between mt-3">
 							<div class="d-flex">
-							
 								<img class="rounded" width="50" height="50" alt="" src="https://cdn.pixabay.com/photo/2016/04/06/10/08/background-1311251_960_720.jpg">
 								<span class="font-weight-bold ml-2 mt-2">너부리</span>
-								<c:forEach var="comment" items="${commenList }">
-									<span class="ml-1 mt-2">${comment}</span>
-									<hr>
-								</c:forEach>
+									<span class="ml-1 mt-2">${comment.comment}</span>
 							</div>
 							
 							<div>
 								<span><i class="bi bi-three-dots mr-3"></i></span>
 							</div>
 						</div>
-						
+						<hr>
+						</c:forEach>
 						
 						
 						<hr>
