@@ -3,6 +3,8 @@ package com.amita.createType.ex.post.dao;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import com.amita.createType.ex.post.model.Post;
+
 @Repository
 public interface PostDAO {
 	
@@ -17,4 +19,7 @@ public interface PostDAO {
 			);
 	
 
+	public Post selectPost(@Param("id") int id);
+	
+	
 }
