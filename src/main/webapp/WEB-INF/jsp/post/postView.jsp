@@ -86,27 +86,15 @@
 							</div>
 							
 							<div>
-								<span><i class="bi bi-three-dots mr-3"></i></span>
+								<a href="#" data-toggle="modal" data-target="#deleteModal"><i class="bi bi-three-dots mr-3 text-dark"></i></a>
 							</div>
 						</div>
 						<hr>
 						</c:forEach>
 						
 						
-						<hr>
-						
-						<div class="d-flex justify-content-between mt-3">
-							<div class="d-flex">
-								<img class="rounded" width="50" height="50" alt="" src="https://cdn.pixabay.com/photo/2021/07/03/08/44/leaves-6383340_960_720.png">
-								<span class="font-weight-bold ml-2 mt-2">포로리</span>
-								<span class="ml-1 mt-2">우와 짱!</span>
-							</div>
-							
-							<div>
-								<span><i class="bi bi-three-dots mr-3"></i></span>
-							</div>
-						</div>
-						<hr>
+				
+				
 						
 						<div>
 							<div class="d-flex">
@@ -174,17 +162,55 @@
 	    </div>
 	  </div>
 	</div>
+	
+	
+	<%--삭제 modal --%>
+	<!-- Button trigger modal -->
+		<button type="button" class="btn btn-primary" ">
+		  
+		</button>
+		
+		<!-- Modal -->
+		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel"> 덧글 삭제</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body d-flex justify-content-center">
+		        <button id="commentDeleteBtn" class="btn btn-danger">삭제하기</button>
+		      </div>
+		      <div class="modal-footer">
+
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	
 
 <script>
 
 	$(document).ready(function() {
 		
 		
+		$("#commentDeleteBtn").on("click", function() {
+			alert("유효성 검사");
+			return;
+		});
+		
 		$("#commentSaveBtn").on("click", function(e) {
 			e.preventDefault();
 			
 			let postId = $("#commentSaveBtn").val();
 			let comment = $("#commentInput").val();
+			
+			if(comment == ""){
+				alert("덧글 내용을 입력하세요");
+				return;
+			}
 			
 			$.ajax({
 				type:"post"
