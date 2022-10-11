@@ -29,20 +29,8 @@ public class PostBO {
 	}
 
 	// 포스트 detail 출력
-	public PostDetail getPost(int id) {
-		Post post = postDAO.selectPost(id);
-		List<CommentDetail> commentList = commentBO.getCommentList(id);
-		int userId = post.getUserId();
-		User user = userBO.getUserById(userId);
-		
-		PostDetail postDetailList = new PostDetail();
-		
-		PostDetail postDetail = new PostDetail();
-		
-		postDetail.setPost(post);
-		postDetail.setCommentList(commentList);
-		postDetail.setUser(user);
-		return postDetailList;
+	public Post getPost(int id) {
+		return postDAO.selectPost(id);
 	}
 	
 	
