@@ -2,7 +2,7 @@ package com.amita.createType.ex.post.model;
 
 import java.util.List;
 
-import com.amita.createType.ex.post.comment.bo.CommentDetail;
+import com.amita.createType.ex.post.comment.model.CommentDetail;
 import com.amita.createType.ex.user.model.User;
 
 public class PostDetail {

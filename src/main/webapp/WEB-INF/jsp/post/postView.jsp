@@ -32,8 +32,8 @@
 				<%--헤더 --%>
 				<div class="d-flex justify-content-between mt-3">
 					<div>
-						<div><h2>${post.title }</h2></div>
-						<div><h4>${post.subtitle }</h4></div>
+						<div><h2>${postDetail.post.title }</h2></div>
+						<div><h4>${postDetail.post.subtitle }</h4></div>
 					</div>
 					
 					<div>
@@ -47,7 +47,7 @@
 				<div>
 					<div>
 						<p>
-							${post.content }
+							${postDetail.post.content }
 						</p>
 					</div>
 				</div>
@@ -107,7 +107,7 @@
 						<div>
 							<div class="d-flex">
 								<input id="commentInput" class="form-control" type="text" placeholder="댓글을 입력하세요">
-								<button id="commentSaveBtn" class="btn btn-primary text-white ml-3" value="${post.id }">덧글입력</button>
+								<button id="commentSaveBtn" class="btn btn-primary text-white ml-3" value="${postDetail.User.id }">덧글입력</button>
 								<button class="btn btn-primary text-white ml-1" data-toggle="modal" data-target="#exampleModal">후원하기</button>
 							</div>
 						</div>

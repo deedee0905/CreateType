@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.amita.createType.ex.post.comment.dao.CommentDAO;
 import com.amita.createType.ex.post.comment.model.Comment;
+import com.amita.createType.ex.post.comment.model.CommentDetail;
 import com.amita.createType.ex.user.bo.UserBO;
 import com.amita.createType.ex.user.model.User;
 
@@ -28,7 +29,7 @@ public class CommentBO {
 	public List<CommentDetail> getCommentList(int postId){
 	
 		//덧글은 여러개가 저장될 수 있으므로 List
-		List<Comment> commentList = commentDAO.selectPostList(postId);
+		List<Comment> commentList = commentDAO.selectCommentList(postId);
 		
 		List<CommentDetail> commentDetailList = new ArrayList<>();
 		

@@ -1,6 +1,5 @@
 package com.amita.createType.ex.post;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.amita.createType.ex.post.bo.PostBO;
-import com.amita.createType.ex.post.model.Post;
 import com.amita.createType.ex.post.model.PostDetail;
 
 @Controller
@@ -47,9 +45,9 @@ public class PostController {
 			@RequestParam("id") int id, Model model
 			) {
 	
-		List<PostDetail> postDetail = postBO.getPost(id);
+		PostDetail postDetail = postBO.getPost(id);
 		
-		model.addAttribute("post", postDetail);
+		model.addAttribute("postDetail", postDetail);
 		
 		
 		return "post/postView";

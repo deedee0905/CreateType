@@ -26,7 +26,7 @@
 	
 	</insert>
 	
-	<select id="selectPostList" parameterType="int" resultType="com.amita.createType.ex.post.comment.model.Comment">
+	<select id="selectCommentList" parameterType="int" resultType="com.amita.createType.ex.post.comment.model.Comment">
 		SELECT
 			`id`
 			,`userId`

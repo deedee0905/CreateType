@@ -1,13 +1,12 @@
 package com.amita.createType.ex.post.bo;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.amita.createType.ex.post.comment.bo.CommentBO;
-import com.amita.createType.ex.post.comment.bo.CommentDetail;
+import com.amita.createType.ex.post.comment.model.CommentDetail;
 import com.amita.createType.ex.post.dao.PostDAO;
 import com.amita.createType.ex.post.model.Post;
 import com.amita.createType.ex.post.model.PostDetail;
@@ -30,24 +29,19 @@ public class PostBO {
 	}
 
 	// 포스트 detail 출력
-	public List<PostDetail> getPost(int id) {
-		List<Post> postList = postDAO.selectPost(id);
-		List<PostDetail> postDetailList = new ArrayList<>();
+	public PostDetail getPost(int id) {
+		Post post = postDAO.selectPost(id);
+		List<CommentDetail> commentList = commentBO.getCommentList(id);
+		int userId = post.getUserId();
+		User user = userBO.getUserById(userId);
 		
-		for(Post post : postList) {
-			int userId = post.getUserId();
-			User user = userBO.getUserById(userId);
-			
-			List<CommentDetail> commentList = commentBO.getCommentList(post.getId());
-			
-			PostDetail postDetail = new PostDetail();
-			
-			postDetail.setPost(post);
-			postDetail.setUser(user);
-			postDetail.setCommentList(commentList);
-			
-			postDetailList.add(postDetail);
-		}
+		PostDetail postDetailList = new PostDetail();
+		
+		PostDetail postDetail = new PostDetail();
+		
+		postDetail.setPost(post);
+		postDetail.setCommentList(commentList);
+		postDetail.setUser(user);
 		return postDetailList;
 	}
 	

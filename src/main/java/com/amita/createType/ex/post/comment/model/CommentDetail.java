@@ -1,10 +1,9 @@
-package com.amita.createType.ex.post.comment.bo;
+package com.amita.createType.ex.post.comment.model;
 
-import com.amita.createType.ex.post.comment.model.Comment;
 import com.amita.createType.ex.user.model.User;
 
 public class CommentDetail {
-	
+
 	private Comment comment;
 	private User user;
 	
@@ -22,5 +21,5 @@ public class CommentDetail {
 	}
 	
 	
-
+	
 }
