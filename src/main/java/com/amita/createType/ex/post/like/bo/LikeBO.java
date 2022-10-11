@@ -20,5 +20,18 @@ public class LikeBO {
 	public int deleteLike(int userId, int postId) {
 		return likeDAO.deleteLike(userId, postId);
 	}
+	
+	// 특정 사용자가 특정 게시글에 좋아요를 체크했는지 확인하기
+	public boolean isLike(int userId, int postId) {
+		
+		int count = likeDAO.insertLike(userId, postId);
+		
+		if(count == 0) { // 0이면 좋아요 x
+			return false;
+		} else { // 그 외 값이라면 좋아요 o
+			return true;
+		}
+		
+	}
 
 }

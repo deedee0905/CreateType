@@ -12,4 +12,10 @@ public interface LikeDAO {
 	// 좋아요 delete api
 	public int deleteLike(@Param("userId") int userId, @Param("postId") int postId);
 	
+	// 특정 사용자가 좋아요 했는지 체크
+	public int selectCountLikeByUserId(
+			@Param("userId") int userId
+			, @Param("postId") int postId		
+			);
+	
 }

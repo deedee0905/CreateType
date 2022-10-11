@@ -64,8 +64,19 @@
 				
 				<%-- 좋아요, view 카운트 --%>
 				<div class="mt-2">
-					<a id="addLike" href="#"><i class="bi bi-heart text-danger"></i></a>
-					<a id="deleteLike" href="#"><i class="bi bi-heart-fill text-danger ml-2"></i></a>
+				
+				<c:choose>
+					<%-- 로그인한 사용자가 좋아요를 누른 게시물 --%>
+						<c:when test="${like != true}">
+							<a id="deleteLike" href="#" data-post-id="${post.id }"><i class="bi bi-heart-fill text-danger ml-2"></i></a>
+							
+						</c:when>
+					<%-- 로그인한 사용자가 좋아요를 누르지 않은 게시물 --%>
+						<c:otherwise>
+							<a id="addLike" href="#" data-post-id="${post.id }"><i class="bi bi-heart text-danger"></i></a>
+						</c:otherwise>
+				</c:choose>
+				
 					<span class="ml-2">조회수 777회</span>
 					<span class="ml-2"> 2022.10.05</span>
 				</div>
@@ -264,19 +275,21 @@
 		$("#addLike").on("click", function(e) {
 			e.preventDefault();
 			
-			let postId = 1;
+			let postId = $(this).data("post-id");
 			
 			$.ajax({
 				type:"get"
 				, url:"/post/like/insert"
-				, data:{"postId":id}
+				, data:{"postId":postId}
 				, success:function(data) {
 					
 					if(data.result == "success"){
 						alert("좋아요 체크 완료");
 						location.reload();
+						return;
 					} else{
 						alert("좋아요 체크 실패");
+						return;
 					}
 				}
 				, error:function() {
@@ -291,7 +304,7 @@
 		$("#deleteLike").on("click", function(e) {
 			e.preventDefault();
 			
-			let postId = 1;
+			let postId = $(this).data("post-id");
 			
 			$.ajax({
 				type:"get"
