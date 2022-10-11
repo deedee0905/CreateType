@@ -3,7 +3,7 @@ package com.amita.createType.ex.individual.dao;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-import com.amita.createType.ex.individual.model.Channel;
+
 
 @Repository
 public interface IndividualDAO {

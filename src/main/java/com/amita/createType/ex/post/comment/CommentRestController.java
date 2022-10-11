@@ -1,4 +1,4 @@
-package com.amita.createType.ex.individual;
+package com.amita.createType.ex.post.comment;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,41 +11,35 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
-import com.amita.createType.ex.individual.bo.IndividualBO;
+import com.amita.createType.ex.post.comment.bo.CommentBO;
 
 @RestController
-@RequestMapping("/individual")
-public class IndividualRestController {
+@RequestMapping("post")
+public class CommentRestController {
 	
 	@Autowired
-	private IndividualBO individualBO;
+	private CommentBO commentBO;
 	
-	
-	@PostMapping("/create/channel")
-	public Map<String, String> createChannel(
-			@RequestParam("channelName") String channelName
-			, @RequestParam("channelInfo") String channelInfo
-			, @RequestParam("file") MultipartFile file
-			, HttpServletRequest request
-			){
+	// 덧글입력 api
+	@PostMapping("/comment/insert")
+	public Map<String, String> addComment(
+			HttpServletRequest request
+			,@RequestParam("postId") int postId
+			, @RequestParam("comment") String comment){
 		
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
 		
-		int count = individualBO.addChannel(channelName, channelInfo, file, userId);
+		int count = commentBO.addComment(userId, postId, comment);
 		
 		Map<String, String> result = new HashMap<>();
 		
 		if(count == 1) {
 			result.put("result", "success");
-			
-			
 		} else {
 			result.put("result", "fail");
 		}
-		
 		return result;
 	}
 

@@ -6,7 +6,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.amita.createType.ex.common.FileManagerService;
 import com.amita.createType.ex.individual.dao.IndividualDAO;
-import com.amita.createType.ex.individual.model.Channel;
 
 @Service
 public class IndividualBO {

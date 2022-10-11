@@ -107,7 +107,7 @@
 						<div>
 							<div class="d-flex">
 								<input id="commentInput" class="form-control" type="text" placeholder="댓글을 입력하세요">
-								<button class="btn btn-primary text-white ml-3">덧글입력</button>
+								<button id="commentSaveBtn" class="btn btn-primary text-white ml-3" value="${post.id }">덧글입력</button>
 								<button class="btn btn-primary text-white ml-1" data-toggle="modal" data-target="#exampleModal">후원하기</button>
 							</div>
 						</div>
@@ -175,6 +175,33 @@
 
 	$(document).ready(function() {
 		
+		
+		$("#commentSaveBtn").on("click", function(e) {
+			e.preventDefault();
+			
+			let postId = $("#commentSaveBtn").val();
+			let comment = $("#commentInput").val();
+			
+			$.ajax({
+				type:"post"
+				, url:"/post/comment/insert"
+				, data:{"postId":postId, "comment":comment}
+				, success:function(data) {
+					
+					if(data.result == "success"){
+						alert("덧글입력 성공");
+					} else {
+						alert("덧글입력 실패");
+					}
+				}
+				, error:function() {
+					alert("덧글입력 에러");
+				}
+			});
+			
+			
+		});
+		
 		$("#addLike").on("click", function(e) {
 			e.preventDefault();
 			
@@ -183,7 +210,7 @@
 			$.ajax({
 				type:"get"
 				, url:"/post/like/insert"
-				, data:{"postId":postId}
+				, data:{"postId":id}
 				, success:function(data) {
 					
 					if(data.result == "success"){
