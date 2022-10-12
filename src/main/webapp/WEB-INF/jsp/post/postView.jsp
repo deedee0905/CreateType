@@ -78,7 +78,7 @@
 				
 				</c:choose>
 					<span class="ml-2">조회수 ${count }</span>
-					<span class="ml-2"> 2022.10.05</span>
+					<span class="ml-2"><fmt:formatDate value="${post.createdAt }" pattern="yyyy년 MM월 dd일"/></span>
 				</div>
 				
 				<hr>
@@ -92,7 +92,7 @@
 						<div class="d-flex justify-content-between mt-3">
 							<div class="d-flex">
 								<img class="rounded" width="50" height="50" alt="" src="https://cdn.pixabay.com/photo/2016/04/06/10/08/background-1311251_960_720.jpg">
-								<span class="font-weight-bold ml-2 mt-2">너부리</span>
+								<span class="font-weight-bold ml-2 mt-2">${userNickname }</span>
 									<span class="ml-1 mt-2">${comment.comment}</span>
 							</div>
 							
