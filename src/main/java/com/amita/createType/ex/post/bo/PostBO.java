@@ -34,6 +34,10 @@ public class PostBO {
 		return postDAO.selectCategory(category);
 	}
 	
+	// 발행된 포스트 데이터 select
+	public Post updatePost(int userId, int postId) {
+		return postDAO.updatePost(userId, postId);
+	}
 	
 	
 }

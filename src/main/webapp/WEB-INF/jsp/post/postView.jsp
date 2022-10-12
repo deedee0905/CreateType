@@ -37,7 +37,16 @@
 					</div>
 					
 					<div>
-						<a href="#" class="btn btn-outline-secondary btn-sm mt-5"> 수정하기</a>
+						<c:choose>
+							<c:when test="${userId eq post.userId}">
+								<a href="/post/update?id=${post.id }" class="btn btn-outline-secondary btn-sm mt-5 mr-3"> 수정하기</a>
+							</c:when>
+							
+							<c:otherwise>
+								
+							</c:otherwise>
+							
+						</c:choose>	
 					</div>
 				</div>
 				

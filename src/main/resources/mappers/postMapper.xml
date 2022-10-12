@@ -75,6 +75,28 @@
   	
   	</select>
   	
+  	<select id="updatePost" parameterType="map" resultType="com.amita.createType.ex.post.model.Post">
+  		SELECT
+  			`id`
+  			,`userId`
+  			,`channelId`
+  			,`title`
+  			,`subtitle`
+  			,`content`
+  			,`category`
+  			,`price`
+  			,`createdAt`
+  			,`updatedAt`
+  		FROM
+  			`post`
+  		WHERE
+  			`userId` = #{userId}
+  			, `id` = #{id}
+  			
+  	
+  	</select>
+  	
+  	
   
   </mapper>
   
