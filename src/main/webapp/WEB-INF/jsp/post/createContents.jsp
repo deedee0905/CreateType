@@ -40,75 +40,23 @@
 			
 			<hr>
 			
-			<
+				<c:forEach var="category" items="${postCategory }">
 				<div class="d-flex mt-3">
 					<div>
-						<img class="rounded" width="200" height="300" alt="웹툰1" src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA4MTlfODQg%2FMDAxNjI5MzU4NTkxMzU4.3O0IpV-v8xO2DuUKFzqqAhiH_TVIXxkzkvaJkCUzp3Yg.OYVighh4OoGTwoQ-hJ0NQyVYVO-mpbYQzSAZmvV_jWog.PNG.skymoon2319%2Fimage.png&type=sc960_832">
+						<img class="rounded" width="200" height="300" alt="웹툰1" src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA3MjhfNTYg%2FMDAxNjU5MDAxMjYyMTgz.o2JI_WETBFSnERaqwskDQgIgrwkZ2bkkbVi6uETMO_Mg.BWprgR0GaHKsrTe9GVSTbBOmHNv63o_ZPT1bjUmTeckg.JPEG.buzar_777%2FScreenshot%25A3%25DF20220728%25A3%25AD183507%25A3%25DFNAVER.jpg&type=sc960_832">
 					</div>
 					
 					<div class="ml-3">
-						<h4>${postCategory }</h4>
+						<h4>${category.title }</h4>
 						<h5>닉네임 / view 34 / 덧글 4 / ♡ 5</h5>
 						<p>
-						${postCategory }
+						${category.content }
 						</p>
 					</div>
 				</div>
-		
+				</c:forEach>
 			
-			<div>
-				<div class="d-flex mt-3">
-					<div>
-						<img class="rounded" width="200" height="300" alt="웹툰1" src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA4MTlfODQg%2FMDAxNjI5MzU4NTkxMzU4.3O0IpV-v8xO2DuUKFzqqAhiH_TVIXxkzkvaJkCUzp3Yg.OYVighh4OoGTwoQ-hJ0NQyVYVO-mpbYQzSAZmvV_jWog.PNG.skymoon2319%2Fimage.png&type=sc960_832">
-					</div>
-					
-					<div class="ml-3">
-						<h4>작품제목</h4>
-						<h5>닉네임 / view 34 / 덧글 4 / ♡ 5</h5>
-						<p>
-						대 화산파 13대 제자.천하삼대검수 매화검존 청명.<br>
-						천하를 혼란에 빠뜨린 고금제일마 천마의 목을 치고 십만대산의 정상에서 영면.<br>
-						백 년의 시간을 뛰어넘어 아이의 몸으로 다시 살아나다.<br>
-						......뭐? 화산이 망해? 이게 뭔 개소리야!?
-						</p>
-					</div>
-				</div>
-				
-				<div class="d-flex mt-3">
-					<div>
-						<img class="rounded" width="200" height="300" alt="웹툰2" src="https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F5486%2F2020%2F12%2F25%2F0000157532_002_20201225144317547.jpg&type=sc960_832">
-					</div>
-					
-					<div class="ml-3">
-						<h4>작품제목</h4>
-						<h5>닉네임 / view 34 / 덧글 4 / ♡ 5</h5>
-						<p>
-						어릴 때 알던 재수없던 놈이 더 재수없는 놈이 되어 돌아왔다!<br>
-						중3 황미애의 옆 빌라에 어릴 때 잠깐 시골에서 봤던 김철이 이사 와 같은 학교 같은 반이 되고 '철이와 미애'라 놀림 받자 김철은 미애를 불쾌해하며 피한다. 너만 불쾌한 줄 알아? <br>
-						나쁜 놈!<br>
-						</p>
-					</div>
-				</div>
-				
-				<div class="d-flex mt-3">
-					<div>
-						<img class="rounded" width="200" height="300" alt="웹툰2" src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA3MjhfNTYg%2FMDAxNjU5MDAxMjYyMTgz.o2JI_WETBFSnERaqwskDQgIgrwkZ2bkkbVi6uETMO_Mg.BWprgR0GaHKsrTe9GVSTbBOmHNv63o_ZPT1bjUmTeckg.JPEG.buzar_777%2FScreenshot%25A3%25DF20220728%25A3%25AD183507%25A3%25DFNAVER.jpg&type=sc960_832">
-					</div>
-					
-					<div class="ml-3">
-						<h4>작품제목</h4>
-						<h5>닉네임 / view 34 / 덧글 4 / ♡ 5</h5>
-						<p>
-						한국대 로스쿨 수석 졸업에, <br>
-						변호사 시험 성적 1,500점 이상! <br>
-						국내 업계 2위 법무법인 한바다의 인턴 변호사가 된 우영우.<br>
-						<br>
-						영우는 자신의 능력을 증명해내고 '진짜 변호사'가 될 수 있을까?<br>
-						</p>
-					</div>
-				</div>
 			
-			</div>
 			
 		</section>
 	

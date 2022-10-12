@@ -60,7 +60,7 @@
 			
 			<div id="summernote"></div> 
 			
-			<button id="testBtn" class="btn btn-info">테스트</button>
+			
 			
 		
 		</section>
