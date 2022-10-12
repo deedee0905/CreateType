@@ -31,10 +31,10 @@
 			<div class="d-flex justify-content-between mt-3">
 				<h2>개인 창작 컨텐츠</h2>
 				<div class="d-flex">
-					<a href="#" style="text-decoration:none" ><h3 id="webtoon" class="create text-primary">#웹툰</h3></a>
-					<a href="#" style="text-decoration:none"><h3 id="webnovel" class="create ml-3 text-dark">#웹소설</h3></a>
-					<a href="#" style="text-decoration:none"><h3 id="design" class="create ml-3 text-dark">#디자인</h3></a>
-					<a href="#" style="text-decoration:none"><h3 id="readymade" class="create ml-3 text-dark">#레디메이드</h3></a>
+					<a href="/post/createList/view?category=1" style="text-decoration:none" ><span id="webtoon" class="create text-dark" style="font-size:28px">#웹툰</span></a>
+					<a href="/post/createList/view?category=2" style="text-decoration:none" ><span id="webnovel" class="create ml-3 text-dark" style="font-size:28px">#웹소설</span></a>
+					<a href="/post/createList/view?category=3" style="text-decoration:none" ><span id="design" class="create ml-3 text-dark" style="font-size:28px">#디자인</span></a>
+					<a href="/post/createList/view?category=4" style="text-decoration:none" ><span id="readymade" class="create ml-3 text-dark" style="font-size:28px">#레디메이드</span></a>
 				</div>
 			</div>
 			
@@ -48,7 +48,7 @@
 					
 					<div class="ml-3">
 						<h4>${category.title }</h4>
-						<h5>닉네임 / view 34 / 덧글 4 / ♡ 5</h5>
+						<h5>${userNickname } / view 34 / 덧글 4 / ♡ 5</h5>
 						<p>
 						${category.content }
 						</p>
@@ -69,17 +69,7 @@
 	
 		$(document).ready(function() {
 			
-			$(".create").on("click", function(e) {
-				e.preventDefault();
-				
-				
-				$("#webtoon").attr("class", "text-dark")
-				$("#webnovel").attr("class", "text-dark ml-3")
-				$("#design").attr("class", "text-dark  ml-3")
-				$("#readymade").attr("class", "text-dark  ml-3")
-				$(this).attr("class", "text-primary ml-3");
-
-			});
+			
 			
 		
 			
