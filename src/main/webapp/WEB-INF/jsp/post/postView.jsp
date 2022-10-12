@@ -32,7 +32,7 @@
 				<%--헤더 --%>
 				<div class="d-flex justify-content-between mt-3">
 					<div>
-						<div><h2>${post.title }</h2></div>
+						<div><h2>${post.title } </h2></div>
 						<div><h4>${post.subtitle }</h4></div>
 					</div>
 					
@@ -67,16 +67,16 @@
 				
 				<c:choose>
 					<%-- 로그인한 사용자가 좋아요를 누른 게시물 --%>
-						<c:when test="${like}">
+						<c:when test="${like > 0 }" >
 							<a id="deleteLike" href="#" data-post-id="${post.id }"><i class="bi bi-heart-fill text-danger ml-2"></i></a>
-							
-						</c:when>
+						</c:when>	
+						
 					<%-- 로그인한 사용자가 좋아요를 누르지 않은 게시물 --%>
 						<c:otherwise>
-							<a id="addLike" href="#" data-post-id="${post.id }"><i class="bi bi-heart text-danger"></i></a>
+							<a id="addLike" href="#" data-post-id="${post.id }"><i class="bi bi-heart text-danger ml-2"></i></a>
 						</c:otherwise>
-				</c:choose>
 				
+				</c:choose>
 					<span class="ml-2">조회수 ${count }</span>
 					<span class="ml-2"> 2022.10.05</span>
 				</div>
@@ -207,6 +207,37 @@
 	$(document).ready(function() {
 		
 		
+		$("#addLike").on("click", function(e) {
+			e.preventDefault();
+			
+			let postId = $(this).data("post-id");
+			
+			$.ajax({
+				type:"get"
+				, url:"/post/like/insert"
+				, data:{"postId":postId}
+				, success: function(data){
+					
+					if(data.result == "success"){
+						
+						location.reload();
+						return;
+					} else {
+						alert("좋아요 체크 실패");
+					}
+					
+				}
+				, error: function(){
+					alert("좋아요 체크 에러");
+				}
+				
+			});
+			
+			
+		});
+		
+		
+		
 		$("#commentDeleteBtn").on("click", function() {
 			let id = $(this).data("comment-id");
 			
@@ -272,32 +303,7 @@
 			
 		});
 		
-		$("#addLike").on("click", function(e) {
-			e.preventDefault();
-			
-			let postId = $(this).data("post-id");
-			
-			$.ajax({
-				type:"get"
-				, url:"/post/like/insert"
-				, data:{"postId":postId}
-				, success:function(data) {
-					
-					if(data.result == "success"){
-						alert("좋아요 체크 완료");
-						location.reload();
-						return;
-					} else{
-						alert("좋아요 체크 실패");
-						return;
-					}
-				}
-				, error:function() {
-					alert("좋아요 체크 에러");
-				}
-			});
-			
-		});
+		
 		
 		
 		
@@ -313,7 +319,7 @@
 				,success: function(data) {
 					
 					if(data.result == "success"){
-						alert("좋아요 삭제 성공");
+						
 						location.reload();
 					} else {
 						alert("좋아요 삭제 실패");

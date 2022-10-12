@@ -77,13 +77,13 @@ public class PostController {
 		List<Comment> commentList = commentBO.getCommentList(id);
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
-		boolean isLike = likeBO.isLike(userId, id);
+		int like = likeBO.isLike(userId, id);
 		int count = viewcountBO.viewCount(id);
 		
 		
 		model.addAttribute("post", post);
 		model.addAttribute("commentList", commentList);
-		model.addAttribute("isLike", isLike);
+		model.addAttribute("like", like);
 		model.addAttribute("count", count);
 		
 		
