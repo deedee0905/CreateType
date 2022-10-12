@@ -75,7 +75,7 @@
   	
   	</select>
   	
-  	<select id="updatePost" parameterType="map" resultType="com.amita.createType.ex.post.model.Post">
+  	<select id="updatePostSelect" parameterType="map" resultType="com.amita.createType.ex.post.model.Post">
   		SELECT
   			`id`
   			,`userId`
@@ -91,9 +91,21 @@
   			`post`
   		WHERE
   			`id` = #{id}
-  			
-  	
   	</select>
+  	
+  	<update id="updatePost" parameterType="map">
+  		UPDATE
+  			`post`
+  		SET
+  			`title` = #{title}
+  			, `subtitle` = #{subtitle}
+  			, `content` = #{content}
+  			, `category` = #{category}
+  			, `price` = #{price}
+  		WHERE
+  			`id` = #{id}
+  	
+  	</update>
   	
   	
   

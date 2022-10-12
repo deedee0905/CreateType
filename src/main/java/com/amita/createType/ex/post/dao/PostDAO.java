@@ -26,7 +26,16 @@ public interface PostDAO {
 	
 	public List<Post> selectCategory(@Param("category") int category);
 	
-	public Post updatePost(@Param("id") int id);
+	public Post updatePostSelect(@Param("id") int id);
+	
+	public int updatePost(
+			@Param("id") int id
+			,@Param("title") String title
+			, @Param("subtitle") String subtitle
+			, @Param("content") String content
+			, @Param("category") int category
+			, @Param("price") int price
+			);
 	
 	
 }

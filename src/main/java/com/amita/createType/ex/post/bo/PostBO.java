@@ -35,9 +35,20 @@ public class PostBO {
 	}
 	
 	// 발행된 포스트 데이터 select
-	public Post updatePost(int id) {
-		return postDAO.updatePost(id);
+	public Post updatePostSelect(int id) {
+		return postDAO.updatePostSelect(id);
 	}
 	
+	// 발행된 포스트의 데이터 update
+	public int updatePost(
+			int id
+			,String title
+			, String subtitle
+			, String content
+			, int category
+			, int price
+			) {
+		return postDAO.updatePost(id, title, subtitle, content, category, price);
+	}
 	
 }

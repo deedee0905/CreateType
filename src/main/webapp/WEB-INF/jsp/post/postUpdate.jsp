@@ -53,7 +53,7 @@
 		<section>
 			<div class="mt-2">
 				<input id="titleInput" class=" mt-3 form-control form-control-lg" value="${post.title }" type="text"> <br>
-				<input id="subtitleInput" class="ml-1 mb-5 form-control form-control-sm" placeholder="${post.subtitle }" type="text">
+				<input id="subtitleInput" class="ml-1 mb-5 form-control form-control-sm" value="${post.subtitle }" type="text">
 				
 			</div>
 
@@ -94,10 +94,12 @@
 					  <option value="4">레디메이드</option>
 					</select>
 		        </div>
+		        <label class="text-sm text-danger">*발행 카테고리를 확인하세요.</label>
+		        
 		        
 		        <div class="d-flex mt-5">
 		        	<span class="font-weight-bold mt-2" style="font-size:15px">판매가격</span>
-		        	<input id="priceInput" class="form-control col-8 ml-3" type="text" placeholder="${post.price }">
+		        	<input id="priceInput" class="form-control col-8 ml-3" type="text" value="${post.price }">
 		        </div>
 		        
 		        <div class="d-flex mt-5">
@@ -138,6 +140,20 @@
 				maxHeight : null, 
 				focus : true,
 				lang : 'ko-KR'
+				
+			});
+			
+			$("#publishBtn").on("click", function(e) {
+				e.preventDefault();
+				
+				let title = $("#titleInput").val();
+				let subtitle = $("#subtitleInput").val();
+				let content = $('#summernote').summernote("code");
+				let category= $("#category").val();
+				let price= $("#priceInput").val();
+				
+				alert(title + " / " + subtitle + " / " + content + " / " + category + " / " + price);
+				return;
 				
 			});
 			

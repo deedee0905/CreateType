@@ -97,7 +97,7 @@ public class PostController {
 			,Model model
 			) {
 		
-		Post post = postBO.updatePost(id);
+		Post post = postBO.updatePostSelect(id);
 		
 		model.addAttribute("post", post);
 		

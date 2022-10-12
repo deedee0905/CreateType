@@ -49,7 +49,28 @@ public class PostRestController {
 		return result;
 	}
 
-	
-	
+	// 포스트 수정
+	@PostMapping("/create/postUpdate")
+	public Map<String, String> postUpdate(
+			@RequestParam("id") int id
+			,@RequestParam("title") String title
+			, @RequestParam("subtitle") String subtitle
+			, @RequestParam("content") String content
+			, @RequestParam("category") int category
+			, @RequestParam("price") int price
+			){
+		
+		int count = postBO.updatePost(id, title, subtitle, content, category, price);
+		
+		Map<String, String> result = new HashMap<>();
+		
+		if(count == 1) {
+			result.put("result", "success");
+		} else {
+			result.put("result", "fail");
+		}
+		return result;
+		
+	}
 	
 }
