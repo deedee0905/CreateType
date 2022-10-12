@@ -32,7 +32,7 @@
 	
 	</delete>
 	
-	<select id="selectCountLikeByUserId">
+	<select id="selectCountLikeByUserId" parameterType="map" resultType="int">
 		SELECT
 			count(1)
 		FROM

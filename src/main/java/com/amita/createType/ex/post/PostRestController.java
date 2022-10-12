@@ -29,7 +29,7 @@ public class PostRestController {
 			, @RequestParam("subtitle") String subtitle
 			, @RequestParam("content") String content
 			, @RequestParam("category") int category
-			, @RequestParam("category") int price
+			, @RequestParam("price") int price
 			){
 		
 		HttpSession session = request.getSession();

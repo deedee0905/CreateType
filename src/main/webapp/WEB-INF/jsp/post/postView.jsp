@@ -67,7 +67,7 @@
 				
 				<c:choose>
 					<%-- 로그인한 사용자가 좋아요를 누른 게시물 --%>
-						<c:when test="${like != true}">
+						<c:when test="${like}">
 							<a id="deleteLike" href="#" data-post-id="${post.id }"><i class="bi bi-heart-fill text-danger ml-2"></i></a>
 							
 						</c:when>

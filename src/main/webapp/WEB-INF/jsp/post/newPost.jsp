@@ -164,6 +164,7 @@
 				 let price= $("#priceInput").val();
 				 let content = $('#summernote').summernote("code");
 				 
+				 
 				 if(title == ""){
 					 alert("제목을 입력하세요");
 					 return;
@@ -182,7 +183,7 @@
 				$.ajax({
 					type:"post"
 					,url:"/post/create/newPost"
-					,data:{"title":title, "subtitle":subtitle, "category":category, "price":price, "content":content}
+					,data:{"title":title, "subtitle":subtitle, "content":content, "category":category, "price":price }
 					,success: function(data) {
 						
 						if(data.result == "success"){

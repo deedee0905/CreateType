@@ -75,6 +75,7 @@ public class PostController {
 		int userId = (Integer)session.getAttribute("userId");
 		boolean isLike = likeBO.isLike(userId, id);
 		
+		
 		model.addAttribute("post", post);
 		model.addAttribute("commentList", commentList);
 		model.addAttribute("isLike", isLike);
