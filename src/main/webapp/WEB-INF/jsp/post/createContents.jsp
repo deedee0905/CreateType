@@ -51,7 +51,7 @@
 					<div class="ml-3">
 						<a class="count" href="/post/create/postObject/view?id=${category.id }" style="text-decoration:none" data-post-id="${category.id }">
 							<h4 class="text-dark count">${category.title }</h4></a>
-							<h5 class="text-dark">${userNickname } / view 34 / 덧글 4 / ♡ 5</h5>
+							<h5 class="text-dark">${userNickname } / view / 덧글 4 / ♡ 5</h5>
 							<p>
 								<a href="/post/create/postObject/view?id=${category.id }" class="text-dark count" style="text-decoration:none" data-post-id="${category.id }">${category.content }</a>
 							</p>
@@ -83,11 +83,10 @@
 					,success: function(data) {
 						
 						if(data.result == "success"){
-							alert("조회수 입력 성공");
-							return;
+							
 						} else {
 							alert("조회수 입력 실패");
-							return;
+							
 						}
 						
 					}

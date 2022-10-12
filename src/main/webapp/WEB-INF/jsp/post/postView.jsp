@@ -77,7 +77,7 @@
 						</c:otherwise>
 				</c:choose>
 				
-					<span class="ml-2">조회수 777회</span>
+					<span class="ml-2">조회수 ${count }</span>
 					<span class="ml-2"> 2022.10.05</span>
 				</div>
 				

@@ -15,4 +15,8 @@ public class ViewCountBO {
 		return viewcountDAO.insertViewCount(userId, postId);
 	}
 	
+	public int viewCount(int postId) {
+		return viewcountDAO.selectViewCount(postId);
+	}
+	
 }

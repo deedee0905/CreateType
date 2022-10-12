@@ -22,5 +22,15 @@
 	
 	</insert>
 	
+	<select id="selectViewCount" parameterType="int" resultType="int">
+		SELECT
+			count(1)
+		FROM
+			`viewCount`
+		WHERE 
+			`postId` = #{postId}
+	
+	</select>
+	
 
 </mapper>

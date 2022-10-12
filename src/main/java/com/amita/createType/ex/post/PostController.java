@@ -17,8 +17,8 @@ import com.amita.createType.ex.post.bo.PostBO;
 import com.amita.createType.ex.post.comment.bo.CommentBO;
 import com.amita.createType.ex.post.comment.model.Comment;
 import com.amita.createType.ex.post.like.bo.LikeBO;
-import com.amita.createType.ex.post.like.model.Like;
 import com.amita.createType.ex.post.model.Post;
+import com.amita.createType.ex.post.viewCount.bo.ViewCountBO;
 
 @Controller
 @RequestMapping("/post")
@@ -32,6 +32,9 @@ public class PostController {
 	
 	@Autowired
 	private LikeBO likeBO;
+	
+	@Autowired
+	private ViewCountBO viewcountBO;
 	
 	
 	// 크리에이트 타입 메인 view
@@ -49,6 +52,7 @@ public class PostController {
 			) {
 		
 		List<Post> postCategory = postBO.getCategory(category);
+		
 		
 		model.addAttribute("postCategory", postCategory);
 		
@@ -74,12 +78,13 @@ public class PostController {
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
 		boolean isLike = likeBO.isLike(userId, id);
+		int count = viewcountBO.viewCount(id);
 		
 		
 		model.addAttribute("post", post);
 		model.addAttribute("commentList", commentList);
 		model.addAttribute("isLike", isLike);
-		
+		model.addAttribute("count", count);
 		
 		
 		return "post/postView";
