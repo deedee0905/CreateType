@@ -43,15 +43,19 @@
 				<c:forEach var="category" items="${postCategory }">
 				<div class="d-flex mt-3">
 					<div>
-						<img class="rounded" width="200" height="300" alt="웹툰1" src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA3MjhfNTYg%2FMDAxNjU5MDAxMjYyMTgz.o2JI_WETBFSnERaqwskDQgIgrwkZ2bkkbVi6uETMO_Mg.BWprgR0GaHKsrTe9GVSTbBOmHNv63o_ZPT1bjUmTeckg.JPEG.buzar_777%2FScreenshot%25A3%25DF20220728%25A3%25AD183507%25A3%25DFNAVER.jpg&type=sc960_832">
+						<a class="count" href="/post/create/postObject/view?id=${category.id }" data-post-id="${category.id }">
+							<img class="rounded" width="200" height="300" alt="웹툰1" src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA3MjhfNTYg%2FMDAxNjU5MDAxMjYyMTgz.o2JI_WETBFSnERaqwskDQgIgrwkZ2bkkbVi6uETMO_Mg.BWprgR0GaHKsrTe9GVSTbBOmHNv63o_ZPT1bjUmTeckg.JPEG.buzar_777%2FScreenshot%25A3%25DF20220728%25A3%25AD183507%25A3%25DFNAVER.jpg&type=sc960_832">
+						</a>
 					</div>
 					
 					<div class="ml-3">
-						<h4>${category.title }</h4>
-						<h5>${userNickname } / view 34 / 덧글 4 / ♡ 5</h5>
-						<p>
-						${category.content }
-						</p>
+						<a class="count" href="/post/create/postObject/view?id=${category.id }" style="text-decoration:none" data-post-id="${category.id }">
+							<h4 class="text-dark count">${category.title }</h4></a>
+							<h5 class="text-dark">${userNickname } / view 34 / 덧글 4 / ♡ 5</h5>
+							<p>
+								<a href="/post/create/postObject/view?id=${category.id }" class="text-dark count" style="text-decoration:none" data-post-id="${category.id }">${category.content }</a>
+							</p>
+						
 					</div>
 				</div>
 				</c:forEach>
@@ -69,7 +73,32 @@
 	
 		$(document).ready(function() {
 			
-			
+			$(".count").on("click", function(e) {
+				let postId = $(this).data("post-id");
+				
+				$.ajax({
+					type:"get"
+					, url:"/viewCount"
+					,data: {"postId":postId}
+					,success: function(data) {
+						
+						if(data.result == "success"){
+							alert("조회수 입력 성공");
+							return;
+						} else {
+							alert("조회수 입력 실패");
+							return;
+						}
+						
+					}
+					,error: function() {
+						alert("조회수 입력 에러");
+						return;
+					}
+					
+				});
+				
+			});
 			
 		
 			
