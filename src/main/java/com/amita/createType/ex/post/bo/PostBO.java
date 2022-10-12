@@ -35,8 +35,8 @@ public class PostBO {
 	}
 	
 	// 발행된 포스트 데이터 select
-	public Post updatePost(int userId, int postId) {
-		return postDAO.updatePost(userId, postId);
+	public Post updatePost(int id) {
+		return postDAO.updatePost(id);
 	}
 	
 	

@@ -90,8 +90,7 @@
   		FROM
   			`post`
   		WHERE
-  			`userId` = #{userId}
-  			, `id` = #{id}
+  			`id` = #{id}
   			
   	
   	</select>

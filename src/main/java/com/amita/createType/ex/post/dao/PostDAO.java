@@ -26,9 +26,7 @@ public interface PostDAO {
 	
 	public List<Post> selectCategory(@Param("category") int category);
 	
-	public Post updatePost(
-			@Param("userId") int userId
-			, @Param("postId") int postId);
+	public Post updatePost(@Param("id") int id);
 	
 	
 }

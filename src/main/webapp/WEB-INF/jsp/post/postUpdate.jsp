@@ -52,13 +52,15 @@
 		
 		<section>
 			<div class="mt-2">
-				<input id="titleInput" class=" mt-3 form-control form-control-lg" placeholder="제목을 입력하세요" type="text"> <br>
-				<input id="subtitleInput" class="ml-1 mb-5 form-control form-control-sm" placeholder="부제목을 입력하세요" type="text">
+				<input id="titleInput" class=" mt-3 form-control form-control-lg" value="${post.title }" type="text"> <br>
+				<input id="subtitleInput" class="ml-1 mb-5 form-control form-control-sm" placeholder="${post.subtitle }" type="text">
 				
 			</div>
 
 			
-			<div id="summernote"></div> 
+			<div id="summernote">
+				${post.content }
+			</div> 
 			
 			
 			
@@ -86,7 +88,7 @@
 		        <div class="mt-5 d-flex" style="height:30px">
 		        	<span class="font-weight-bold mt-2" style="font-size:15px">카테고리</span>
 		        	<select id="category" class="custom-select custom-select-lg mb-3 col-7 ml-3">
-					  <option selected value="1">웹툰</option>
+					  <option value="1">웹툰</option>
 					  <option value="2">웹소설</option>
 					  <option value="3">디자인</option>
 					  <option value="4">레디메이드</option>
@@ -95,7 +97,7 @@
 		        
 		        <div class="d-flex mt-5">
 		        	<span class="font-weight-bold mt-2" style="font-size:15px">판매가격</span>
-		        	<input id="priceInput" class="form-control col-8 ml-3" type="text">
+		        	<input id="priceInput" class="form-control col-8 ml-3" type="text" placeholder="${post.price }">
 		        </div>
 		        
 		        <div class="d-flex mt-5">

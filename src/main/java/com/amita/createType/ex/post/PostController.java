@@ -92,7 +92,14 @@ public class PostController {
 	}
 	
 	@GetMapping("/update")
-	public String update(@RequestParam("id") int id) {
+	public String update(
+			@RequestParam("id") int id
+			,Model model
+			) {
+		
+		Post post = postBO.updatePost(id);
+		
+		model.addAttribute("post", post);
 		
 		return "post/postUpdate";
 	}
