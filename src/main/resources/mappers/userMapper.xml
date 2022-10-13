@@ -98,7 +98,7 @@
 	
 	</select>
 	
-	<select id="selectUserById" parameterType="int" resultType="com.amita.createType.ex.user.model.User">
+	<select id="selectUserInfo" parameterType="int" resultType="com.amita.createType.ex.user.model.User">
 		SELECT
 			`id`
 			,`loginId`
@@ -112,7 +112,6 @@
 			`user`
 		WHERE
 			`id` = #{id}
-		
 	</select>
   	
   	

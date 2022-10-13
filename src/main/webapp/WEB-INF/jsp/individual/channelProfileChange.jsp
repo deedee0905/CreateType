@@ -43,8 +43,8 @@
 					</div>
 					
 					<div class="mt-5">
-						<h5>닉네임</h5>
-						<input class="form-control form-control-sm mt-2">
+						<h5>닉네임 </h5>
+						<input class="form-control form-control-sm mt-2" ">
 						<label class="text-secondary">1자 이상 32자 이내로 입력해주세요.</label>
 					</div>
 					

@@ -3,6 +3,8 @@ package com.amita.createType.ex.individual.dao;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import com.amita.createType.ex.user.model.User;
+
 
 
 @Repository
@@ -14,6 +16,14 @@ public interface IndividualDAO {
 			,@Param("channelInfo") String channelInfo
 			,@Param("channelImagePath") String channelImagePath
 			,@Param("userId") int userId);
+	
+	
+	// 개인 프로필 상태 변경
+	public int updateProfile(
+			@Param("userId") int userId
+			, @Param("nickname") String nickname
+			, @Param("profileImagePath") String profileImagePath
+			);
 	
 	
 

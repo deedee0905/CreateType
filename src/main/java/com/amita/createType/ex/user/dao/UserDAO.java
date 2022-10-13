@@ -30,7 +30,9 @@ public interface UserDAO {
 	
 	public Channel selectChannelUserById(@Param("userId") int userId);
 	
-	// 유저id 기반으로 정보 가져오기
-	public User selectUserById(@Param("id") int id);
+	// 유저 정보 가져오기 select
+	public User selectUserInfo(@Param("id") int id);
+
+	
 
 }

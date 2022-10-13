@@ -73,10 +73,10 @@ public class UserBO {
 		return userDAO.selectChannelUserById(id);
 	}
 	
-	// 유저id를 기반으로 정보 가져오기
-	public User getUserById(int id) {
-		return userDAO.selectUserById(id);
-	}
+	// 채널의 정보 가져오기 selet
+		public User getUserInfo(int id) {
+			return userDAO.selectUserInfo(id);
+		}
 	
 
 }

@@ -30,6 +30,16 @@
 	
 	</insert>
 	
+	<update id="updateProfile" parameterType="map">
+		UPDATE
+			`user`
+		SET
+			`nickname` = #{nickname}
+			`profileImagePath` = #{profileImagePath}
+		WHERE
+			`id` = #{userId}
+	
+	</update>
 	
 
 
