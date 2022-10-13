@@ -34,16 +34,14 @@
 		<div>
 			<div class="d-flex justify-content-between">
 				<div>
-					<img class="rounded ml-1" width="90" height="90" alt="채널 프로필" src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA3MTRfNzkg%2FMDAxNjU3Nzg1MjEzMjM3.OsAgeeDfoPEcCL1djLCfsq4092epr8fSjbuyTeKAtq4g.FDoVVVLVzZXvRqge0v7PujjrWh8TTuLKwTA7xZGHxqQg.PNG.kappamann%2Fimage.png&type=sc960_832">
-					<h5 class="font-weight-bold mt-2 ml-1">채널 제목</h5>
+					<img class="rounded ml-1" width="90" height="90" alt="채널 프로필" src="${channel.channelImagePath }">
+					<h5 class="font-weight-bold mt-2 ml-1">${channel.channelName }</h5>
 					<div class="d-flex mt-2 mb-3 ml-1">
 						<span class="text-secondary">구독자 30명</span>
 						<a href="/individual/channel/setting/view" class="btn btn-sm btn-primary ml-3 text-white">프로필 편집</a>
 					</div>
 					<div class="border border-secondary p-2 rounded introduce-box">
-						이상한 변호사 우영우<br>
-						거꾸로해도 우영우<br>
-						스위스 기러기 어쩌구
+						${channel.channelInfo }
 					</div>
 				</div>
 				

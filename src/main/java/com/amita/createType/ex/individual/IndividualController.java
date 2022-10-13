@@ -64,7 +64,18 @@ public class IndividualController {
 	
 	//채널 전체 view
 	@GetMapping("/channel/view")
-	public String channeMainlView() {
+	public String channeMainlView(
+			HttpServletRequest request
+			,Model model
+			) {
+		HttpSession session = request.getSession();
+		int channelId = (Integer)session.getAttribute("channelId");
+		
+		Channel channel = individualBO.getChannelInfo(channelId);
+		
+		model.addAttribute("channel", channel);
+		
+		
 		return "individual/channelView";
 	}
 	
