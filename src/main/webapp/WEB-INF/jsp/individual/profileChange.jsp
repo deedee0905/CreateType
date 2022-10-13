@@ -76,11 +76,14 @@
 				let nickname = $("#nicknameInput").val();
 				
 				
+				if(nickname == ""){
+					alert("닉네임을 입력하세요");
+					return;
+				}
 				
 				var formData = new FormData();
-				formData.append("nickname", nickname);
 				formData.append("file", $("#profileImageInput")[0].files[0]);
-				
+				formData.append("nickname", nickname);
 				
 				$.ajax({
 					type:"get"
@@ -89,18 +92,18 @@
 					, enctype:"multipart/form-data"
 					, processData:false
 					, contentType:false
-					, success:function(data){
+					, success:function(data) {
+						
 						if(data.result == "success"){
-							alert("개인 프로필 변경 완료");
-							return;
+							alert("프로필 변경 성공");
 						} else {
-							alert("개인 프로필 변경 실패");
+							alert("프로필 변경 실패");
 						}
+						
 					}
 					, error:function() {
-						alert("입력 에러");
-					} 
-					
+						alert("프로필 변경 에러");
+					}
 				});
 				
 				
