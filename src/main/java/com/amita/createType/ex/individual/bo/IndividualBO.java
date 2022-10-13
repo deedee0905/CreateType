@@ -6,7 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.amita.createType.ex.common.FileManagerService;
 import com.amita.createType.ex.individual.dao.IndividualDAO;
-import com.amita.createType.ex.user.model.User;
+
 
 @Service
 public class IndividualBO {
@@ -31,20 +31,20 @@ public class IndividualBO {
 	}
 
 	// 개인 프로필 변경
-	public int profileUpdate(int userId, String nickname, MultipartFile file) {
-	
+	public int updateProfile(int id, String nicknakme, MultipartFile file) {
+		
 		String imagePath = null;
-		if(file != null) { // 저장 성공
-			imagePath = FileManagerService.saveFile(userId, file);
+		if(file != null) { // 파일 저장 성공
+			imagePath = FileManagerService.saveFile(id, file);
 			
-			if(imagePath == null) { // 저장 실패
+			if(imagePath == null) { //파일 저장 실패
 				return 0;
 			}
 			
 		}
-		return individualDAO.updateProfile(userId, nickname, imagePath);
+		
+		return individualDAO.updatePrivateProfile(id, nicknakme, imagePath);
 	}
-	
 	
 	
 

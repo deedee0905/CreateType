@@ -30,15 +30,15 @@
 	
 	</insert>
 	
-	<update id="updateProfile" parameterType="map">
+	
+	<update id="updatePrivateProfile" parameterType="map">
 		UPDATE
 			`user`
 		SET
 			`nickname` = #{nickname}
-			`profileImagePath` = #{profileImagePath}
+			, `profileImagePath` = #{profileImagePath}
 		WHERE
-			`id` = #{userId}
-	
+			`id` = #{id}
 	</update>
 	
 

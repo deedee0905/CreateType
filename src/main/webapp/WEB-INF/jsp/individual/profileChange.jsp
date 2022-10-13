@@ -46,7 +46,7 @@
 					
 					<div class="mt-5">
 						<h5>닉네임</h5>
-						<input id="nicknameInput" class="form-control form-control-sm mt-2" value="${user.nickname }">
+						<input type="text" id="nicknameInput" class="form-control form-control-sm mt-2" value="${user.nickname }">
 						<label class="text-secondary">1자 이상 32자 이내로 입력해주세요.</label>
 					</div>
 					
@@ -69,15 +69,12 @@
 		
 		$(document).ready(function() {
 			
-		
-			
-			$("#saveBtn").on("click", function(e) {
+			$("#saveBtn").on("click", function() {
 				let file = $("#profileImageInput").val();
 				let nickname = $("#nicknameInput").val();
 				
-				
 				if(nickname == ""){
-					alert("닉네임을 입력하세요");
+					alert("닉네임을 입력하세요.");
 					return;
 				}
 				
@@ -88,26 +85,28 @@
 				$.ajax({
 					type:"get"
 					, url:"/individual/profile/individual"
-					, data: formData
-					, enctype:"multipart/form-data"
-					, processData:false
-					, contentType:false
-					, success:function(data) {
+					, data:formData
+					,enctype:"multipart/form-data"
+					,processData:false
+					,contentType:false
+					,success:function(data){
 						
 						if(data.result == "success"){
-							alert("프로필 변경 성공");
+							alert("성공");
 						} else {
-							alert("프로필 변경 실패");
+							alert("실패");
 						}
-						
 					}
-					, error:function() {
-						alert("프로필 변경 에러");
+					,error:function(){
+						alert("업로드 에러");
+						
 					}
 				});
 				
-				
 			});
+			
+			
+			
 			
 			
 			

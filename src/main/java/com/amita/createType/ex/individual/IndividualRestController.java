@@ -50,30 +50,29 @@ public class IndividualRestController {
 		return result;
 	}
 	
-	// 개인 프로필 상태 변경
-	
+	// 개인 프로필 변경
 	@GetMapping("/profile/individual")
-	public Map<String, String> profileUpdate(
+	public Map<String, String> updateProfile(
 			HttpServletRequest request
 			, @RequestParam("nickname") String nickname
 			, @RequestParam("file") MultipartFile file
 			){
-		
+	
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
 		
-		int count = individualBO.profileUpdate(userId, nickname, file);
+		int count = individualBO.updateProfile(userId, nickname, file);
 		
 		Map<String, String> result = new HashMap<>();
-		
 		if(count == 1) {
 			result.put("result", "success");
 		} else {
 			result.put("result", "fail");
+			
 		}
+		
 		return result;
 	}
-	
 	
 
 }
