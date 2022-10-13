@@ -3,6 +3,8 @@ package com.amita.createType.ex.individual.dao;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import com.amita.createType.ex.individual.model.Channel;
+
 
 
 
@@ -24,6 +26,15 @@ public interface IndividualDAO {
 			, @Param("profileImagePath") String profileImagePath
 			);
 	
+	// 채널 프로필 업데이트 api
+	public int updateChannelProfile(
+			@Param("id") int id
+			, @Param("channelName") String channelName
+			, @Param("channelInfo") String channelInfo
+			, @Param("profileImagePath") String profileImagePath
+			);
 	
+	// 채널 정보 가져오기
+	public Channel selectChannelInfo(@Param("id") int id);
 
 }

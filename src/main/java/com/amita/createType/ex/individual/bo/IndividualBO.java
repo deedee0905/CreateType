@@ -6,6 +6,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.amita.createType.ex.common.FileManagerService;
 import com.amita.createType.ex.individual.dao.IndividualDAO;
+import com.amita.createType.ex.individual.model.Channel;
+
 
 
 @Service
@@ -46,6 +48,24 @@ public class IndividualBO {
 		return individualDAO.updatePrivateProfile(id, nicknakme, imagePath);
 	}
 	
+	// 채널 프로필 업데이트 api
+	public int updateChannelProfile(int id, String channelName, String channelInfo, MultipartFile file) {
+		
+		String imagePath = null;
+		if(file != null) { // 파일 저장 성공
+			imagePath = FileManagerService.saveFile(id, file);
+			
+			if(imagePath == null) { // 파일 저장 실패
+				return 0;
+			}
+			
+		}
+		return individualDAO.updateChannelProfile(id, channelName, channelInfo, imagePath);
+	}
 	
+	// 채널 프로필 정보 가져오기
+	public Channel getChannelInfo(int id) {
+		return individualDAO.selectChannelInfo(id);
+	}
 
 }

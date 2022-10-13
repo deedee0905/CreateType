@@ -36,28 +36,28 @@
 						<h5 class="mt-3">프로필 사진</h5>
 						
 						<div class="profile-section">
-							<img class="rounded" width="100" height="100" alt="프로필 사진" src="https://cdn.pixabay.com/photo/2017/06/24/16/57/peony-2438192_960_720.jpg">
-							<input class="form-control form-control-sm mt-2" type="file">
+							<img class="rounded" width="100" height="100" alt="프로필 사진" src="${channel.channelImagePath }">
+							<input id="fileInput" class="form-control form-control-sm mt-2" type="file">
 							<a href="#" class="text-secondary text-end" style="float: right">이미지 삭제</a>
 						</div>
 					</div>
 					
 					<div class="mt-5">
-						<h5>닉네임 </h5>
-						<input class="form-control form-control-sm mt-2" ">
+						<h5>채널 이름 </h5>
+						<input id="channelNameInput" class="form-control form-control-sm mt-2" value="${channel.channelName }">
 						<label class="text-secondary">1자 이상 32자 이내로 입력해주세요.</label>
 					</div>
 					
 					<div class="mt-1">
 						<h5>자기소개</h5>
-						<textarea class="form-control" placeholder="자기소개"></textarea>
+						<textarea id="channelInfoInput" class="form-control" value="${channel.channelInfo }"></textarea>
 						
 					</div>
 					
 					<div class="mt-5 mb-3">
 						<div class="d-flex justify-content-between">
 							<a class="btn btn-outline-secondary text-dark" href="/individual/profile/view">취소</a>
-							<button class="btn text-white" type="button" style="background-color:deepskyblue">변경내용 저장</button>
+							<button id="saveBtn" class="btn text-white" type="button" style="background-color:deepskyblue">변경내용 저장</button>
 						</div>
 					</div>
 				</div>
@@ -68,6 +68,63 @@
 			<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 		</footer>
 	</div>
+	
+	<script>
+		$(document).ready(function() {
+			
+			
+			$("#saveBtn").on("click", function(e) {
+				e.preventDefault();
+				
+				let file = $("#fileInput").val();
+				let channelName = $("#channelNameInput").val();
+				let channelInfo = $("#channelInfoInput").val();
+				
+				if(channelName == ""){
+					alert("채널 이름을 확인하세요.");
+					return;
+				}
+				
+				if(file == ""){
+					alert("채널 프로필 사진을 확인하세요.");
+					return;
+				}
+				
+				var formData = new FormData();
+				formData.append("file", $("#fileInput")[0].files[0]);
+				formData.append("channelName", channelName);
+				formData.append("channelInfo", channelInfo);
+				
+				$.ajax({
+					type:"post"
+					, url:"/individual/profile/channel"
+					, data:formData
+					, enctype:"multipart/form-data"
+					, processData:false
+					, contentType:false
+					, success:function(data){
+						
+						if(data.result == "success"){
+							location.href="/individual/channel/view";
+							return;
+						} else {
+							alert("실패");
+							return;
+						}
+						
+					}
+					, error:function(){
+						alert("채널 프로필 변경 에러");
+					}
+					
+				});
+				
+			});
+			
+			
+		});
+	
+	</script>
 
 </body>
 </html>

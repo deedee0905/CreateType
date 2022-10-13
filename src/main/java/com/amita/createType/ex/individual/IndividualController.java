@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.amita.createType.ex.individual.bo.IndividualBO;
+import com.amita.createType.ex.individual.model.Channel;
 import com.amita.createType.ex.user.bo.UserBO;
 import com.amita.createType.ex.user.model.User;
 
@@ -20,6 +21,9 @@ public class IndividualController {
 	
 	@Autowired
 	private UserBO userBO;
+	
+	@Autowired
+	private IndividualBO individualBO;
 	
 	// 유저탭 > MY채널 view
 	@GetMapping("/profile/view") 
@@ -52,8 +56,16 @@ public class IndividualController {
 	
 	// 채널 프로필, 자기소개 변경 view
 	@GetMapping("/channel/setting/view")
-	public String channelProfileChangeView() {
+	public String channelProfileChangeView(
+			HttpServletRequest request
+			, Model model
+			) {
+		HttpSession session = request.getSession();
+		int channelId = (Integer)session.getAttribute("channelId");
 		
+		Channel channel = individualBO.getChannelInfo(channelId);
+		
+		model.addAttribute("channel", channel);
 		
 		return "individual/channelProfileChange";
 	}

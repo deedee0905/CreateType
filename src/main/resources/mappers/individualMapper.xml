@@ -37,9 +37,39 @@
 		SET
 			`nickname` = #{nickname}
 			, `profileImagePath` = #{profileImagePath}
+			, `updatedAt` = now()
 		WHERE
 			`id` = #{id}
 	</update>
+	
+	<update id="updateChannelProfile" parameterType="map">
+		UPDATE
+			`channel`
+		SET
+			`channelName` = #{channelName}
+			, `channelInfo` = #{channelInfo}
+			, `channelImagePath` = #{profileImagePath}
+			, `updatedAt` = now()
+		WHERE
+			`id` = #{id}
+	
+	</update>
+	
+	<select id="selectChannelInfo" parameterType="int" resultType="com.amita.createType.ex.individual.model.Channel">
+		SELECT
+			`id`
+			,`userId`
+			,`channelName`
+			,`channelInfo`
+			,`channelImagePath`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`channel`
+		WHERE
+			`id` = #{id}
+			
+	</select>
 	
 
 
