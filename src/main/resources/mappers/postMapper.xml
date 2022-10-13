@@ -107,6 +107,15 @@
   	
   	</update>
   	
+  	<delete id="deletePost" parameterType="int">
+  		DELETE FROM
+  			`post`
+  		WHERE
+  			`channelId` = #{channelId}
+  			AND `id` = #{id}
+  	
+  	</delete>
+  	
   	
   
   </mapper>

@@ -222,12 +222,12 @@
 		      </div>
 		      <div class="modal-body">
 		      	
-		        <h5>포스트를 삭제하시겠습니까?</h5>
+		        <h5>정말 포스트를 삭제하시겠습니까?</h5>
 		        
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-		        <button type="button" class="btn btn-danger">삭제하기</button>
+		        <button id="postDeleteBtn" type="button" class="btn btn-danger">삭제하기</button>
 		      </div>
 		    </div>
 		  </div>
@@ -237,6 +237,38 @@
 <script>
 
 	$(document).ready(function() {
+		
+		
+		
+		$("#postDeleteBtn").on("click", function() {
+			
+			let channelId = ${channelId}
+			let id = ${post.id}
+			let url = "/post/createList/view?category=" + ${post.category}
+			
+			$.ajax({
+				type:"get"
+				, url:"/post/create/postDelete"
+				, data:{"channelId":channelId, "id":id}
+				,success: function(data) {
+					
+					if(data.result == "success"){
+						location.href=url;
+						return;
+					} else {
+						alert("포스트 삭제 실패");
+						return;
+					}
+					
+				}
+				,error: function() {
+					alert("포스트 삭제 에러");
+				}
+				
+			});
+			
+			
+		});
 		
 		
 		$("#addLike").on("click", function(e) {

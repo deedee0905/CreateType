@@ -51,4 +51,12 @@ public class PostBO {
 		return postDAO.updatePost(id, title, subtitle, content, category, price);
 	}
 	
+	// 발행된 포스트 삭제 api
+	public int deletePost(int channelId, int id) {
+		return postDAO.deletePost(channelId, id);
+	}
+	
+	
+	
+	
 }

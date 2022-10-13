@@ -37,5 +37,10 @@ public interface PostDAO {
 			, @Param("price") int price
 			);
 	
+	public int deletePost(
+			@Param("channelId") int channelId
+			, @Param("id") int id
+			);
+	
 	
 }
