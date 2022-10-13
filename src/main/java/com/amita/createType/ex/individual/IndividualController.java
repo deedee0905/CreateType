@@ -27,7 +27,21 @@ public class IndividualController {
 	
 	// 유저탭 > MY채널 view
 	@GetMapping("/profile/view") 
-	public String profileMainView() {
+	public String profileMainView(
+			HttpServletRequest request
+			, Model model
+			) {
+		
+		HttpSession session = request.getSession();
+		int userId = (Integer)session.getAttribute("userId");
+		int channelId = (Integer)session.getAttribute("channelId");
+		
+		User user = userBO.getUserInfo(userId);
+		Channel channel = individualBO.getChannelInfo(channelId);
+		
+		model.addAttribute("user", user);
+		model.addAttribute("channel", channel);
+		
 		return "individual/profile";
 	}
 	
