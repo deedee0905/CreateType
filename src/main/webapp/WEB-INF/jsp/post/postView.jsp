@@ -40,6 +40,7 @@
 						<c:choose>
 							<c:when test="${userId eq post.userId}">
 								<a href="/post/update?id=${post.id }" class="btn btn-outline-secondary btn-sm mt-5 mr-3"> 수정하기</a>
+								<a href="#" data-toggle="modal" data-target="#postDeleteModal"  class="btn btn-outline-secondary btn-sm mt-5 mr-3"> 삭제하기</a>
 							</c:when>
 							
 							<c:otherwise>
@@ -106,7 +107,7 @@
 							</div>
 							
 							<div>
-								<a href="#" data-toggle="modal" data-target="#deleteModal" class="more-btn" data-comment-id="${comment.id }"><i class="bi bi-three-dots mr-3 text-dark"></i></a>
+								<a href="#" data-toggle="modal" data-target="#commentDeleteModal" class="more-btn" data-comment-id="${comment.id }"><i class="bi bi-three-dots mr-3 text-dark"></i></a>
 							</div>
 						</div>
 						<hr>
@@ -135,7 +136,7 @@
 		</footer>
 	</div>
 	
-	<%-- 모달 --%>
+	<%--후원하기 모달 --%>
 	<div class="modal fade" id="exampleModal" tabindex="-1">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
@@ -184,14 +185,12 @@
 	</div>
 	
 	
-	<%--삭제 modal --%>
+	<%--덧글삭제 modal --%>
 	<!-- Button trigger modal -->
-		<button type="button" class="btn btn-primary" ">
-		  
-		</button>
+		
 		
 		<!-- Modal -->
-		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal fade" id="commentDeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog" role="document">
 		    <div class="modal-content">
 		      <div class="modal-header">
@@ -205,6 +204,30 @@
 		      </div>
 		      <div class="modal-footer">
 
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+		
+		<!--포스트 삭제 Modal -->
+		<div class="modal fade" id="postDeleteModal" tabindex="-1">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel"></h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		      	
+		        <h5>포스트를 삭제하시겠습니까?</h5>
+		        
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+		        <button type="button" class="btn btn-danger">삭제하기</button>
 		      </div>
 		    </div>
 		  </div>
