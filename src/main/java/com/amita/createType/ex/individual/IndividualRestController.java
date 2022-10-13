@@ -51,7 +51,7 @@ public class IndividualRestController {
 	}
 	
 	// 개인 프로필 변경
-	@GetMapping("/profile/individual")
+	@PostMapping("/profile/individual")
 	public Map<String, String> updateProfile(
 			HttpServletRequest request
 			, @RequestParam("nickname") String nickname
@@ -73,6 +73,9 @@ public class IndividualRestController {
 		
 		return result;
 	}
+	
+	// 채널 프로필 변경
+	
 	
 
 }

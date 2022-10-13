@@ -83,7 +83,7 @@
 				formData.append("nickname", nickname);
 				
 				$.ajax({
-					type:"get"
+					type:"post"
 					, url:"/individual/profile/individual"
 					, data:formData
 					,enctype:"multipart/form-data"
