@@ -37,9 +37,9 @@
 						
 						
 						<div class="profile-section">
-							<img id="imageBox" class="rounded" width="100" height="100" alt="프로필 사진" src="https://cdn.pixabay.com/photo/2015/03/30/12/37/jellyfish-698521_960_720.jpg">
+							<img id="imageBox" class="rounded" width="100" height="100" alt="프로필 사진" src="${user.profileImagePath }">
 							<input id="profileImageInput" class="form-control form-control-sm mt-2" type="file">
-							<button id="imageDelete" type="reset" class="btn btn-sm btn-outline-secoundary text-secondary text-end mt-1" style="float: right">이미지 삭제</button>
+							<button id="imageDeleteBtn" type="reset" class="btn btn-sm btn-outline-secoundary text-secondary text-end mt-1" style="float: right">이미지 삭제</button>
 						</div>
 						
 					</div>
@@ -69,6 +69,15 @@
 		
 		$(document).ready(function() {
 			
+			
+			$("#imageDeleteBtn").on("click", function() {
+				$("#profileImageInput").remove("value");
+				
+				let file = $("#profileImageInput").val("");
+				
+				
+			});
+			
 			$("#saveBtn").on("click", function() {
 				let file = $("#profileImageInput").val();
 				let nickname = $("#nicknameInput").val();
@@ -92,7 +101,7 @@
 					,success:function(data){
 						
 						if(data.result == "success"){
-							alert("성공");
+							location.href="/individual/profile/view";
 						} else {
 							alert("실패");
 						}

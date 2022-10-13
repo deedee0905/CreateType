@@ -76,7 +76,7 @@
 			$("#imageDelete").on("click", function(e) {
 				e.preventDefault();
 				
-				$("#imageInput").val("");
+				let file = $("#imageInput").val("");
 				
 			});
 			

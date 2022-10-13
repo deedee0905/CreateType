@@ -38,7 +38,7 @@
 						<div class="profile-section">
 							<img class="rounded" width="100" height="100" alt="프로필 사진" src="${channel.channelImagePath }">
 							<input id="fileInput" class="form-control form-control-sm mt-2" type="file">
-							<a href="#" class="text-secondary text-end" style="float: right">이미지 삭제</a>
+							<a href="#" id="imageDelete" class="text-secondary text-end" style="float: right">이미지 삭제</a>
 						</div>
 					</div>
 					
@@ -71,6 +71,12 @@
 	
 	<script>
 		$(document).ready(function() {
+			
+			$("#imageDelete").on("click", function() {
+				
+				let file = $("#fileInput").val("");
+				
+			});
 			
 			
 			$("#saveBtn").on("click", function(e) {
