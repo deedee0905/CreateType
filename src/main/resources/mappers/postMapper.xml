@@ -102,6 +102,7 @@
   			, `content` = #{content}
   			, `category` = #{category}
   			, `price` = #{price}
+  			, `updatedAt` = now()
   		WHERE
   			`id` = #{id}
   	
