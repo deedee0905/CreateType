@@ -146,14 +146,52 @@
 			$("#publishBtn").on("click", function(e) {
 				e.preventDefault();
 				
+				let id = ${post.id}
 				let title = $("#titleInput").val();
 				let subtitle = $("#subtitleInput").val();
 				let content = $('#summernote').summernote("code");
 				let category= $("#category").val();
 				let price= $("#priceInput").val();
 				
-				alert(title + " / " + subtitle + " / " + content + " / " + category + " / " + price);
-				return;
+				let url = "/post/create/postObject/view?id=" + ${post.id};
+				
+				
+				if(title == ""){
+					alert("제목을 입력하세요");
+					return;
+				}
+				
+				if(content == ""){
+					alert("본문 내용을 입력하세요.");
+					return;
+				}
+				
+				if(price == ""){
+					alert("가격을 확인하세요.");
+					return;
+				}
+				
+				
+				$.ajax({
+					type:"post"
+					, url: "/post/create/postUpdate"
+					, data:{"id":id, "title":title, "subtitle":subtitle, "content":content, "category":category, "price":price}
+					, success: function(data) {
+						
+						if(data.result == "success"){
+							location.href= url;
+							return;
+						} else {
+							alert("수정 실패");
+							return;
+						}
+						
+					}
+					, error: function() {
+						alert("수정 에러");
+					}
+					
+				});
 				
 			});
 			
