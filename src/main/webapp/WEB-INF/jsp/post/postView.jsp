@@ -69,8 +69,8 @@
 						<img class="rounded" width="80" height="80" alt="프로필사진" src="https://cdn.pixabay.com/photo/2022/09/15/06/14/pattern-7455773_960_720.png"><br>
 						<label class="mt-1 font-weight-bold">채널이름(My channel)</label> <br>
 						<span>상태메세지 (ex. 개발은 롤러코스터)</span> <br>
-						<button id="subscriptionBtn" class="btn btn-dark mt-3">구독하기</button>
-						<button id="subscriptionBtn" class="btn btn-dark mt-3"><i class="bi bi-clipboard-check text-white mr-1"></i></i>구독중</button>
+						<button id="subscriptionBtn" class="btn btn-dark mt-3" data-channel-id="${post.channelId }">구독하기</button>
+						<button id="subscriptionCancelBtn" class="btn btn-dark mt-3"><i class="bi bi-clipboard-check text-white mr-1"></i></i>구독중</button>
 					</div>
 				</div>
 				
@@ -244,13 +244,17 @@
 		$("#subscriptionBtn").on("click", function(e) {
 			e.preventDefault();
 			
-			let postId = ${post.id};
-			let channelId = ${post.channelId}
+			let channelId = $("#subscriptionBtn").data("channel-id");
+			let userId = ${post.userId}
 			
+			alert(channelId + "/" + userId);
+			
+			
+	
 			$.ajax({
 				type:"get"
 				, url:"/individual/subscription/insert"
-				, data:{"channelId":channelId, "postId":postId}
+				, data:{"channelId":channelId}
 				, success: function(data){
 					
 					if(data.result == "success"){

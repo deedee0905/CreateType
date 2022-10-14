@@ -88,6 +88,13 @@
 	
 	</insert>
 	
+	<delete id="deleteSubscription" parameterType="int">
+		DELETE FROM
+			`subscription`
+		WHERE
+	
+	</delete>
+	
 
 
 </mapper>
