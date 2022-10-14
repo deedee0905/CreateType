@@ -11,8 +11,8 @@ public class ViewCountBO {
 	@Autowired
 	private ViewCountDAO viewcountDAO;
 	
-	public int addViewCount(int userId, int postId) {
-		return viewcountDAO.insertViewCount(userId, postId);
+	public int addViewCount(int postId) {
+		return viewcountDAO.insertViewCount(postId);
 	}
 	
 	public int viewCount(int postId) {

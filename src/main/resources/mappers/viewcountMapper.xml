@@ -9,14 +9,12 @@
 		INSERT INTO
 			`viewCount`
 		(
-			`userId`
-			,`postId`
+			`postId`
 			,`createdAt`
 		)
 		VALUES
 		(
-			#{userId}
-			,#{postId}
+			#{postId}
 			, now()
 		)
 	

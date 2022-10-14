@@ -20,15 +20,9 @@ public class ViewCountRestController {
 	private  ViewCountBO viewcountBO;
 	
 	@GetMapping("/viewCount")
-	public Map<String, String> getViewCount(
-			HttpServletRequest request
-			, @RequestParam("postId") int postId
-			){
+	public Map<String, String> getViewCount(@RequestParam("postId") int postId){
 		
-		HttpSession session = request.getSession();
-		int userId = (Integer)session.getAttribute("userId");
-		
-		int count = viewcountBO.addViewCount(userId, postId);
+		int count = viewcountBO.addViewCount(postId);
 		
 		Map<String, String> result = new HashMap<>();
 		
