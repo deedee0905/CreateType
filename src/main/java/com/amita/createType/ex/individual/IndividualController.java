@@ -101,4 +101,12 @@ public class IndividualController {
 		return "individual/channelCreate";
 	}
 
+	// 구독 채널 view
+	@GetMapping("/subscription/view")
+	public String subscribeChannelView() {
+		
+		return "individual/subscribe";
+	}
+	
+	
 }

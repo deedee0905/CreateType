@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -20,6 +19,8 @@ import com.amita.createType.ex.post.comment.model.Comment;
 import com.amita.createType.ex.post.like.bo.LikeBO;
 import com.amita.createType.ex.post.model.Post;
 import com.amita.createType.ex.post.viewCount.bo.ViewCountBO;
+import com.amita.createType.ex.user.bo.UserBO;
+import com.amita.createType.ex.user.model.User;
 
 @Controller
 @RequestMapping("/post")
@@ -36,6 +37,9 @@ public class PostController {
 	
 	@Autowired
 	private ViewCountBO viewcountBO;
+	
+	@Autowired
+	private UserBO userBO;
 	
 	
 	// 크리에이트 타입 메인 view
@@ -73,7 +77,7 @@ public class PostController {
 			,@RequestParam("id") int id
 			, Model model
 			) {
-	
+		
 		Post post = postBO.getPost(id);
 		List<Comment> commentList = commentBO.getCommentList(id);
 		HttpSession session = request.getSession();
@@ -87,6 +91,9 @@ public class PostController {
 		model.addAttribute("like", like);
 		model.addAttribute("count", count);
 		
+		
+		
+	
 		
 		return "post/postView";
 	}

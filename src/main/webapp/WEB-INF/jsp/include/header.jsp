@@ -38,7 +38,7 @@
 										</button>
 										<div class="dropdown-menu user-wrapper">
 											<a class="dropdown-item text-center" href="/individual/profile/view">MY채널</a>
-											<a class="dropdown-item text-center" href="#">구독채널</a>
+											<a class="dropdown-item text-center" href="/individual/subscription/view">구독채널</a>
 											<a class="dropdown-item text-center" href="#">보관함</a>
 											<a class="dropdown-item text-center" href="#">마이포인트</a>
 										</div>

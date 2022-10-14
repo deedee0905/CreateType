@@ -65,15 +65,17 @@
 				<hr>
 				<%--프로필 영역 --%>
 				<div class="d-flex justify-content-center mt-2 mb-2">
-					<div class="text-center post-detail-channelbox border border-secondary rounded p-4" >
+					<div class="text-center  border border-secondary rounded p-4" >
 						<img class="rounded" width="80" height="80" alt="프로필사진" src="https://cdn.pixabay.com/photo/2022/09/15/06/14/pattern-7455773_960_720.png"><br>
 						<label class="mt-1 font-weight-bold">채널이름(My channel)</label> <br>
-						<span>상태메세지 (ex. 개발은 롤러코스터)</span>
+						<span>상태메세지 (ex. 개발은 롤러코스터)</span> <br>
+						<button id="subscriptionBtn" class="btn btn-dark mt-3">구독하기</button>
+						<button id="subscriptionBtn" class="btn btn-dark mt-3"><i class="bi bi-clipboard-check text-white mr-1"></i></i>구독중</button>
 					</div>
 				</div>
 				
 				<%-- 좋아요, view 카운트 --%>
-				<div class="mt-2">
+				<div class="mt-2">`
 				
 				<c:choose>
 					<%-- 로그인한 사용자가 좋아요를 누른 게시물 --%>
@@ -101,7 +103,7 @@
 						<c:forEach var="comment" items="${commentList }">
 						<div class="d-flex justify-content-between mt-3">
 							<div class="d-flex">
-								<img class="rounded" width="50" height="50" alt="" src="https://cdn.pixabay.com/photo/2016/04/06/10/08/background-1311251_960_720.jpg">
+								<img class="rounded" width="50" height="50" alt="" src="${user.profileImagePath }">
 								<span class="font-weight-bold ml-2 mt-2">${userNickname }</span>
 									<span class="ml-1 mt-2">${comment.comment}</span>
 							</div>
@@ -238,6 +240,36 @@
 
 	$(document).ready(function() {
 		
+		
+		$("#subscriptionBtn").on("click", function(e) {
+			e.preventDefault();
+			
+			let postId = ${post.id};
+			let channelId = ${post.channelId}
+			
+			$.ajax({
+				type:"get"
+				, url:"/individual/subscription/insert"
+				, data:{"channelId":channelId, "postId":postId}
+				, success: function(data){
+					
+					if(data.result == "success"){
+						alert("구독하기 성공");
+						return;
+					} else {
+						alert("구독하기 실패");
+						return
+					}
+					
+				}
+				, error: function(){
+					alert("구독하기 에러");
+				}
+				
+			});
+		
+			
+		});
 		
 		
 		$("#postDeleteBtn").on("click", function() {

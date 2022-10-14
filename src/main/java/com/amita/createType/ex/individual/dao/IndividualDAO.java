@@ -36,5 +36,13 @@ public interface IndividualDAO {
 	
 	// 채널 정보 가져오기
 	public Channel selectChannelInfo(@Param("id") int id);
+	
+	// 구독하기 insert api
+	public int insertSubscription(
+			@Param("userId") int userId
+			, @Param("channelId") int channelId
+			);
+	
+	
 
 }

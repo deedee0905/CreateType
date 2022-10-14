@@ -71,6 +71,23 @@
 			
 	</select>
 	
+	<insert id="insertSubscription" parameterType="int">
+		INSERT INTO
+			`subscription`
+		(
+			`userId`
+			,`channelId`
+			,`createdAt`
+		)
+		VALUES
+		(
+			`userId` = #{userId}
+			, `channelId` = #{channelId}
+			, now()
+		)
+	
+	</insert>
+	
 
 
 </mapper>

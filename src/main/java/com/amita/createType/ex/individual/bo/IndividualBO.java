@@ -67,5 +67,13 @@ public class IndividualBO {
 	public Channel getChannelInfo(int id) {
 		return individualDAO.selectChannelInfo(id);
 	}
+	
+	// 구독하기 insert api
+	public int addSubscription(int userId, int channelId) {
+		return individualDAO.insertSubscription(userId, channelId);
+	}
+	
+	
+	
 
 }
