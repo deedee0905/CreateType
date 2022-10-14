@@ -245,33 +245,28 @@
 			e.preventDefault();
 			
 			let channelId = $("#subscriptionBtn").data("channel-id");
-			let userId = ${post.userId}
+		
 			
-			alert(channelId + "/" + userId);
-			
-			
-	
 			$.ajax({
 				type:"get"
 				, url:"/individual/subscription/insert"
 				, data:{"channelId":channelId}
 				, success: function(data){
-					
 					if(data.result == "success"){
-						alert("구독하기 성공");
+						alert("구독 성공");
 						return;
 					} else {
-						alert("구독하기 실패");
-						return
+						alert("구독 실패");
+						return;
 					}
-					
 				}
 				, error: function(){
 					alert("구독하기 에러");
 				}
 				
 			});
-		
+			
+
 			
 		});
 		

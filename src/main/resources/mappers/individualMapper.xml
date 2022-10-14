@@ -71,7 +71,7 @@
 			
 	</select>
 	
-	<insert id="insertSubscription" parameterType="int">
+	<insert id="insertSubscription" parameterType="map">
 		INSERT INTO
 			`subscription`
 		(

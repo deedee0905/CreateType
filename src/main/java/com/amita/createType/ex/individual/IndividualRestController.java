@@ -111,6 +111,7 @@ public class IndividualRestController {
 		int userId = (Integer)session.getAttribute("userId");
 		
 		int count = individualBO.addSubscription(userId, channelId);
+		
 		Map<String, String> result = new HashMap<>();
 		
 		if(count == 1) {
@@ -120,8 +121,8 @@ public class IndividualRestController {
 		}
 		
 		return result;
+		
 	}
-	
 
 	
 	
