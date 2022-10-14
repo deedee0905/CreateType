@@ -71,30 +71,8 @@
 			
 	</select>
 	
-	<insert id="insertSubscription" parameterType="map">
-		INSERT INTO
-			`subscription`
-		(
-			`userId`
-			,`channelId`
-			,`createdAt`
-		)
-		VALUES
-		(
-			#{userId}
-			, #{channelId}
-			, now()
-		)
 	
-	</insert>
 	
-	<delete id="deleteSubscription" parameterType="map">
-		DELETE FROM
-			`subscription`
-		WHERE
-			`userId` = #{userId}
-			AND `channelId` = #{channelId}
-	</delete>
 	
 
 

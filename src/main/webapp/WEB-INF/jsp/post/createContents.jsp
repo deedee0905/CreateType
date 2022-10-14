@@ -43,17 +43,17 @@
 				<c:forEach var="category" items="${postCategory }">
 				<div class="d-flex mt-3">
 					<div>
-						<a class="count" href="/post/create/postObject/view?id=${category.id }" data-post-id="${category.id }">
+						<a class="count" href="/post/create/postObject/view?id=${category.id }&channelId=${category.channelId}" data-post-id="${category.id }">
 							<img class="rounded" width="200" height="300" alt="웹툰1" src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA3MjhfNTYg%2FMDAxNjU5MDAxMjYyMTgz.o2JI_WETBFSnERaqwskDQgIgrwkZ2bkkbVi6uETMO_Mg.BWprgR0GaHKsrTe9GVSTbBOmHNv63o_ZPT1bjUmTeckg.JPEG.buzar_777%2FScreenshot%25A3%25DF20220728%25A3%25AD183507%25A3%25DFNAVER.jpg&type=sc960_832">
 						</a>
 					</div>
 					
 					<div class="ml-3">
-						<a class="count" href="/post/create/postObject/view?id=${category.id }" style="text-decoration:none" data-post-id="${category.id }">
+						<a class="count" href="/post/create/postObject/view?id=${category.id }&channelId=${category.channelId}" style="text-decoration:none" data-post-id="${category.id }">
 							<h4 class="text-dark count">${category.title }</h4></a>
-							<h5 class="text-dark">${category.userId } / view / 덧글 4 / ♡ 5</h5>
+							<h5 class="text-dark">${category.userId } / view / 덧글 4 / ♡ 5 </h5>
 							<p>
-								<a href="/post/create/postObject/view?id=${category.id }" class="text-dark count" style="text-decoration:none" data-post-id="${category.id }">${category.content }</a>
+								<a href="/post/create/postObject/view?id=${category.id }&channel=${category.channelId}" class="text-dark count" style="text-decoration:none" data-post-id="${category.id }">${category.content }</a>
 							</p>
 						
 					</div>

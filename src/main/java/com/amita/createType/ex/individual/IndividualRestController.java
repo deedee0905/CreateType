@@ -100,52 +100,7 @@ public class IndividualRestController {
 	}
 	
 
-	// 구독하기 api
-	@GetMapping("/subscription/insert")
-	public Map<String, String> addSubscription(
-			HttpServletRequest request
-			, @RequestParam("channelId") int channelId
-			){
-		
-		HttpSession session = request.getSession();
-		int userId = (Integer)session.getAttribute("userId");
-		
-		int count = individualBO.addSubscription(userId, channelId);
-		
-		Map<String, String> result = new HashMap<>();
-		
-		if(count == 1) {
-			result.put("result", "success");
-		} else {
-			result.put("result", "fail");
-		}
-		
-		return result;
-		
-	}
 
-	
-	// 구독취소 api
-	@GetMapping("/subscription/delete")
-	public Map<String, String> cancelSubscription(
-			HttpServletRequest request
-			, @RequestParam("channelId") int channelId
-			){
-		
-		HttpSession session = request.getSession();
-		int userId = (Integer)session.getAttribute("userId");
-		
-		int count = individualBO.cancelSubscription(userId, channelId);
-		
-		Map<String, String> result = new HashMap<>();
-		
-		if(count == 1) {
-			result.put("result", "success");
-		} else {
-			result.put("result", "fail");
-		}
-		return result;
-	}
 	
 
 }
