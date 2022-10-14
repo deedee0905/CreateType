@@ -17,9 +17,14 @@ public class SubscriptionBO {
 	}
 	
 	// 구독 delete api
-		public int cancelSubscription(int userId, int channelId) {
-			return subscriptionDAO.deleteSubscription(userId, channelId);
-		}
-	
+	public int cancelSubscription(int userId, int channelId) {
+		return subscriptionDAO.deleteSubscription(userId, channelId);
+	}
+
+	// 구독 중복여부 판별
+	public int duplicateSubscription(int userId, int channelId) {
+		return subscriptionDAO.selectDuplicate(userId, channelId);
+	}
+		
 
 }

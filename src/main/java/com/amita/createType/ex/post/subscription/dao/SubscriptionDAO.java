@@ -18,6 +18,12 @@ public interface SubscriptionDAO {
 				@Param("userId") int userId
 				, @Param("channelId") int channelId
 				);
+		
+	// 구독 중복여부 판별
+		public int selectDuplicate(
+				@Param("userId") int userId
+				, @Param("channelId") int channelId
+				);
 	
 
 }

@@ -69,8 +69,18 @@
 						<img class="rounded" width="80" height="80" alt="프로필사진" src="https://cdn.pixabay.com/photo/2022/09/15/06/14/pattern-7455773_960_720.png"><br>
 						<label class="mt-1 font-weight-bold">채널이름(My channel)</label> <br>
 						<span>상태메세지 (ex. 개발은 롤러코스터)</span> <br>
-						<button id="subscriptionBtn" class="btn btn-dark mt-3" data-channel-id="${post.channelId }">구독하기</button>
-						<button id="subscriptionCancelBtn" class="btn btn-dark mt-3" data-channel-id="${post.channelId }"><i class="bi bi-clipboard-check text-white mr-1"></i></i>구독중</button>
+						
+					<c:choose>
+                     <%--구독한 상태 --%>
+	                     <c:when test="${subscription  > 0}">
+	                        <button id="subscriptionCancelBtn" class="btn btn-dark mt-3" data-channel-id="${post.channelId }"><i class="bi bi-clipboard-check text-white mr-1"></i></i>구독중</button>
+	                     </c:when>
+                     
+                     <%--구독하지 않은 상태 --%>
+	                     <c:otherwise>
+	                        <button id="subscriptionBtn" class="btn btn-dark mt-3">구독하기</button>
+	                     </c:otherwise>
+                  	</c:choose>
 						
 					</div>
 				</div>
@@ -244,7 +254,8 @@
 		$("#subscriptionCancelBtn").on("click", function(e) {
 			e.preventDefault();
 			
-			let channelId = $("#subscriptionBtn").data("channel-id");
+			let channelId = ${post.channelId}
+			
 			
 			
 			$.ajax({
@@ -254,6 +265,7 @@
 				, success: function(data){
 					if(data.result == "success"){
 						alert("구독취소 성공");
+						location.reload();
 						return;
 					} else {
 						alert("구독취소 실패");
@@ -272,7 +284,9 @@
 		$("#subscriptionBtn").on("click", function(e) {
 			e.preventDefault();
 			
-			let channelId = $("#subscriptionBtn").data("channel-id");
+			let channelId = ${post.channelId};
+			
+			
 		
 			$.ajax({
 				type:"get"
@@ -281,6 +295,7 @@
 				, success:function(data){
 					if(data.result == "success"){
 						alert("구독 성공");
+						location.reload();
 						return;
 					} else {
 						alert("구독 실패");

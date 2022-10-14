@@ -30,6 +30,18 @@
 			`userId` = #{userId}
 			AND `channelId` = #{channelId}
 	</delete>
+	
+	<select id="selectDuplicate" parameterType="map" resultType="int">
+		SELECT
+			count(1)
+		FROM
+			`subscription`
+		WHERE
+			`userId` = #{userId}
+			AND `channelId` = #{channelId}
+	
+	</select>
+	
 
 </mapper>
 
