@@ -1,9 +1,12 @@
 package com.amita.createType.ex.post.subscription.bo;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.amita.createType.ex.post.subscription.dao.SubscriptionDAO;
+import com.amita.createType.ex.post.subscription.model.Subscription;
 
 @Service
 public class SubscriptionBO {
@@ -24,6 +27,11 @@ public class SubscriptionBO {
 	// 구독 중복여부 판별
 	public int duplicateSubscription(int userId, int channelId) {
 		return subscriptionDAO.selectDuplicate(userId, channelId);
+	}
+	
+	// 채널 리스트 가져오기
+	public List<Subscription> getSubscriptionList(int userId){
+		return subscriptionDAO.selectSubscription(userId);
 	}
 		
 

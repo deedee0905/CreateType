@@ -34,10 +34,9 @@ public class IndividualController {
 		
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
-		int channelId = (Integer)session.getAttribute("channelId");
 		
 		User user = userBO.getUserInfo(userId);
-		Channel channel = individualBO.getChannelInfo(channelId);
+		Channel channel = userBO.getChannelUserById(userId);
 		
 		model.addAttribute("user", user);
 		model.addAttribute("channel", channel);
@@ -101,12 +100,6 @@ public class IndividualController {
 		return "individual/channelCreate";
 	}
 
-	// 구독 채널 view
-	@GetMapping("/subscription/view")
-	public String subscribeChannelView() {
-		
-		return "individual/subscribe";
-	}
 	
 	
 }

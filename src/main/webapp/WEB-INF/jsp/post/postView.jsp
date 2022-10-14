@@ -91,7 +91,7 @@
 				</div>
 				
 				<%-- 좋아요, view 카운트 --%>
-				<div class="mt-2">`
+				<div class="mt-2">
 				
 				<c:choose>
 					<%-- 로그인한 사용자가 좋아요를 누른 게시물 --%>
@@ -269,7 +269,6 @@
 				, data:{"channelId":channelId}
 				, success: function(data){
 					if(data.result == "success"){
-						alert("구독취소 성공");
 						location.reload();
 						return;
 					} else {
@@ -299,7 +298,6 @@
 				, data:{"channelId":channelId}
 				, success:function(data){
 					if(data.result == "success"){
-						alert("구독 성공");
 						location.reload();
 						return;
 					} else {

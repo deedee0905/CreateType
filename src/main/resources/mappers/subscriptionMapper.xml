@@ -42,6 +42,18 @@
 	
 	</select>
 	
+	<select id="selectSubscription" parameterType="int" resultType="com.amita.createType.ex.post.subscription.model.Subscription">
+		SELECT
+			`id`
+			,`userId`
+			,`channelId`
+			,`createdAt`
+		FROM
+			`subscription`
+		WHERE
+			`userId` = ${userId}
+	</select>
+	
 
 </mapper>
 
