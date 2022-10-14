@@ -70,7 +70,7 @@
 						<label class="mt-1 font-weight-bold">채널이름(My channel)</label> <br>
 						<span>상태메세지 (ex. 개발은 롤러코스터)</span> <br>
 						<button id="subscriptionBtn" class="btn btn-dark mt-3" data-channel-id="${post.channelId }">구독하기</button>
-						<button id="subscriptionCancelBtn" class="btn btn-dark mt-3"><i class="bi bi-clipboard-check text-white mr-1"></i></i>구독중</button>
+						<button id="subscriptionCancelBtn" class="btn btn-dark mt-3" data-channel-id="${post.channelId }"><i class="bi bi-clipboard-check text-white mr-1"></i></i>구독중</button>
 					</div>
 				</div>
 				
@@ -239,6 +239,33 @@
 <script>
 
 	$(document).ready(function() {
+		
+		$("#subscriptionCancelBtn").on("click", function(e) {
+			e.preventDefault();
+			
+			let channelId = $("#subscriptionBtn").data("channel-id");
+			
+			
+			$.ajax({
+				type:"get"
+				, url:"/individual/subscription/delete"
+				, data:{"channelId":channelId}
+				, success: function(data){
+					if(data.result == "success"){
+						alert("구독취소 성공");
+						return;
+					} else {
+						alert("구독취소 실패");
+						return;
+					}
+				}
+				, error: function(){
+					alert("구독취소 에러");
+				}
+				
+			});
+			
+		});
 		
 		
 		$("#subscriptionBtn").on("click", function(e) {

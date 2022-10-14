@@ -88,11 +88,12 @@
 	
 	</insert>
 	
-	<delete id="deleteSubscription" parameterType="int">
+	<delete id="deleteSubscription" parameterType="map">
 		DELETE FROM
 			`subscription`
 		WHERE
-	
+			`userId` = #{userId}
+			AND `channelId` = #{channelId}
 	</delete>
 	
 

@@ -73,7 +73,10 @@ public class IndividualBO {
 		return individualDAO.insertSubscription(userId, channelId);
 	}
 	
-	
+	// 구독 delete api
+	public int cancelSubscription(int userId, int channelId) {
+		return individualDAO.deleteSubscription(userId, channelId);
+	}
 	
 	
 	
