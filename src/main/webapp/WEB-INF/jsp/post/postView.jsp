@@ -71,6 +71,11 @@
 						<span>상태메세지 (ex. 개발은 롤러코스터)</span> <br>
 						
 					<c:choose>
+                     
+                     <%--본인이 쓴 게시글인 경우 --%>
+	                     <c:when test="${post.channelId eq channelId }">
+	                     </c:when>
+	                     
                      <%--구독한 상태 --%>
 	                     <c:when test="${subscription  > 0}">
 	                        <button id="subscriptionCancelBtn" class="btn btn-dark mt-3" data-channel-id="${post.channelId }"><i class="bi bi-clipboard-check text-white mr-1"></i></i>구독중</button>
