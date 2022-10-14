@@ -81,8 +81,8 @@
 		)
 		VALUES
 		(
-			`userId` = #{userId}
-			, `channelId` = #{channelId}
+			#{userId}
+			, #{channelId}
 			, now()
 		)
 	
