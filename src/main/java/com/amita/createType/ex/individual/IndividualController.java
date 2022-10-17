@@ -1,5 +1,7 @@
 package com.amita.createType.ex.individual;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.amita.createType.ex.individual.bo.IndividualBO;
 import com.amita.createType.ex.individual.model.Channel;
+import com.amita.createType.ex.individual.model.ChannelViewDetail;
 import com.amita.createType.ex.user.bo.UserBO;
 import com.amita.createType.ex.user.model.User;
 
@@ -71,8 +74,12 @@ public class IndividualController {
 		int channelId = (Integer)session.getAttribute("channelId");
 		
 		Channel channel = individualBO.getChannelInfo(channelId);
+		int subscirber = individualBO.countSubscriber(channelId);
+		List<ChannelViewDetail> postList = individualBO.getPostList(channelId);
 		
 		model.addAttribute("channel", channel);
+		model.addAttribute("subscirber", subscirber);
+		model.addAttribute("postList", postList);
 		
 		
 		return "individual/channelView";

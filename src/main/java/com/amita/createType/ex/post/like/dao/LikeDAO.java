@@ -18,4 +18,7 @@ public interface LikeDAO {
 			, @Param("postId") int postId		
 			);
 	
+	// 좋아요 count
+	public int selectCountLike(@Param("postId") int postId);
+	
 }

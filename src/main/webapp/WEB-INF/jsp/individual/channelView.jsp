@@ -37,7 +37,7 @@
 					<img class="rounded ml-1" width="90" height="90" alt="채널 프로필" src="${channel.channelImagePath }">
 					<h5 class="font-weight-bold mt-2 ml-1">${channel.channelName }</h5>
 					<div class="d-flex mt-2 mb-3 ml-1">
-						<span class="text-secondary">구독자 30명</span>
+						<span class="text-secondary">구독자 ${subscirber }명</span>
 						<a href="/individual/channel/setting/view" class="btn btn-sm btn-primary ml-3 text-white">프로필 편집</a>
 					</div>
 					<div class="border border-secondary p-2 rounded introduce-box">
@@ -64,42 +64,22 @@
 				</div>
 				
 				<div>
+				<c:forEach var="post" items="${postList }">
 					<div class="border border-outline-secondary p-2 mt-2">
-						<a href="#" style="text-decoration: none"><span class="font-weight-bold text-dark" style="font-size:20px;">컨텐츠 제목1</span> <br>
-						<p class="text-dark">
-							컨텐츠 내용 (ex.처음으로 나만의 집이 생긴다면? 자까 작가의 나혼자 사는 이야기)
-						</p></a>
+						<a href="#" style="text-decoration: none">
+							<span class="font-weight-bold text-dark" style="font-size:20px;">${post.post.title }</span>
+						</a> <br>
+
+						<a href="#" style="text-decoration: none" class="text-dark">
+							${post.post.content }
+						</a>
 						<hr>
 						<span><i class="bi bi-heart-fill text-danger"></i></span>
-						<label>30</label>
+						<label>${post.likeCount }</label>
 						<label> / </label>
 						<label>view 30</label>
 					</div>
-					
-					<div class="border border-outline-secondary p-2 mt-2">
-						<a href="#" style="text-decoration: none"><span class="font-weight-bold text-dark" style="font-size:20px">컨텐츠 제목2</span> <br>
-						<p class="text-dark">
-							컨텐츠 내용 (ex.'치즈인더트랩' 순끼 작가의 신작!)
-						</p></a>
-						<hr>
-						<span><i class="bi bi-heart-fill text-danger"></i></span>
-						<label>30</label>
-						<label> / </label>
-						<label>view 30</label>
-					</div>
-					
-					<div class="border border-outline-secondary p-2 mt-3">
-						<a href="#" style="text-decoration: none"><span class="font-weight-bold text-dark" style="font-size:20px">컨텐츠 제목3</span> <br>
-						<p class="text-dark">
-							컨텐츠 내용 (ex.연구에 꿈을 가지고 대학원을 선택한 병아리 요다. 예상과는 다르게 연구에 관심 없는 교수님과 똥군기의 연구실 분위기에 당황한다.)
-						</p></a>
-						<hr>
-						<span><i class="bi bi-heart-fill text-danger"></i></span>
-						<label>30</label>
-						<label> / </label>
-						<label>view 30</label>
-					</div>
-					
+				</c:forEach>	
 				</div>
 			
 			</div>

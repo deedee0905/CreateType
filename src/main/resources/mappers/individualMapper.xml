@@ -71,7 +71,36 @@
 			
 	</select>
 	
+	<select id="selectScriberCount" parameterType="int" resultType="int">
+		SELECT
+			count(1)
+		FROM
+			`subscription`
+		WHERE
+			`channelId` = #{channelId}
+	</select>
 	
+	<select id="selectPostList" parameterType="int" resultType="com.amita.createType.ex.post.model.Post">
+		SELECT
+			`id`
+			,`userId`
+			,`channelId`
+			,`title`
+			,`subtitle`
+			,`content`
+			,`category`
+			,`price`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`post`
+		WHERE
+			`channelId` = #{channelId}
+		ORDER BY
+			`id` DESC
+		LIMIT 3
+			
+	</select>
 	
 	
 

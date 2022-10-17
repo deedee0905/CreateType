@@ -1,5 +1,8 @@
 package com.amita.createType.ex.individual.bo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -7,6 +10,9 @@ import org.springframework.web.multipart.MultipartFile;
 import com.amita.createType.ex.common.FileManagerService;
 import com.amita.createType.ex.individual.dao.IndividualDAO;
 import com.amita.createType.ex.individual.model.Channel;
+import com.amita.createType.ex.individual.model.ChannelViewDetail;
+import com.amita.createType.ex.post.like.bo.LikeBO;
+import com.amita.createType.ex.post.model.Post;
 
 
 
@@ -15,6 +21,9 @@ public class IndividualBO {
 	
 	@Autowired
 	private IndividualDAO individualDAO;
+	
+	@Autowired
+	private LikeBO likeBO;
 	
 	
 	// 채널 생성 api
@@ -68,7 +77,29 @@ public class IndividualBO {
 		return individualDAO.selectChannelInfoById(id);
 	}
 	
+	// 채널 구독자 수 count
+	public int countSubscriber(int channelId) {
+		return individualDAO.selectScriberCount(channelId);
+	}
 	
+	// 채널 main/view 페이지에서 발행된 포스트의 List를 가져오기
+	public List<ChannelViewDetail> getPostList(int channelId){
+		
+		List<Post> postList = individualDAO.selectPostList(channelId);
+		List<ChannelViewDetail> channelViewDetailList = new ArrayList<>();
+		
+		for(Post post : postList) {
+			int postId = post.getId();
+			int likeCount = likeBO.likeCount(postId);
+			
+			ChannelViewDetail channelViewDetail = new ChannelViewDetail();
+			
+			channelViewDetail.setLikeCount(likeCount);
+			channelViewDetail.setPost(post);
+			channelViewDetailList.add(channelViewDetail);
+		}
+		return channelViewDetailList;
+	}
 
 	
 
