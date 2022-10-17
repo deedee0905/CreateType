@@ -34,8 +34,8 @@ public interface IndividualDAO {
 			, @Param("profileImagePath") String profileImagePath
 			);
 	
-	// 채널 정보 가져오기
-	public Channel selectChannelInfo(@Param("id") int id);
+	// 채널id 기반으로 정보 가져오기
+	public Channel selectChannelInfoById(@Param("id") int id);
 	
 	
 

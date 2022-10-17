@@ -65,7 +65,7 @@ public class IndividualBO {
 	
 	// 채널 프로필 정보 가져오기
 	public Channel getChannelInfo(int id) {
-		return individualDAO.selectChannelInfo(id);
+		return individualDAO.selectChannelInfoById(id);
 	}
 	
 	

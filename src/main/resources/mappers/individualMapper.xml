@@ -55,7 +55,7 @@
 	
 	</update>
 	
-	<select id="selectChannelInfo" parameterType="int" resultType="com.amita.createType.ex.individual.model.Channel">
+	<select id="selectChannelInfoById" parameterType="int" resultType="com.amita.createType.ex.individual.model.Channel">
 		SELECT
 			`id`
 			,`userId`

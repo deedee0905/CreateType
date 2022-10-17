@@ -41,12 +41,16 @@
 				
 				<ul class="list-group list-group-flush">
 				  <li class="list-group-item center">
-				  	<div class="d-flex justify-content-around">
+				  	<div class="d-flex justify-content-between">
 				  		<div class="d-flex">
-				  			<img class="rounded" width="80" height="80" alt="사진" src="">
+				  			<a href="#">
+				  				<img class="rounded" width="80" height="80" alt="사진" src="${subscription.channel.channelImagePath }">
+				  			</a>
 				  			<div>
-					  			<span style="font-size:20px" class="ml-3">채널이름 </span> <br>
-					  			<span class="ml-3 text-secondary">채널 소개 샘플</span>
+					  			<a href="#" style="text-decoration:none">
+						  			<span style="font-size:20px" class="ml-3 text-dark" >${subscription.channel.channelName } </span> <br>
+						  			<span class="ml-3 text-secondary">${subscription.channel.channelInfo }</span>
+					  			</a>
 				  			</div>
 				  		</div>
 				  		
