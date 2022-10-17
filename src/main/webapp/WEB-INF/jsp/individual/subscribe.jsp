@@ -55,7 +55,7 @@
 				  		</div>
 				  		
 				  		<div>
-				  			<button class="btn btn-outline-white text-dark mt-3">구독중</button>
+				  			<button class="btn btn-outline-white text-dark mt-3 deleteBtn" data-channel-id="${subscription.channel.id }">구독중</button>
 				  		</div>
 				  	</div>
 				  </li>
@@ -75,6 +75,41 @@
 		</footer>
 	
 	</div>
+	
+	<script>
+		$(document).ready(function() {
+			
+			$(".deleteBtn").on("click", function(e) {
+				e.preventDefault();
+				
+				let channelId = $(this).data("channel-id");
+				
+				$.ajax({
+					type:"get"
+					, url:"/individual/subscription/delete"
+					, data:{"channelId":channelId}
+					, success: function(data){
+						
+						if(data.result == "success"){
+							location.reload();
+							return;
+						} else {
+							alert("구독취소 실패");
+							return;
+						}
+						
+					}
+					, error: function(){
+						alert("구독취소 에러");
+					}
+					
+				});
+				
+			});
+			
+		});
+	
+	</script>
 
 </body>
 </html>
