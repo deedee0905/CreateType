@@ -29,7 +29,7 @@ public interface SubscriptionDAO {
 				, @Param("channelId") int channelId
 				);
 	
-	// 채널 리스트 가져오기
+	// 구독한 채널 리스트 가져오기
 		public List<Subscription> selectSubscription(@Param("userId") int userId);
 		
 		

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.amita.createType.ex.post.subscription.bo.SubscriptionBO;
-import com.amita.createType.ex.post.subscription.model.Subscription;
+import com.amita.createType.ex.post.subscription.model.SubscriptionDetail;
 
 @Controller
 @RequestMapping("/individual")
@@ -30,7 +30,7 @@ public class SubscriptionController {
 			
 			HttpSession session = request.getSession();
 			int userId = (Integer)session.getAttribute("userId");
-			List<Subscription> subscriptionList = subscriptionBO.getSubscriptionList(userId);
+			List<SubscriptionDetail> subscriptionList = subscriptionBO.getSubscriptionList(userId);
 			
 			model.addAttribute("subscriptionList", subscriptionList);
 			

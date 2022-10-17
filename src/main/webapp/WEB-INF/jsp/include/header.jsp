@@ -34,7 +34,7 @@
 									<h4 class="mt-1 ml-2"><i class="bi bi-bell notice"></i></h4>
 									<div class="dropdown ml-2">
 										<button class="btn btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" >
-											MyContents
+											My Contents
 										</button>
 										<div class="dropdown-menu user-wrapper">
 											<a class="dropdown-item text-center" href="/individual/profile/view">MY채널</a>
