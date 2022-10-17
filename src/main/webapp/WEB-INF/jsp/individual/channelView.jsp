@@ -66,11 +66,11 @@
 				<div>
 				<c:forEach var="post" items="${postList }">
 					<div class="border border-outline-secondary p-2 mt-2">
-						<a href="#" style="text-decoration: none">
-							<span class="font-weight-bold text-dark" style="font-size:20px;">${post.post.title }</span>
+						<a href="/post/create/postObject/view?id=${post.post.id }&channelId=${post.post.channelId}" style="text-decoration: none">
+							<span class="font-weight-bold text-dark mb-2" style="font-size:20px;">${post.post.title }</span>
 						</a> <br>
 
-						<a href="#" style="text-decoration: none" class="text-dark">
+						<a href="/post/create/postObject/view?id=${post.post.id }&channelId=${post.post.channelId}" style="text-decoration: none" class="text-dark" class="mt-2">
 							${post.post.content }
 						</a>
 						<hr>
