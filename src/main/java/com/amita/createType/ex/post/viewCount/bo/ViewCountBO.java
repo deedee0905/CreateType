@@ -11,10 +11,12 @@ public class ViewCountBO {
 	@Autowired
 	private ViewCountDAO viewcountDAO;
 	
+	// 조회수 insert api
 	public int addViewCount(int postId) {
 		return viewcountDAO.insertViewCount(postId);
 	}
 	
+	// 조회수 count
 	public int viewCount(int postId) {
 		return viewcountDAO.selectViewCount(postId);
 	}

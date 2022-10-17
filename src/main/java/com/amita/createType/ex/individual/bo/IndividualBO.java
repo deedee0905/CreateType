@@ -13,6 +13,7 @@ import com.amita.createType.ex.individual.model.Channel;
 import com.amita.createType.ex.individual.model.ChannelViewDetail;
 import com.amita.createType.ex.post.like.bo.LikeBO;
 import com.amita.createType.ex.post.model.Post;
+import com.amita.createType.ex.post.viewCount.bo.ViewCountBO;
 
 
 
@@ -24,6 +25,9 @@ public class IndividualBO {
 	
 	@Autowired
 	private LikeBO likeBO;
+	
+	@Autowired
+	private ViewCountBO viewCountBO;
 	
 	
 	// 채널 생성 api
@@ -91,11 +95,13 @@ public class IndividualBO {
 		for(Post post : postList) {
 			int postId = post.getId();
 			int likeCount = likeBO.likeCount(postId);
+			int viewCount = viewCountBO.viewCount(postId);
 			
 			ChannelViewDetail channelViewDetail = new ChannelViewDetail();
 			
 			channelViewDetail.setLikeCount(likeCount);
 			channelViewDetail.setPost(post);
+			channelViewDetail.setViewCount(viewCount);
 			channelViewDetailList.add(channelViewDetail);
 		}
 		return channelViewDetailList;

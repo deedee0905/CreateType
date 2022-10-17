@@ -77,7 +77,7 @@
 						<span><i class="bi bi-heart-fill text-danger"></i></span>
 						<label>${post.likeCount }</label>
 						<label> / </label>
-						<label>view 30</label>
+						<label>view ${post.viewCount }</label>
 					</div>
 				</c:forEach>	
 				</div>

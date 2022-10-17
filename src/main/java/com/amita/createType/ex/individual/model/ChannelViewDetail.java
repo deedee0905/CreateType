@@ -6,7 +6,14 @@ public class ChannelViewDetail {
 	
 	private Post post;
 	private int likeCount;
+	private int viewCount;
 	
+	public int getViewCount() {
+		return viewCount;
+	}
+	public void setViewCount(int viewCount) {
+		this.viewCount = viewCount;
+	}
 	public Post getPost() {
 		return post;
 	}
