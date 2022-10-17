@@ -119,13 +119,13 @@
 						<c:forEach var="comment" items="${commentList }">
 						<div class="d-flex justify-content-between mt-3">
 							<div class="d-flex">
-								<img class="rounded" width="50" height="50" alt="" src="${user.profileImagePath }">
-								<span class="font-weight-bold ml-2 mt-2">${userNickname }</span>
-									<span class="ml-1 mt-2">${comment.comment}</span>
+								<img class="rounded" width="50" height="50" alt="프로필 사진" src="${comment.user.profileImagePath }">
+								<span class="font-weight-bold ml-2 mt-2">${comment.user.nickname}</span>
+									<span class="ml-1 mt-2">${comment.comment.comment }</span>
 							</div>
 							
 							<div>
-								<a href="#" data-toggle="modal" data-target="#commentDeleteModal" class="more-btn" data-comment-id="${comment.id }"><i class="bi bi-three-dots mr-3 text-dark"></i></a>
+								<a href="#" data-toggle="modal" data-target="#commentDeleteModal" class="more-btn" data-comment-id="${comment.comment.id }"><i class="bi bi-three-dots mr-3 text-dark"></i></a>
 							</div>
 						</div>
 						<hr>

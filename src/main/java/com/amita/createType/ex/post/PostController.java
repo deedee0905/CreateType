@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.amita.createType.ex.post.bo.PostBO;
 import com.amita.createType.ex.post.comment.bo.CommentBO;
-import com.amita.createType.ex.post.comment.model.Comment;
+import com.amita.createType.ex.post.comment.model.CommentDetail;
 import com.amita.createType.ex.post.like.bo.LikeBO;
 import com.amita.createType.ex.post.model.Post;
 import com.amita.createType.ex.post.subscription.bo.SubscriptionBO;
@@ -79,7 +79,7 @@ public class PostController {
 			) {
 		
 		Post post = postBO.getPost(id);
-		List<Comment> commentList = commentBO.getCommentList(id);
+		List<CommentDetail> commentList = commentBO.getCommentList(id);
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
 		int like = likeBO.isLike(userId, id);
