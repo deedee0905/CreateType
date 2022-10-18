@@ -44,7 +44,7 @@
 				<div class="d-flex mt-3">
 					<div>
 						<a class="count" href="/post/create/postObject/view?id=${postList.post.id }&channelId=${postList.post.channelId}" data-post-id="${postList.post.id }">
-							<img class="rounded" width="200" height="290" alt="웹툰1" src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA3MjhfNTYg%2FMDAxNjU5MDAxMjYyMTgz.o2JI_WETBFSnERaqwskDQgIgrwkZ2bkkbVi6uETMO_Mg.BWprgR0GaHKsrTe9GVSTbBOmHNv63o_ZPT1bjUmTeckg.JPEG.buzar_777%2FScreenshot%25A3%25DF20220728%25A3%25AD183507%25A3%25DFNAVER.jpg&type=sc960_832">
+							<img class="rounded" width="200" height="290" alt="웹툰1" src="${postList.post.thumbnail }">
 						</a>
 					</div>
 					

@@ -10,6 +10,15 @@ public class Post {
 	private String title;
 	private String subtitle;
 	private String content;
+	private String thumbnail;
+	
+	
+	public String getThumbnail() {
+		return thumbnail;
+	}
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
+	}
 	private int category;
 	private int price;
 	private Date createdAt;
