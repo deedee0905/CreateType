@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.amita.createType.ex.post.bo.PostBO;
 
@@ -29,6 +30,7 @@ public class PostRestController {
 			, @RequestParam("title") String title
 			, @RequestParam("subtitle") String subtitle
 			, @RequestParam("content") String content
+			, @RequestParam("file") MultipartFile file
 			, @RequestParam("category") int category
 			, @RequestParam("price") int price
 			){
@@ -37,7 +39,7 @@ public class PostRestController {
 		int userId = (Integer)session.getAttribute("userId");
 		int channelId = (Integer)session.getAttribute("channelId");
 		
-		int count = postBO.addNewPost(userId, channelId, title, subtitle, content, category, price);
+		int count = postBO.addNewPost(userId, channelId, title, subtitle, content, file, category, price);
 		
 		Map<String, String> result = new HashMap<>();
 		

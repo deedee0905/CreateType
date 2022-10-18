@@ -79,8 +79,8 @@
 		      
 		        <div class="d-flex">
 		        	<span class="font-weight-bold mt-3" style="font-size:15px">썸네일</span>
-		        	<input class="form-control col-8 ml-3" type="file">
-		        	<button class="btn btn-dark ml-2">삭제</button>
+		        	<input id="thumbnailInput" class="form-control col-8 ml-3" type="file">
+		        	<button id="imageDelete" class="btn btn-dark ml-2">삭제</button>
 		        </div>
 		        
 		        <div class="mt-5 d-flex" style="height:30px">
@@ -129,6 +129,12 @@
 	
 	 $(document).ready(function(){
 		 
+			 $("#imageDelete").on("click", function() {
+				
+				let file = $("#thumbnailInput").val("");
+				
+			});
+		 
 		 
 		 	// 썸머노트 기초값 셋팅
 			$('#summernote').summernote({
@@ -160,11 +166,12 @@
 		  $("#publishBtn").on("click", function() {
 				 let title = $("#titleInput").val();
 				 let subtitle = $("#subtitleInput").val();
+				 let file = $("#thumbnailInput").val();
 				 let category= $("#category").val();
 				 let price= $("#priceInput").val();
 				 let content = $('#summernote').summernote("code");
 				 
-				 
+
 				 if(title == ""){
 					 alert("제목을 입력하세요");
 					 return;
@@ -175,15 +182,31 @@
 					 return;
 				 }
 				 
+				 if(file == ""){
+					 alert("섬네일을 설정해주세요.");
+					 return;
+				 }
+				 
 				 if(price == ""){
 					 alert("가격을 입력하세요.");
 					 return;
 				 }
 				 
+				 var formData = new FormData();
+				 formData.append("title", title);
+				 formData.append("subtitle", subtitle);
+				 formData.append("file", $("#thumbnailInput")[0].files[0]);
+				 formData.append("category", category);
+				 formData.append("price", price);
+				 formData.append("content", content);
+				 
 				$.ajax({
 					type:"post"
 					,url:"/post/create/newPost"
-					,data:{"title":title, "subtitle":subtitle, "content":content, "category":category, "price":price }
+					,data:formData
+					,enctype:"multipart/form-data"
+					,processData:false
+					,contentType:false
 					,success: function(data) {
 						
 						if(data.result == "success"){

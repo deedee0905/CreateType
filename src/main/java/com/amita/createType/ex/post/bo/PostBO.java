@@ -7,7 +7,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.amita.createType.ex.common.FileManagerService;
 import com.amita.createType.ex.post.comment.bo.CommentBO;
 import com.amita.createType.ex.post.dao.PostDAO;
 import com.amita.createType.ex.post.like.bo.LikeBO;
@@ -39,8 +41,27 @@ public class PostBO {
 	
 
 	// 포스트 입력
-	public int addNewPost(int userId, int channelId, String title, String subtitle, String content, int category, int price) {
-		return postDAO.insertNewPost(userId, channelId, title, subtitle, content, category, price);
+	public int addNewPost(
+			int userId
+			, int channelId
+			, String title
+			, String subtitle
+			, String content
+			, MultipartFile file
+			, int category
+			, int price) {
+		
+		String imagePath = null;
+		
+		if(file != null) {
+			imagePath =  FileManagerService.saveFile(userId, file);
+			
+			if(imagePath == null) {
+				return 0;
+			}
+		}
+		
+		return postDAO.insertNewPost(userId, channelId, title, subtitle, content, imagePath,category, price);
 	}
 
 	// 포스트 detail 출력

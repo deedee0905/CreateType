@@ -14,6 +14,7 @@
 			,`title`
 			,`subtitle`
 			,`content`
+			,`thumbnail`
 			,`category`
 			,`price`
 			,`createdAt`
@@ -26,6 +27,7 @@
   			,#{title}
   			,#{subtitle}
   			,#{content}
+  			,#{thumbnail}
   			,#{category}
   			,#{price}
   			,now()
@@ -44,6 +46,7 @@
   			,`title`
   			,`subtitle`
   			,`content`
+  			,`thumbnail`
   			,`category`
   			,`price`
   			,`createdAt`
@@ -63,6 +66,7 @@
   			,`title`
   			,`subtitle`
   			,`content`
+  			,`thumbnail`
   			,`category`
   			,`price`
   			,`createdAt`
@@ -83,6 +87,7 @@
   			,`title`
   			,`subtitle`
   			,`content`
+  			,`thumbnail`
   			,`category`
   			,`price`
   			,`createdAt`
@@ -125,6 +130,7 @@
   			,`title`
   			,`subtitle`
   			,`content`
+  			,`thumbnail`
   			,`category`
   			,`price`
   			,`createdAt`

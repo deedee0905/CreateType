@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.amita.createType.ex.post.model.Post;
-import com.amita.createType.ex.user.model.User;
+
 
 @Repository
 public interface PostDAO {
@@ -18,6 +18,7 @@ public interface PostDAO {
 			,@Param("title") String title
 			,@Param("subtitle") String subtitle
 			,@Param("content") String content
+			,@Param("thumbnail") String thumbnail
 			,@Param("category") int category
 			,@Param("price") int price
 			);
