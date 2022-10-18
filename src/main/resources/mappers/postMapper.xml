@@ -106,6 +106,7 @@
   			, `subtitle` = #{subtitle}
   			, `content` = #{content}
   			, `category` = #{category}
+  			, `thumbnail` = #{thumbnail}
   			, `price` = #{price}
   			, `updatedAt` = now()
   		WHERE

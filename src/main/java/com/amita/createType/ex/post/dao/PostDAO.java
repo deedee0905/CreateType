@@ -31,10 +31,12 @@ public interface PostDAO {
 	public Post updatePostSelect(@Param("id") int id);
 	
 	public int updatePost(
-			@Param("id") int id
+			@Param("userId") int userId
+			,@Param("id") int id
 			,@Param("title") String title
 			, @Param("subtitle") String subtitle
 			, @Param("content") String content
+			, @Param("thumbnail") String thumbnail
 			, @Param("category") int category
 			, @Param("price") int price
 			);

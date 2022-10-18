@@ -104,14 +104,26 @@ public class PostBO {
 	
 	// 발행된 포스트의 데이터 update
 	public int updatePost(
-			int id
+			int userId
+			, int id
 			,String title
 			, String subtitle
 			, String content
+			, MultipartFile file
 			, int category
 			, int price
 			) {
-		return postDAO.updatePost(id, title, subtitle, content, category, price);
+		
+		String imagePath = null;
+		if(file != null) {
+			imagePath = FileManagerService.saveFile(userId, file);
+			
+			if(imagePath == null) {
+				return 0;
+			}
+		}
+		
+		return postDAO.updatePost(userId, id, title, subtitle, content, imagePath, category, price);
 	}
 	
 	// 발행된 포스트 삭제 api

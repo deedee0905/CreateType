@@ -55,15 +55,20 @@ public class PostRestController {
 	// 포스트 수정
 	@PostMapping("/create/postUpdate")
 	public Map<String, String> postUpdate(
-			@RequestParam("id") int id
+			HttpServletRequest request
+			,@RequestParam("id") int id
 			,@RequestParam("title") String title
 			, @RequestParam("subtitle") String subtitle
 			, @RequestParam("content") String content
+			, @RequestParam("file") MultipartFile file
 			, @RequestParam("category") int category
 			, @RequestParam("price") int price
 			){
 		
-		int count = postBO.updatePost(id, title, subtitle, content, category, price);
+		HttpSession session = request.getSession();
+		int userId = (Integer)session.getAttribute("userId");
+		
+		int count = postBO.updatePost(userId, id, title, subtitle, content, file, category, price);
 		
 		Map<String, String> result = new HashMap<>();
 		

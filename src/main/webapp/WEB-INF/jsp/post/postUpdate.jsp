@@ -81,7 +81,7 @@
 		      
 		        <div class="d-flex">
 		        	<span class="font-weight-bold mt-3" style="font-size:15px">썸네일</span>
-		        	<input class="form-control col-8 ml-3" type="file">
+		        	<input id="fileInput" class="form-control col-8 ml-3" type="file" data-post-thumbnail="${post.thumbnail }">
 		        	<button class="btn btn-dark ml-2">삭제</button>
 		        </div>
 		        
@@ -152,8 +152,9 @@
 				let content = $('#summernote').summernote("code");
 				let category= $("#category").val();
 				let price= $("#priceInput").val();
+				let thumbnail = $("#fileInput").data("post-thumbnail");
 				
-				let url = "/post/create/postObject/view?id=" + ${post.id};
+				let url = "/post/create/postObject/view?id=" + ${post.id} + "&channelId=" + ${post.channelId};
 				
 				
 				if(title == ""){
@@ -171,11 +172,28 @@
 					return;
 				}
 				
+				if(thumbnail == ""){
+					alert("섬네일을 설정하세요.");
+					return;
+				}
+				
+				var formDate = new FormData();
+				formDate.append("id", id);
+				formDate.append("title", title);
+				formDate.append("subtitle", subtitle);
+				formDate.append("content", content);
+				formDate.append("category", category);
+				formDate.append("price", price);
+				formDate.append("file", $("#fileInput")[0].files[0]);
+				
 				
 				$.ajax({
 					type:"post"
 					, url: "/post/create/postUpdate"
-					, data:{"id":id, "title":title, "subtitle":subtitle, "content":content, "category":category, "price":price}
+					, data:formDate
+					, enctype:"multipart/form-data"
+					, processData:false
+					, contentType:false
 					, success: function(data) {
 						
 						if(data.result == "success"){
