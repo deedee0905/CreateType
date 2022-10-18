@@ -43,6 +43,9 @@ public interface PostDAO {
 			, @Param("id") int id
 			);
 	
+	
+	public Post selectPostListByPostId(@Param("id") int id);
+	
 
 	
 }

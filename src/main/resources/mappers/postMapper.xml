@@ -117,6 +117,25 @@
   	
   	</delete>
   	
+  	<select id="selectPostListByPostId" parameterType="int" resultType="com.amita.createType.ex.post.model.Post">
+  		SELECT
+  			`id`
+  			,`userId`
+  			,`channelId`
+  			,`title`
+  			,`subtitle`
+  			,`content`
+  			,`category`
+  			,`price`
+  			,`createdAt`
+  			,`updatedAt`
+  		FROM
+  			`post`
+  		WHERE
+  			`id` = #{id}
+  	
+  	</select>
+  	
   	
   
   </mapper>

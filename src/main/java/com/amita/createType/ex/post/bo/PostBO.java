@@ -56,7 +56,10 @@ public class PostBO {
 		return postDAO.deletePost(channelId, id);
 	}
 	
-	
+	// postId를 기반으로 발행된 포스트 List를 가져오기
+	public Post getPostListByPostId(int postId){
+		return postDAO.selectPostListByPostId(postId);
+	}
 	
 	
 }
