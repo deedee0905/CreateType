@@ -18,6 +18,7 @@ import com.amita.createType.ex.post.comment.bo.CommentBO;
 import com.amita.createType.ex.post.comment.model.CommentDetail;
 import com.amita.createType.ex.post.like.bo.LikeBO;
 import com.amita.createType.ex.post.model.Post;
+import com.amita.createType.ex.post.model.PostDetail;
 import com.amita.createType.ex.post.subscription.bo.SubscriptionBO;
 import com.amita.createType.ex.post.viewCount.bo.ViewCountBO;
 
@@ -55,10 +56,9 @@ public class PostController {
 			, Model model
 			) {
 		
-		List<Post> postCategory = postBO.getCategory(category);
-		
-		
-		model.addAttribute("postCategory", postCategory);
+		List<PostDetail> postList = postBO.getCategory(category);
+			
+		model.addAttribute("postList", postList);
 		
 		return "post/createContents";
 	}

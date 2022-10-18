@@ -54,5 +54,10 @@ public class CommentBO {
 		return commentDAO.deleteComment(userId, id);
 	}
 	
+	// 덧글수 count
+	public int commentCount(int postId) {
+		return commentDAO.selectCommentCount(postId);
+	}
+	
 	
 }

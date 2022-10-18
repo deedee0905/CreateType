@@ -51,6 +51,15 @@
 			
 	</delete>
 	
+	<select id="selectCommentCount" parameterType="int" resultType="int">
+		SELECT
+			count(1)
+		FROM
+			`comment`
+		WHERE
+			`postId` = #{postId}	
+	</select>
+	
 
 </mapper>
 

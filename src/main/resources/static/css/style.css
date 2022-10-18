@@ -34,3 +34,8 @@ nav {
 #contentTitle {
 	color:rgb(19, 105, 233);
 }
+
+#emptyBox {
+	width: 400px;
+	height:400px;
+}

@@ -32,6 +32,7 @@
 			<h3 class="mb-2">보관함</h3>
 			
 			<c:forEach var="likeList" items="${likeList }">
+			
 			<div class="border border-outline-secondary p-2 mt-2">
 						
 				<a href="#" style="text-decoration: none">
@@ -56,7 +57,9 @@
 				</div>
 				
 			</div>
+			
 			</c:forEach>
+			
 			
 		</section>
 		

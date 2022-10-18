@@ -122,6 +122,7 @@ public class IndividualController {
 		
 		model.addAttribute("likeList", likeList);
 		
+		
 		return "individual/library";
 	}
 
