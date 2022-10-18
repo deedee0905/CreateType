@@ -102,6 +102,18 @@
 			
 	</select>
 	
+	<select id="selectPostListByLike" parameterType="int" resultType="com.amita.createType.ex.post.like.model.Like">
+		SELECT
+			`id`
+			,`userId`
+			,`postId`
+			,`createdAt`
+		FROM
+			`like`
+		WHERE
+			`userId` = #{userId}
+	
+	</select>
 	
 
 

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.amita.createType.ex.individual.bo.IndividualBO;
 import com.amita.createType.ex.individual.model.Channel;
 import com.amita.createType.ex.individual.model.ChannelViewDetail;
+import com.amita.createType.ex.individual.model.LibraryDetail;
 import com.amita.createType.ex.user.bo.UserBO;
 import com.amita.createType.ex.user.model.User;
 
@@ -105,6 +106,23 @@ public class IndividualController {
 	@GetMapping("/channel/create/view")
 	public String channelCreateView() {
 		return "individual/channelCreate";
+	}
+	
+	// 보관함 view 페이지
+	@GetMapping("/library/view")
+	public String libraryView(
+			HttpServletRequest request
+			, Model model
+			) {
+		
+		HttpSession session = request.getSession();
+		int userId = (Integer)session.getAttribute("userId");
+		
+		List<LibraryDetail> likeList = individualBO.getPostListByLike(userId);
+		
+		model.addAttribute("likeList", likeList);
+		
+		return "individual/library";
 	}
 
 	

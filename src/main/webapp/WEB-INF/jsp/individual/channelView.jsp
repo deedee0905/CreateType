@@ -66,6 +66,7 @@
 				<div>
 				<c:forEach var="post" items="${postList }">
 					<div class="border border-outline-secondary p-2 mt-2">
+						
 						<a href="/post/create/postObject/view?id=${post.post.id }&channelId=${post.post.channelId}" style="text-decoration: none">
 							<span class="font-weight-bold text-dark mb-2" style="font-size:20px;">${post.post.title }</span>
 						</a> <br>
@@ -142,6 +143,50 @@
 			<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 		</footer>
 	</div>
+	
+	<script>
+		$(document).ready(function() {
+			
+			$("#test").on("click", function() {
+				alert("ㅇㅇ");
+				return;
+			});
+			
+			$(".count").on("click", function() {
+				
+				alert("유효성 검사");
+				return;
+				
+				let postId = $(this).data("post-id");
+				let channelId = ${post.post.channelId};
+				let url = "/post/create/postObject/view?id=" + postId + "&channelId=" + channelId;
+				
+				$.ajax({
+					type:"get"
+					, url: "viewCount"
+					, data:{"postId":postId}
+					, success: function(data){
+						
+						if(data.result == "success"){
+							alert("조회수 입력 성공");
+							location.href= url;
+						} else {
+							alert("조회수 입력 실패");
+						}
+						
+					}
+					, error: function(){
+						alert("조회수 입력 에러");
+						return;
+					}
+					
+				});
+				
+			});
+			
+		});
+	</script>
+	
 
 </body>
 </html>

@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.amita.createType.ex.individual.model.Channel;
+import com.amita.createType.ex.post.like.model.Like;
 import com.amita.createType.ex.post.model.Post;
 
 
@@ -40,12 +41,16 @@ public interface IndividualDAO {
 	// 채널id 기반으로 정보 가져오기
 	public Channel selectChannelInfoById(@Param("id") int id);
 	
-	
 	// 채널 구독자 수 count
 	public int selectScriberCount(@Param("channelId") int channelId);
 	
 	// 채널 main/view 페이지에서 발행된 포스트의 List를 가져오기
 	public List<Post> selectPostList(@Param("channelId") int channelId);
+	
+	// 보관함 view 페이지에서 로그인한 사용자가 좋아요 체크한 게시물 List 가져오기
+	public List<Like> selectPostListByLike(@Param("userId") int userId);
+	
+	
 	
 
 }

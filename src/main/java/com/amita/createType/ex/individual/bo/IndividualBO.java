@@ -11,7 +11,10 @@ import com.amita.createType.ex.common.FileManagerService;
 import com.amita.createType.ex.individual.dao.IndividualDAO;
 import com.amita.createType.ex.individual.model.Channel;
 import com.amita.createType.ex.individual.model.ChannelViewDetail;
+import com.amita.createType.ex.individual.model.LibraryDetail;
+import com.amita.createType.ex.post.bo.PostBO;
 import com.amita.createType.ex.post.like.bo.LikeBO;
+import com.amita.createType.ex.post.like.model.Like;
 import com.amita.createType.ex.post.model.Post;
 import com.amita.createType.ex.post.viewCount.bo.ViewCountBO;
 
@@ -29,6 +32,9 @@ public class IndividualBO {
 	@Autowired
 	private ViewCountBO viewCountBO;
 	
+	@Autowired
+	private PostBO postBO;
+	
 	
 	// 채널 생성 api
 	public int addChannel(String channelName, String channelInfo, MultipartFile file, int userId) {
@@ -45,7 +51,7 @@ public class IndividualBO {
 		return individualDAO.insertChannel(channelName, channelInfo, imagePath, userId);
 	}
 
-	// 개인 프로필 변경
+	// 개인 프로필 변경 api
 	public int updateProfile(int id, String nicknakme, MultipartFile file) {
 		
 		String imagePath = null;
@@ -107,6 +113,30 @@ public class IndividualBO {
 		return channelViewDetailList;
 	}
 
-	
+	// 보관함 view 페이지에서 로그인한 사용자가 좋아요 체크한 게시물 List 가져오기
+	public List<LibraryDetail> getPostListByLike(int userId){
+		
+		List<Like> likePostList = individualDAO.selectPostListByLike(userId);
+		List<LibraryDetail> libraryDetailList = new ArrayList<>();
+		
+		for(Like like : likePostList) {
+			int postId = like.getPostId();
+			int likeCount = likeBO.likeCount(postId);
+			int viewCount = viewCountBO.viewCount(postId);
+			Post post = postBO.getPostListByPostId(postId);
+			
+			LibraryDetail libraryDetail = new LibraryDetail();
+			
+			libraryDetail.setLike(like);
+			libraryDetail.setPost(post);
+			libraryDetail.setLikeCount(likeCount);
+			libraryDetail.setViewCount(viewCount);
+			
+			libraryDetailList.add(libraryDetail);
+			
+		}
+		
+		return libraryDetailList;
+	}
 
 }
