@@ -34,18 +34,29 @@
 		<section class="mb-5">
 			
 			<div class="mt-3">
-				<h1>개인창작 포스트</h1>
+				<h1>#창작 포스트</h1>
 			</div>
 			
 			<div class="d-flex mt-3">
-				<a href="/post/createList/view"><img class="rounded" width="260" height="350" alt="웹툰" src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA3MTRfMTI2%2FMDAxNjU3ODEwMjI0OTc3.aqtwOzb4lhfYXDcIpi2No7l_Tksai-DBAjBCl3nf0N4g.8wxPxuZD4ffNOO669IGH967hIk-0aBqMSrZcOd3JJMwg.JPEG.intel007%2FIMG_4578.JPG&type=sc960_832"></a>
-				<a href="/post/createList/view"><img class="rounded ml-3" width="260" height="350" alt="웹소설" src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA4MDdfMTA2%2FMDAxNjI4Mjk4NDE5NDY5.Mp9NdPd4YvUopvofIKfUMSLpDb36qefueszAFA4slhsg.vhuQLKOjVQ6zeQOMN7wzIxtYzp__EAwg7XfW2jWrLAEg.PNG.psl3629%2F111.png&type=sc960_832"></a>
-				<a href="/post/createList/view"><img class="rounded ml-3" width="260" height="350" alt="디자인" src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2F736x%2F82%2F6a%2F10%2F826a109a121c9d9f7c1c0f138898542c.jpg&type=sc960_832"></a>
-				<a href="/post/createList/view"><img class="rounded ml-3" width="260" height="350" alt="레디메이드" src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDA2MDRfMjU2%2FMDAxNTkxMjc4NjczNDY1.YVVWUMaoW3EgCSt44zyOgBF9o3OW5-MN7QX2oi79Ekog.M70t7-CILFLXrRGuS1fMtmJ0ey3X5dl0D_Yy3rA_hVYg.JPEG.back9523%2F%25BE%25C7%25B8%25F9%25C0%25BB_%25C6%25C4%25B4%25C2_%25B0%25A1%25B0%25D42.jpg&type=sc960_832"></a>
+				<a href="/post/createList/view?category=1">
+					<img referrerpolicy="no-referrer" class="rounded" width="260" height="350" alt="웹툰" src="https://postfiles.pstatic.net/MjAyMjEwMThfMjE1/MDAxNjY2MDY4MzU4MDY0.2fXeFzTTcbkp3kjxGr6agGm0_FehdtKMj3HnR9RN140g.axCpH7nWV_-YfieI3xdMs7DT3gSxRy4PRwhvonUyhKkg.JPEG.deedee0905/%EC%9B%B9%ED%88%B0%EC%83%98%ED%94%8C%EC%9D%B4%EB%AF%B8%EC%A7%80.jpg?type=w966">
+				</a>
+				
+				<a href="/post/createList/view?category=2">
+					<img referrerpolicy="no-referrer" class="rounded ml-3" width="260" height="350" alt="웹소설" src="https://postfiles.pstatic.net/MjAyMjEwMThfMTA5/MDAxNjY2MDY4MzU4MDY3.njvpJlAY6IiKFbNpN1GUJ_XgEoDch2bgzaqjr03Unu4g.WIu7giTRxsWyGs4IPcKMZvphi037p0XXsznGNswms9og.JPEG.deedee0905/%EC%86%8C%EC%84%A4%EC%83%98%ED%94%8C%EC%9D%B4%EB%AF%B8%EC%A7%80.jpg?type=w966">
+				</a>
+				
+				<a href="/post/createList/view?category=3">
+				<img referrerpolicy="no-referrer" class="rounded ml-3" width="260" height="350" alt="디자인" src="https://postfiles.pstatic.net/MjAyMjEwMThfMzEg/MDAxNjY2MDY4MzU4MDU2.FlkypOrAnJiFXCsEZvO5EE7YG5_Jex1CSHprX7v0jFsg.i3Lqy1EsbI_tVXYvlYEXxhcWFTjX4dELsmKs7zdVswwg.JPEG.deedee0905/%EB%94%94%EC%9E%90%EC%9D%B8%EC%83%98%ED%94%8C%EC%9D%B4%EB%AF%B8%EC%A7%80.jpg?type=w966">
+				</a>
+				
+				<a href="/post/createList/view?category=4">
+					<img referrerpolicy="no-referrer" class="rounded ml-3" width="260" height="350" alt="레디메이드" src="https://postfiles.pstatic.net/MjAyMjEwMThfNDkg/MDAxNjY2MDY4MzU4MDU4.VBYEA77W4WdoxLxR37E2IDedGQDXPmu6RHDZ7_YYntEg.awEgKGD57prE9MywcwvpsAH5_0foIebisAN9_nb9rUQg.JPEG.deedee0905/%EB%A0%88%EB%94%94%EB%A9%94%EC%9D%B4%EB%93%9C%EC%83%98%ED%94%8C%EC%9D%B4%EB%AF%B8%EC%A7%80.jpg?type=w966">
+				</a>
 			</div>
 			
-			<div class="mt-3">
-				<h1>커미션 포스트</h1>
+			<div class="mt-5">
+				<h1>#커미션 포스트</h1>
 			</div>
 			
 			<div class="d-flex mt-3">

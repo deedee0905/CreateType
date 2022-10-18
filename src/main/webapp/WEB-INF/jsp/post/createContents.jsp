@@ -29,7 +29,7 @@
 	
 		<section>
 			<div class="d-flex justify-content-between mt-3">
-				<h2>개인 창작 컨텐츠</h2>
+				<h2 id="contentTitle">개인 창작 컨텐츠</h2>
 				<div class="d-flex">
 					<a href="/post/createList/view?category=1" style="text-decoration:none" ><span id="webtoon" class="create text-dark" style="font-size:28px">#웹툰</span></a>
 					<a href="/post/createList/view?category=2" style="text-decoration:none" ><span id="webnovel" class="create ml-3 text-dark" style="font-size:28px">#웹소설</span></a>
