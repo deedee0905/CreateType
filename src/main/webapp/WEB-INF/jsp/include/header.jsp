@@ -21,12 +21,15 @@
 						</div>
 					</div>
 					
-					<form>
+					
 						<div class="d-flex searchLoginSignupBox mt-4">
-							<div class="input-group">
-								<span class="input-group-text"><i class="bi bi-search"></i></span>
-								<input class="form-control form-control-sm col-10" type="search" placeholder="포스트, 채널 검색">							
-							</div>
+							
+							
+								<div class="input-group mt-1">
+								  <input id="keywordInput" type="search" class="form-control rounded form-control-sm col-10" placeholder="포스트 제목 검색" />
+								  <button id="searchBtn" class="btn btn-secondary">검색</button>
+								</div>
+							
 							<c:choose>
 								<%-- 로그인 했을때 --%>
 								<c:when test="${not empty userId }">
@@ -55,10 +58,32 @@
 								</c:otherwise>
 							</c:choose>
 						</div>
-					</form>
+					
 				</div>
 				<br>
 				<hr>
 			</header>
 			
+			<script>
+				$(document).ready(function() {
+					
+					$("#searchBtn").on("click", function() {
+						let keyword = $("#keywordInput").val
+						
+						let url = "/post/search/view?title="
+						
+					
+						
+						
+						
+						location.href=url;
+						
+						return;
+						
+					});
+					
+					
+					
+				});
+			</script>
 	
