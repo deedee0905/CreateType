@@ -34,6 +34,14 @@
 				</div>
 			
 				<div class="text-center">
+				
+				<c:if	test="${postList eq []}">
+					<div id="searchNone" class="mt-5 mb-5">
+						<img width="150" height="150" alt="경고" src="https://cdn.pixabay.com/photo/2016/07/25/14/42/close-1540630_960_720.png" >
+						<br>
+						<h4 class="mt-3 mb-5">검색된 결과가 없습니다.</h4>
+					</div>
+				</c:if>
 					
 					<c:forEach var="searchList" items="${postList }">
 						<div>

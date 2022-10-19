@@ -64,4 +64,24 @@
 				<hr>
 			</header>
 			
+			<script>
+				
+				$(document).ready(function() {
+					$("#searchForm").on("submit", function(e) {
+						
+						let keyword = $("#keywordInput").val();
+						
+						if(keyword == ""){
+							alert("검색어를 입력하세요.");
+							e.preventDefault();
+						}
+						
+					});
+					
+				});
+				
+				
+					
+				
+			</script>
 	
