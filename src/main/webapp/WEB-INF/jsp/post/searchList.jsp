@@ -30,18 +30,35 @@
 			<div>
 				<div>
 					<span class="font-weight-bold ml-1" style="font-size:30px">검색 결과</span> 
-					<br>
-					<span class="text-secondary ml-2">검색 결과 NN개</span>
 					<hr>
 				</div>
 			
 				<div class="text-center">
-				
-				검색결과 리스트 ~~~
 					
 					<c:forEach var="searchList" items="${postList }">
 						<div>
-							포스트
+							<div class="d-flex mt-3">
+								<div>
+									<a class="count" href="/post/create/postObject/view?id=${searchList.post.id }&channelId=${searchList.post.channelId}">
+										<img class="rounded" width="150" height="160" alt="섬네일" src="${searchList.post.thumbnail }">
+									</a>
+								</div>
+								
+								<div class="ml-3 text-left">
+									<%--제목 --%>
+									<a class="count" href="/post/create/postObject/view?id=${searchList.post.id }&channelId=${searchList.post.channelId}" style="text-decoration:none">
+										<h3 class="text-dark count">${searchList.post.title }</h3>
+									</a>
+									<%--작성자 / 조회수 / 덧글수 / 좋아요수 --%>
+									<h5 class="text-dark">${searchList.user.nickname } <label class="ml-1">view ${searchList.viewCount }</label>   <i class="bi bi-chat-dots ml-2"></i> ${searchList.commentCount }   <i class="bi bi-suit-heart ml-2"></i> ${searchList.likeCount } </h5>
+									<p>
+										<a href="/post/create/postObject/view?id=${searchList.post.id }&channelId=${searchList.post.channelId}" data-post-id="" class="text-dark count" style="text-decoration:none">
+											${searchList.post.content }
+										</a>
+									</p>
+									
+								</div>
+							</div>
 						</div>
 					</c:forEach>
 				

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.amita.createType.ex.post.model.Post;
+import com.amita.createType.ex.post.model.PostDetail;
 import com.amita.createType.ex.post.search.bo.SearchBO;
 
 
@@ -26,7 +26,7 @@ public class SeachController {
 			, Model model
 			) {
 		
-		List<Post> postList = searchBO.getSearchListByTitle(title);
+		List<PostDetail> postList = searchBO.getSearchListByTitle(title);
 		
 		model.addAttribute("postList", postList);
 		

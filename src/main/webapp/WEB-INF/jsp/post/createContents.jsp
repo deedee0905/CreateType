@@ -44,7 +44,7 @@
 				<div class="d-flex mt-3">
 					<div>
 						<a class="count" href="/post/create/postObject/view?id=${postList.post.id }&channelId=${postList.post.channelId}" data-post-id="${postList.post.id }">
-							<img class="rounded" width="200" height="290" alt="웹툰1" src="${postList.post.thumbnail }">
+							<img class="rounded" width="180" height="260" alt="웹툰1" src="${postList.post.thumbnail }">
 						</a>
 					</div>
 					
