@@ -21,4 +21,9 @@ public class ViewCountBO {
 		return viewcountDAO.selectViewCount(postId);
 	}
 	
+	// 게시글이 삭제되면서 조회수 삭제 시키기
+	public int deleteViewCountByPostId(int postId) {
+		return viewcountDAO.deleteViewCountByPostId(postId);
+	}
+	
 }

@@ -30,5 +30,12 @@
 	
 	</select>
 	
+	<delete id="deleteViewCountByPostId" parameterType="int">
+		DELETE FROM
+			`viewCount`
+		WHERE
+			`postId` = #{postId}
+	</delete>
+	
 
 </mapper>

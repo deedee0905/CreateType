@@ -26,6 +26,9 @@ public interface CommentDAO {
 			,@Param("id") int id
 			);
 	
+	// 게시글이 삭제되면서 해당 포스트에 있는 덧글 전부 삭제하기
+	public int deleteCommentByPostId(@Param("postId")int postId);
+	
 	// 덧글수 count
 	public int selectCommentCount(@Param("postId") int postId);
 	

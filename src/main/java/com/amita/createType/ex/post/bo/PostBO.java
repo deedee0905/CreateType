@@ -126,8 +126,25 @@ public class PostBO {
 		return postDAO.updatePost(userId, id, title, subtitle, content, imagePath, category, price);
 	}
 	
-	// 발행된 포스트 삭제 api
+	// 발행된 포스트 delete api
 	public int deletePost(int channelId, int id) {
+		
+		Post post = postDAO.selectPostListByPostId(id);
+		
+		if(post == null) {
+			return 0;
+		}
+		
+		// 게시글과 연결된 파일 삭제하기
+		FileManagerService.removeFile(post.getThumbnail());
+		
+		//좋아요 삭제
+		likeBO.deleteLikeByPostId(id);
+		//덧글 삭제
+		commentBO.deleteCommentByPostId(id);
+		//조회수 삭제
+		viewCountBO.deleteViewCountByPostId(id);
+		
 		return postDAO.deletePost(channelId, id);
 	}
 	

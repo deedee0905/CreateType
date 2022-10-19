@@ -54,6 +54,11 @@ public class CommentBO {
 		return commentDAO.deleteComment(userId, id);
 	}
 	
+	// 게시글이 삭제되면서 해당 포스트에 있는 덧글 전부 삭제하기
+	public int deleteCommentByPostId(int postId) {
+		return commentDAO.deleteCommentByPostId(postId);
+	}
+	
 	// 덧글수 count
 	public int commentCount(int postId) {
 		return commentDAO.selectCommentCount(postId);

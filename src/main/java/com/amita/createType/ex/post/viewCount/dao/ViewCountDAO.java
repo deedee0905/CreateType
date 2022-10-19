@@ -12,5 +12,7 @@ public interface ViewCountDAO {
 	// 조회수 select
 	public int selectViewCount(@Param("postId") int postId);
 	
+	// 게시글이 삭제되면서 조회수 삭제 시키기
+	public int deleteViewCountByPostId(@Param("postId") int postId);
 	
 }

@@ -21,6 +21,11 @@ public class LikeBO {
 		return likeDAO.deleteLike(userId, postId);
 	}
 	
+	// 게시글을 삭제하면서 좋아요 삭제하기
+	public int deleteLikeByPostId(int postId) {
+		return likeDAO.deleteLikeByPostId(postId);
+	}
+	
 	// 특정 사용자가 특정 게시글에 좋아요를 체크했는지 확인하기
 	public int isLike(int userId, int postId) {
 		
