@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.amita.createType.ex.individual.bo.IndividualBO;
+import com.amita.createType.ex.individual.model.Channel;
 import com.amita.createType.ex.post.bo.PostBO;
 import com.amita.createType.ex.post.comment.bo.CommentBO;
 import com.amita.createType.ex.post.comment.model.CommentDetail;
@@ -40,6 +42,9 @@ public class PostController {
 	
 	@Autowired
 	private SubscriptionBO subscriptionBO;
+	
+	@Autowired
+	private IndividualBO individualBO;
 	
 	
 	// 크리에이트 타입 메인 view
@@ -85,6 +90,7 @@ public class PostController {
 		int like = likeBO.isLike(userId, id);
 		int count = viewcountBO.viewCount(id);
 		int subscription = subscriptionBO.duplicateSubscription(userId, channelId);
+		Channel channel = individualBO.getChannelInfo(channelId);
 		
 		
 		
@@ -94,7 +100,7 @@ public class PostController {
 		model.addAttribute("like", like);
 		model.addAttribute("count", count);
 		model.addAttribute("subscription", subscription);
-		
+		model.addAttribute("channel", channel);
 		
 	
 		

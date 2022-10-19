@@ -65,10 +65,10 @@
 				<hr>
 				<%--프로필 영역 --%>
 				<div class="d-flex justify-content-center mt-2 mb-2">
-					<div class="text-center  border border-secondary rounded p-4" >
-						<img class="rounded" width="80" height="80" alt="프로필사진" src="https://cdn.pixabay.com/photo/2022/09/15/06/14/pattern-7455773_960_720.png"><br>
-						<label class="mt-1 font-weight-bold">채널이름(My channel)</label> <br>
-						<span>상태메세지 (ex. 개발은 롤러코스터)</span> <br>
+					<div class="channel-box text-center  border border-secondary rounded p-4" >
+						<img class="rounded" width="80" height="80" alt="프로필사진" src="${channel.channelImagePath }"><br>
+						<label class="mt-1 font-weight-bold">${channel.channelName }</label> <br>
+						<span>${channel.channelInfo }</span> <br>
 						
 					<c:choose>
                      

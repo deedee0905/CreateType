@@ -12,7 +12,7 @@
 									<a href="/individual/channel/view"><img class="rounded" width="100" height="100" alt="채널 프로필 이미지" src="${channel.channelImagePath }"></a>
 									<div class="mt-3 ml-2">
 										<a href="/individual/channel/view" style="text-decoration:none"><h5 class="font-weight-bold text-dark">${channel.channelName }</h5>
-										<span class="text-secondary">구독자 38명</span></a>
+										<span class="text-secondary">구독자 ${subscriber }명</span></a>
 									</div>
 								</div>
 								<div class="mt-3 text-secondary">

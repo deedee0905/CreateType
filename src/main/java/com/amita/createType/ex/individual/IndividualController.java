@@ -15,6 +15,7 @@ import com.amita.createType.ex.individual.bo.IndividualBO;
 import com.amita.createType.ex.individual.model.Channel;
 import com.amita.createType.ex.individual.model.ChannelViewDetail;
 import com.amita.createType.ex.individual.model.LibraryDetail;
+import com.amita.createType.ex.post.subscription.bo.SubscriptionBO;
 import com.amita.createType.ex.user.bo.UserBO;
 import com.amita.createType.ex.user.model.User;
 
@@ -29,6 +30,8 @@ public class IndividualController {
 	@Autowired
 	private IndividualBO individualBO;
 	
+
+	
 	// 유저탭 > MY채널 view
 	@GetMapping("/profile/view") 
 	public String profileMainView(
@@ -38,12 +41,15 @@ public class IndividualController {
 		
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
+		int channelId = (Integer)session.getAttribute("channelId");
 		
 		User user = userBO.getUserInfo(userId);
 		Channel channel = userBO.getChannelUserById(userId);
+		int subscriber = individualBO.countSubscriber(channelId);
 		
 		model.addAttribute("user", user);
 		model.addAttribute("channel", channel);
+		model.addAttribute("subscriber", subscriber);
 		
 		return "individual/profile";
 	}
