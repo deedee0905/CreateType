@@ -21,7 +21,11 @@
   		FROM
   			`post`
   		WHERE
-  			`title` = #{title}
+  			`title`
+  		LIKE
+  			'%${title}%'
+  		ORDER BY
+  			`id` DESC
   	</select>
   
   </mapper>
