@@ -38,8 +38,13 @@
 				<div class="text-center">
 				
 				검색결과 리스트 ~~~
+					
+					<c:forEach var="searchList" items="${postList }">
+						<div>
+							포스트
+						</div>
+					</c:forEach>
 				
-				${postList}
 				</div>
 			
 			</div>
