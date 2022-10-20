@@ -77,14 +77,20 @@
 	                     </c:when>
 	                     
                      <%--구독한 상태 --%>
-	                     <c:when test="${subscription  > 0}">
+	                     <c:when test="${subscription  > 0 && userId != null}">
 	                        <button id="subscriptionCancelBtn" class="btn btn-dark mt-3" data-channel-id="${post.channelId }"><i class="bi bi-clipboard-check text-white mr-1"></i></i>구독중</button>
 	                     </c:when>
                      
                      <%--구독하지 않은 상태 --%>
-	                     <c:otherwise>
+	                     <c:when test="${subscription == 0 && userId != null}">
 	                        <button id="subscriptionBtn" class="btn btn-dark mt-3">구독하기</button>
-	                     </c:otherwise>
+	                     </c:when>
+	                     
+	                 <%--로그인하지 않은 상태 --%>
+	                 	<c:otherwise>
+	                 		<button id="notLoginSubscription" class="btn btn-dark mt-3">구독하기</button>
+	                 	</c:otherwise>
+	                     
                   	</c:choose>
 						
 					</div>
@@ -95,13 +101,17 @@
 				
 				<c:choose>
 					<%-- 로그인한 사용자가 좋아요를 누른 게시물 --%>
-						<c:when test="${like > 0 }" >
+						<c:when test="${like > 0 && userId != null}" >
 							<a id="deleteLike" href="#" data-post-id="${post.id }"><i class="bi bi-heart-fill text-danger ml-2"></i></a>
 						</c:when>	
 						
 					<%-- 로그인한 사용자가 좋아요를 누르지 않은 게시물 --%>
-						<c:otherwise>
+						<c:when test="${like == 0 && userId != null}">
 							<a id="addLike" href="#" data-post-id="${post.id }"><i class="bi bi-heart text-danger ml-2"></i></a>
+						</c:when>
+						
+						<c:otherwise>
+							<a id="notLoginLike" href="#"><i class="bi bi-heart text-danger ml-2"></i></a>
 						</c:otherwise>
 				
 				</c:choose>
@@ -138,7 +148,16 @@
 						<div>
 							<div class="d-flex">
 								<input id="commentInput" class="form-control" type="text" placeholder="댓글을 입력하세요">
-								<button id="commentSaveBtn" class="btn btn-primary text-white ml-3" value="${post.id}">덧글입력</button>
+								
+								<c:choose>
+									<c:when test="${userId != null }">
+										<button id="commentSaveBtn" class="btn btn-primary text-white ml-3" value="${post.id}">덧글입력</button>
+									</c:when>
+									
+									<c:otherwise>
+										<button id="notLoginCommentBtn" class="btn btn-primary text-white ml-3">덧글입력</button>
+									</c:otherwise>
+								</c:choose>
 								<button class="btn btn-primary text-white ml-1" data-toggle="modal" data-target="#exampleModal">후원하기</button>
 							</div>
 						</div>
@@ -255,6 +274,21 @@
 <script>
 
 	$(document).ready(function() {
+		
+		$("#notLoginCommentBtn").on("click", function(e) {
+			e.preventDefault();
+			
+			alert("덧글입력은 로그인 이용자만 사용이 가능합니다.");
+			return;
+			
+		});
+		
+		$("#notLoginSubscription").on("click", function(e) {
+			e.preventDefault();
+			
+			alert("채널 구독은 로그인 이용자만 사용이 가능합니다.");
+			return;
+		});
 		
 		$("#subscriptionCancelBtn").on("click", function(e) {
 			e.preventDefault();
@@ -375,6 +409,11 @@
 			
 		});
 		
+		$("#notLoginLike").on("click", function() {
+			alert("좋아요 체크는 로그인한 사용자만 이용이 가능합니다.");
+			return;
+			
+		});
 		
 		
 		$("#commentDeleteBtn").on("click", function() {
@@ -435,7 +474,7 @@
 					}
 				}
 				, error:function() {
-					alert("덧글입력 에러");
+					alert("로그인시 덧글 입력이 가능합니다.");
 				}
 			});
 			

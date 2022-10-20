@@ -87,43 +87,33 @@ public class PostController {
 		Object userId = session.getAttribute("userId");
 		
 		if(userId == null) {
-			Post post = postBO.getPost(id);
-			List<CommentDetail> commentList = commentBO.getCommentList(id);
-			int like = 0;
-			int count = viewcountBO.viewCount(id);
-			int subscription = 0;
-			Channel channel = individualBO.getChannelInfo(channelId);
 			
-			model.addAttribute("post", post);
-			model.addAttribute("commentList", commentList);
+			int like = 0;
+			int subscription = 0;
+			
 			model.addAttribute("like", like);
-			model.addAttribute("count", count);
 			model.addAttribute("subscription", subscription);
-			model.addAttribute("channel", channel);
 			
 		} else {
-			
-			Post post = postBO.getPost(id);
-			List<CommentDetail> commentList = commentBO.getCommentList(id);
+
 			int userid = (Integer)session.getAttribute("userId");
 			int like = likeBO.isLike(userid, id);
-			int count = viewcountBO.viewCount(id);
 			int subscription = subscriptionBO.duplicateSubscription(userid, channelId);
-			Channel channel = individualBO.getChannelInfo(channelId);
-			
-			model.addAttribute("post", post);
-			model.addAttribute("commentList", commentList);
+
 			model.addAttribute("like", like);
-			model.addAttribute("count", count);
 			model.addAttribute("subscription", subscription);
-			model.addAttribute("channel", channel);
 			
 		}
 		
+		Post post = postBO.getPost(id);
+		List<CommentDetail> commentList = commentBO.getCommentList(id);
+		int count = viewcountBO.viewCount(id);
+		Channel channel = individualBO.getChannelInfo(channelId);
 		
-		
-		
-	
+		model.addAttribute("post", post);
+		model.addAttribute("commentList", commentList);
+		model.addAttribute("count", count);
+		model.addAttribute("channel", channel);
 		
 		return "post/postView";
 	}
