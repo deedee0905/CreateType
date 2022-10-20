@@ -132,6 +132,11 @@ public class IndividualController {
 		return "individual/library";
 	}
 
+	@GetMapping("payment")
+	public String paymentView() {
+		
+		return "individual/payment";
+	}
 	
 	
 }

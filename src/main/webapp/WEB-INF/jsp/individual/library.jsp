@@ -30,16 +30,17 @@
 		<section>
 			
 			<h3 class="mb-2">보관함</h3>
+			<hr>
 			
 			<c:forEach var="likeList" items="${likeList }">
 			
 			<div class="border border-outline-secondary p-2 mt-2">
 						
-				<a href="#" style="text-decoration: none">
+				<a href="/post/create/postObject/view?id=${likeList.post.id }&channelId=${likeList.post.channelId}" style="text-decoration: none">
 					<span class="font-weight-bold text-dark mb-2" style="font-size:20px;">${likeList.post.title }</span>
 				</a> <br>
 
-				<a href="#" style="text-decoration: none" class="text-dark" class="mt-2">
+				<a href="/post/create/postObject/view?id=${likeList.post.id }&channelId=${likeList.post.channelId}" style="text-decoration: none" class="text-dark" class="mt-2">
 					${likeList.post.content }
 				</a>
 				<hr>

@@ -83,24 +83,45 @@ public class PostController {
 			, Model model
 			) {
 		
-		Post post = postBO.getPost(id);
-		List<CommentDetail> commentList = commentBO.getCommentList(id);
 		HttpSession session = request.getSession();
-		int userId = (Integer)session.getAttribute("userId");
-		int like = likeBO.isLike(userId, id);
-		int count = viewcountBO.viewCount(id);
-		int subscription = subscriptionBO.duplicateSubscription(userId, channelId);
-		Channel channel = individualBO.getChannelInfo(channelId);
+		Object userId = session.getAttribute("userId");
+		
+		if(userId == null) {
+			Post post = postBO.getPost(id);
+			List<CommentDetail> commentList = commentBO.getCommentList(id);
+			int like = 0;
+			int count = viewcountBO.viewCount(id);
+			int subscription = 0;
+			Channel channel = individualBO.getChannelInfo(channelId);
+			
+			model.addAttribute("post", post);
+			model.addAttribute("commentList", commentList);
+			model.addAttribute("like", like);
+			model.addAttribute("count", count);
+			model.addAttribute("subscription", subscription);
+			model.addAttribute("channel", channel);
+			
+		} else {
+			
+			Post post = postBO.getPost(id);
+			List<CommentDetail> commentList = commentBO.getCommentList(id);
+			int userid = (Integer)session.getAttribute("userId");
+			int like = likeBO.isLike(userid, id);
+			int count = viewcountBO.viewCount(id);
+			int subscription = subscriptionBO.duplicateSubscription(userid, channelId);
+			Channel channel = individualBO.getChannelInfo(channelId);
+			
+			model.addAttribute("post", post);
+			model.addAttribute("commentList", commentList);
+			model.addAttribute("like", like);
+			model.addAttribute("count", count);
+			model.addAttribute("subscription", subscription);
+			model.addAttribute("channel", channel);
+			
+		}
 		
 		
 		
-		
-		model.addAttribute("post", post);
-		model.addAttribute("commentList", commentList);
-		model.addAttribute("like", like);
-		model.addAttribute("count", count);
-		model.addAttribute("subscription", subscription);
-		model.addAttribute("channel", channel);
 		
 	
 		
