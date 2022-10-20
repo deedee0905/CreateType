@@ -49,6 +49,8 @@ public interface PostDAO {
 	
 	public Post selectPostListByPostId(@Param("id") int id);
 	
-
+	// userId를 기반으로 발행된 포스트의 List를 가져오기
+	public List<Post> selectPostListByUserId(@Param("userId") int userId);
+	
 	
 }

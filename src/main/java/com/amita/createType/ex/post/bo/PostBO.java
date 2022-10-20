@@ -153,5 +153,33 @@ public class PostBO {
 		return postDAO.selectPostListByPostId(postId);
 	}
 	
+	// userId를 기반으로 발행된 포스트의 List를 가져오기
+	public List<PostDetail> getAllPostListByUserId(int userId){
+		
+		List<Post> postList = postDAO.selectPostListByUserId(userId);
+		
+		List<PostDetail> postDetailList = new ArrayList<>();
+		
+		for(Post post : postList) {
+			int postId = post.getId();
+			
+			int likeCount = likeBO.likeCount(postId);
+			int viewCount = viewCountBO.viewCount(postId);
+			int commentCount = commentBO.commentCount(postId);
+			User user = userBO.getUserInfo(userId);
+			
+			PostDetail postDetail = new PostDetail();
+			
+			postDetail.setLikeCount(likeCount);
+			postDetail.setViewCount(viewCount);
+			postDetail.setCommentCount(commentCount);
+			postDetail.setUser(user);
+			postDetail.setPost(post);
+			
+			postDetailList.add(postDetail);
+		}
+		
+		return postDetailList;
+	}
 	
 }

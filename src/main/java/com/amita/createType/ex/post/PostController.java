@@ -130,6 +130,23 @@ public class PostController {
 		
 		return "post/postUpdate";
 	}
+	@GetMapping("/postAll/view")
+	public String getAllPostList(
+			HttpServletRequest request
+			,int id
+			, Model model
+			) {
+		
+		
+		HttpSession session = request.getSession();
+		int userId = (Integer)session.getAttribute("userId");
+		List<PostDetail> postList = postBO.getAllPostListByUserId(userId);
+		
+		model.addAttribute("postList", postList);
+		
+		return "post/postAll";
+	}
+	
 	
 
 }

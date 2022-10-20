@@ -143,6 +143,24 @@
   	
   	</select>
   	
+  	<select id="selectPostListByUserId" parameterType="int" resultType="com.amita.createType.ex.post.model.Post">
+  		SELECT
+  			`id`
+  			,`userId`
+  			,`channelId`
+  			,`title`
+  			,`subtitle`
+  			,`content`
+  			,`thumbnail`
+  			,`category`
+  			,`price`
+  			,`createdAt`
+  			,`updatedAt`
+  		FROM
+  			`post`
+  		WHERE
+  			`userId` = #{userId}
+  	</select>
   	
   	
   	
