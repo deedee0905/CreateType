@@ -182,4 +182,10 @@ public class PostBO {
 		return postDetailList;
 	}
 	
+	// 로그인한 userId를 기반으로 작성된 게시글의 갯수 count
+	public int postCount(int userId) {
+		return postDAO.selectPostCount(userId);
+	}
+	
+	
 }

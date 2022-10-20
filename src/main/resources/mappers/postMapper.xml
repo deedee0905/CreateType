@@ -162,6 +162,15 @@
   			`userId` = #{userId}
   	</select>
   	
+  	<select id="selectPostCount" parameterType="int" resultType="int">
+  		SELECT
+  			count(1)
+  		FROM
+  			`post`
+  		WHERE
+  			`userId` = #{userId}
+  	
+  	</select>
   	
   	
   

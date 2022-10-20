@@ -130,6 +130,9 @@ public class PostController {
 		
 		return "post/postUpdate";
 	}
+	
+	
+	// 로그인한 사용자가 작성한 전체 게시글 view
 	@GetMapping("/postAll/view")
 	public String getAllPostList(
 			HttpServletRequest request
@@ -141,8 +144,10 @@ public class PostController {
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
 		List<PostDetail> postList = postBO.getAllPostListByUserId(userId);
+		int postCount = postBO.postCount(userId);
 		
 		model.addAttribute("postList", postList);
+		model.addAttribute("postCount", postCount);
 		
 		return "post/postAll";
 	}

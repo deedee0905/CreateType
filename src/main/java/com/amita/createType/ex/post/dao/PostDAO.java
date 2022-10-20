@@ -52,5 +52,9 @@ public interface PostDAO {
 	// userId를 기반으로 발행된 포스트의 List를 가져오기
 	public List<Post> selectPostListByUserId(@Param("userId") int userId);
 	
+	// 로그인한 userId를 기반으로 작성된 게시글의 갯수 count
+	public int selectPostCount(@Param("userId") int userId);
+	
+	
 	
 }

@@ -31,8 +31,7 @@
 		<section>
 			<div>
 				<div>
-					<span class="font-weight-bold p-1" style="font-size: 20px">포스트</span> <br>
-					<label class="p-1">25개의 포스트</label>
+					<span class="font-weight-bold p-1" style="font-size: 20px">${postCount }개의 포스트</span> <br>
 					<hr>
 					
 					<c:forEach var="postList" items="${postList }">
