@@ -112,7 +112,7 @@
 					,contentType: false
 					,success: function(data) {
 						if(data.result == "success"){
-							alert("채널이 생성되었습니다.");
+							alert("채널이 생성되었습니다.");	
 							location.href="/individual/profile/view"
 						} else {
 							alert("채널생성 실패");

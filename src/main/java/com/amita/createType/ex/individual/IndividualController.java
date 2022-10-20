@@ -40,16 +40,23 @@ public class IndividualController {
 			) {
 		
 		HttpSession session = request.getSession();
-		int userId = (Integer)session.getAttribute("userId");
-		int channelId = (Integer)session.getAttribute("channelId");
+		Integer userId = (Integer)session.getAttribute("userId");
+		Integer channelId = (Integer)session.getAttribute("channelId");
+		
+		if(channelId == null) {
+			channelId = 0;
+		} else {
+			Channel channel = userBO.getChannelUserById(userId);
+			int subscriber = individualBO.countSubscriber(channelId);
+			model.addAttribute("channel", channel);
+			model.addAttribute("subscriber", subscriber);
+		}
 		
 		User user = userBO.getUserInfo(userId);
-		Channel channel = userBO.getChannelUserById(userId);
-		int subscriber = individualBO.countSubscriber(channelId);
+		
 		
 		model.addAttribute("user", user);
-		model.addAttribute("channel", channel);
-		model.addAttribute("subscriber", subscriber);
+		
 		
 		return "individual/profile";
 	}

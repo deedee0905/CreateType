@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.amita.createType.ex.individual.bo.IndividualBO;
+import com.amita.createType.ex.individual.model.Channel;
 
 @RestController
 @RequestMapping("/individual")
@@ -24,6 +24,7 @@ public class IndividualRestController {
 	private IndividualBO individualBO;
 	
 	
+	// 채널 생성 api
 	@PostMapping("/create/channel")
 	public Map<String, String> createChannel(
 			@RequestParam("channelName") String channelName
@@ -41,8 +42,7 @@ public class IndividualRestController {
 		
 		if(count == 1) {
 			result.put("result", "success");
-			
-			
+
 		} else {
 			result.put("result", "fail");
 		}
