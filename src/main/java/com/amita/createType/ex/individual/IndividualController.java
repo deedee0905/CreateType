@@ -79,12 +79,10 @@ public class IndividualController {
 	//채널 전체 view
 	@GetMapping("/channel/view")
 	public String channeMainlView(
-			HttpServletRequest request
+			@RequestParam("channelId") int channelId
 			,Model model
 			) {
 		
-		HttpSession session = request.getSession();
-		int channelId = (Integer)session.getAttribute("channelId");
 		
 		Channel channel = individualBO.getChannelInfo(channelId);
 		int subscirber = individualBO.countSubscriber(channelId);

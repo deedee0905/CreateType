@@ -60,7 +60,7 @@
 			<div class="mb-5">
 				<div class="d-flex">
 					<h4>최신 포스트(창작 컨텐츠)  </h4>
-					<a href="#" style="text-decoration:none"><h4 class="ml-2"><i class="bi bi-plus-square text-dark"></i></h4></a>
+					<a href="/post/postAll/view?userId=${channel.userId }" style="text-decoration:none"><h4 class="ml-2"><i class="bi bi-plus-square text-dark"></i></h4></a>
 				</div>
 				
 				<div>

@@ -133,7 +133,7 @@
 								<img class="rounded" width="50" height="50" alt="프로필 사진" src="${comment.user.profileImagePath }">
 							</a>	
 								<span class="font-weight-bold ml-2 mt-2">${comment.user.nickname}</span>
-									<span class="ml-1 mt-2">${comment.comment.comment }  채널아이디값 ${comment.comment.channelId }</span>
+									<span class="ml-1 mt-2">${comment.comment.comment }</span>
 							</div>
 							
 							<div>

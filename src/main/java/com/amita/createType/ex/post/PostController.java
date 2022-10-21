@@ -135,14 +135,11 @@ public class PostController {
 	// 로그인한 사용자가 작성한 전체 게시글 view
 	@GetMapping("/postAll/view")
 	public String getAllPostList(
-			HttpServletRequest request
-			,int id
+			@RequestParam("userId") int userId
 			, Model model
 			) {
 		
 		
-		HttpSession session = request.getSession();
-		int userId = (Integer)session.getAttribute("userId");
 		List<PostDetail> postList = postBO.getAllPostListByUserId(userId);
 		int postCount = postBO.postCount(userId);
 		

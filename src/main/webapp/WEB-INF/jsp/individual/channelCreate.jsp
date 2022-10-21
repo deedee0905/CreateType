@@ -54,7 +54,7 @@
 					
 					<div class="mt-5 mb-3">
 						<div class="d-flex justify-content-between">
-							<a class="btn btn-outline-secondary text-dark" href="/individual/profile/view">취소</a>
+							<a class="btn btn-outline-secondary text-dark" href="/individual/profile/view?userId=${userId }&channelId=${channelId}">취소</a>
 							<button id="createBtn" class="btn text-white" type="button" style="background-color:deepskyblue">채널 생성</button>
 						</div>
 					</div>
