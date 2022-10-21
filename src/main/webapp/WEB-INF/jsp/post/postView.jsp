@@ -136,9 +136,16 @@
 									<span class="ml-1 mt-2">${comment.comment.comment }</span>
 							</div>
 							
-							<div>
-								<a href="#" data-toggle="modal" data-target="#commentDeleteModal" class="more-btn" data-comment-id="${comment.comment.id }"><i class="bi bi-three-dots mr-3 text-dark"></i></a>
-							</div>
+							<c:choose>
+								<c:when test="${userId != comment.user.id }"></c:when>
+								
+								<c:otherwise>
+									<div>
+										<a href="#" data-toggle="modal" data-target="#commentDeleteModal" class="more-btn" data-comment-id="${comment.comment.id }"><i class="bi bi-three-dots mr-3 text-dark"></i></a>
+									</div>
+								</c:otherwise>
+							</c:choose>
+							
 						</div>
 						<hr>
 						</c:forEach>
