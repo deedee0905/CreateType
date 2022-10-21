@@ -14,6 +14,7 @@ public interface CommentDAO {
 	public int insertComment(
 		@Param("userId") int userId
 		,@Param("postId") int postId
+		,@Param("channelId") int channelId
 		, @Param("comment") String comment);
 	
 	

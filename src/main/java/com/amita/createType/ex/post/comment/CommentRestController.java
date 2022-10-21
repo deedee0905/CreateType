@@ -31,8 +31,9 @@ public class CommentRestController {
 		
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
+		int channelId = (Integer)session.getAttribute("channelId");
 		
-		int count = commentBO.addComment(userId, postId, comment);
+		int count = commentBO.addComment(userId, postId, channelId, comment);
 		
 		Map<String, String> result = new HashMap<>();
 		

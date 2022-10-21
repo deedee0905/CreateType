@@ -7,12 +7,19 @@ public class Comment {
 	private int id;
 	private int userId;
 	private int postId;
+	private int channelId;
 	private String comment;
 	private Date createdAt;
 	private Date updatedAt;
 	
 	public int getId() {
 		return id;
+	}
+	public int getChannelId() {
+		return channelId;
+	}
+	public void setChannelId(int channelId) {
+		this.channelId = channelId;
 	}
 	public void setId(int id) {
 		this.id = id;

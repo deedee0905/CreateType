@@ -129,7 +129,7 @@
 						<c:forEach var="comment" items="${commentList }">
 						<div class="d-flex justify-content-between mt-3">
 							<div class="d-flex">
-							<a href="/individual/profile/view?userId=${comment.user.id }&channelId=${comment.channel.id">
+							<a href="/individual/profile/view?userId=${comment.user.id }&channelId=${comment.comment.channelId }">
 								<img class="rounded" width="50" height="50" alt="프로필 사진" src="${comment.user.profileImagePath }">
 							</a>	
 								<span class="font-weight-bold ml-2 mt-2">${comment.user.nickname}</span>

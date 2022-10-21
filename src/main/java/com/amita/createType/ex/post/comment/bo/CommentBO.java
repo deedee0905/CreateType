@@ -26,8 +26,8 @@ public class CommentBO {
 	
 	
 	// 덧글 입력
-	public int addComment(int userId, int postId, String comment) {
-		return commentDAO.insertComment(userId, postId, comment);
+	public int addComment(int userId, int postId, int channelId, String comment) {
+		return commentDAO.insertComment(userId, postId, channelId, comment);
 	}
 	
 	// 덧글 조회

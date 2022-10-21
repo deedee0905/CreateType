@@ -11,6 +11,7 @@
 		(
 			`userId`
 			,`postId`
+			,`channelId`
 			,`comment`
 			,`createdAt`
 			,`updatedAt`
@@ -19,6 +20,7 @@
 		(
 			#{userId}
 			,#{postId}
+			,#{channelId}
 			,#{comment}
 			,now()
 			,now()	
