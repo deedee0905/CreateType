@@ -33,6 +33,7 @@
 			`id`
 			,`userId`
 			,`postId`
+			,`channelId`
 			,`comment`
 			,`createdAt`
 			,`updatedAt`
