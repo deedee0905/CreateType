@@ -1,20 +1,13 @@
 package com.amita.createType.ex.post.comment.model;
 
-import com.amita.createType.ex.individual.model.Channel;
 import com.amita.createType.ex.user.model.User;
 
 public class CommentDetail {
 	
 	private Comment comment;
 	private User user;
-	private Channel channel;
 	
-	public Channel getChannel() {
-		return channel;
-	}
-	public void setChannel(Channel channel) {
-		this.channel = channel;
-	}
+	
 	public Comment getComment() {
 		return comment;
 	}

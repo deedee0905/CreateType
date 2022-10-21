@@ -50,8 +50,7 @@ public interface IndividualDAO {
 	// 보관함 view 페이지에서 로그인한 사용자가 좋아요 체크한 게시물 List 가져오기
 	public List<Like> selectPostListByLike(@Param("userId") int userId);
 	
-	// userId 기반으로 채널 정보 가져오기
-	public Channel selectChannelInfoByUserId(@Param("userId") int userId);
+
 	
 
 }

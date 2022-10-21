@@ -24,9 +24,6 @@ public class CommentBO {
 	@Autowired
 	private UserBO userBO;
 	
-	@Autowired
-	private IndividualBO individualBO;
-
 	
 	// 덧글 입력
 	public int addComment(int userId, int postId, String comment) {
@@ -43,13 +40,11 @@ public class CommentBO {
 		for(Comment comment : commentList) {
 			
 			User user = userBO.getUserInfo(comment.getUserId());
-			int userid = comment.getUserId();
-			Channel channel = individualBO.getChannelInfoByUserId(userid);
 			
 			CommentDetail commentDetail = new CommentDetail();
 			commentDetail.setComment(comment);
 			commentDetail.setUser(user);
-			commentDetail.setChannel(channel);
+		
 			
 			commentDetailList.add(commentDetail);
 		}
