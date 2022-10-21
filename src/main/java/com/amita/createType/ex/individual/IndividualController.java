@@ -54,6 +54,7 @@ public class IndividualController {
 		
 		
 		model.addAttribute("user", user);
+		model.addAttribute("id", userId);
 		
 		
 		return "individual/profile";
