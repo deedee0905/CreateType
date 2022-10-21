@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.amita.createType.ex.individual.bo.IndividualBO;
+import com.amita.createType.ex.individual.model.Channel;
 import com.amita.createType.ex.post.comment.dao.CommentDAO;
 import com.amita.createType.ex.post.comment.model.Comment;
 import com.amita.createType.ex.post.comment.model.CommentDetail;
@@ -21,6 +23,9 @@ public class CommentBO {
 	
 	@Autowired
 	private UserBO userBO;
+	
+	@Autowired
+	private IndividualBO individualBO;
 
 	
 	// 덧글 입력
@@ -38,10 +43,13 @@ public class CommentBO {
 		for(Comment comment : commentList) {
 			
 			User user = userBO.getUserInfo(comment.getUserId());
+			int userid = comment.getUserId();
+			Channel channel = individualBO.getChannelInfoByUserId(userid);
 			
 			CommentDetail commentDetail = new CommentDetail();
 			commentDetail.setComment(comment);
 			commentDetail.setUser(user);
+			commentDetail.setChannel(channel);
 			
 			commentDetailList.add(commentDetail);
 		}

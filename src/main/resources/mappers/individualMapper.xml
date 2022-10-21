@@ -55,7 +55,7 @@
 	
 	</update>
 	
-	<select id="selectChannelInfoById" parameterType="int" resultType="com.amita.createType.ex.individual.model.Channel">
+	<select id="selectChannelInfoByChannelId" parameterType="int" resultType="com.amita.createType.ex.individual.model.Channel">
 		SELECT
 			`id`
 			,`userId`
@@ -114,6 +114,21 @@
 		WHERE
 			`userId` = #{userId}
 	
+	</select>
+	
+	<select id="selectChannelInfoByUserId" parameterType="int" resultType="com.amita.createType.ex.individual.model.Channel">
+		SELECT
+			`id`
+			,`userId`
+			,`channelName`
+			,`channelInfo`
+			,`channelImagePath`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`channel`
+		WHERE
+			`userId` = #{userId}
 	</select>
 	
 

@@ -134,7 +134,7 @@ public class UserRestController {
 						if(channel != null) {
 							session.setAttribute("channelId", channel.getId());
 						} else {
-							session.setAttribute("channelId", null);
+							session.setAttribute("channelId", 0);
 						}
 						
 					}

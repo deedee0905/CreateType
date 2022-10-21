@@ -10,12 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.amita.createType.ex.individual.bo.IndividualBO;
 import com.amita.createType.ex.individual.model.Channel;
 import com.amita.createType.ex.individual.model.ChannelViewDetail;
 import com.amita.createType.ex.individual.model.LibraryDetail;
-import com.amita.createType.ex.post.subscription.bo.SubscriptionBO;
 import com.amita.createType.ex.user.bo.UserBO;
 import com.amita.createType.ex.user.model.User;
 
@@ -35,13 +35,11 @@ public class IndividualController {
 	// 유저탭 > MY채널 view
 	@GetMapping("/profile/view") 
 	public String profileMainView(
-			HttpServletRequest request
+			@RequestParam("userId") int userId
+			, @RequestParam("channelId") Integer channelId
 			, Model model
 			) {
 		
-		HttpSession session = request.getSession();
-		Integer userId = (Integer)session.getAttribute("userId");
-		Integer channelId = (Integer)session.getAttribute("channelId");
 		
 		if(channelId == null) {
 			channelId = 0;
@@ -84,6 +82,7 @@ public class IndividualController {
 			HttpServletRequest request
 			,Model model
 			) {
+		
 		HttpSession session = request.getSession();
 		int channelId = (Integer)session.getAttribute("channelId");
 		

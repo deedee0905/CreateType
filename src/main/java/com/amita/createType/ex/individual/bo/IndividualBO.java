@@ -84,7 +84,7 @@ public class IndividualBO {
 	
 	// 채널 프로필 정보 가져오기
 	public Channel getChannelInfo(int id) {
-		return individualDAO.selectChannelInfoById(id);
+		return individualDAO.selectChannelInfoByChannelId(id);
 	}
 	
 	// 채널 구독자 수 count
@@ -138,5 +138,10 @@ public class IndividualBO {
 		
 		return libraryDetailList;
 	}
-
+	
+	// userId 기반으로 채널 정보 가져오기
+	public Channel getChannelInfoByUserId(int userId) {
+		return individualDAO.selectChannelInfoByUserId(userId);
+	}
+	
 }

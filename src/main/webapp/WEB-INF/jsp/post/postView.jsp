@@ -129,7 +129,9 @@
 						<c:forEach var="comment" items="${commentList }">
 						<div class="d-flex justify-content-between mt-3">
 							<div class="d-flex">
+							<a href="/individual/profile/view?userId=${comment.user.id }&channelId=${comment.channel.id">
 								<img class="rounded" width="50" height="50" alt="프로필 사진" src="${comment.user.profileImagePath }">
+							</a>	
 								<span class="font-weight-bold ml-2 mt-2">${comment.user.nickname}</span>
 									<span class="ml-1 mt-2">${comment.comment.comment }</span>
 							</div>
@@ -351,7 +353,7 @@
 		
 		$("#postDeleteBtn").on("click", function() {
 			
-			let channelId = ${channelId}
+			let channelId = ${post.channelId}
 			let id = ${post.id}
 			let url = "/post/createList/view?category=" + ${post.category}
 			

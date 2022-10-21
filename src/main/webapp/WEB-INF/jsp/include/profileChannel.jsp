@@ -7,7 +7,7 @@
 					<hr>
 					
 						<c:choose>
-							<c:when test="${not empty channelId}">
+							<c:when test="${channelId > 0}">
 								<div class="d-flex">
 									<a href="/individual/channel/view"><img class="rounded" width="100" height="100" alt="채널 프로필 이미지" src="${channel.channelImagePath }"></a>
 									<div class="mt-3 ml-2">
