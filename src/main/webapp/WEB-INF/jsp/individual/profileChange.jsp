@@ -82,6 +82,8 @@
 				let file = $("#profileImageInput").val();
 				let nickname = $("#nicknameInput").val();
 				
+				let url = "/individual/profile/view?userId=" + ${userId} + "&channelId=" + ${channelId}; 
+				
 				if(nickname == ""){
 					alert("닉네임을 입력하세요.");
 					return;
@@ -101,7 +103,7 @@
 					,success:function(data){
 						
 						if(data.result == "success"){
-							location.href="/individual/profile/view";
+							location.href=url;
 						} else {
 							alert("실패");
 						}
