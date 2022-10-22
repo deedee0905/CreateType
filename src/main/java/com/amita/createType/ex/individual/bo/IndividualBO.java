@@ -68,18 +68,18 @@ public class IndividualBO {
 	}
 	
 	// 채널 프로필 업데이트 api
-	public int updateChannelProfile(int id, String channelName, String channelInfo, MultipartFile file) {
+	public int updateChannelProfile(int userId, int channelId, String channelName, String channelInfo, MultipartFile file) {
 		
 		String imagePath = null;
 		if(file != null) { // 파일 저장 성공
-			imagePath = FileManagerService.saveFile(id, file);
+			imagePath = FileManagerService.saveFile(userId, file);
 			
 			if(imagePath == null) { // 파일 저장 실패
 				return 0;
 			}
 			
 		}
-		return individualDAO.updateChannelProfile(id, channelName, channelInfo, imagePath);
+		return individualDAO.updateChannelProfile(userId, channelId, channelName, channelInfo, imagePath);
 	}
 	
 	// 채널 프로필 정보 가져오기

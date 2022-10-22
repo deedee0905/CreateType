@@ -158,8 +158,8 @@
 				return;
 				
 				let postId = $(this).data("post-id");
-				let channelId = ${post.post.channelId};
-				let url = "/post/create/postObject/view?id=" + postId + "&channelId=" + channelId;
+				let channelId = ${post.post.channelId}
+				let url = "/post/create/postObject/view?id=" + postId + "&channelId=" + channelId
 				
 				$.ajax({
 					type:"get"

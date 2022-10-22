@@ -85,8 +85,9 @@ public class IndividualRestController {
 		
 		HttpSession session = request.getSession();
 		int channelId = (Integer)session.getAttribute("channelId");
+		int userId = (Integer)session.getAttribute("userId");
 		
-		int count = individualBO.updateChannelProfile(channelId, channelName, channelInfo, file);
+		int count = individualBO.updateChannelProfile(userId, channelId, channelName, channelInfo, file);
 		
 		Map<String, String> result = new HashMap<>();
 		

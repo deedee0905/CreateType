@@ -32,7 +32,8 @@ public interface IndividualDAO {
 	
 	// 채널 프로필 업데이트 api
 	public int updateChannelProfile(
-			@Param("id") int id
+			@Param("userId") int userId
+			, @Param("channelId") int channelId
 			, @Param("channelName") String channelName
 			, @Param("channelInfo") String channelInfo
 			, @Param("profileImagePath") String profileImagePath

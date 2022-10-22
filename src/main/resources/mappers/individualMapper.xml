@@ -51,7 +51,7 @@
 			, `channelImagePath` = #{profileImagePath}
 			, `updatedAt` = now()
 		WHERE
-			`id` = #{id}
+			`id` = #{channelId}
 	
 	</update>
 	

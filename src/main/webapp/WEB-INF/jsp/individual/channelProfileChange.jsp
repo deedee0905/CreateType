@@ -50,13 +50,13 @@
 					
 					<div class="mt-1">
 						<h5>자기소개</h5>
-						<textarea id="channelInfoInput" class="form-control" value="${channel.channelInfo }"></textarea>
+						<textarea id="channelInfoInput" class="form-control">${channel.channelInfo }</textarea>
 						
 					</div>
 					
 					<div class="mt-5 mb-3">
 						<div class="d-flex justify-content-between">
-							<a class="btn btn-outline-secondary text-dark" href="/individual/profile/view?userId=${userId }&channelId=${channelId}">취소</a>
+							<a class="btn btn-outline-secondary text-dark" href="/individual/channel/view?channelId=${channelId}">취소</a>
 							<button id="saveBtn" class="btn text-white" type="button" style="background-color:deepskyblue">변경내용 저장</button>
 						</div>
 					</div>
@@ -85,6 +85,7 @@
 				let file = $("#fileInput").val();
 				let channelName = $("#channelNameInput").val();
 				let channelInfo = $("#channelInfoInput").val();
+				let url = "/individual/channel/view?channelId=" + ${channelId};
 				
 				if(channelName == ""){
 					alert("채널 이름을 확인하세요.");
@@ -111,7 +112,7 @@
 					, success:function(data){
 						
 						if(data.result == "success"){
-							location.href="/individual/channel/view";
+							location.href= url;
 							return;
 						} else {
 							alert("실패");
