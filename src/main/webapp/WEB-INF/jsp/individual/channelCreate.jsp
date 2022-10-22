@@ -86,6 +86,8 @@
 				let channelName = $("#nameInput").val();
 				let channelInfo = $("#infoInput").val();
 				
+				let url = "/individual/profile/view?userId=" + ${userId} + "&channelId=" + ${channelId}; 
+				
 				// 유효성 검사
 				
 				if(profileImage == ""){
@@ -113,7 +115,7 @@
 					,success: function(data) {
 						if(data.result == "success"){
 							alert("채널이 생성되었습니다.");	
-							location.href="/individual/profile/view"
+							location.href=url;
 						} else {
 							alert("채널생성 실패");
 						}
