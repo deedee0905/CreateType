@@ -70,8 +70,19 @@ public class PostController {
 	
 	// 포스트 발행 view
 	@GetMapping("/create/newPost/view")
-	public String newPostView() {
-		return "post/newPost";
+	public String newPostView(HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		int channelId = (Integer)session.getAttribute("channelId");
+		
+		if(channelId == 0) {
+			return "user/signin";
+		} else {
+			
+			return "post/newPost";
+		}
+				
+		
 	}
 	
 	// 포스트 단일 view

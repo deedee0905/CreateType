@@ -27,10 +27,11 @@ public class UserController {
 	@GetMapping("/signout")
 	public String signout(HttpServletRequest request) {
 		
-		HttpSession ssession = request.getSession();
+		HttpSession session = request.getSession();
 		
-		ssession.removeAttribute("userId");
-		ssession.removeAttribute("userNickname");
+		session.removeAttribute("userId");
+		session.removeAttribute("userNickname");
+		session.setAttribute("channelId", 0);
 		
 		return "redirect:/post/main/view";
 	}
