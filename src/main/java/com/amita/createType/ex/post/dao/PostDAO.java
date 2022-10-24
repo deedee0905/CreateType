@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import com.amita.createType.ex.individual.model.Channel;
 import com.amita.createType.ex.post.model.Post;
 
 
@@ -55,6 +56,7 @@ public interface PostDAO {
 	// 로그인한 userId를 기반으로 작성된 게시글의 갯수 count
 	public int selectPostCount(@Param("userId") int userId);
 	
-	
+	// 로그인한 userId를 기반으로 채널 정보를 가져오기
+	public Channel selectChannelInfoByUserId(@Param("userId") int userId);
 	
 }

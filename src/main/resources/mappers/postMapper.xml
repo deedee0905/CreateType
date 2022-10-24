@@ -172,6 +172,20 @@
   	
   	</select>
   	
+  	<select id="selectChannelInfoByUserId" parameterType="int" resultType="com.amita.createType.ex.individual.model.Channel">
+  		SELECT
+			`id`
+			,`userId`
+			,`channelName`
+			,`channelInfo`
+			,`channelImagePath`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`channel`
+		WHERE
+			`userId` = #{userId}
+  	</select>
   	
   
   </mapper>

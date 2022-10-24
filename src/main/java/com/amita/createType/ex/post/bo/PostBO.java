@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.amita.createType.ex.common.FileManagerService;
+import com.amita.createType.ex.individual.model.Channel;
 import com.amita.createType.ex.post.comment.bo.CommentBO;
 import com.amita.createType.ex.post.dao.PostDAO;
 import com.amita.createType.ex.post.like.bo.LikeBO;
@@ -167,6 +168,7 @@ public class PostBO {
 			int viewCount = viewCountBO.viewCount(postId);
 			int commentCount = commentBO.commentCount(postId);
 			User user = userBO.getUserInfo(userId);
+			Channel channel = postDAO.selectChannelInfoByUserId(userId);
 			
 			PostDetail postDetail = new PostDetail();
 			
@@ -175,6 +177,7 @@ public class PostBO {
 			postDetail.setCommentCount(commentCount);
 			postDetail.setUser(user);
 			postDetail.setPost(post);
+			postDetail.setChannel(channel);
 			
 			postDetailList.add(postDetail);
 		}
@@ -187,5 +190,9 @@ public class PostBO {
 		return postDAO.selectPostCount(userId);
 	}
 	
+	// 로그인한 userId를 기반으로 채널 정보를 가져오기
+	public Channel getChannelInfoByUserId(int userId) {
+		return postDAO.selectChannelInfoByUserId(userId);
+	}
 	
 }

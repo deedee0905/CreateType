@@ -66,9 +66,13 @@
 				<%--프로필 영역 --%>
 				<div class="d-flex justify-content-center mt-2 mb-2">
 					<div class="channel-box text-center  border border-secondary rounded p-4" >
-						<img class="rounded" width="80" height="80" alt="프로필사진" src="${channel.channelImagePath }"><br>
-						<label class="mt-1 font-weight-bold">${channel.channelName }</label> <br>
-						<span>${channel.channelInfo }</span> <br>
+						<a href="/individual/channel/view?channelId=${channel.id }" style="text-decoration:none">
+							<img class="rounded" width="80" height="80" alt="프로필사진" src="${channel.channelImagePath }"><br>
+						</a>
+						<a href="/individual/channel/view?channelId=${channel.id }" style="text-decoration:none">
+							<label class="mt-1 font-weight-bold text-dark">${channel.channelName }</label> <br>
+							<span class="text-dark">${channel.channelInfo }</span> <br>
+						</a>
 						
 					<c:choose>
                      

@@ -50,6 +50,7 @@ public class IndividualController {
 			int subscriber = individualBO.countSubscriber(channelId);
 			model.addAttribute("channel", channel);
 			model.addAttribute("subscriber", subscriber);
+			model.addAttribute("userIdNumber", userId);
 		}
 		
 		User user = userBO.getUserInfo(userId);

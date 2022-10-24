@@ -50,11 +50,11 @@
 						  <li class="list-group-item center">
 						  	<div class="d-flex justify-content-between">
 						  		<div class="d-flex">
-						  			<a href="#">
+						  			<a href="/individual/channel/view?channelId=${subscription.channel.id }">
 						  				<img class="rounded" width="80" height="80" alt="사진" src="${subscription.channel.channelImagePath }">
 						  			</a>
 						  			<div>
-							  			<a href="#" style="text-decoration:none">
+							  			<a href="/individual/channel/view?channelId=${subscription.channel.id }" style="text-decoration:none">
 								  			<span style="font-size:20px" class="ml-3 text-dark" >${subscription.channel.channelName } </span> <br>
 								  			<span class="ml-3 text-secondary">${subscription.channel.channelInfo }</span>
 							  			</a>

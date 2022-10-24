@@ -47,7 +47,7 @@
 							<c:forEach var="postList" items="${postList }">
 								<div class="d-flex mt-3">
 									<div>
-										<a href="#">
+										<a href="/post/create/postObject/view?id=${postList.post.id }&channelId=${postList.channel.id}">
 											<img class="rounded" width="180" height="260" alt="웹툰1" src="${postList.post.thumbnail }">
 										</a>
 									</div>

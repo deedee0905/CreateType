@@ -1,5 +1,6 @@
 package com.amita.createType.ex.post.model;
 
+import com.amita.createType.ex.individual.model.Channel;
 import com.amita.createType.ex.user.model.User;
 
 public class PostDetail {
@@ -10,7 +11,14 @@ public class PostDetail {
 	private int likeCount;
 	private int viewCount;
 	private int commentCount;
+	private Channel channel;
 	
+	public Channel getChannel() {
+		return channel;
+	}
+	public void setChannel(Channel channel) {
+		this.channel = channel;
+	}
 	public Post getPost() {
 		return post;
 	}
