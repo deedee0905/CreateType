@@ -36,7 +36,7 @@
 	
 		<header class="d-flex justify-content-between">
 			<div class="mr-2 mt-4">
-				<a href="/individual/channel/view" style="text-decoration: none; font-size:20px" class="text-secondary">뒤로가기</a>
+				<a href="/post/create/postObject/view?id=${post.id }&channelId=${channelId }" style="text-decoration: none; font-size:20px" class="text-secondary">뒤로가기</a>
 			</div>
 			<div>
 				<a href="/post/main/view" style="text-decoration:none"><h1 class="text-center mt-3 mb-3" style="color:deepskyblue">CreateType</h1></a>
@@ -82,7 +82,7 @@
 		        <div class="d-flex">
 		        	<span class="font-weight-bold mt-3" style="font-size:15px">썸네일</span>
 		        	<input id="fileInput" class="form-control col-8 ml-3" type="file" data-post-thumbnail="${post.thumbnail }">
-		        	<button class="btn btn-dark ml-2">삭제</button>
+		        	<button id="imageDelete" class="btn btn-dark ml-2">삭제</button>
 		        </div>
 		        
 		        <div class="mt-5 d-flex" style="height:30px">
@@ -132,6 +132,13 @@
 	<script>
 		
 		$(document).ready(function() {
+			
+			 $("#imageDelete").on("click", function() {
+					
+					let file = $("#fileInput").val("");
+					
+				});
+			
 			
 			// 썸머노트 기초값 셋팅
 			$('#summernote').summernote({
