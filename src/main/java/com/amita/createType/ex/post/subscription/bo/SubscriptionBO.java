@@ -57,7 +57,9 @@ public class SubscriptionBO {
 		return subscriptionDetailList;
 	}
 	
-	
+	public int countChannelSubscription(int userId) {
+		return subscriptionDAO.selectCountChannelScription(userId);
+	}
 	
 	
 		

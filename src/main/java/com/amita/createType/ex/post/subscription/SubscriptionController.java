@@ -31,8 +31,10 @@ public class SubscriptionController {
 			HttpSession session = request.getSession();
 			int userId = (Integer)session.getAttribute("userId");
 			List<SubscriptionDetail> subscriptionList = subscriptionBO.getSubscriptionList(userId);
+			int channelCount = subscriptionBO.countChannelSubscription(userId);
 			
 			model.addAttribute("subscriptionList", subscriptionList);
+			model.addAttribute("channelCount", channelCount);
 			
 			return "individual/subscribe";
 		}

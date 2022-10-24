@@ -56,6 +56,15 @@
 			`id` DESC;
 	</select>
 	
+	<select id="selectCountChannelScription" parameterType="int" resultType="int">
+		SELECT
+			count(1)
+		FROM
+			`subscription`
+		WHERE
+			`userId` = #{userId}
+	</select>
+	
 
 </mapper>
 

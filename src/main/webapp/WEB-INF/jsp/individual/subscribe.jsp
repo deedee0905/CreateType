@@ -35,34 +35,47 @@
 				<hr>
 			</div>
 			
-			
-			<c:forEach var="subscription" items="${subscriptionList }">
-				<div class="list-group list-group-flush">
+			<c:choose>
+				<c:when test="${channelCount == 0}">
+					<div class="text-center">
+						아직 구독중인 채널이 없습니다.
+					</div>
+				</c:when>
 				
-				<ul class="list-group list-group-flush">
-				  <li class="list-group-item center">
-				  	<div class="d-flex justify-content-between">
-				  		<div class="d-flex">
-				  			<a href="#">
-				  				<img class="rounded" width="80" height="80" alt="사진" src="${subscription.channel.channelImagePath }">
-				  			</a>
-				  			<div>
-					  			<a href="#" style="text-decoration:none">
-						  			<span style="font-size:20px" class="ml-3 text-dark" >${subscription.channel.channelName } </span> <br>
-						  			<span class="ml-3 text-secondary">${subscription.channel.channelInfo }</span>
-					  			</a>
-				  			</div>
-				  		</div>
-				  		
-				  		<div>
-				  			<button class="btn btn-outline-white text-dark mt-3 deleteBtn" data-channel-id="${subscription.channel.id }">구독중</button>
-				  		</div>
-				  	</div>
-				  </li>
-				</ul>
-				<hr>
-			</div>
-			</c:forEach>
+				<c:otherwise>
+					<c:forEach var="subscription" items="${subscriptionList }">
+						<div class="list-group list-group-flush">
+						
+						<ul class="list-group list-group-flush">
+						  <li class="list-group-item center">
+						  	<div class="d-flex justify-content-between">
+						  		<div class="d-flex">
+						  			<a href="#">
+						  				<img class="rounded" width="80" height="80" alt="사진" src="${subscription.channel.channelImagePath }">
+						  			</a>
+						  			<div>
+							  			<a href="#" style="text-decoration:none">
+								  			<span style="font-size:20px" class="ml-3 text-dark" >${subscription.channel.channelName } </span> <br>
+								  			<span class="ml-3 text-secondary">${subscription.channel.channelInfo }</span>
+							  			</a>
+						  			</div>
+						  		</div>
+						  		
+						  		<div>
+						  			<button class="btn btn-outline-white text-dark mt-3 deleteBtn" data-channel-id="${subscription.channel.id }">구독중</button>
+						  		</div>
+						  	</div>
+						  </li>
+						</ul>
+						<hr>
+					</div>
+					</c:forEach>
+				
+				</c:otherwise>
+			
+			</c:choose>
+			
+			
 			
 		
 			

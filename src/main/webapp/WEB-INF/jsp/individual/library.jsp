@@ -34,30 +34,35 @@
 			
 			<c:forEach var="likeList" items="${likeList }">
 			
-			<div class="border border-outline-secondary p-2 mt-2">
+			
+					<div class="border border-outline-secondary p-2 mt-2">
 						
-				<a href="/post/create/postObject/view?id=${likeList.post.id }&channelId=${likeList.post.channelId}" style="text-decoration: none">
-					<span class="font-weight-bold text-dark mb-2" style="font-size:20px;">${likeList.post.title }</span>
-				</a> <br>
-
-				<a href="/post/create/postObject/view?id=${likeList.post.id }&channelId=${likeList.post.channelId}" style="text-decoration: none" class="text-dark" class="mt-2">
-					${likeList.post.content }
-				</a>
-				<hr>
-				<div class="d-flex justify-content-between">
-					<div>
-						<span><i class="bi bi-heart-fill text-danger"></i></span>
-						<label>${likeList.likeCount }</label>
-						<label> / </label>
-						<label>view ${likeList.viewCount }</label>
+						<a href="/post/create/postObject/view?id=${likeList.post.id }&channelId=${likeList.post.channelId}" style="text-decoration: none">
+							<span class="font-weight-bold text-dark mb-2" style="font-size:20px;">${likeList.post.title }</span>
+						</a> <br>
+		
+						<a href="/post/create/postObject/view?id=${likeList.post.id }&channelId=${likeList.post.channelId}" style="text-decoration: none" class="text-dark" class="mt-2">
+							${likeList.post.content }
+						</a>
+						<hr>
+						<div class="d-flex justify-content-between">
+							<div>
+								<span><i class="bi bi-heart-fill text-danger"></i></span>
+								<label>${likeList.likeCount }</label>
+								<label> / </label>
+								<label>view ${likeList.viewCount }</label>
+							</div>
+							
+							<div class="ml-3">
+								<button class="btn btn-outline-secoundary deleteLike" data-post-id="${likeList.post.id }"><i class="bi bi-heart-fill text-danger mr-1"></i>좋아요</button>
+							</div>
+						</div>
+						
 					</div>
-					
-					<div class="ml-3">
-						<button class="btn btn-outline-secoundary deleteLike" data-post-id="${likeList.post.id }"><i class="bi bi-heart-fill text-danger mr-1"></i>좋아요</button>
-					</div>
-				</div>
 				
-			</div>
+		
+			
+			
 			
 			</c:forEach>
 			

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.amita.createType.ex.individual.bo.IndividualBO;
-import com.amita.createType.ex.individual.model.Channel;
+
 
 @RestController
 @RequestMapping("/individual")

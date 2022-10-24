@@ -31,7 +31,8 @@ public interface SubscriptionDAO {
 	
 	// 구독한 채널 리스트 가져오기
 		public List<Subscription> selectSubscription(@Param("userId") int userId);
-		
-		
+	
+	// 로그인한 userId 기반으로 구독한 채널의 숫자 count
+		public int selectCountChannelScription(@Param("userId") int userId);	
 
 }
