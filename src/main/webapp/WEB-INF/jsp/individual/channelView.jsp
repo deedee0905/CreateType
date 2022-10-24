@@ -38,7 +38,17 @@
 					<h5 class="font-weight-bold mt-2 ml-1">${channel.channelName }</h5>
 					<div class="d-flex mt-2 mb-3 ml-1">
 						<span class="text-secondary">구독자 ${subscirber }명</span>
-						<a href="/individual/channel/setting/view" class="btn btn-sm btn-primary ml-3 text-white">프로필 편집</a>
+						
+						<c:choose>
+							<c:when test="${channelNumber eq channelId }">
+								<a href="/individual/channel/setting/view" class="btn btn-sm btn-primary ml-3 text-white">프로필 편집</a>
+							</c:when>
+							
+							<c:otherwise>
+							</c:otherwise>
+						</c:choose>
+						
+						
 					</div>
 					<div class="border border-secondary p-2 rounded introduce-box">
 						${channel.channelInfo }

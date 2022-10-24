@@ -92,7 +92,7 @@ public class IndividualController {
 		model.addAttribute("channel", channel);
 		model.addAttribute("subscirber", subscirber);
 		model.addAttribute("postList", postList);
-		
+		model.addAttribute("channelNumber", channelId);
 		
 		return "individual/channelView";
 	}
