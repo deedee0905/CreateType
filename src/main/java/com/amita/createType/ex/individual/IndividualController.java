@@ -16,6 +16,7 @@ import com.amita.createType.ex.individual.bo.IndividualBO;
 import com.amita.createType.ex.individual.model.Channel;
 import com.amita.createType.ex.individual.model.ChannelViewDetail;
 import com.amita.createType.ex.individual.model.LibraryDetail;
+import com.amita.createType.ex.post.like.bo.LikeBO;
 import com.amita.createType.ex.user.bo.UserBO;
 import com.amita.createType.ex.user.model.User;
 
@@ -30,6 +31,7 @@ public class IndividualController {
 	@Autowired
 	private IndividualBO individualBO;
 	
+
 
 	
 	// 유저탭 > MY채널 view
@@ -130,9 +132,10 @@ public class IndividualController {
 		int userId = (Integer)session.getAttribute("userId");
 		
 		List<LibraryDetail> likeList = individualBO.getPostListByLike(userId);
+		int likeCount = individualBO.likeCountByUserId(userId);
 		
 		model.addAttribute("likeList", likeList);
-		
+		model.addAttribute("likeCount", likeCount);
 		
 		return "individual/library";
 	}

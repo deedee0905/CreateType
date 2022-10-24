@@ -59,6 +59,8 @@
   			`postId`= #{postId}
   	
   	</delete>
+  	
+  	
 
 
 </mapper>

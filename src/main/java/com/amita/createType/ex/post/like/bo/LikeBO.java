@@ -33,9 +33,11 @@ public class LikeBO {
 		
 	}
 	
-	// 좋아요 count
+	// postId 기반으로 좋아요 count
 	public int likeCount(int postId) {
 		return likeDAO.selectCountLike(postId);
 	}
+	
+	
 
 }

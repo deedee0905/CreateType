@@ -32,7 +32,15 @@
 			<h3 class="mb-2">보관함</h3>
 			<hr>
 			
-			<c:forEach var="likeList" items="${likeList }">
+			<c:choose>
+				<c:when test="${likeCount == 0}">
+					<div class="text-center">
+						좋아요를 체크한 게시물이 없습니다.
+					</div>
+				</c:when>
+				
+				<c:otherwise>
+					<c:forEach var="likeList" items="${likeList }">
 			
 			
 					<div class="border border-outline-secondary p-2 mt-2">
@@ -65,6 +73,15 @@
 			
 			
 			</c:forEach>
+				
+				</c:otherwise>
+				
+			</c:choose>
+			
+			
+		
+			
+			
 			
 			
 		</section>

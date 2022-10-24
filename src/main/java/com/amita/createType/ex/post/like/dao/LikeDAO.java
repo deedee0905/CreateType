@@ -24,4 +24,7 @@ public interface LikeDAO {
 	// 좋아요 count
 	public int selectCountLike(@Param("postId") int postId);
 	
+	
+	
+	
 }

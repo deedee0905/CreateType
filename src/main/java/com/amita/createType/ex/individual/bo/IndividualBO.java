@@ -139,6 +139,9 @@ public class IndividualBO {
 		return libraryDetailList;
 	}
 	
-	
+	// userId 기반으로 좋아요 count
+		public int likeCountByUserId(int userId) {
+			return individualDAO.selectCountLikeByUserId(userId);
+		}
 	
 }

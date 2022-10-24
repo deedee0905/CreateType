@@ -116,7 +116,14 @@
 	
 	</select>
 	
-	
+	<select id="selectCountLikeByUserId" parameterType="int" resultType="int">
+  		SELECT
+			count(1)
+		FROM
+			`like`
+		WHERE
+			`userId` = #{userId}
+  	</select>
 
 	
 
