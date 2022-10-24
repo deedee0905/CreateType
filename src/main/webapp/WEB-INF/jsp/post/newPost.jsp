@@ -36,7 +36,7 @@
 	
 		<header class="d-flex justify-content-between">
 			<div class="mr-2 mt-4">
-				<a href="/individual/channel/view" style="text-decoration: none; font-size:20px" class="text-secondary">뒤로가기</a>
+				<a href="/individual/channel/view?channelId=${channelId }" style="text-decoration: none; font-size:20px" class="text-secondary">뒤로가기</a>
 			</div>
 			<div>
 				<a href="/post/main/view" style="text-decoration:none"><h1 class="text-center mt-3 mb-3" style="color:deepskyblue">CreateType</h1></a>
