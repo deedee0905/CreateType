@@ -73,7 +73,7 @@ public class UserBO {
 		return userDAO.selectChannelUserById(id);
 	}
 	
-	// 채널의 정보 가져오기 selet
+	// 유저 정보 가져오기
 		public User getUserInfo(int id) {
 			return userDAO.selectUserInfo(id);
 		}

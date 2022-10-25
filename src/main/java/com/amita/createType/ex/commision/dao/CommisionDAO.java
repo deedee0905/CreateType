@@ -1,7 +1,11 @@
 package com.amita.createType.ex.commision.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import com.amita.createType.ex.commision.model.CommisionPost;
 
 @Repository
 public interface CommisionDAO {
@@ -19,5 +23,10 @@ public interface CommisionDAO {
 			,@Param("question") String question
 			,@Param("thumbnail") String thumbnail
 			);
+	
+	// 발행된 커미션 post 읽어오기
+	public List<CommisionPost> selectCommisionCategory(@Param("category") int category);
+	
+	
 
 }

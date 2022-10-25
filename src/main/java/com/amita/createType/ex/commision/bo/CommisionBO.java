@@ -1,11 +1,18 @@
 package com.amita.createType.ex.commision.bo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.amita.createType.ex.commision.dao.CommisionDAO;
+import com.amita.createType.ex.commision.model.CommisionPost;
+import com.amita.createType.ex.commision.model.CommisionPostDetail;
 import com.amita.createType.ex.common.FileManagerService;
+import com.amita.createType.ex.user.bo.UserBO;
+import com.amita.createType.ex.user.model.User;
 
 @Service
 public class CommisionBO {
@@ -13,6 +20,10 @@ public class CommisionBO {
 	@Autowired
 	private CommisionDAO commisionDAO;
 	
+	@Autowired
+	private UserBO userBO;
+	
+	// 커미션 포스트 insert api
 	public int addNewPost(
 			int userId
 			, int channelId
@@ -38,5 +49,26 @@ public class CommisionBO {
 		
 		return commisionDAO.insertCommisionPost(userId, channelId, title, content, category, minimumPrice, maximumPrice, deadline, question, imagePath);
 	}
+	
+	// 발행된 커미션 post 읽어오기
+	public List<CommisionPostDetail> getCategory(int category){
+		List<CommisionPost> commisionList = commisionDAO.selectCommisionCategory(category);
+		
+		List<CommisionPostDetail> commisionDetailList = new ArrayList<>();
+		
+		for(CommisionPost commisionPost : commisionList) {
+			int userId = commisionPost.getUserId();
+			User user = userBO.getUserInfo(userId);
+			
+			CommisionPostDetail commisionPostDetail = new CommisionPostDetail();
+			
+			commisionPostDetail.setUser(user);
+			commisionPostDetail.setCommisionPost(commisionPost);
+			
+			commisionDetailList.add(commisionPostDetail);
+		}
+		return commisionDetailList;
+	}
+	
 
 }

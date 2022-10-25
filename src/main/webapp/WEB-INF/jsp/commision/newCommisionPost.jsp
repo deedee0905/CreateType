@@ -86,7 +86,7 @@
 		        <div class="mt-5 d-flex" style="height:30px">
 		        	<span class="font-weight-bold mt-2" style="font-size:15px">카테고리</span>
 		        	<select id="category" class="custom-select custom-select-lg mb-3 col-7 ml-3">
-					  <option selected value="1">그림</option>
+					  <option selected value="1">일러스트</option>
 					  <option value="2">글</option>
 					  <option value="3">디자인</option>
 					</select>

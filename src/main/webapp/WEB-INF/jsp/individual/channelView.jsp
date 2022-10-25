@@ -60,7 +60,7 @@
 						<label></label>
 					</div>
 					<a class="btn btn-outline-secondary" href="/post/create/newPost/view" style="position: relative">새 포스트</a>
-					<a class="btn btn-outline-secondary ml-3" href="#">새 커미션</a>
+					<a class="btn btn-outline-secondary ml-3" href="/commision/postCreate/view">새 커미션</a>
 				</div>
 			</div>
 			
@@ -157,42 +157,7 @@
 	<script>
 		$(document).ready(function() {
 			
-			$("#test").on("click", function() {
-				alert("ㅇㅇ");
-				return;
-			});
 			
-			$(".count").on("click", function() {
-				
-				alert("유효성 검사");
-				return;
-				
-				let postId = $(this).data("post-id");
-				let channelId = ${post.post.channelId}
-				let url = "/post/create/postObject/view?id=" + postId + "&channelId=" + channelId
-				
-				$.ajax({
-					type:"get"
-					, url: "viewCount"
-					, data:{"postId":postId}
-					, success: function(data){
-						
-						if(data.result == "success"){
-							alert("조회수 입력 성공");
-							location.href= url;
-						} else {
-							alert("조회수 입력 실패");
-						}
-						
-					}
-					, error: function(){
-						alert("조회수 입력 에러");
-						return;
-					}
-					
-				});
-				
-			});
 			
 		});
 	</script>
