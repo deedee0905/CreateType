@@ -20,5 +20,10 @@ public interface BookmarkDAO {
 			, @Param("channelId") int channelId
 			);
 	
+	// 커미션 포스트에 북마크 여부 판별하는 기능
+	public int bookmarkDiscrimination(
+			@Param("userId") int userId
+			, @Param("postId") int postId
+			);
 
 }

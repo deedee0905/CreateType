@@ -21,5 +21,9 @@ public class BookmarkBO {
 		return bookmarkDAO.deleteBookmark(userId, postId, channelId);
 	}
 	
+	// 커미션 포스트에 북마크 여부 판별하는 기능
+	public int bookmarkDiscrimination(int userId, int postId) {
+		return bookmarkDAO.bookmarkDiscrimination(userId, postId);
+	}
 
 }

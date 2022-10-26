@@ -35,5 +35,17 @@
 			
 	
 	</delete>
+	
+	<select id="bookmarkDiscrimination" parameterType="int" resultType="int">
+		SELECT
+			count(1)
+		FROM
+			`bookmark`
+		WHERE
+			`userId` = #{userId}
+			AND `commisionPostId` = #{postId}
+		
+		
+	</select>
 
 </mapper>

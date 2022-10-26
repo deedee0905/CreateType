@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.amita.createType.ex.commision.bo.CommisionBO;
+import com.amita.createType.ex.commision.bookmark.bo.BookmarkBO;
 import com.amita.createType.ex.commision.model.CommisionPost;
 import com.amita.createType.ex.commision.model.CommisionPostDetail;
 import com.amita.createType.ex.user.bo.UserBO;
@@ -27,6 +28,9 @@ public class CommisionController {
 	
 	@Autowired
 	private UserBO userBO;
+	
+	@Autowired
+	private BookmarkBO bookmarkBO;
 	
 	// 커미션 포스트 insert view
 	@GetMapping("/postCreate/view")
@@ -62,6 +66,15 @@ public class CommisionController {
 		CommisionPost postInfo = commisionBO.getCommisionPostInfoByPostId(id);
 		int user = postInfo.getUserId();
 		User userInfo = userBO.getUserInfo(user);
+		
+		if(userId == null) {
+			int bookmark = 0;
+			model.addAttribute("bookmark", bookmark);
+		} else {
+			int userid = (Integer)session.getAttribute("userId");
+			int bookmark = bookmarkBO.bookmarkDiscrimination(userid, id);
+			model.addAttribute("bookmark", bookmark);
+		}
 		
 		model.addAttribute("postInfo", postInfo);
 		model.addAttribute("userInfo", userInfo);

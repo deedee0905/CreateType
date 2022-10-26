@@ -38,8 +38,18 @@
 					<div>
 						<div class="d-flex justify-content-between">
 							<label class="font-weight-bold" style="font-size:25px">${postInfo.title }</label>
-							<a id="bookmarkInsert"><i class="bi bi-bookmark text-warning" style="font-size:25px"></i></a>
-							<a id="bookmarkDelete"><i class="bi bi-bookmark-check-fill text-warning" style="font-size:25px"></i></a>
+							
+							<c:choose>
+								<c:when test="${bookmark == 0 }">
+									<a id="bookmarkInsert"><i class="bi bi-bookmark text-warning" style="font-size:25px"></i></a>
+								</c:when>
+								
+								<c:otherwise>
+									<a id="bookmarkDelete"><i class="bi bi-bookmark-check-fill text-warning" style="font-size:25px"></i></a>
+								</c:otherwise>
+							</c:choose>
+							
+							
 						</div>
 						
 						<a href="#" style="text-decoration:none" class="text-dark font-weight-bold">${userInfo.nickname }</a> <br>
@@ -95,7 +105,7 @@
 					,data:{"postId":postId, "channelId":channelId}
 					,success: function(data){
 						if(data.result == "success"){
-							alert("북마크 체크 성공");
+							location.reload();
 							return
 						} else {
 							alert("북마크 체크 실패");
@@ -123,7 +133,7 @@
 					,data:{"postId":postId, "channelId":channelId}
 					,success: function(data){
 						if(data.result == "success"){
-							alert("북마크 해제 성공");
+							location.reload();
 							return
 						} else {
 							alert("북마크 해제 실패");
