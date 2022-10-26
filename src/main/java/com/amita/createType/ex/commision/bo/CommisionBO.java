@@ -50,7 +50,7 @@ public class CommisionBO {
 		return commisionDAO.insertCommisionPost(userId, channelId, title, content, category, minimumPrice, maximumPrice, deadline, question, imagePath);
 	}
 	
-	// 발행된 커미션 post 읽어오기
+	// 발행된 커미션 post를 category 값으로 읽어오기
 	public List<CommisionPostDetail> getCategory(int category){
 		List<CommisionPost> commisionList = commisionDAO.selectCommisionCategory(category);
 		
@@ -78,6 +78,11 @@ public class CommisionBO {
 	// channelView 에서 해당 채널의 사용자가 작성한 커미션 포스트 정보를 가져오기
 	public List<CommisionPost> getCommisionPostList(int channelId){
 		return commisionDAO.selectCommisionPost(channelId);
+	}
+	
+	// commisionPost에 저장된 userId를 기반으로 정보를 가져오기
+	public CommisionPost getCommisionInfoByUserId(int userId) {
+		return commisionDAO.selectCommisionPostInfoByUserId(userId);
 	}
 	
 

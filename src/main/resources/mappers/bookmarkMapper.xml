@@ -47,5 +47,18 @@
 		
 		
 	</select>
+	
+	<select id="selectBookmarkList" parameterType="int" resultType="com.amita.createType.ex.commision.bookmark.model.Bookmark">
+		SELECT
+			`id`
+			,`userId`
+			,`commisionPostId`
+			,`channelId`
+			,`createdAt`
+		FROM
+			`bookmark`
+		WHERE
+			`userId` = #{userId}
+	</select>
 
 </mapper>

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.amita.createType.ex.commision.bo.CommisionBO;
 import com.amita.createType.ex.commision.bookmark.bo.BookmarkBO;
+import com.amita.createType.ex.commision.bookmark.model.BookmarkDetail;
 import com.amita.createType.ex.commision.model.CommisionPost;
 import com.amita.createType.ex.commision.model.CommisionPostDetail;
 import com.amita.createType.ex.user.bo.UserBO;
@@ -82,6 +83,23 @@ public class CommisionController {
 		return "commision/postView";
 	}
 	
+	
+	// 보관함 북마크 view
+	@GetMapping("/library/view")
+	public String libraryBookmark(
+			HttpServletRequest request
+			, Model model
+			) {
+		
+		HttpSession session = request.getSession();
+		int userId = (Integer)session.getAttribute("userId");
+		
+		List<BookmarkDetail> bookmarkList = bookmarkBO.getBookmarkList(userId);
+		
+		model.addAttribute("bookmarkList", bookmarkList);
+		
+		return "commision/libraryBookmark";
+	}
 
 
 }

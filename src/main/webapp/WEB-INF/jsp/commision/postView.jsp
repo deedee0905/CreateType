@@ -62,9 +62,9 @@
 							<a href="/individual/channel/view?channelId=${postInfo.channelId }" style="text-decoration:none" class="mt-1 ml-1 text-dark font-weight-bold">${userInfo.nickname }</a> <br>
 						</div>
 						<label class="mt-1">
-							<fmt:formatNumber value="${postInfo.minimumPrice }" type="number"/>
+							<fmt:formatNumber value="${postInfo.minimumPrice }" type="number"/>원
 							~ 
-							<fmt:formatNumber value="${postInfo.maximumPrice }" type="number"/>
+							<fmt:formatNumber value="${postInfo.maximumPrice }" type="number"/>원
 						</label> 
 						
 						<br>

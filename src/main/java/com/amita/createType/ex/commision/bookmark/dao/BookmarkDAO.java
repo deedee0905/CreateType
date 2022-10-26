@@ -1,7 +1,11 @@
 package com.amita.createType.ex.commision.bookmark.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import com.amita.createType.ex.commision.bookmark.model.Bookmark;
 
 @Repository
 public interface BookmarkDAO {
@@ -25,5 +29,8 @@ public interface BookmarkDAO {
 			@Param("userId") int userId
 			, @Param("postId") int postId
 			);
+	
+	// 북마크한 커미션 post를 userId 값으로 읽어오기
+		public List<Bookmark> selectBookmarkList(@Param("userId") int userId);
 
 }

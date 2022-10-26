@@ -29,7 +29,14 @@
 		
 		<section>
 			
-			<h3 class="mb-2">보관함</h3>
+			<div class="d-flex justify-content-between">
+				<h3 class="mb-2">보관함 - 좋아요</h3>
+				
+				<div>
+					<a href="/individual/library/view" class="btn btn-outline-primary">좋아요</a>
+					<a href="/commision/library/view" class="btn btn-outline-primary ml-2">북마크</a>
+				</div>
+			</div>
 			<hr>
 			
 			<c:choose>
