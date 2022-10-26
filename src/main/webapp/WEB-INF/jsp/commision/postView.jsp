@@ -40,10 +40,15 @@
 							<label class="font-weight-bold" style="font-size:25px">${postInfo.title }</label>
 							
 							<c:choose>
+							
+								<c:when test="${postInfo.userId == userId }">
+									<%--본인이 쓴 게시물일 경우 북마크 기능 활성화 x  --%>
+								</c:when>
+								
 								<c:when test="${bookmark == 0 }">
 									<a id="bookmarkInsert"><i class="bi bi-bookmark text-warning" style="font-size:25px"></i></a>
 								</c:when>
-								
+
 								<c:otherwise>
 									<a id="bookmarkDelete"><i class="bi bi-bookmark-check-fill text-warning" style="font-size:25px"></i></a>
 								</c:otherwise>
@@ -64,7 +69,7 @@
 						
 						<label>${postInfo.deadline }일 이내 전달</label> <br>
 						
-						<div style="height: 152px">
+						<div style="height: 165px">
 							<%-- 버튼 높이 맞추기용 --%>
 						</div>
 						
@@ -75,7 +80,7 @@
 			
 			<hr>
 			<div class="d-flex justify-content-center">
-				<div style="width: 500px; " class="text-center mt-3 mb-5">
+				<div style="width: 600px; " class="text-center mt-3 mb-5">
 					　 
 					${postInfo.content }
 				

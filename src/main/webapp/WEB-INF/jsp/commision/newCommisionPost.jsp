@@ -205,7 +205,6 @@
 				,success: function(data){
 					
 					if(data.result == "success"){
-						alert("커미션 포스트 발행 성공");
 						location.reload();
 						return;
 					} else {
