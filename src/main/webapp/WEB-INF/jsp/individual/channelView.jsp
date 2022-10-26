@@ -117,31 +117,7 @@
 					</div>
 				</div>
 				
-				<div class="mt-2">
-					<div class="d-flex">
-						<a href="#">
-							<img class="rounded" width="180" height="200" alt="커미션2" src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxOTAxMTNfODAg%2FMDAxNTQ3Mzc4NzMwNzA0.vaWjUp2r3vj1nahcK8HnDHoFg-vmj0wrSz3C5MN_TC8g.InfNmtA7KIbu80vpLPR3ltax21qiHlkT91AEzijglA0g.PNG.o_may_5%2F%25B7%25AF%25BA%25EA%25C6%25F7%25BC%25C7.png&type=sc960_832">
-						</a>
-						<div class="p-2">
-							<a href="#" style="text-decoration:none"><span class="font-weight-bold text-dark" style="font-size:20px">표지 커미션2</span> <br>
-							<span class="text-dark">#카테고리(그림, 글 디자인 중 1개)</span> <br>
-							<span class="text-dark">가격 20,000원 ~ 50,000원</span> <br>
-							<span class="text-dark">NN 이내 전달</span></a>
-						</div>
-					</div>
-				</div>
 				
-				<div class="mt-2">
-					<div class="d-flex">
-						<a href="#" ><img class="rounded" width="180" height="200" alt="커미션3" src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2F736x%2F08%2F65%2F9f%2F08659f0f4fbdb0b23aef6cb9e5330093.jpg&type=sc960_832"></a>
-						<div class="p-2">
-							<a href="#" style="text-decoration:none"><span class="font-weight-bold text-dark" style="font-size:20px">표지 커미션3</span> <br>
-							<span class="text-dark">#카테고리(그림, 글 디자인 중 1개)</span> <br>
-							<span class="text-dark">가격 20,000원 ~ 50,000원</span> <br>
-							<span class="text-dark">NN 이내 전달</span></a>
-						</div>
-					</div>
-				</div>
 				
 			</div>
 			<%--~커미션 컨텐츠 box --%>

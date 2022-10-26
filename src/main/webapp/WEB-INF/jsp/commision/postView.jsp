@@ -57,8 +57,10 @@
 							
 						</div>
 						
-						<a href="#" style="text-decoration:none" class="text-dark font-weight-bold">${userInfo.nickname }</a> <br>
-						
+						<div class="d-flex">
+							<a href="/individual/channel/view?channelId=${postInfo.channelId }"><img class="rounded" width="35" height="35" alt="프로필 사진" src="${userInfo.profileImagePath }"></a>
+							<a href="/individual/channel/view?channelId=${postInfo.channelId }" style="text-decoration:none" class="mt-1 ml-1 text-dark font-weight-bold">${userInfo.nickname }</a> <br>
+						</div>
 						<label class="mt-1">
 							<fmt:formatNumber value="${postInfo.minimumPrice }" type="number"/>
 							~ 
@@ -103,6 +105,11 @@
 				
 				let postId = ${postInfo.id}
 				let channelId = ${postInfo.channelId}
+				
+				if(${userId == null}){
+					alert("로그인한 이용자만 게시물을 북마크 할 수 있습니다.");
+					return;
+				}
 				
 				$.ajax({
 					type:"get"
