@@ -71,7 +71,7 @@
 						
 						<label>${postInfo.deadline }일 이내 전달</label> <br>
 						
-						<div style="height: 165px">
+						<div style="height: 156px">
 							<%-- 버튼 높이 맞추기용 --%>
 						</div>
 						

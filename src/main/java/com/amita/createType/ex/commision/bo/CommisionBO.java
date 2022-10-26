@@ -77,7 +77,7 @@ public class CommisionBO {
 	
 	// channelView 에서 해당 채널의 사용자가 작성한 커미션 포스트 정보를 가져오기
 	public List<CommisionPost> getCommisionPostList(int channelId){
-		
+		return commisionDAO.selectCommisionPost(channelId);
 	}
 	
 

@@ -84,5 +84,30 @@
 			`id` = #{id}
 	</select>
 	
+	<select id="selectCommisionPost" parameterType="int" resultType="com.amita.createType.ex.commision.model.CommisionPost">
+		SELECT
+			`id`
+			,`userId`
+			,`channelId`
+			,`title`
+			,`content`
+			,`category`
+			,`minimumPrice`
+			,`maximumPrice`
+			,`deadline`
+			,`question`
+			,`thumbnail`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`commisionPost`
+		WHERE
+			`channelId` = #{channelId}
+		ORDER BY
+			`id`DESC
+		LIMIT 3
+	
+	</select>
+	
 
 </mapper>

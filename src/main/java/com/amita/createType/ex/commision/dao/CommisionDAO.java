@@ -30,6 +30,7 @@ public interface CommisionDAO {
 	// commisionPost id 기반으로 포스트의 정보를 가져오기
 	public CommisionPost selectCommisionPostInfoByPostId(@Param("id") int id);
 	
-	
+	// channelView 에서 해당 채널의 사용자가 작성한 커미션 포스트 정보를 가져오기
+	public List<CommisionPost> selectCommisionPost(@Param("channelId") int channelId);
 
 }

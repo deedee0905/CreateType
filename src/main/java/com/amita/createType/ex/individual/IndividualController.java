@@ -12,11 +12,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.amita.createType.ex.commision.bo.CommisionBO;
+import com.amita.createType.ex.commision.model.CommisionPost;
 import com.amita.createType.ex.individual.bo.IndividualBO;
 import com.amita.createType.ex.individual.model.Channel;
 import com.amita.createType.ex.individual.model.ChannelViewDetail;
 import com.amita.createType.ex.individual.model.LibraryDetail;
-import com.amita.createType.ex.post.like.bo.LikeBO;
 import com.amita.createType.ex.user.bo.UserBO;
 import com.amita.createType.ex.user.model.User;
 
@@ -31,7 +32,8 @@ public class IndividualController {
 	@Autowired
 	private IndividualBO individualBO;
 	
-
+	@Autowired
+	private CommisionBO commisionBO;
 
 	
 	// 유저탭 > MY채널 view
@@ -91,11 +93,13 @@ public class IndividualController {
 		Channel channel = individualBO.getChannelInfo(channelId);
 		int subscirber = individualBO.countSubscriber(channelId);
 		List<ChannelViewDetail> postList = individualBO.getPostList(channelId);
+		List<CommisionPost> commisionPost = commisionBO.getCommisionPostList(channelId);
 		
 		model.addAttribute("channel", channel);
 		model.addAttribute("subscirber", subscirber);
 		model.addAttribute("postList", postList);
 		model.addAttribute("channelNumber", channelId);
+		model.addAttribute("commisionPost", commisionPost);
 		
 		return "individual/channelView";
 	}

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     
 <!DOCTYPE html>
 <html>
@@ -99,27 +100,39 @@
 			<hr>
 			
 			<%--커미션 컨텐츠 box~ --%>
-			<div class="mt-4">
-				<div class="d-flex">
-					<h4>최신 포스트(커미션)  </h4>
-					<a href="#" style="text-decoration:none"><h4 class="ml-2"><i class="bi bi-plus-square text-dark"></i></h4></a>
-				</div>
-				
-				<div class="mt-2">
-					<div class="d-flex">
-						<a href="#"><img class="rounded" width="180" height="200" alt="커미션1" src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2F736x%2Fbc%2Fbe%2F57%2Fbcbe577d8bab4eb850a83fd8bffb632a.jpg&type=sc960_832"></a>
-						<div class="p-2">
-							<a href="#" style="text-decoration:none"><span class="font-weight-bold text-dark" style="font-size:20px">표지 커미션</span> <br>
-							<span class="text-dark">#카테고리(그림, 글 디자인 중 1개)</span> <br>
-							<span class="text-dark">가격 20,000원 ~ 50,000원</span> <br>
-							<span class="text-dark">NN 이내 전달</span></a>
+			<div class="d-flex">
+				<h4>최신 포스트(커미션)  </h4>
+				<a href="#" style="text-decoration:none"><h4 class="ml-2"><i class="bi bi-plus-square text-dark"></i></h4></a>
+			</div>
+			<c:forEach var="commisionPost" items="${commisionPost }">
+				<div class="mt-4">
+					<div class="mt-2">
+						<div class="d-flex">
+							<a href="/commision/postObject/view?id=${commisionPost.id }&channelId=${commisionPost.channelId}"><img class="rounded" width="180" height="200" alt="커미션" src="${commisionPost.thumbnail }"></a>
+							<div class="p-2">
+								<a href="#" style="text-decoration:none"><span class="font-weight-bold text-dark" style="font-size:20px">${commisionPost.title }</span> <br>
+								<c:choose>
+									<c:when test="${commisionPost.category == 1 }">
+										<span class="text-dark">#일러스트</span> <br>
+									</c:when>
+									
+									<c:when test="${commisionPost.category == 2 }">
+										<span class="text-dark">#글</span> <br>
+									</c:when>
+									
+									<c:otherwise>
+										<span class="text-dark">#디자인</span> <br>
+									</c:otherwise>
+								</c:choose>
+								<span class="text-dark">가격 <fmt:formatNumber value="${commisionPost.minimumPrice }" type="number"/>원 ~ <fmt:formatNumber value="${commisionPost.minimumPrice }" type="number"/>원</span> <br>
+								<span class="text-dark">${commisionPost.deadline }일 이내 전달</span></a>
+							</div>
 						</div>
 					</div>
 				</div>
-				
-				
-				
-			</div>
+			
+			</c:forEach>
+			
 			<%--~커미션 컨텐츠 box --%>
 		</div>
 			
