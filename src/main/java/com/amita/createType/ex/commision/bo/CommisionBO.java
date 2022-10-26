@@ -70,5 +70,10 @@ public class CommisionBO {
 		return commisionDetailList;
 	}
 	
+	// commisionPost id 기반으로 포스트의 정보를 가져오기
+	public CommisionPost getCommisionPostInfoByPostId(int id) {
+		return commisionDAO.selectCommisionPostInfoByPostId(id);
+	}
+	
 
 }

@@ -44,14 +44,14 @@
 			<c:forEach var="commisionList" items="${commisionPostList }">
 				<div class="d-flex mt-3">
 						<div>
-							<a class="" href="#">
+							<a href="/commision/postObject/view?id=${commisionList.commisionPost.id }&channelId=${commisionList.commisionPost.channelId}">
 								<img class="rounded" width="180" height="260" alt="웹툰1" src="${commisionList.commisionPost.thumbnail }">
 							</a>
 						</div>
 						
 						<div class="ml-3">
 							<%--제목 / 작성자 / 마감기한 --%>
-							<a class="" href="#" style="text-decoration:none">
+							<a class="" href="/commision/postObject/view?id=${commisionList.commisionPost.id }&channelId=${commisionList.commisionPost.channelId}" style="text-decoration:none">
 								<h3 class="text-dark">${commisionList.commisionPost.title }</h3>
 								<h5 class="text-dark"> ${commisionList.user.nickname } </h5>
 								<h5 class="text-dark">${commisionList.commisionPost.deadline } 일 이내 전달</h5>		

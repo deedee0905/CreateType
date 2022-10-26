@@ -27,6 +27,9 @@ public interface CommisionDAO {
 	// 발행된 커미션 post 읽어오기
 	public List<CommisionPost> selectCommisionCategory(@Param("category") int category);
 	
+	// commisionPost id 기반으로 포스트의 정보를 가져오기
+	public CommisionPost selectCommisionPostInfoByPostId(@Param("id") int id);
+	
 	
 
 }

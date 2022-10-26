@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,24 +31,34 @@
 		<section>
 			<div  class="d-flex justify-content-center">
 				<div>
-					<img class="" width="300" height="400" alt="그림 샘플" src="https://cdn.pixabay.com/photo/2019/12/17/06/50/squirrel-4700919_960_720.jpg">
+					<img width="300" height="400" alt="그림 샘플" src="${postInfo.thumbnail }">
 				</div>
 				
 				<div class="ml-3" id="infoBox" style="width: 380px">
-					<div >
+					<div>
 						<div class="d-flex justify-content-between">
-							<label class="font-weight-bold" style="font-size:25px">제목</label>
-							<a href="#"><i class="bi bi-bookmark text-warning " style="font-size:25px"></i></a>
+							<label class="font-weight-bold" style="font-size:25px">${postInfo.title }</label>
+							<a href="#"><i class="bi bi-bookmark text-warning" style="font-size:25px"></i></a>
+							<a href="#"><i class="bi bi-bookmark-check-fill text-warning" style="font-size:25px"></i></a>
 						</div>
-						<label class="mb-5">작업자이름</label>
-						<label>30000 ~ 50000</label> <br>
-						<label>7일 이내 전달</label> <br>
+						
+						<a href="#" style="text-decoration:none" class="text-dark font-weight-bold">${userInfo.nickname }</a> <br>
+						
+						<label class="mt-1">
+							<fmt:formatNumber value="${postInfo.minimumPrice }" type="number"/>
+							~ 
+							<fmt:formatNumber value="${postInfo.maximumPrice }" type="number"/>
+						</label> 
+						
+						<br>
+						
+						<label>${postInfo.deadline }일 이내 전달</label> <br>
 						
 						<div style="height: 152px">
 							<%-- 버튼 높이 맞추기용 --%>
 						</div>
 						
-						<button class="btn btn-dark btn-lg form-control mt-5" style="position:relative; bottom:50;">신청하기</button>
+						<a class="btn btn-dark btn-lg form-control mt-5 text-white" style="position:relative; bottom:50;">신청하기</a>
 					</div>
 				</div>
 			</div>
@@ -56,6 +67,7 @@
 			<div class="d-flex justify-content-center">
 				<div style="width: 500px; " class="text-center mt-3 mb-5">
 					　 
+					${postInfo.content }
 				
 				</div>
 			</div>
