@@ -38,6 +38,12 @@ public class CommisionController {
 		return "commision/commisionContents";
 	}
 	
+	// 커미션 포스트 object view
+	@GetMapping("/postObject/view")
+	public String commisionPostObjectView() {
+		
+		return "commision/postView";
+	}
 	
 
 
