@@ -41,27 +41,28 @@
 				<div class="mt-4">
 					<div class="mt-2">
 						<div class="d-flex">
-							<a href="#">
+							<a href="/commision/postObject/view?id=${bookmark.commisionPost.id }&channelId=${bookmark.commisionPost.channelId}">
 								<img class="rounded" width="180" height="200" alt="커미션" src="${bookmark.commisionPost.thumbnail }">
 							</a>
 							<div class="p-2">
-								<a href="#" style="text-decoration:none"><span class="font-weight-bold text-dark" style="font-size:20px">${bookmark.commisionPost.title }</span> <br>
-								<span class="text-dark">${bookmark.user.nickname }</span>
-								<c:choose>
-									<c:when test="${bookmark.commisionPost.category == 1 }">
-										<span class="text-dark">#일러스트</span> <br>
-									</c:when>
-									
-									<c:when test="${bookmark.commisionPost.category == 2 }">
-										<span class="text-dark">#글</span> <br>
-									</c:when>
-									
-									<c:otherwise>
-										<span class="text-dark">#디자인</span> <br>
-									</c:otherwise>
-								</c:choose>
-								<span class="text-dark">가격 <fmt:formatNumber value="${bookmark.commisionPost.minimumPrice }" type="number"/>원 ~ <fmt:formatNumber value="${bookmark.commisionPost.minimumPrice }" type="number"/>원</span> <br>
-								<span class="text-dark">${bookmark.commisionPost.deadline }일 이내 전달</span></a> <br>
+								<a href="/commision/postObject/view?id=${bookmark.commisionPost.id }&channelId=${bookmark.commisionPost.channelId}" style="text-decoration:none"><span class="font-weight-bold text-dark" style="font-size:20px">${bookmark.commisionPost.title }</span> <br>
+									<span class="text-dark">${bookmark.user.nickname }</span>
+									<c:choose>
+										<c:when test="${bookmark.commisionPost.category == 1 }">
+											<span class="text-dark">#일러스트</span> <br>
+										</c:when>
+										
+										<c:when test="${bookmark.commisionPost.category == 2 }">
+											<span class="text-dark">#글</span> <br>
+										</c:when>
+										
+										<c:otherwise>
+											<span class="text-dark">#디자인</span> <br>
+										</c:otherwise>
+									</c:choose>
+									<span class="text-dark">가격 <fmt:formatNumber value="${bookmark.commisionPost.minimumPrice }" type="number"/>원 ~ <fmt:formatNumber value="${bookmark.commisionPost.minimumPrice }" type="number"/>원</span> <br>
+									<span class="text-dark">${bookmark.commisionPost.deadline }일 이내 전달</span>
+								</a> <br>
 								<button class="btn btn-sm btn-outline-secondary mt-3 deleteBookmark" data-post-id="${bookmark.commisionPost.id }" data-channel-id="${bookmark.commisionPost.channelId }">북마크 해제</button>
 							</div>
 						</div>
