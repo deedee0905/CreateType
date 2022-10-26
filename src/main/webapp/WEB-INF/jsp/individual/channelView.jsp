@@ -60,8 +60,15 @@
 					<div id="empty-box">
 						<label></label>
 					</div>
-					<a class="btn btn-outline-secondary" href="/post/create/newPost/view" style="position: relative">새 포스트</a>
-					<a class="btn btn-outline-secondary ml-3" href="/commision/postCreate/view">새 커미션</a>
+					<c:choose>
+						<c:when test="${channelNumber eq channelId }">
+							<a class="btn btn-outline-secondary" href="/post/create/newPost/view" style="position: relative">새 포스트</a>
+							<a class="btn btn-outline-secondary ml-3" href="/commision/postCreate/view">새 커미션</a>
+						</c:when>
+						
+						<c:otherwise></c:otherwise>
+					</c:choose>
+					
 				</div>
 			</div>
 			
