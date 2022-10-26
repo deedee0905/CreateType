@@ -3,6 +3,7 @@ package com.amita.createType.ex.commision;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -55,6 +56,9 @@ public class CommisionController {
 			, Model model
 			) {
 		
+		HttpSession session = request.getSession();
+		Object userId = session.getAttribute("userId");
+				
 		CommisionPost postInfo = commisionBO.getCommisionPostInfoByPostId(id);
 		int user = postInfo.getUserId();
 		User userInfo = userBO.getUserInfo(user);
