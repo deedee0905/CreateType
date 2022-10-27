@@ -43,7 +43,7 @@
 							</c:when>
 							
 							<c:otherwise>
-								<button type="button" class="btn btn-outline-primary mt-2" data-toggle="modal" data-target="#exampleModal">메세지 하기</button>
+								<button id="messageBtn" type="button" class="btn btn-outline-primary mt-2" data-toggle="modal" data-target="#exampleModal">메세지 하기</button>
 							</c:otherwise>
 						</c:choose>
 						
@@ -129,6 +129,20 @@
 	
 	<script>
 		$(document).ready(function() {
+			
+			$("#messageBtn").on("click", function(e) {
+				e.preventDefault();
+				
+				let channelId = ${channelId};
+				
+				if(channelId == null){
+					alert("테스트");
+					return;
+				}
+				
+				
+				
+			});
 			
 			$("#saveBtn").on("click", function(e) {
 				e.preventDefault();

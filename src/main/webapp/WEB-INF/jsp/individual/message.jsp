@@ -86,7 +86,9 @@
 	      <div class="modal-body">
 	        <form>
 	          <div class="rounded p-1 form-group border border-outline-info" style="width:465px">
-	            테스트중
+	            <c:forEach var="dms" items="${dms }">
+	            	<label>${dms.message }</label> <br>
+	            </c:forEach>
 	          </div>
 	          <div class="form-group">
 	            <label for="message-text" class="col-form-label">Message:</label>
