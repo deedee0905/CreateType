@@ -46,6 +46,7 @@
 							</c:when>
 							
 							<c:otherwise>
+								<button type="button" class="btn btn-outline-secondary ml-3" data-toggle="modal" data-target="#exampleModal">메세지 하기</button>
 							</c:otherwise>
 						</c:choose>
 						
@@ -149,6 +150,37 @@
 			<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 		</footer>
 	</div>
+	
+	<%-- 모달 --%>
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">Direct message</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <form>
+	          <div class="rounded p-1 form-group border border-outline-info" style="width:465px">
+	            테스트중
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="col-form-label">Message:</label>
+	            <textarea class="form-control" id="message-text"></textarea>
+	          </div>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary">Send message</button>
+	        <a href="#"><i class="bi bi-arrow-clockwise text-dark" style="font-size:20px"></i></a>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
 	
 	<script>
 		$(document).ready(function() {
