@@ -130,5 +130,37 @@
 			`userId` = #{userId}
 	</select>
 	
+	<select id="selectsCommisionPostsInfosByUserId" parameterType="int" resultType="com.amita.createType.ex.commision.model.CommisionPost">
+		SELECT
+			`id`
+			,`userId`
+			,`channelId`
+			,`title`
+			,`content`
+			,`category`
+			,`minimumPrice`
+			,`maximumPrice`
+			,`deadline`
+			,`question`
+			,`thumbnail`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`commisionPost`
+		WHERE
+			`userId` = #{userId}
+		ORDER BY
+			`id` DESC
+	</select>
+	
+	<select id="selectCountPosts" parameterType="int" resultType="int">
+		SELECT
+  			count(1)
+  		FROM
+  			`commisionPost`
+  		WHERE
+  			`userId` = #{userId}
+	</select>
+	
 
 </mapper>

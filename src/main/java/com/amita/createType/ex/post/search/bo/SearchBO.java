@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.amita.createType.ex.commision.model.CommisionPost;
+import com.amita.createType.ex.commision.model.CommisionPostDetail;
 import com.amita.createType.ex.post.comment.bo.CommentBO;
 import com.amita.createType.ex.post.like.bo.LikeBO;
 import com.amita.createType.ex.post.model.Post;
@@ -35,7 +37,9 @@ public class SearchBO {
 	@Autowired
 	private CommentBO commentBO;
 	
+
 	
+	// 창작 포스트 검색
 	public List<PostDetail> getSearchListByTitle(String title){
 		
 		List<Post> postList = searchDAO.selectSearchListByPostTitle(title);
@@ -66,6 +70,26 @@ public class SearchBO {
 		return postDetailList;
 	}
 	
+	
+	// 커미션 포스트 검색
+	public List<CommisionPostDetail> getSearchCommisionListByTitle(String title){
+		List<CommisionPost> commisionList = searchDAO.selectSearchCommisionListByPostTitle(title);
+		
+		List<CommisionPostDetail> commisionPostDetailList = new ArrayList<>();
+		
+		for(CommisionPost commisionPost : commisionList) {
+			int userId = commisionPost.getUserId();
+			User user = userBO.getUserInfo(userId);
+			
+			CommisionPostDetail commisionPostDetail = new CommisionPostDetail();
+			commisionPostDetail.setUser(user);
+			commisionPostDetail.setCommisionPost(commisionPost);
+			
+			commisionPostDetailList.add(commisionPostDetail);
+		}
+			
+		return commisionPostDetailList;
+	}
 	
 	
 }

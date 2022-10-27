@@ -109,7 +109,7 @@
 			<%--커미션 컨텐츠 box~ --%>
 			<div class="d-flex">
 				<h4>최신 포스트(커미션)  </h4>
-				<a href="#" style="text-decoration:none"><h4 class="ml-2"><i class="bi bi-plus-square text-dark"></i></h4></a>
+				<a href="/commision/postAll/view?userId=${channel.userId }" style="text-decoration:none"><h4 class="ml-2"><i class="bi bi-plus-square text-dark"></i></h4></a>
 			</div>
 			<c:forEach var="commisionPost" items="${commisionPost }">
 				<div class="mt-4">
@@ -131,7 +131,7 @@
 										<span class="text-dark">#디자인</span> <br>
 									</c:otherwise>
 								</c:choose>
-								<span class="text-dark">가격 <fmt:formatNumber value="${commisionPost.minimumPrice }" type="number"/>원 ~ <fmt:formatNumber value="${commisionPost.minimumPrice }" type="number"/>원</span> <br>
+								<span class="text-dark">가격 <fmt:formatNumber value="${commisionPost.minimumPrice }" type="number"/>원 ~ <fmt:formatNumber value="${commisionPost.maximumPrice }" type="number"/>원</span> <br>
 								<span class="text-dark">${commisionPost.deadline }일 이내 전달</span></a>
 							</div>
 						</div>

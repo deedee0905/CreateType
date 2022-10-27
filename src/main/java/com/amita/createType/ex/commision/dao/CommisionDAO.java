@@ -36,5 +36,11 @@ public interface CommisionDAO {
 	// commisionPost에 저장된 userId를 기반으로 정보를 가져오기
 	public CommisionPost selectCommisionPostInfoByUserId(@Param("userId") int userId);
 	
-
+	// commisionPost에 저장된 userId를 기반으로 정보를 >여러개< 가져오기
+	public List<CommisionPost> selectsCommisionPostsInfosByUserId(@Param("userId") int userId);
+	
+	// commisionPost에 저장된 userId를 기반으로 저장된 포스트의 개수를 세기
+	public int selectCountPosts(@Param("userId") int userId);
+	
+	
 }

@@ -100,6 +100,22 @@ public class CommisionController {
 		
 		return "commision/libraryBookmark";
 	}
+	
+	// 채널 계정주가 작성한 커미션 포스트 전체 view
+	@GetMapping("/postAll/view")
+	public String commisionPostAllView(
+			@RequestParam("userId") int userId
+			, Model model
+			) {
+		
+		List<CommisionPost> postList = commisionBO.getCommisionInfosByUserId(userId);
+		int count = commisionBO.countPosts(userId);
+		
+		model.addAttribute("postList", postList);
+		model.addAttribute("count", count);
+		
+		return "commision/postAll";
+	}
 
 
 }

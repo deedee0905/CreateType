@@ -80,10 +80,19 @@ public class CommisionBO {
 		return commisionDAO.selectCommisionPost(channelId);
 	}
 	
-	// commisionPost에 저장된 userId를 기반으로 정보를 가져오기
+	// commisionPost에 저장된 userId를 기반으로 정보를 >하나씩< 가져오기
 	public CommisionPost getCommisionInfoByUserId(int userId) {
 		return commisionDAO.selectCommisionPostInfoByUserId(userId);
 	}
 	
+	// commisionPost에 저장된 userId를 기반으로 정보를 >여러개< 가져오기
+	public List<CommisionPost> getCommisionInfosByUserId(int userId) {
+		return commisionDAO.selectsCommisionPostsInfosByUserId(userId);
+	}
+	
+	// commisionPost에 저장된 userId를 기반으로 저장된 포스트의 개수를 세기
+	public int countPosts(int userId) {
+		return commisionDAO.selectCountPosts(userId);
+	}
 
 }
