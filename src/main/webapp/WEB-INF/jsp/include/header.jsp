@@ -47,6 +47,7 @@
 											<a class="dropdown-item text-center" href="/individual/profile/view?userId=${userId }&channelId=${channelId}">MY채널</a>
 											<a class="dropdown-item text-center" href="/individual/subscription/view">구독채널</a>
 											<a class="dropdown-item text-center" href="/individual/library/view">보관함</a>
+											<a class="dropdown-item text-center" href="/individual/message/view">메세지</a>
 											<a class="dropdown-item text-center" href="#">마이포인트</a>
 										</div>
 									</div>

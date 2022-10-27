@@ -151,5 +151,11 @@ public class IndividualController {
 		return "individual/payment";
 	}
 	
+	@GetMapping("/message/view")
+	public String dmMessage() {
+		return "individual/message";
+	}
+	
+	
 	
 }
