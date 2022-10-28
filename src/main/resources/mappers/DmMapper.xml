@@ -34,8 +34,8 @@
 		FROM
 			`dm`
 		WHERE
-			`userId` = #{userId}
-			OR `userId` = #{userIdOthers}
+			(`userId` = #{userId} AND `userIdOthers` = #{userIdOthers})
+			OR (`userId` = #{userIdOthers} AND `userIdOthers` = #{userId})
 	</select>
 	
 	
