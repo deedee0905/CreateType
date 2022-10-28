@@ -38,15 +38,14 @@
 					<img class="rounded ml-1" width="90" height="90" alt="채널 프로필" src="${channel.channelImagePath }">
 					<h5 class="font-weight-bold mt-2 ml-1">${channel.channelName }</h5>
 					<div class="d-flex mt-2 mb-3 ml-1">
-						<span class="text-secondary">구독자 ${subscirber }명</span>
+						<span class="text-secondary">구독자 ${subscirber }명</span> 
 						
 						<c:choose>
 							<c:when test="${channelNumber eq channelId }">
 								<a href="/individual/channel/setting/view" class="btn btn-sm btn-primary ml-3 text-white">프로필 편집</a>
 							</c:when>
-							
+
 							<c:otherwise>
-								<button type="button" class="btn btn-outline-secondary ml-3" data-toggle="modal" data-target="#exampleModal">메세지 하기</button>
 							</c:otherwise>
 						</c:choose>
 						
@@ -149,48 +148,6 @@
 		<footer>
 			<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 		</footer>
-	</div>
-	
-	<%--dm 모달 --%>
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel">Direct message</h5>
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
-	      </div>
-	      <div class="modal-body">
-	        <form>
-	          <div class="rounded p-1 form-group border border-outline-info" style="width:465px">
-	            <c:forEach var="dms" items="${dms }">
-		            	<c:choose>
-	            		<c:when test="${dms.userId == userId }">
-		            			<div class="text-right">
-		            				<label class="text-info border border-outline-secondary rounded p-1">${dms.message }</label> <br>
-		            			</div>
-		            		</c:when>
-		            		
-		            		<c:otherwise>
-		            			<label class="border border-outline-secondary rounded p-1">${dms.message }</label> <br>
-		            		</c:otherwise>
-		            	
-		            	</c:choose>
-		            </c:forEach>
-	          </div>
-	          <div class="form-group">
-	            <label for="message-text" class="col-form-label">Message:</label>
-	            <textarea class="form-control" id="message-text"></textarea>
-	          </div>
-	        </form>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	        <button type="button" class="btn btn-primary">Send message</button>
-	      </div>
-	    </div>
-	  </div>
 	</div>
 	
 	

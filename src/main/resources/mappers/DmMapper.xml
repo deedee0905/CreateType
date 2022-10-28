@@ -38,6 +38,16 @@
 			OR (`userId` = #{userIdOthers} AND `userIdOthers` = #{userId})
 	</select>
 	
+	<select id="selectDms" parameterType="int" resultType="com.amita.createType.ex.individual.dm.model.DM">
+		SELECT DISTINCT
+			`userId`
+			,`userIdOthers`
+		FROM
+			`dm`
+		WHERE
+			`userId` = #{userId}
+	</select>
+	
 	
 </mapper>
 

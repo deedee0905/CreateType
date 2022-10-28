@@ -54,7 +54,7 @@ public class IndividualController {
 		Integer userNumber = (Integer)session.getAttribute("userId");
 		
 		if(userNumber != null) {
-			List<DM> dms = dmBO.getDMlist(userNumber, userId);
+			List<DM> dms = dmBO.getDmList(userNumber, userId);
 			model.addAttribute("dms", dms);
 		}
 		
@@ -118,7 +118,7 @@ public class IndividualController {
 		
 		if(userNumber != null) {
 			int userIdOther = channel.getUserId();
-			List<DM> dms = dmBO.getDMlist(userNumber, userIdOther);
+			List<DM> dms = dmBO.getDmList(userNumber, userIdOther);
 			model.addAttribute("dms", dms);
 		}
 		

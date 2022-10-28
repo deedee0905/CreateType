@@ -33,35 +33,24 @@
 			</div>
 			
 			<div class="d-flex justify-content-center">
-			
-			
-			
-			<div>
-				
-				<div class="text-center mb-3"><h4>메세지 목록</h4></div>
-			
-				<div class="mt-1 mb-1 border border-outline-secondary p-3">
-					<div class="d-flex">
-						<a href="#">
-							<img data-toggle="modal" data-target="#exampleModal" class="rounded" width="50" height="50" alt="프로필사진" src="https://cdn.pixabay.com/photo/2022/09/22/08/09/halloween-7471880_960_720.png">
-							<label data-toggle="modal" data-target="#exampleModal" class="mt-2 ml-3 font-weight-bold text-dark">유저이름(김씨)</label>
-						</a>
+				<div>
+					
+					<div class="text-center mb-3"><h4>메세지 목록</h4></div>
+					
+					<div>
+						<c:forEach var="dms" items="${dms }">
+							<div class="mt-1 mb-1 border border-outline-secondary p-3">
+								<div class="d-flex" >
+									<a href="#" style="text-decoration:none" data-userId-others=${dms.dm.userIdOthers } class="dmModal">
+										<img  data-toggle="modal" data-target="#exampleModal" class="rounded" width="50" height="50" alt="프로필사진" src="${dms.user.profileImagePath }">
+										<label data-toggle="modal" data-target="#exampleModal" class="mt-2 ml-3 font-weight-bold text-dark">${dms.user.nickname }</label> 
+										<label class="text-dark">님과의 대화목록</label> 
+									</a>
+								</div>
+							</div>
+						</c:forEach>
 					</div>
-				</div>
-				
-				<div class="mt-1 mb-1 border border-outline-secondary p-3">
-					<div class="d-flex">
-						<img data-toggle="modal" data-target="#exampleModal" class="rounded" width="50" height="50" alt="프로필사진" src="https://cdn.pixabay.com/photo/2022/09/22/08/09/halloween-7471880_960_720.png">
-						<label data-toggle="modal" data-target="#exampleModal" class="mt-2 ml-3 font-weight-bold">유저이름(이씨)</label>
-					</div>
-				</div>
-				
-				<div class="mt-1 mb-1 border border-outline-secondary p-3">
-					<div class="d-flex">
-						<img data-toggle="modal" data-target="#exampleModal" class="rounded" width="50" height="50" alt="프로필사진" src="https://cdn.pixabay.com/photo/2022/09/22/08/09/halloween-7471880_960_720.png">
-						<label data-toggle="modal" data-target="#exampleModal" class="mt-2 ml-3 font-weight-bold">유저이름(박씨)</label>
-					</div>
-				</div>
+					
 				</div>
 			</div>
 			
@@ -86,22 +75,7 @@
 	      <div class="modal-body">
 	        <form>
 	          <div class="rounded p-1 form-group border border-outline-info" style="width:465px">
-	            <c:forEach var="dms" items="${dms }">
-	            	<c:choose>
-	            		<c:when test="${dms.userId == userId }">
-	            			<div>
-	            				<label class="text-info">${dms.message }</label> <br>
-	            			</div>
-	            		</c:when>
-	            		
-	            		<c:otherwise>
-	            			<label>${dms.message }</label> <br>
-	            		</c:otherwise>
-	            	
-	            	</c:choose>
-	            	
-
-	            </c:forEach>
+	            메세지
 	          </div>
 	          <div class="form-group">
 	            <label for="message-text" class="col-form-label">Message:</label>
@@ -111,12 +85,43 @@
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	        <button type="button" class="btn btn-primary">Send message</button>
+	        <button id="messageSaveBtn" type="button" class="btn btn-primary" data-userIdOthers="">Send message</button>
 	      </div>
 	    </div>
 	  </div>
 	</div>
 	
+	<script>
+		$(document).ready(function() {
+			
+			$(".dmModal").on("click", function(e) {
+				e.preventDefault();
+				
+				let userIdOthers = $(this).data("userId-others");
+				
+				alert(userIdOthers);
+				return;
+				
+				$("#messageSaveBtn").data("userIdOthers", userIdOthers);
+				
+			});
+			
+			$("#messageSaveBtn").on("click", function() {
+				
+				let data = $("#messageSaveBtn").data("userId-others");
+				
+				alert("ㅇ_ㅇ");
+				return;
+				
+			});
+			
+			
+			$
+			
+			
+		});
+	
+	</script>
 
 </body>
 </html>

@@ -23,5 +23,9 @@ public interface DmDAO {
 			@Param("userId") int userId
 			, @Param("userIdOthers") int userIdOthers
 			);
+	
+	// userId로 userIdOthers 숫자를 가져오기
+	public List<DM> selectDms(@Param("userId") int userId);
+	
 
 }
