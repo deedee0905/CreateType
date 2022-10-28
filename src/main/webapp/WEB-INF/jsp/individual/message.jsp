@@ -41,9 +41,9 @@
 						<c:forEach var="dms" items="${dms }">
 							<div class="mt-1 mb-1 border border-outline-secondary p-3">
 								<div class="d-flex" >
-									<a href="#" style="text-decoration:none" data-userId-others=${dms.dm.userIdOthers } class="dmModal">
-										<img  data-toggle="modal" data-target="#exampleModal" class="rounded" width="50" height="50" alt="프로필사진" src="${dms.user.profileImagePath }">
-										<label data-toggle="modal" data-target="#exampleModal" class="mt-2 ml-3 font-weight-bold text-dark">${dms.user.nickname }</label> 
+									<a href="#" data-userId-others="${dms.dm.userIdOthers }" style="text-decoration:none" class="dmModal" data-toggle="modal" data-target="#exampleModal">
+										<img   class="rounded" width="50" height="50" alt="프로필사진" src="${dms.user.profileImagePath }">
+										<label class="mt-2 ml-3 font-weight-bold text-dark">${dms.user.nickname }</label> 
 										<label class="text-dark">님과의 대화목록</label> 
 									</a>
 								</div>
@@ -85,7 +85,7 @@
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	        <button id="messageSaveBtn" type="button" class="btn btn-primary" data-userIdOthers="">Send message</button>
+	        <button id="messageSaveBtn" type="button" class="btn btn-primary">Send message</button>
 	      </div>
 	    </div>
 	  </div>
@@ -94,15 +94,19 @@
 	<script>
 		$(document).ready(function() {
 			
+			
+			
+			
 			$(".dmModal").on("click", function(e) {
 				e.preventDefault();
+				let test = $(this).data("userId-others");
 				
-				let userIdOthers = $(this).data("userId-others");
 				
-				alert(userIdOthers);
+				alert(test);
 				return;
+	
 				
-				$("#messageSaveBtn").data("userIdOthers", userIdOthers);
+				$("#messageSaveBtn").data("userId-others");
 				
 			});
 			
@@ -110,8 +114,7 @@
 				
 				let data = $("#messageSaveBtn").data("userId-others");
 				
-				alert("ㅇ_ㅇ");
-				return;
+				
 				
 			});
 			
