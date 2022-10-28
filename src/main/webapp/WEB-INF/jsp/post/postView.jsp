@@ -136,8 +136,10 @@
 							<a href="/individual/profile/view?userId=${comment.user.id }&channelId=${comment.comment.channelId }">
 								<img class="rounded" width="50" height="50" alt="프로필 사진" src="${comment.user.profileImagePath }">
 							</a>	
-								<span class="font-weight-bold ml-2 mt-2">${comment.user.nickname}</span>
-									<span class="ml-1 mt-2">${comment.comment.comment }</span>
+								<a href="/individual/profile/view?userId=${comment.user.id }&channelId=${comment.comment.channelId }" style="text-decoration:none">
+									<label class="font-weight-bold ml-2 mt-2 text-dark">${comment.user.nickname}</label>
+								</a>
+									<label class="ml-1 mt-2">${comment.comment.comment }</label>
 							</div>
 							
 							<c:choose>

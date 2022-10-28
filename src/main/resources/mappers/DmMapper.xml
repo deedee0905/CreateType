@@ -35,7 +35,7 @@
 			`dm`
 		WHERE
 			`userId` = #{userId}
-			OR `userIdOthers` = #{userIdOthers}
+			OR `userId` = #{userIdOthers}
 	</select>
 	
 	

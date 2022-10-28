@@ -151,7 +151,7 @@
 		</footer>
 	</div>
 	
-	<%-- 모달 --%>
+	<%--dm 모달 --%>
 	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
@@ -164,7 +164,20 @@
 	      <div class="modal-body">
 	        <form>
 	          <div class="rounded p-1 form-group border border-outline-info" style="width:465px">
-	            테스트중
+	            <c:forEach var="dms" items="${dms }">
+		            	<c:choose>
+	            		<c:when test="${dms.userId == userId }">
+		            			<div class="text-right">
+		            				<label class="text-info border border-outline-secondary rounded p-1">${dms.message }</label> <br>
+		            			</div>
+		            		</c:when>
+		            		
+		            		<c:otherwise>
+		            			<label class="border border-outline-secondary rounded p-1">${dms.message }</label> <br>
+		            		</c:otherwise>
+		            	
+		            	</c:choose>
+		            </c:forEach>
 	          </div>
 	          <div class="form-group">
 	            <label for="message-text" class="col-form-label">Message:</label>
@@ -175,7 +188,6 @@
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 	        <button type="button" class="btn btn-primary">Send message</button>
-	        <a href="#"><i class="bi bi-arrow-clockwise text-dark" style="font-size:20px"></i></a>
 	      </div>
 	    </div>
 	  </div>

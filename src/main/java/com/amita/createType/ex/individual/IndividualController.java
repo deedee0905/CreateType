@@ -104,6 +104,7 @@ public class IndividualController {
 	public String channeMainlView(
 			@RequestParam("channelId") int channelId
 			,Model model
+			, HttpServletRequest request
 			) {
 		
 		
@@ -111,6 +112,16 @@ public class IndividualController {
 		int subscirber = individualBO.countSubscriber(channelId);
 		List<ChannelViewDetail> postList = individualBO.getPostList(channelId);
 		List<CommisionPost> commisionPost = commisionBO.getCommisionPostList(channelId);
+		
+		HttpSession session = request.getSession();
+		Integer userNumber = (Integer)session.getAttribute("userId");
+		
+		if(userNumber != null) {
+			int userIdOther = channel.getUserId();
+			List<DM> dms = dmBO.getDMlist(userNumber, userIdOther);
+			model.addAttribute("dms", dms);
+		}
+		
 		
 		model.addAttribute("channel", channel);
 		model.addAttribute("subscirber", subscirber);
