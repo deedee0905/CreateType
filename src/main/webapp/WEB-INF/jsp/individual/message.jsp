@@ -87,7 +87,20 @@
 	        <form>
 	          <div class="rounded p-1 form-group border border-outline-info" style="width:465px">
 	            <c:forEach var="dms" items="${dms }">
-	            	<label>${dms.message }</label> <br>
+	            	<c:choose>
+	            		<c:when test="${dms.userId == userId }">
+	            			<div>
+	            				<label class="text-info">${dms.message }</label> <br>
+	            			</div>
+	            		</c:when>
+	            		
+	            		<c:otherwise>
+	            			<label>${dms.message }</label> <br>
+	            		</c:otherwise>
+	            	
+	            	</c:choose>
+	            	
+
 	            </c:forEach>
 	          </div>
 	          <div class="form-group">
@@ -99,7 +112,6 @@
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 	        <button type="button" class="btn btn-primary">Send message</button>
-	        <a href="#"><i class="bi bi-arrow-clockwise text-dark" style="font-size:20px"></i></a>
 	      </div>
 	    </div>
 	  </div>

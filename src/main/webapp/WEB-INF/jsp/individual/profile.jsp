@@ -42,6 +42,12 @@
 								<a href="/individual/profile/setting/view" class="btn btn-outline-secondary mt-3 mb-5">프로필 편집</a>
 							</c:when>
 							
+							<c:when test="${userNumber eq null }">
+								<div class="text-center mt-3">
+									메세지 기능은 로그인한 이용자만 이용할 수 있습니다.
+								</div>
+							</c:when>
+							
 							<c:otherwise>
 								<button id="messageBtn" type="button" class="btn btn-outline-primary mt-2" data-toggle="modal" data-target="#exampleModal">메세지 하기</button>
 							</c:otherwise>
@@ -108,16 +114,29 @@
 		        </button>
 		      </div>
 		      <div class="modal-body">
-		        <form>
-		          <div class="rounded p-1 form-group border border-outline-info" style="width:465px">
-		            테스트중
+		          <div class="rounded p-1 border border-outline-info" style="width:465px">
+		            <c:forEach var="dms" items="${dms }">
+		            	<c:choose>
+	            		<c:when test="${dms.userId == userId }">
+		            			<div class="text-right">
+		            				<label class="text-info border border-outline-secondary rounded p-1">${dms.message }</label> <br>
+		            			</div>
+		            		</c:when>
+		            		
+		            		<c:otherwise>
+		            			<label class="border border-outline-secondary rounded p-1">${dms.message }</label> <br>
+		            		</c:otherwise>
+		            	
+		            	</c:choose>
+		            </c:forEach>
 		          </div>
 		          <div class="form-group">
 		          	<label>Message:</label>
 		            <textarea id="messageInput" class="form-control" id="message-text"></textarea>
 		          </div>
-		        </form>
+  
 		      </div>
+		      
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 		        <button id="saveBtn" type="button" class="btn btn-primary">Send message</button>
@@ -130,19 +149,7 @@
 	<script>
 		$(document).ready(function() {
 			
-			$("#messageBtn").on("click", function(e) {
-				e.preventDefault();
-				
-				let channelId = ${channelId};
-				
-				if(channelId == null){
-					alert("테스트");
-					return;
-				}
-				
-				
-				
-			});
+		
 			
 			$("#saveBtn").on("click", function(e) {
 				e.preventDefault();
@@ -163,7 +170,6 @@
 					, success: function(data){
 						
 						if(data.result == "success"){
-							alert("메세지 보내기 성공");
 							location.reload();
 							return;
 						} else {

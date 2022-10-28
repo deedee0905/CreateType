@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.amita.createType.ex.commision.bo.CommisionBO;
 import com.amita.createType.ex.commision.model.CommisionPost;
 import com.amita.createType.ex.individual.bo.IndividualBO;
+import com.amita.createType.ex.individual.dm.bo.DmBO;
+import com.amita.createType.ex.individual.dm.model.DM;
 import com.amita.createType.ex.individual.model.Channel;
 import com.amita.createType.ex.individual.model.ChannelViewDetail;
 import com.amita.createType.ex.individual.model.LibraryDetail;
@@ -34,6 +36,9 @@ public class IndividualController {
 	
 	@Autowired
 	private CommisionBO commisionBO;
+	
+	@Autowired
+	private DmBO dmBO;
 
 	
 	// 유저탭 > MY채널 view
@@ -42,7 +47,17 @@ public class IndividualController {
 			@RequestParam("userId") int userId
 			, @RequestParam("channelId") Integer channelId
 			, Model model
+			,HttpServletRequest request
 			) {
+		
+		HttpSession session = request.getSession();
+		Integer userNumber = (Integer)session.getAttribute("userId");
+		
+		if(userNumber != null) {
+			List<DM> dms = dmBO.getDMlist(userNumber, userId);
+			model.addAttribute("dms", dms);
+		}
+		
 		
 		
 		if(channelId == null) {
@@ -60,6 +75,8 @@ public class IndividualController {
 		
 		model.addAttribute("user", user);
 		model.addAttribute("id", userId);
+		model.addAttribute("userNumber", userNumber);
+		
 		
 		
 		return "individual/profile";
