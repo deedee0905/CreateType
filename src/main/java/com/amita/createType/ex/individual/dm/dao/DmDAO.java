@@ -29,8 +29,11 @@ public interface DmDAO {
 	// userId로 userIdOthers 숫자를 가져오기
 	public List<DM> selectDms(@Param("userId") int userId);
 	
-	public DM selectUserIdOthersByUserId(@Param("userId") int userId);
-	
+	// 특정 dm 메세지 delete
+	public int deleteDmMessage(
+			@Param("userId") int userId
+			, @Param("id") int id
+			);
 	
 
 }

@@ -51,6 +51,10 @@ public class DmBO {
 		return dmDetailList;
 	}
 	
+	// 특정 dm 메세지 delete
+	public int deleteMessage(int userId, int id) {
+		return dmDAO.deleteDmMessage(userId, id);
+	}
 	
 	
 }

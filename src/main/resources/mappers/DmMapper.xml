@@ -48,19 +48,15 @@
 			`userId` = #{userId}
 	</select>
 	
-	<select id="selectUserIdOthersByUserId" parameterType="int" resultType="com.amita.createType.ex.individual.dm.model.DM">
-		SELECT
-			`id`
-			,`userId`
-			,`userIdOthers`
-			,`message`
-			,`createdAt`
-		FROM
+	
+	<delete	id="deleteDmMessage" parameterType="map">
+		DELETE FROM
 			`dm`
 		WHERE
 			`userId` = #{userId}
+			AND `id` = #{id}
 	
-	</select>
+	</delete>
 	
 	
 </mapper>

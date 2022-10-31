@@ -32,7 +32,8 @@
 		            <c:forEach	var="messageList" items="${messageList }">
 		            	<c:choose>
 	            			<c:when test="${messageList.userId == userId }">
-		            			<div class="text-right">
+		            			<div class="text-right message">
+		  							<i data-id="${messageList.id }" class="bi bi-x messageDeleteBtn text-secondary" data-toggle="modal" data-target="#exampleModal"></i>
 		            				<label class="text-info border border-outline-secondary rounded p-1">${messageList.message }</label> <br>
 		            			</div>
 		            		</c:when>
@@ -58,9 +59,67 @@
 			<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 		</footer>
 	</div>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">메세지 삭제하기</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        해당 메시지를 삭제하시겠습니까? <br>
+	        삭제된 메시지는 복구할 수 없습니다.
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+	        <button id="deleteBtn" type="button" class="btn btn-danger">삭제하기</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 
 	<script>
 		$(document).ready(function() {
+			
+			$("#deleteBtn").on("click", function(e) {
+				e.preventDefault();
+				
+				let id = $(this).data("id");
+				
+				$.ajax({
+					type:"get"
+					, url:"/individual/message/delete"
+					, data:{"id":id}
+					, success: function(data){
+						if(data.result == "success"){
+							location.reload();
+							return;
+						} else {
+							alert("메세지 삭제 실패");
+							return;
+						}
+					}
+					, error: function(){
+						alert("메세지 삭제 에러");
+						return;
+					}
+					
+				});
+				
+			});
+			
+			$(".messageDeleteBtn").on("click", function(e) {
+				e.preventDefault();
+				
+				let id = $(this).data("id")
+				
+				$("#deleteBtn").data("id", id);
+				
+			});
 			
 			$("#saveBtn").on("click", function(e) {
 				e.preventDefault();
