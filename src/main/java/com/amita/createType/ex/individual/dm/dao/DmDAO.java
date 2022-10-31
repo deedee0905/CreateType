@@ -18,14 +18,19 @@ public interface DmDAO {
 			, @Param("message") String message
 			);
 	
-	// dm 메세지 읽어오기
+	// dm 메세지 리스트를 읽어오기
 	public List<DM> selectMessageList(
 			@Param("userId") int userId
 			, @Param("userIdOthers") int userIdOthers
 			);
 	
+
+	
 	// userId로 userIdOthers 숫자를 가져오기
 	public List<DM> selectDms(@Param("userId") int userId);
+	
+	public DM selectUserIdOthersByUserId(@Param("userId") int userId);
+	
 	
 
 }

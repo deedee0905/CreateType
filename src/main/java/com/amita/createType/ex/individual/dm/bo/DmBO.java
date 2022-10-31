@@ -26,10 +26,11 @@ public class DmBO {
 		return dmDAO.insertMessage(userId, userIdOthers, message);
 	}
 	
-	// dm 메세지 내역을 읽어오기
+	// dm 메세지 내역을 리스트로 읽어오기
 	public List<DM> getDmList(int userId, int userIdOthers){
 		return dmDAO.selectMessageList(userId, userIdOthers);
 	}
+
 	
 	// 유저 - 유저 메세지의 유뮤를 읽어오기
 	public List<DmDetail> getDms(int userId){
@@ -49,5 +50,7 @@ public class DmBO {
 		
 		return dmDetailList;
 	}
+	
+	
 	
 }

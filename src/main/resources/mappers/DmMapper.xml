@@ -48,6 +48,20 @@
 			`userId` = #{userId}
 	</select>
 	
+	<select id="selectUserIdOthersByUserId" parameterType="int" resultType="com.amita.createType.ex.individual.dm.model.DM">
+		SELECT
+			`id`
+			,`userId`
+			,`userIdOthers`
+			,`message`
+			,`createdAt`
+		FROM
+			`dm`
+		WHERE
+			`userId` = #{userId}
+	
+	</select>
+	
 	
 </mapper>
 

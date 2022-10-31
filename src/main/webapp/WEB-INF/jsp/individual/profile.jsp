@@ -140,7 +140,6 @@
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 		        <button id="saveBtn" type="button" class="btn btn-primary">Send message</button>
-		        <a href="#"><i class="bi bi-arrow-clockwise text-dark" style="font-size:20px"></i></a>
 		      </div>
 		    </div>
 		  </div>
