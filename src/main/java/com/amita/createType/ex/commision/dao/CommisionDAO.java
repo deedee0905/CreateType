@@ -42,5 +42,13 @@ public interface CommisionDAO {
 	// commisionPost에 저장된 userId를 기반으로 저장된 포스트의 개수를 세기
 	public int selectCountPosts(@Param("userId") int userId);
 	
+	// 커미션 포스트 신청 insert
+	public int insertCommisionProposal(
+			@Param("userId") int userId
+			, @Param("commisionPostId") int commisionPostId
+			, @Param("postUserId") int postUserId
+			, @Param("content") String content
+			);
+	
 	
 }

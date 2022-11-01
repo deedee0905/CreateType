@@ -162,5 +162,29 @@
   			`userId` = #{userId}
 	</select>
 	
+	<select id="insertCommisionProposal" parameterType="int">
+		INSERT INTO
+			`commisionProposal`
+		(
+			`userId`
+			,`commisionPostId`
+			,`postUserId`
+			,`content`
+			,`createdAt`
+			,`updatedAt`
+		)
+		VALUES
+		(
+			#{userId}
+			, #{commisionPostId}
+			, #{postUserId}
+			, #{content}
+			, now()
+			, now()
+		)
+		
+	
+	</select>
+	
 
 </mapper>

@@ -119,7 +119,14 @@ public class CommisionController {
 	
 	// 커미션 신청 view 페이지
 	@GetMapping("/proposal/view")
-	public String commisionProposalView() {
+	public String commisionProposalView(
+			@RequestParam("commisionPostId") int commisionPostId
+			, @RequestParam("userId") int userId
+			, Model model
+			) {
+		
+		model.addAttribute("commisionPostId", commisionPostId);
+		model.addAttribute("commisionUserId", userId);
 		
 		return "commision/commisionProposal";
 	}

@@ -17,6 +17,9 @@
 
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
+	
+	
+	
 <title>New Commision Post</title>
 
 	<!-- include libraries(jQuery, bootstrap) -->

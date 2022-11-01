@@ -75,7 +75,19 @@
 							<%-- 버튼 높이 맞추기용 --%>
 						</div>
 						
-						<a class="btn btn-dark btn-lg form-control mt-5 text-white" style="position:relative; bottom:50;">신청하기</a>
+						<c:choose>
+							<c:when test="${userId != null }">
+								<a href="/commision/proposal/view?commisionPostId=${postInfo.id }&userId=${postInfo.userId}" class="btn btn-dark btn-lg form-control mt-5 text-white" style="position:relative; bottom:50;">
+									신청하기
+								</a>
+							</c:when>
+							
+							<c:otherwise>
+								<a id="notLoginInsertBtn" class="btn btn-dark btn-lg form-control mt-5 text-white" style="position:relative; bottom:50;">신청하기</a>
+							</c:otherwise>
+						</c:choose>
+						
+						
 					</div>
 				</div>
 			</div>
@@ -99,6 +111,15 @@
 	
 	<script>
 		$(document).ready(function() {
+			
+			
+			$("#notLoginInsertBtn").on("click", function(e) {
+				e.preventDefault();
+				
+				alert("로그인한 이용자만 신청이 가능합니다.");
+				return;
+				
+			});
 			
 			$("#bookmarkInsert").on("click", function(e) {
 				e.preventDefault();

@@ -92,7 +92,13 @@ public class CommisionBO {
 	
 	// commisionPost에 저장된 userId를 기반으로 저장된 포스트의 개수를 세기
 	public int countPosts(int userId) {
-		return commisionDAO.selectCountPosts(userId);
+		return commisionDAO.selectCountPosts(userId); 
 	}
+	
+	// 커미션 포스트 신청 insert
+	public int commisionProposal(int userId, int commisionPostId, int postUserId, String content) {
+		return commisionDAO.insertCommisionProposal(userId, commisionPostId, postUserId, content);
+	}
+	
 
 }

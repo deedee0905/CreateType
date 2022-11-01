@@ -22,6 +22,7 @@ public class CommisionRestController {
 	@Autowired
 	private CommisionBO commisionBO;
 	
+	// 커미션 포스트 insert
 	@PostMapping("/postCreate")
 	public Map<String, String> addNewPost(
 			HttpServletRequest request
@@ -51,5 +52,31 @@ public class CommisionRestController {
 		
 		return result;
 	}
+	
+	// 커미션 포스트 신청 insert
+	@PostMapping("/proposal")
+	public Map<String, String> commisionProposalInsert(
+			HttpServletRequest request
+			, @RequestParam("commisionPostId") int commisionPostId
+			, @RequestParam("postUserId") int postUserId
+			, @RequestParam("content") String content
+			){
+		
+		HttpSession session = request.getSession();
+		int userId = (Integer)session.getAttribute("userId");
+		
+		int count = commisionBO.commisionProposal(userId, commisionPostId, postUserId, content);
+		
+		Map<String, String> result = new HashMap<>();
+		
+		if(count == 1) {
+			result.put("result", "success");
+		} else {
+			result.put("result", "fail");
+		}
+		
+		return result;
+	}
+	
 	
 }
