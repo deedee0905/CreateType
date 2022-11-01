@@ -89,9 +89,6 @@
 							<span class="font-weight-bold text-dark mb-2" style="font-size:20px;">${post.post.title }</span>
 						</a> <br>
 
-						<a href="/post/create/postObject/view?id=${post.post.id }&channelId=${post.post.channelId}" style="text-decoration: none" class="text-dark" class="mt-2">
-							${post.post.content }
-						</a>
 						<hr>
 						<span><i class="bi bi-heart-fill text-danger"></i></span>
 						<label>${post.likeCount }</label>

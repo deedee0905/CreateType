@@ -43,7 +43,6 @@
 			</div>
 			<div class="mr-2 mt-4">
 				
-				<a id="saveBtn" href="#" style="text-decoration: none; font-size:20px" class="text-secondary">저장</a>
 				<a href="#" style="text-decoration: none; font-size:20px" class="text-secondary ml-3" data-target="#modal" data-toggle="modal">발행<i class="ml-1 bi bi-three-dots"></i></a>
 			</div>
 		</header>
@@ -142,9 +141,31 @@
 				minHeight : null, 
 				maxHeight : null, 
 				focus : true,
-				lang : 'ko-KR'
+				lang : 'ko-KR',
+				callbacks: {
+				    onImageUpload: function(files) {
+				    	uploadSummernoteImageFile(files[0],this);
+				    }
+				  }
 				
 			});
+				
+			function uploadSummernoteImageFile(file, editor) {
+				data = new FormData();
+				data.append("file", file);
+				$.ajax({
+					data : data,
+					type : "POST",
+					url : "/post/uploadSummernoteImageFile",
+					contentType : false,
+					processData : false,
+					enctype : 'multipart/form-data',
+					success : function(data) {
+		            	//항상 업로드된 파일의 url이 있어야 한다.
+						$(editor).summernote('insertImage', data.url);
+					}
+				});
+			}
     
 	   
 	    $(".reservation").on("click", function() {
@@ -158,11 +179,7 @@
 			  
 		  });
 		  
-		  $("#saveBtn").on("click", function() {
-			  alert("저장 완료");
-			  return;
-		  });
-		  
+
 		  $("#publishBtn").on("click", function() {
 				 let title = $("#titleInput").val();
 				 let subtitle = $("#subtitleInput").val();

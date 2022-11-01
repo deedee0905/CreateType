@@ -29,6 +29,9 @@ dependencies {
 	// jsp 연동 라이브러리
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
   	implementation 'javax.servlet:jstl'
+  	
+  	// json 라이브러리
+  	implementation group: 'org.json', name: 'json', version: '20090211'
 	
 }
 

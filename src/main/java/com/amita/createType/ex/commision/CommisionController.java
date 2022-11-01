@@ -116,6 +116,15 @@ public class CommisionController {
 		
 		return "commision/postAll";
 	}
+	
+	// 커미션 신청 view 페이지
+	@GetMapping("/proposal/view")
+	public String commisionProposalView() {
+		
+		return "commision/commisionProposal";
+	}
+	
+	
 
 
 }

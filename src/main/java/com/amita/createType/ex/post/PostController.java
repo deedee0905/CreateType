@@ -1,10 +1,15 @@
 package com.amita.createType.ex.post;
 
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 
 import com.amita.createType.ex.individual.bo.IndividualBO;
 import com.amita.createType.ex.individual.model.Channel;
@@ -149,7 +155,7 @@ public class PostController {
 			@RequestParam("userId") int userId
 			, Model model
 			) {
-		
+	
 		
 		List<PostDetail> postList = postBO.getAllPostListByUserId(userId);
 		int postCount = postBO.postCount(userId);
@@ -160,6 +166,8 @@ public class PostController {
 		return "post/postAll";
 	}
 	
-	
 
+	
+	
+	
 }
