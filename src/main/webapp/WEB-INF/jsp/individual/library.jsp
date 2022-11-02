@@ -56,9 +56,6 @@
 							<span class="font-weight-bold text-dark mb-2" style="font-size:20px;">${likeList.post.title }</span>
 						</a> <br>
 		
-						<a href="/post/create/postObject/view?id=${likeList.post.id }&channelId=${likeList.post.channelId}" style="text-decoration: none" class="text-dark" class="mt-2">
-							${likeList.post.content }
-						</a>
 						<hr>
 						<div class="d-flex justify-content-between">
 							<div>

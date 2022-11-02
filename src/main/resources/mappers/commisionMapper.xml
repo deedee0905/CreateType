@@ -170,6 +170,7 @@
 			,`commisionPostId`
 			,`postUserId`
 			,`content`
+			,`processing`
 			,`createdAt`
 			,`updatedAt`
 		)
@@ -179,6 +180,7 @@
 			, #{commisionPostId}
 			, #{postUserId}
 			, #{content}
+			, #{processing}
 			, now()
 			, now()
 		)
@@ -207,6 +209,27 @@
 			`id` = #{id}
 	
 	</select>
+	
+	<select id="selectCommisionProposalList" parameterType="int" resultType="com.amita.createType.ex.commision.model.CommisionProposal">
+		SELECT
+			`id`
+			,`userId`
+			,`commisionPostId`
+			,`postUserId`
+			,`content`
+			,`processing`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`commisionProposal`
+		WHERE
+			`userId` = #{userId}
+		ORDER BY
+			`id` DESC
+		
+	</select>
+	
+
 	
 
 </mapper>

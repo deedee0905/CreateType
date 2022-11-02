@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.amita.createType.ex.commision.model.CommisionPost;
+import com.amita.createType.ex.commision.model.CommisionProposal;
 
 @Repository
 public interface CommisionDAO {
@@ -48,9 +49,15 @@ public interface CommisionDAO {
 			, @Param("commisionPostId") int commisionPostId
 			, @Param("postUserId") int postUserId
 			, @Param("content") String content
+			, @Param("processing") String processing
 			);
 	
 	// 커미션 포스트 아이디로 해당 포스트의 정보를 얻기
 	public CommisionPost selectPostInfoByCommisionPostId(@Param("id") int id);
+	
+	// 신청한 커미션 포스트 detail List
+	public List<CommisionProposal> selectCommisionProposalList(@Param("userId") int userId);
+	
+	
 	
 }

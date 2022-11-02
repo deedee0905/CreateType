@@ -83,6 +83,7 @@
 			let commisionPostId = ${commisionPostId}
 			let postUserId = ${commisionUserId}
 			let content = $("#summernote").summernote("code");
+			let processing = "신청내역 확인 전";
 			
 			if(content == "" || content == ("<p><br></p>")){
 				 alert("내용을 입력하세요");
@@ -93,7 +94,7 @@
 			$.ajax({
 				type:"post"
 				, url:"/commision/proposal"
-				, data:{"commisionPostId":commisionPostId, "postUserId":postUserId ,"content":content}
+				, data:{"commisionPostId":commisionPostId, "postUserId":postUserId ,"content":content, "processing":processing}
 				, success: function(data){
 					if(data.result == "success"){
 						alert("커미션 신청 성공");

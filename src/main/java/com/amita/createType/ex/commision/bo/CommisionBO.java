@@ -10,6 +10,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.amita.createType.ex.commision.dao.CommisionDAO;
 import com.amita.createType.ex.commision.model.CommisionPost;
 import com.amita.createType.ex.commision.model.CommisionPostDetail;
+import com.amita.createType.ex.commision.model.CommisionProposal;
+import com.amita.createType.ex.commision.model.CommisionProposalDetail;
 import com.amita.createType.ex.common.FileManagerService;
 import com.amita.createType.ex.user.bo.UserBO;
 import com.amita.createType.ex.user.model.User;
@@ -96,9 +98,9 @@ public class CommisionBO {
 	}
 	
 	// 커미션 포스트 신청 insert
-	public int commisionProposal(int userId, int commisionPostId, int postUserId, String content) {
+	public int commisionProposal(int userId, int commisionPostId, int postUserId, String content, String processing) {
 		
-		return commisionDAO.insertCommisionProposal(userId, commisionPostId, postUserId, content);
+		return commisionDAO.insertCommisionProposal(userId, commisionPostId, postUserId, content, processing);
 	}
 	
 	// 커미션 포스트 아이디로 해당 포스트의 정보를 얻기
@@ -106,5 +108,33 @@ public class CommisionBO {
 		return commisionDAO.selectCommisionPostInfoByPostId(commisionPostId);
 	}
 	
+	// 신청한 커미션 포스트 List
+	public List<CommisionProposal> getCommisionProposalList(int userId){
+		return commisionDAO.selectCommisionProposalList(userId);
+	}
+	
+	// 신청한 커미션 포스트 Detail List
+	public List<CommisionProposalDetail> getCommisionProposalDetailList(int userId){
+		List<CommisionProposal> commisionProposalList = commisionDAO.selectCommisionProposalList(userId);
+		
+		List<CommisionProposalDetail> commisionProposalDetail = new ArrayList<>();
+		
+		for(CommisionProposal commisionProposal : commisionProposalList) {
+			int commisionPostId = commisionProposal.getCommisionPostId();
+			int postUserId = commisionProposal.getPostUserId();
+			
+			CommisionPost commisionPost = commisionDAO.selectPostInfoByCommisionPostId(commisionPostId);
+			User user = userBO.getUserInfo(userId);
+			
+			CommisionProposalDetail commisionDetail = new CommisionProposalDetail();
+			
+			commisionDetail.setCommisionPost(commisionPost);
+			commisionDetail.setUser(user);
+			commisionDetail.setCommisionProposal(commisionProposal);
+			
+			commisionProposalDetail.add(commisionDetail);
+		}
+		return commisionProposalDetail;
+	}
 
 }

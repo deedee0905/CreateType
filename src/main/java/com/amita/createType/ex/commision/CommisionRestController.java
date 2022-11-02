@@ -60,12 +60,13 @@ public class CommisionRestController {
 			, @RequestParam("commisionPostId") int commisionPostId
 			, @RequestParam("postUserId") int postUserId
 			, @RequestParam("content") String content
+			, @RequestParam("processing") String processing
 			){
 		
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
 		
-		int count = commisionBO.commisionProposal(userId, commisionPostId, postUserId, content);
+		int count = commisionBO.commisionProposal(userId, commisionPostId, postUserId, content, processing);
 		
 		Map<String, String> result = new HashMap<>();
 		

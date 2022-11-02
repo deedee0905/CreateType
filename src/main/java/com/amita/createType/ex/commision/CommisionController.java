@@ -17,6 +17,7 @@ import com.amita.createType.ex.commision.bookmark.bo.BookmarkBO;
 import com.amita.createType.ex.commision.bookmark.model.BookmarkDetail;
 import com.amita.createType.ex.commision.model.CommisionPost;
 import com.amita.createType.ex.commision.model.CommisionPostDetail;
+import com.amita.createType.ex.commision.model.CommisionProposalDetail;
 import com.amita.createType.ex.user.bo.UserBO;
 import com.amita.createType.ex.user.model.User;
 
@@ -136,8 +137,28 @@ public class CommisionController {
 		return "commision/commisionProposal";
 	}
 	
-
+	// 신청한 커미션 List view 페이지
+	@GetMapping("/applied/view")
+	public String commisionAppliedView(
+			HttpServletRequest request
+			, Model model
+			) {
+		
+		HttpSession session = request.getSession();
+		int userId = (Integer)session.getAttribute("userId");
+		
+		List<CommisionProposalDetail> commisionProposalDetail = commisionBO.getCommisionProposalDetailList(userId);
+		
+		model.addAttribute("commisionProposalDetail", commisionProposalDetail);
+		
+		
+		return "commision/appliedCommisionList";
+	}
 	
-
+	// 신청받은 커미션 List view 페이지
+		@GetMapping("/appliedFor/view")
+		public String commisionAppliedForView() {
+			return "commision/appliedForCommisionList";
+		}
 
 }
