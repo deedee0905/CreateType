@@ -229,6 +229,38 @@
 		
 	</select>
 	
+	<select id="selectCommisionPostInfoByCommisionProposalId" parameterType="int" resultType="com.amita.createType.ex.commision.model.CommisionProposal">
+		SELECT
+			`id`
+			,`userId`
+			,`commisionPostId`
+			,`postUserId`
+			,`content`
+			,`processing`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`commisionProposal`
+		WHERE
+			`id` = #{id}
+	</select>
+	
+	<select id="selectCommisionProposalListByUserId" parameterType="int" resultType="com.amita.createType.ex.commision.model.CommisionProposal">
+		SELECT
+			`id`
+			,`userId`
+			,`commisionPostId`
+			,`postUserId`
+			,`content`
+			,`processing`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`commisionProposal`
+		WHERE
+			`postUserId` = #{postUserId}
+	</select>
+	
 
 	
 

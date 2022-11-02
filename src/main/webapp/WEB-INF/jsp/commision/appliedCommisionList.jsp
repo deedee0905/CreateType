@@ -31,8 +31,8 @@
 				<h3 class="mb-2">신청한 커미션 List</h3>
 				
 				<div>
-					<a href="#" class="btn btn-outline-primary">신청 내역 </a>
-					<a href="#" class="btn btn-outline-primary ml-2">신청받은 내역</a>
+					<a href="/commision/applied/view" class="btn btn-outline-primary">신청 내역 </a>
+					<a href="/commision/appliedFor/view" class="btn btn-outline-primary ml-2">신청받은 내역</a>
 				</div>
 			</div>
 			
@@ -42,11 +42,11 @@
 				<div class="d-flex justify-content-center">
 					<div class="border border-outline-secondary p-2 mt-2 text-center " style="width:550px">
 						<div>
-							<a href="/commision/appliedTimeLine/view?id=${commisionProposal.commisionPost.id }&postUserId=${commisionProposal.commisionPost.userId }" style="text-decoration: none">
+							<a href="/commision/appliedTimeLine/view?id=${commisionProposal.commisionPost.id }&postUserId=${commisionProposal.commisionPost.userId }&commisionProposalId=${commisionProposal.commisionProposal.id}" style="text-decoration: none">
 								<span class="font-weight-bold text-dark mb-2" style="font-size:20px;">${commisionProposal.commisionPost.title }</span>
 							</a> <br>
 				
-							<a href="/commision/appliedTimeLine/view" style="text-decoration: none" class="text-dark" class="mt-2">
+							<a href="/commision/appliedTimeLine/view?id=${commisionProposal.commisionPost.id }&postUserId=${commisionProposal.commisionPost.userId }" style="text-decoration: none" class="text-dark" class="mt-2">
 								${commisionProposal.user.nickname }
 							</a>
 							

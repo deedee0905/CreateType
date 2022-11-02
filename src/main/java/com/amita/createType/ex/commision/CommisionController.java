@@ -17,6 +17,7 @@ import com.amita.createType.ex.commision.bookmark.bo.BookmarkBO;
 import com.amita.createType.ex.commision.bookmark.model.BookmarkDetail;
 import com.amita.createType.ex.commision.model.CommisionPost;
 import com.amita.createType.ex.commision.model.CommisionPostDetail;
+import com.amita.createType.ex.commision.model.CommisionProposal;
 import com.amita.createType.ex.commision.model.CommisionProposalDetail;
 import com.amita.createType.ex.individual.dm.bo.DmBO;
 import com.amita.createType.ex.individual.dm.model.DM;
@@ -162,7 +163,18 @@ public class CommisionController {
 	
 	// 신청받은 커미션 List view 페이지
 		@GetMapping("/appliedFor/view")
-		public String commisionAppliedForView() {
+		public String commisionAppliedForView(
+				HttpServletRequest request
+				, Model model
+				) {
+			
+			HttpSession session = request.getSession();
+			int userId = (Integer)session.getAttribute("userId");
+			
+			List<CommisionProposal> receivedList = commisionBO.getCommisionProposalList(userId);
+			
+			model.addAttribute("receivedList", receivedList);
+			
 			return "commision/appliedForCommisionList";
 		}
 
@@ -170,8 +182,9 @@ public class CommisionController {
 		@GetMapping("/appliedTimeLine/view")
 		public String appliedCommisionObjectView(
 				HttpServletRequest request
-				, @RequestParam("id") int id
+				, @RequestParam("id") int id //commisionPost 테이블의 id
 				, @RequestParam("postUserId") int postUserId
+				, @RequestParam("commisionProposalId") int commisionProposalId
 				, Model model
 				) {
 			
@@ -182,10 +195,25 @@ public class CommisionController {
 			
 			model.addAttribute("postUserId", postUserId);
 			model.addAttribute("messageList", messageList);
+			model.addAttribute("commisionProposalId", commisionProposalId);
 			
 			return "commision/appliedCommisionObjectView";
 		}
 		
+		
+		// 커미션 신청서 내용 view
+		@GetMapping("/application/view")
+		public String applicationView(
+				@RequestParam("commisionProposalId") int commisionProposalId // commisionProposal 테이블의 id
+				, Model model
+				) {
+			
+			CommisionProposal commisionProposal = commisionBO.getCommisionPostInfoByCommisionProposalId(commisionProposalId);
+			
+			model.addAttribute("commisionProposal", commisionProposal);
+			
+			return "commision/commisionApplication";
+		}
 		
 
 }

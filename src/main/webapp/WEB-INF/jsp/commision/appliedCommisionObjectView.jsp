@@ -45,8 +45,8 @@
 		</div>
 		<div class="d-flex justify-content-center mt-2">
 			<div>
-				<button class="btn">신청서 보기</button>
-				<button id="messageBtn" class="btn ml-1" data-toggle="modal" data-target="#exampleModal">메세지 하기</button>
+				<a href="/commision/application/view?commisionProposalId=${commisionProposalId }" class="btn btn-outline-secondary text-dark">신청서 보기</a>
+				<button id="messageBtn" class="btn btn-outline-secondary text-dark ml-1" data-toggle="modal" data-target="#exampleModal">메세지 하기</button>
 			</div>
 		</div>
 		</section>

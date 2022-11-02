@@ -136,5 +136,16 @@ public class CommisionBO {
 		}
 		return commisionProposalDetail;
 	}
+	
+	// 신청한 커미션 포스트의 내용 select
+	public CommisionProposal getCommisionPostInfoByCommisionProposalId(int commisionProposalId) {
+		return commisionDAO.selectCommisionPostInfoByCommisionProposalId(commisionProposalId);
+	}
+	
+	// 신청받은 커미션 내역서를 세션에 저장된 userId 기반으로 가져오기
+	public List<CommisionProposal> getCommisionProposalListByUserId(int userId){
+		return commisionDAO.selectCommisionProposalList(userId);
+	}
+	
 
 }
