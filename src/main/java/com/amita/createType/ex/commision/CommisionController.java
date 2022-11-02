@@ -18,6 +18,8 @@ import com.amita.createType.ex.commision.bookmark.model.BookmarkDetail;
 import com.amita.createType.ex.commision.model.CommisionPost;
 import com.amita.createType.ex.commision.model.CommisionPostDetail;
 import com.amita.createType.ex.commision.model.CommisionProposalDetail;
+import com.amita.createType.ex.individual.dm.bo.DmBO;
+import com.amita.createType.ex.individual.dm.model.DM;
 import com.amita.createType.ex.user.bo.UserBO;
 import com.amita.createType.ex.user.model.User;
 
@@ -33,6 +35,9 @@ public class CommisionController {
 	
 	@Autowired
 	private BookmarkBO bookmarkBO;
+	
+	@Autowired
+	private DmBO dmBO;
 	
 	// 커미션 포스트 insert view
 	@GetMapping("/postCreate/view")
@@ -160,5 +165,27 @@ public class CommisionController {
 		public String commisionAppliedForView() {
 			return "commision/appliedForCommisionList";
 		}
+
+	// 신청한 커미션 object view
+		@GetMapping("/appliedTimeLine/view")
+		public String appliedCommisionObjectView(
+				HttpServletRequest request
+				, @RequestParam("id") int id
+				, @RequestParam("postUserId") int postUserId
+				, Model model
+				) {
+			
+			HttpSession session = request.getSession();
+			int userId = (Integer)session.getAttribute("userId");
+			
+			List<DM> messageList = dmBO.getDmList(userId, postUserId);
+			
+			model.addAttribute("postUserId", postUserId);
+			model.addAttribute("messageList", messageList);
+			
+			return "commision/appliedCommisionObjectView";
+		}
+		
+		
 
 }

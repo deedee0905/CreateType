@@ -42,11 +42,11 @@
 				<div class="d-flex justify-content-center">
 					<div class="border border-outline-secondary p-2 mt-2 text-center " style="width:550px">
 						<div>
-							<a href="#" style="text-decoration: none">
+							<a href="/commision/appliedTimeLine/view?id=${commisionProposal.commisionPost.id }&postUserId=${commisionProposal.commisionPost.userId }" style="text-decoration: none">
 								<span class="font-weight-bold text-dark mb-2" style="font-size:20px;">${commisionProposal.commisionPost.title }</span>
 							</a> <br>
 				
-							<a href="#" style="text-decoration: none" class="text-dark" class="mt-2">
+							<a href="/commision/appliedTimeLine/view" style="text-decoration: none" class="text-dark" class="mt-2">
 								${commisionProposal.user.nickname }
 							</a>
 							

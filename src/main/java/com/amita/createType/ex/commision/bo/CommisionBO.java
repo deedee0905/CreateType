@@ -124,7 +124,7 @@ public class CommisionBO {
 			int postUserId = commisionProposal.getPostUserId();
 			
 			CommisionPost commisionPost = commisionDAO.selectPostInfoByCommisionPostId(commisionPostId);
-			User user = userBO.getUserInfo(userId);
+			User user = userBO.getUserInfo(postUserId);
 			
 			CommisionProposalDetail commisionDetail = new CommisionProposalDetail();
 			
