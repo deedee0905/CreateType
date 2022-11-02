@@ -148,5 +148,11 @@ public class CommisionBO {
 				
 	}
 	
+	// 신청받은 커미션의 작업 상태를 변경하는 api
+	public int changeOfWorkStatus(int id, String processing) {
+		return commisionDAO.updateCommisionProposalProcessingColumn(id, processing);
+	}
+	
+	
 
 }

@@ -30,7 +30,7 @@
 				<div class="text-center border p-2" style="width:550px">
 					<div>
 						<div>
-							<label style="color:rgb(236, 130, 171);">${applicant.nickname }</label> 님의 커미션 신청서
+							<label style="color:rgb(236, 130, 171);">${applicant.nickname }</label> 님의 커미션 신청서 
 						</div>
 						<div class="rounded border border-outline-secondary mt-2">
 							${commisionProposal.content }
@@ -45,7 +45,7 @@
 				</div>
 				<div class="d-flex justify-content-center mt-2">
 					<div>
-						<a href="#" class="btn btn-outline-secondary text-dark">작업 시작하기</a>
+						<button class="btn btn-outline-secondary text-dark" data-toggle="modal" data-target="#work">작업 시작하기</button>
 						<button id="messageBtn" class="btn btn-outline-secondary text-dark ml-1" data-toggle="modal" data-target="#exampleModal">메세지 하기</button>
 					</div>
 				</div>
@@ -57,7 +57,7 @@
 		
 	</div>
 	
-	<%-- 모달 --%>
+	<%-- dm모달 --%>
 		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog" role="document">
 		    <div class="modal-content">
@@ -98,9 +98,59 @@
 		    </div>
 		  </div>
 		</div>
+		
+		<!-- 작업시작 Modal -->
+		<div class="modal fade" id="work" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">상태변경 확인창</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        작업상태를 변경하시겠습니까?
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+		        <button id="workUpdateBtn" type="button" class="btn btn-primary">변경</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 
 	<script>
 		$(document).ready(function() {
+			
+			$("#workUpdateBtn").on("click", function(e) {
+				e.preventDefault();
+				
+				let id = ${commisionProposal.id }
+				let processing = "작업 진행중";
+				
+				$.ajax({
+					type:"get"
+					, url:"/commision/workUpdate"
+					, data:{"id":id, "processing":processing}
+					, success: function(data){
+						if(data.result == "success"){
+							alert("작업상태 변경 성공");
+							return;
+						} else {
+							alert("작업상태 변경 실패")
+							return;
+						}
+					}
+					, error: function(){
+						alert("작업상태 변경 에러");
+						return;
+					}
+					
+				});
+				
+				
+			});
 			
 			$("#saveBtn").on("click", function(e) {
 				e.preventDefault();

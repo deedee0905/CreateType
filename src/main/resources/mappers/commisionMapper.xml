@@ -263,6 +263,14 @@
 			`id` DESC
 	</select>
 	
+	<update id="updateCommisionProposalProcessingColumn" parameterType="map">
+		UPDATE
+			`commisionProposal`
+		SET
+			`processing` = #{processing}
+		WHERE
+			`id` = #{id}
+	</update>
 
 	
 

@@ -64,5 +64,10 @@ public interface CommisionDAO {
 	// 신청받은 커미션 내역서를 세션에 저장된 userId 기반으로 가져오기
 	public List<CommisionProposal> selectCommisionProposalListByUserId(@Param("postUserId") int postUserId);
 	
+	// 신청받은 커미션의 작업 상태를 변경하는 api
+	public int updateCommisionProposalProcessingColumn(
+			@Param("id") int id
+			,@Param("processing") String processing
+			);
 	
 }
