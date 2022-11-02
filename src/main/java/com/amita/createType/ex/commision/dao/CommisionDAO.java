@@ -50,5 +50,7 @@ public interface CommisionDAO {
 			, @Param("content") String content
 			);
 	
+	// 커미션 포스트 아이디로 해당 포스트의 정보를 얻기
+	public CommisionPost selectPostInfoByCommisionPostId(@Param("id") int id);
 	
 }

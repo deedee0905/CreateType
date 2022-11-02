@@ -44,15 +44,16 @@
 			<div class="d-flex justify-content-center">
 				<div style="width:750px">
 					<div>
-						<a href="#" style="text-decoration:none">누구님</a> 님의 
-						<label style="">무슨무슨 커미션</label>
-						<p>
+						<a href="/individual/channel/view?channelId=${commisionPost.channelId }" style="text-decoration:none;  color:rgb(236, 130, 171); font-size:20px;" class="font-weight-bold">${user.nickname }</a> 
+						<label style="font-size:20px;"> 님의</label> 
+						<label style="font-size:20px;">${commisionPost.title } 커미션</label>
+						<p style="font-size:20px;">
 							신청을 위해 아래 질문사항을 채워주세요!
 						</p>
 					</div>
 					
-					<div class="mt-5">
-						<label>질문사항 ~~~</label>
+					<div class="mt-5" style="font-size:20px;">
+						<label>${commisionPost.question }</label>
 					</div>
 					
 					<div>
@@ -61,7 +62,7 @@
 					
 					<div class="d-flex justify-content-end">
 						<div>
-							<button class="btn btn-dark mt-1">취소</button>
+							<a href="/commision/postObject/view?id=${commisionPost.id }&channelId=${commisionPost.channelId}" class="btn btn-dark mt-1 text-white">취소</a>
 							<button id="commisionProposalBtn" class="btn btn-primary mt-1">제출하기</button>
 						</div>
 					</div>

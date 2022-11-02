@@ -101,5 +101,10 @@ public class CommisionBO {
 		return commisionDAO.insertCommisionProposal(userId, commisionPostId, postUserId, content);
 	}
 	
+	// 커미션 포스트 아이디로 해당 포스트의 정보를 얻기
+	public CommisionPost getPostInfoByCommisionPostId(int commisionPostId) {
+		return commisionDAO.selectCommisionPostInfoByPostId(commisionPostId);
+	}
+	
 
 }

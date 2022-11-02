@@ -125,8 +125,13 @@ public class CommisionController {
 			, Model model
 			) {
 		
+		User user = userBO.getUserInfo(userId);
+		CommisionPost commisionPost = commisionBO.getCommisionPostInfoByPostId(commisionPostId);
+		
 		model.addAttribute("commisionPostId", commisionPostId);
 		model.addAttribute("commisionUserId", userId);
+		model.addAttribute("user", user);
+		model.addAttribute("commisionPost", commisionPost);
 		
 		return "commision/commisionProposal";
 	}
