@@ -131,100 +131,122 @@
 				minHeight : null, 
 				maxHeight : null, 
 				focus : true,
-				lang : 'ko-KR'
+				lang : 'ko-KR',
+				callbacks: {
+				    onImageUpload: function(files) {
+				    	uploadSummernoteImageFile(files[0],this);
+				    }
+				  }
 				
 			});
 			
-		});
-		
-		
-		$("#publishBtn").on("click", function(e) {
-			e.preventDefault();
 			
-			let title = $("#titleInput").val();
-			let content = $("#summernote").summernote("code");
-			let category = $("#category").val();
-			let minimumPrice = $("#minimumPriceInput").val();
-			let maximumPrice = $("#maximumPriceInput").val();
-			let deadline = $("#deadlineInput").val();
-			let question = $("#questionInput").val();
-			let file = $("#thumbnailInput").val();
+			function uploadSummernoteImageFile(file, editor) {
+				data = new FormData();
+				data.append("file", file);
+				$.ajax({
+					data : data,
+					type : "POST",
+					url : "/post/uploadSummernoteImageFile",
+					contentType : false,
+					processData : false,
+					enctype : 'multipart/form-data',
+					success : function(data) {
+		            	//항상 업로드된 파일의 url이 있어야 한다.
+						$(editor).summernote('insertImage', data.url);
+					}
+				});
+			}
 			
-		
+			$("#publishBtn").on("click", function(e) {
+				e.preventDefault();
+				
+				let title = $("#titleInput").val();
+				let content = $("#summernote").summernote("code");
+				let category = $("#category").val();
+				let minimumPrice = $("#minimumPriceInput").val();
+				let maximumPrice = $("#maximumPriceInput").val();
+				let deadline = $("#deadlineInput").val();
+				let question = $("#questionInput").val();
+				let file = $("#thumbnailInput").val();
+				
 			
-			if(title == ""){
-				 alert("제목을 입력하세요");
-				 return
-			 }
-			 
-			 if(content == "" || content == ("<p><br></p>")){
-				 alert("내용을 입력하세요");
-				 return
-			 }
-			 
-			 if(file == ""){
-				 alert("섬네일을 설정해주세요.");
-				 return
-			 }
-			 
-			 if(minimumPrice == ""){
-				 alert("최소 가격을 설정해주세요.");
-				 return
-			 }
-			 
-			 if(maximumPrice == ""){
-				 alert("최대 가격을 설정해주세요.");
-				 return
-			 }
-			 
-			 if(deadline == ""){
-				 alert("마감 기한을 설정해주세요.");
-				 return
-			 }
-			 
-			 if(question == ""){
-				 alert("커미션 신청을 위한 질문사항을 체크해주세요.");
-				 return
-			 }
-			 
-			 var formData = new FormData();
-			 formData.append("title", title);
-			 formData.append("content", content);
-			 formData.append("category", category);
-			 formData.append("minimumPrice", minimumPrice);
-			 formData.append("maximumPrice", maximumPrice);
-			 formData.append("deadline", deadline);
-			 formData.append("question", question);
-			 formData.append("file", $("#thumbnailInput")[0].files[0]);
-			 
-		
-			$.ajax({
-				type:"post"
-				,url:"/commision/postCreate"
-				,data:formData
-				,enctype:"multipart/form-data"
-				,processData:false
-				,contentType:false
-				,success: function(data){
-					
-					if(data.result == "success"){
-						location.reload();
-						return;
-					} else {
-						alert("커미션 포스트 발행 실패");
+				
+				if(title == ""){
+					 alert("제목을 입력하세요");
+					 return
+				 }
+				 
+				 if(content == "" || content == ("<p><br></p>")){
+					 alert("내용을 입력하세요");
+					 return
+				 }
+				 
+				 if(file == ""){
+					 alert("섬네일을 설정해주세요.");
+					 return
+				 }
+				 
+				 if(minimumPrice == ""){
+					 alert("최소 가격을 설정해주세요.");
+					 return
+				 }
+				 
+				 if(maximumPrice == ""){
+					 alert("최대 가격을 설정해주세요.");
+					 return
+				 }
+				 
+				 if(deadline == ""){
+					 alert("마감 기한을 설정해주세요.");
+					 return
+				 }
+				 
+				 if(question == ""){
+					 alert("커미션 신청을 위한 질문사항을 체크해주세요.");
+					 return
+				 }
+				 
+				 var formData = new FormData();
+				 formData.append("title", title);
+				 formData.append("content", content);
+				 formData.append("category", category);
+				 formData.append("minimumPrice", minimumPrice);
+				 formData.append("maximumPrice", maximumPrice);
+				 formData.append("deadline", deadline);
+				 formData.append("question", question);
+				 formData.append("file", $("#thumbnailInput")[0].files[0]);
+				 
+			
+				$.ajax({
+					type:"post"
+					,url:"/commision/postCreate"
+					,data:formData
+					,enctype:"multipart/form-data"
+					,processData:false
+					,contentType:false
+					,success: function(data){
+						
+						if(data.result == "success"){
+							location.reload();
+							return;
+						} else {
+							alert("커미션 포스트 발행 실패");
+							return;
+						}
+					}
+					,error: function(){
+						alert("커미션 포스트 발행 에러");
 						return;
 					}
-				}
-				,error: function(){
-					alert("커미션 포스트 발행 에러");
-					return;
-				}
-				
-			});
-			 
-			 
+					
+				});
 			
 		});
+		
+		
+	});	
+			
 	
 	</script>
 

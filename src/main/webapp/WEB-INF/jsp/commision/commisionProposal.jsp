@@ -32,9 +32,13 @@
 <body>
 	<div class="container">
 		
-		<header>
-			<c:import url="/WEB-INF/jsp/include/header.jsp" />
+		<header class="d-flex justify-content-center">
+			<div>
+				<a href="/post/main/view" style="text-decoration:none"><h1 class="text-center mt-3 mb-3" style="color:deepskyblue">CreateType</h1></a>
+			</div>
 		</header>
+		
+		<hr>
 	
 		<section>
 			<div class="d-flex justify-content-center">
@@ -65,9 +69,7 @@
 			</div>
 		</section>
 	
-		<footer>
-			<c:import url="/WEB-INF/jsp/include/footer.jsp" />
-		</footer>
+		
 	
 	</div>
 	
@@ -86,9 +88,7 @@
 				 return
 			 }
 			
-			alert(content);
-			return;
-			
+	
 			$.ajax({
 				type:"post"
 				, url:"/commision/proposal"
@@ -117,10 +117,35 @@
 			  minHeight: 150,             // 최소 높이
 			  maxHeight: 300,             // 최대 높이
 			  focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
-			  lang: "ko-KR"					// 한글 설정
+			  lang: "ko-KR",					// 한글 설정
+			  callbacks: {
+				    onImageUpload: function(files) {
+				    	uploadSummernoteImageFile(files[0],this);
+				    }
+				  }
 
 	          
 		});
+		
+		function uploadSummernoteImageFile(file, editor) {
+			data = new FormData();
+			data.append("file", file);
+			$.ajax({
+				data : data,
+				type : "POST",
+				url : "/post/uploadSummernoteImageFile",
+				contentType : false,
+				processData : false,
+				enctype : 'multipart/form-data',
+				success : function(data) {
+	            	//항상 업로드된 파일의 url이 있어야 한다.
+					$(editor).summernote('insertImage', data.url);
+				}
+			});
+		}
+		
+		
+		
 	});
 	
 	</script>

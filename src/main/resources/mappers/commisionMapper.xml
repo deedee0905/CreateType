@@ -162,7 +162,7 @@
   			`userId` = #{userId}
 	</select>
 	
-	<select id="insertCommisionProposal" parameterType="int">
+	<insert id="insertCommisionProposal" parameterType="map">
 		INSERT INTO
 			`commisionProposal`
 		(
@@ -184,7 +184,7 @@
 		)
 		
 	
-	</select>
+	</insert>
 	
 
 </mapper>
