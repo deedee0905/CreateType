@@ -259,6 +259,8 @@
 			`commisionProposal`
 		WHERE
 			`postUserId` = #{postUserId}
+		ORDER BY
+			`id` DESC
 	</select>
 	
 

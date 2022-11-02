@@ -143,8 +143,9 @@ public class CommisionBO {
 	}
 	
 	// 신청받은 커미션 내역서를 세션에 저장된 userId 기반으로 가져오기
-	public List<CommisionProposal> getCommisionProposalListByUserId(int userId){
-		return commisionDAO.selectCommisionProposalList(userId);
+	public List<CommisionProposal> getCommisionProposalListByUserId(int postUserId){
+		return commisionDAO.selectCommisionProposalListByUserId(postUserId);
+				
 	}
 	
 

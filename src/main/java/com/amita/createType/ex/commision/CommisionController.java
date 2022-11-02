@@ -160,23 +160,6 @@ public class CommisionController {
 		
 		return "commision/appliedCommisionList";
 	}
-	
-	// 신청받은 커미션 List view 페이지
-		@GetMapping("/appliedFor/view")
-		public String commisionAppliedForView(
-				HttpServletRequest request
-				, Model model
-				) {
-			
-			HttpSession session = request.getSession();
-			int userId = (Integer)session.getAttribute("userId");
-			
-			List<CommisionProposal> receivedList = commisionBO.getCommisionProposalList(userId);
-			
-			model.addAttribute("receivedList", receivedList);
-			
-			return "commision/appliedForCommisionList";
-		}
 
 	// 신청한 커미션 object view
 		@GetMapping("/appliedTimeLine/view")
@@ -214,6 +197,50 @@ public class CommisionController {
 			
 			return "commision/commisionApplication";
 		}
+		
+		// 신청받은 커미션 List view 페이지
+				@GetMapping("/appliedFor/view")
+				public String commisionAppliedForView(
+						HttpServletRequest request
+						, Model model
+						) {
+					
+					HttpSession session = request.getSession();
+					int postUserId = (Integer)session.getAttribute("userId");
+					
+					List<CommisionProposal> receivedList = commisionBO.getCommisionProposalListByUserId(postUserId);
+					List<CommisionProposalDetail> commisionProposalDetail = commisionBO.getCommisionProposalDetailList(postUserId);
+					
+					model.addAttribute("commisionProposalDetail", commisionProposalDetail);
+					model.addAttribute("receivedList", receivedList);
+					
+					return "commision/appliedForCommisionList";
+				}
+				
+		// 신청받은 커미션 내역서 확인 view 페이지
+			@GetMapping("/appliedFor/object/view")
+			public String commisionAppliedForObjectView(
+					HttpServletRequest request
+					, @RequestParam("commisionProposalId") int commisionProposalId
+					, Model model
+					) {
+				HttpSession session = request.getSession();
+				int userId = (Integer)session.getAttribute("userId");
+				
+				CommisionProposal commisionProposal = commisionBO.getCommisionPostInfoByCommisionProposalId(commisionProposalId);
+				int applicantId = commisionProposal.getUserId();
+				
+				List<DM> messageList = dmBO.getDmList(userId, applicantId);
+				
+				User applicant = userBO.getUserInfo(applicantId);
+				
+				model.addAttribute("commisionProposal", commisionProposal);
+				model.addAttribute("applicant", applicant);
+				model.addAttribute("messageList", messageList);
+				
+				return "commision/appliedForCommisionObjectView";
+			}
+		
 		
 
 }
