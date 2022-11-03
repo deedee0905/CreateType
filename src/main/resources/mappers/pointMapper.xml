@@ -25,5 +25,16 @@
   		)
   	
   	</insert>
+  	
+  	<select id="selectPointByUserId" parameterType="int" resultType="int">
+  		SELECT
+  			sum(price)
+  		FROM
+  			`pointCharge`
+  		WHERE
+  			`userId` = ${userId} 
+  	
+  	</select>
+  	
   
   </mapper>

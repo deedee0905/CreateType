@@ -174,7 +174,7 @@
 					, success: function(data) {
 						
 						if(data.result == "success"){
-							alert("포인트 충전 성공");
+							location.href="/individual/point/view"
 							return;
 						} else {
 							alert("포인트 충전 실패");

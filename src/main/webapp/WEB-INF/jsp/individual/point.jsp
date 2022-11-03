@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +34,7 @@
 					<div class="rounded p-3" style="width:280px; background-color:rgb(164, 221, 240);">
 						<label>보유포인트</label> <br>
 						<div class="d-flex justify-content-between">
-							<label class="mt-1 font-weight-bold">5,000p</label> 
+							<label class="mt-1 font-weight-bold"><fmt:formatNumber value="${point }" type="number"/>P</label> 
 							<a href="/individual/point/charge/view" class="btn btn-primary ml-3 text-white">충전하기</a>
 						</div>
 					</div>
