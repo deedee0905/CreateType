@@ -49,7 +49,7 @@
 											<a class="dropdown-item text-center" href="/individual/library/view">보관함</a>
 											<a class="dropdown-item text-center" href="/commision/applied/view">커미션</a>
 											<a class="dropdown-item text-center" href="/individual/message/view">메세지</a>
-											<a class="dropdown-item text-center" href="#">마이포인트</a>
+											<a class="dropdown-item text-center" href="/individual/point/view">마이포인트</a>
 										</div>
 									</div>
 									
