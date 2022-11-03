@@ -123,7 +123,7 @@
 						</div>
 						
 						<div class="rounded ml-3 mt-2 mb-4" style="width:300px">
-							<button class="btn btn-primary form-control">결제하기</button>
+							<button class="btn btn-primary form-control" data-toggle="modal" data-target="#exampleModal">결제하기</button>
 						</div>
 					
 					</div>
@@ -136,11 +136,60 @@
 			<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 		</footer>
 	</div>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">포인트 충전</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        포인트 충전 결제를 진행하시겠습니까?
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+	        <button id="paymentBtn" type="button" class="btn btn-primary">결제 진행</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 
 	<script>
 		$(document).ready(function() {
 			
-			
+			$("#paymentBtn").on("click", function(e) {
+				e.preventDefault();
+				
+				let methodOfPayment = $('input[name="payment"]:checked').val();
+				let price = $('input[name="point"]:checked').val();
+				
+				$.ajax({
+					type:"post"
+					, url:"/individual/point/charge"
+					, data:{"methodOfPayment":methodOfPayment, "price":price}
+					, success: function(data) {
+						
+						if(data.result == "success"){
+							alert("포인트 충전 성공");
+							return;
+						} else {
+							alert("포인트 충전 실패");
+							return;
+						}
+						
+					}
+					, error: function() {
+						alert("포인트 충전 에러");
+						return;
+					}
+					
+				});
+				
+			});
 			
 			
 		});

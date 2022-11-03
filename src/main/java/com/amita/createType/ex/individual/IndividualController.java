@@ -179,17 +179,7 @@ public class IndividualController {
 		return "individual/payment";
 	}
 	
-	// 포인트 view 페이지
-	@GetMapping("/point/view")
-	public String pointMainView() {
-		return "individual/point";
-	}
 	
-	// 포인트충전 view 페이지
-	@GetMapping("/point/charge/view")
-	public String pointChargeView() {
-		return "individual/pointCharge";
-	}
 	
 	
 	
