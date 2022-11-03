@@ -39,7 +39,9 @@
 				<div>
 					<%-- 충전할 포인트 selec radio-box --%>
 					<div class="d-flex justify-content-center">
-						<h5 class="mt-1">충전할 포인트</h5>
+						<div style="width:150px">
+							<h5 class="mt-1">충전할 포인트</h5>
+						</div>
 						<div class="rounded border border-secondary ml-3" style="width:300px">
 							<div class="mt-3 ml-3">
 								<input class="point" type="radio" name="point" checked value="5000">
@@ -80,14 +82,44 @@
 								<input type="radio" name="point" value="50000">
 								<label> <fmt:formatNumber value="50000" type="number"/>p</label>
 							</div>
-							
-							
-							
 						</div>
-						
 					</div>
 					
-					<div></div>
+					
+					<%--결제 수단 --%>
+					<div class="d-flex justify-content-center mt-3">
+						<div style="width:150px">
+							<h5 class="mt-1">결제 수단</h5>
+						</div>
+						
+						<div class="rounded border border-secondary ml-3" style="width:300px">
+							<div class="mt-3 ml-3">
+								<input type="radio" name="payment" value="카카오페이">
+								<label>카카오페이</label>
+							</div>
+							
+							<hr>
+							
+							<div class="mt-3 ml-3">
+								<input type="radio" name="payment" value="신용 카드">
+								<label>신용 카드</label>
+							</div>
+							
+							<hr>
+							
+							<div class="mt-3 ml-3">
+								<input type="radio" name="payment" value="무통장 입금">
+								<label>무통장 입금</label>
+							</div>
+							
+							<hr>
+							
+							<div class="mt-3 ml-3 mb-3">
+								<input type="radio" name="payment" value="Paypal">
+								<label>Paypal(Global)</label>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -102,7 +134,7 @@
 			
 			$("#testBtn").on("click", function() {
 				
-				let test = $('input[name="point"]:checked').val();
+				let test = $('input[name="payment"]:checked').val();
 				
 				alert(test);
 				return;
