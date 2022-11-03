@@ -31,14 +31,8 @@
 		<section>
 			<div>
 				<div>
-					<h5>
-						<button id="testBtn" class="btn btn-success">테스트용 버튼</button>
-					</h5>
-				</div>
-				
-				<div>
 					<%-- 충전할 포인트 selec radio-box --%>
-					<div class="d-flex justify-content-center">
+					<div class="d-flex justify-content-center mt-3">
 						<div style="width:150px">
 							<h5 class="mt-1">충전할 포인트</h5>
 						</div>
@@ -84,7 +78,7 @@
 							</div>
 						</div>
 					</div>
-					
+				</div>
 					
 					<%--결제 수단 --%>
 					<div class="d-flex justify-content-center mt-3">
@@ -94,7 +88,7 @@
 						
 						<div class="rounded border border-secondary ml-3" style="width:300px">
 							<div class="mt-3 ml-3">
-								<input type="radio" name="payment" value="카카오페이">
+								<input type="radio" name="payment" value="카카오페이" checked>
 								<label>카카오페이</label>
 							</div>
 							
@@ -120,7 +114,21 @@
 							</div>
 						</div>
 					</div>
+					
+					<%-- 결제 금액 --%>
+					<div>
+						<div class="d-flex justify-content-center mt-3">
+						<div style="width:150px">
+							
+						</div>
+						
+						<div class="rounded ml-3 mt-2 mb-4" style="width:300px">
+							<button class="btn btn-primary form-control">결제하기</button>
+						</div>
+					
+					</div>
 				</div>
+				
 			</div>
 		</section>
 	
@@ -132,14 +140,8 @@
 	<script>
 		$(document).ready(function() {
 			
-			$("#testBtn").on("click", function() {
-				
-				let test = $('input[name="payment"]:checked').val();
-				
-				alert(test);
-				return;
-				
-			});
+			
+			
 			
 		});
 	
