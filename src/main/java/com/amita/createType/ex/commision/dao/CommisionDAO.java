@@ -70,4 +70,9 @@ public interface CommisionDAO {
 			,@Param("processing") String processing
 			);
 	
+	// commisionProposal 테이블의 id로 해당 테이블의 정보를 가져오기
+	public CommisionProposal selectCommisionProposalByCommisionProposalId(@Param("id") int id);
+	
+	
+	
 }

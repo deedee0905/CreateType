@@ -176,9 +176,16 @@ public class CommisionController {
 			
 			List<DM> messageList = dmBO.getDmList(userId, postUserId);
 			
+			CommisionPost commisionPost = commisionBO.getCommisionPostInfoByPostId(id);
+			CommisionProposal commisionProposal = commisionBO.getCommisionPostInfoByCommisionProposalId(commisionProposalId);
+			
 			model.addAttribute("postUserId", postUserId);
 			model.addAttribute("messageList", messageList);
 			model.addAttribute("commisionProposalId", commisionProposalId);
+			
+			model.addAttribute("commisionPost", commisionPost);
+			model.addAttribute("commisionProposal", commisionProposal);
+			
 			
 			return "commision/appliedCommisionObjectView";
 		}

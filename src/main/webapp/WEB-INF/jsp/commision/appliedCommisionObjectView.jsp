@@ -30,14 +30,14 @@
 		<div class="d-flex justify-content-center">
 		<div class="text-center border p-2" style="width:400px">
 			<div>
-				<div>
-					커미션 제목
+				<div class="mb-2">
+					${commisionPost.title }
 				</div>
 				<div>
 					<h3>진행 상황</h3>
 					<hr>
 					<div class="mb-1">
-						<h5 class="font-weight-bold text-warning">현재 진행중</h5>
+						<h5 class="font-weight-bold text-warning">${commisionProposal.processing }</h5>
 					</div>
 				</div>
 			</div>

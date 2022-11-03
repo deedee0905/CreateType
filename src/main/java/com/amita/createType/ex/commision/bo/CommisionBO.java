@@ -171,6 +171,5 @@ public class CommisionBO {
 		return commisionDAO.updateCommisionProposalProcessingColumn(id, processing);
 	}
 	
-	
 
 }

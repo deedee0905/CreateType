@@ -46,8 +46,8 @@
 								<span class="font-weight-bold text-dark mb-2" style="font-size:20px;">${commisionProposal.commisionPost.title }</span>
 							</a> <br>
 				
-							<a href="/commision/appliedTimeLine/view?id=${commisionProposal.commisionPost.id }&postUserId=${commisionProposal.commisionPost.userId }" style="text-decoration: none" class="text-dark" class="mt-2">
-								${commisionProposal.user.nickname }
+							<a href="/commision/appliedTimeLine/view?id=${commisionProposal.commisionPost.id }&postUserId=${commisionProposal.commisionPost.userId }&commisionProposalId=${commisionProposal.commisionProposal.id}" style="text-decoration: none" class="text-dark" class="mt-2">
+								작업 진행자 : ${commisionProposal.user.nickname }
 							</a>
 							
 						</div>			
