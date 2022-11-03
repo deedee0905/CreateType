@@ -45,8 +45,22 @@
 				</div>
 				<div class="d-flex justify-content-center mt-2">
 					<div>
-						<button class="btn btn-outline-secondary text-dark" data-toggle="modal" data-target="#work">작업 시작하기</button>
-						<button id="messageBtn" class="btn btn-outline-secondary text-dark ml-1" data-toggle="modal" data-target="#exampleModal">메세지 하기</button>
+						<c:choose>
+							<c:when test="${commisionProposal.processing == '신청내역 확인 전'}">
+								<button class="btn btn-outline-secondary text-dark" data-toggle="modal" data-target="#work">작업 시작하기</button>
+								<button id="messageBtn" class="btn btn-outline-secondary text-dark ml-1" data-toggle="modal" data-target="#exampleModal">메세지 하기</button>
+							</c:when>
+							
+							<c:when test="${commisionProposal.processing == '작업 진행중'}">
+								<button class="btn btn-outline-secondary text-dark" data-toggle="modal" data-target="#finish">작업 완료하기</button>
+								<button id="messageBtn" class="btn btn-outline-secondary text-dark ml-1" data-toggle="modal" data-target="#exampleModal">메세지 하기</button>
+							</c:when>
+							
+							<c:otherwise>
+								<button id="messageBtn" class="btn btn-outline-secondary text-dark ml-1" data-toggle="modal" data-target="#exampleModal">메세지 하기</button>
+							</c:otherwise>		
+						</c:choose>
+
 					</div>
 				</div>
 		</section>
@@ -119,9 +133,60 @@
 		    </div>
 		  </div>
 		</div>
+		
+		<!-- 작업완료 Modal -->
+		<div class="modal fade" id="finish" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">상태변경 확인창</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        작업을 완료처리 하시겠습니까?
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+		        <button id="workFinishBtn" type="button" class="btn btn-primary">변경</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 
 	<script>
 		$(document).ready(function() {
+			
+			$("#workFinishBtn").on("click", function(e) {
+				e.preventDefault();
+				
+				let id = ${commisionProposal.id }
+				let processing = "작업 완료";
+				
+				$.ajax({
+					type:"get"
+					, url:"/commision/workUpdate"
+					, data:{"id":id, "processing":processing}
+					, success: function(data){
+						if(data.result == "success"){
+							location.reload();
+							return;
+						} else {
+							alert("작업상태 변경 실패")
+							return;
+						}
+					}
+					, error: function(){
+						alert("작업상태 변경 에러");
+						return;
+					}
+					
+				});
+				
+			});
+			
+			
 			
 			$("#workUpdateBtn").on("click", function(e) {
 				e.preventDefault();
@@ -135,7 +200,7 @@
 					, data:{"id":id, "processing":processing}
 					, success: function(data){
 						if(data.result == "success"){
-							alert("작업상태 변경 성공");
+							location.reload();
 							return;
 						} else {
 							alert("작업상태 변경 실패")

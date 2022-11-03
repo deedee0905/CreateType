@@ -44,7 +44,7 @@
 			<div class="d-flex justify-content-center">
 				<div style="width:750px">
 					<div>
-						<a href="/individual/channel/view?channelId=${commisionPost.channelId }" style="text-decoration:none;  color:rgb(236, 130, 171); font-size:20px;" class="font-weight-bold">${user.nickname }</a> 
+						<a href="/individual/channel/view?channelId=${commisionPost.channelId }" style="text-decoration:none; color:rgb(236, 130, 171); font-size:20px;" class="font-weight-bold">${user.nickname }</a> 
 						<label style="font-size:20px;"> 님의</label> 
 						<label style="font-size:20px;">${commisionPost.title } 커미션</label>
 						<p style="font-size:20px;">
@@ -85,6 +85,8 @@
 			let content = $("#summernote").summernote("code");
 			let processing = "신청내역 확인 전";
 			
+			let url = "/commision/postObject/view?id=" + ${commisionPost.id } + "&channelId=" + ${commisionPost.channelId};
+			
 			if(content == "" || content == ("<p><br></p>")){
 				 alert("내용을 입력하세요");
 				 return
@@ -97,7 +99,8 @@
 				, data:{"commisionPostId":commisionPostId, "postUserId":postUserId ,"content":content, "processing":processing}
 				, success: function(data){
 					if(data.result == "success"){
-						alert("커미션 신청 성공");
+						alert("커미션 신청이 완료되었습니다.");
+						location.href= url;
 						return;
 					} else {
 						alert("커미션 신청 실패");

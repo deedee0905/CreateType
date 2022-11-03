@@ -143,9 +143,27 @@ public class CommisionBO {
 	}
 	
 	// 신청받은 커미션 내역서를 세션에 저장된 userId 기반으로 가져오기
-	public List<CommisionProposal> getCommisionProposalListByUserId(int postUserId){
-		return commisionDAO.selectCommisionProposalListByUserId(postUserId);
-				
+	public List<CommisionProposalDetail> getCommisionProposalListByUserId(int postUserId){
+		List<CommisionProposal> proposalList = commisionDAO.selectCommisionProposalListByUserId(postUserId);
+		
+		List<CommisionProposalDetail> proposalDetailList = new ArrayList<>();
+		
+		for(CommisionProposal commisionProposal : proposalList) {
+			int applicantId = commisionProposal.getUserId();
+			int commisionPostId = commisionProposal.getCommisionPostId();
+			CommisionPost commisionPost = commisionDAO.selectCommisionPostInfoByPostId(commisionPostId);
+			User user = userBO.getUserInfo(applicantId);
+			
+			CommisionProposalDetail proposal = new CommisionProposalDetail();
+			
+			proposal.setCommisionPost(commisionPost);
+			proposal.setCommisionProposal(commisionProposal);
+			proposal.setUser(user);
+			
+			proposalDetailList.add(proposal);
+			
+		}
+		 return proposalDetailList;
 	}
 	
 	// 신청받은 커미션의 작업 상태를 변경하는 api

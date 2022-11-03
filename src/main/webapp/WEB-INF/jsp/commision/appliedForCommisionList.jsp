@@ -41,19 +41,19 @@
 			<div>
 				<c:forEach var="receivedList" items="${receivedList }">
 					<div class="d-flex justify-content-center">
-					<div class="border border-outline-secondary p-2 mt-2 text-center " style="width:550px">
-						<div>
-							<a href="/commision/appliedFor/object/view?commisionProposalId=${receivedList.id }" style="text-decoration: none">
-								<span class="font-weight-bold text-dark mb-2" style="font-size:20px;">커미션 제목 대신${receivedList.id }</span>
-							</a> <br>
-				
-							<a href="/commision/appliedFor/object/view" style="text-decoration: none" class="text-dark" class="mt-2">
-								신청자 : 유저닉네임
-							</a>
-							
-						</div>			
+						<div class="border border-outline-secondary p-2 mt-2 text-center " style="width:550px">
+							<div>
+								<a href="/commision/appliedFor/object/view?commisionProposalId=${receivedList.commisionProposal.id }" style="text-decoration: none">
+									<span class="font-weight-bold text-dark mb-2" style="font-size:20px;">${receivedList.commisionPost.title }</span>
+								</a> <br>
+					
+								<a href="/commision/appliedFor/object/view?commisionProposalId=${receivedList.commisionProposal.id }" style="text-decoration: none" class="text-dark" class="mt-2">
+									신청자 : ${receivedList.user.nickname }
+								</a>
+								
+							</div>			
+						</div>
 					</div>
-				</div>
 				</c:forEach>
 			</div>
 		</section>

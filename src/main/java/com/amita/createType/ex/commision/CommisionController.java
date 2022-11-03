@@ -208,10 +208,8 @@ public class CommisionController {
 					HttpSession session = request.getSession();
 					int postUserId = (Integer)session.getAttribute("userId");
 					
-					List<CommisionProposal> receivedList = commisionBO.getCommisionProposalListByUserId(postUserId);
-					List<CommisionProposalDetail> commisionProposalDetail = commisionBO.getCommisionProposalDetailList(postUserId);
+					List<CommisionProposalDetail> receivedList = commisionBO.getCommisionProposalListByUserId(postUserId);
 					
-					model.addAttribute("commisionProposalDetail", commisionProposalDetail);
 					model.addAttribute("receivedList", receivedList);
 					
 					return "commision/appliedForCommisionList";
