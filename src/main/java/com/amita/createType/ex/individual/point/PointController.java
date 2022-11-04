@@ -30,6 +30,10 @@ public class PointController {
 			
 			int point = pointBO.getTotalPoint(userId);
 			
+			if(point == 0) {
+				point = 0;
+			}
+			
 			model.addAttribute("point", point);
 			
 			return "individual/point";

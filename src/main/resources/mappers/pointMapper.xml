@@ -7,11 +7,12 @@
   <mapper namespace="com.amita.createType.ex.individual.point.dao.PointDAO">
   	<insert id="insertPointCharge" parameterType="map">
   		INSERT INTO
-  			`pointCharge`
+  			`point`
   		(
   			`userId`
   			,`methodOfPayment`
   			,`price`
+  			,`postId`
   			,`createdAt`
   			,`updatedAt`
   		)
@@ -20,6 +21,7 @@
   			#{userId}
   			,#{methodOfPayment}
   			,#{price}
+  			,0
   			,now()
   			,now()
   		)
@@ -30,7 +32,7 @@
   		SELECT
   			sum(price)
   		FROM
-  			`pointCharge`
+  			`point`
   		WHERE
   			`userId` = ${userId} 
   	
