@@ -56,9 +56,20 @@
 				<%--본문 --%>
 				<div>
 					<div>
-						<p>
-							${post.content }
-						</p>
+						<c:choose>
+							<c:when test="${post.price != 0 }">
+								<div class="text-center mt-5 mb-5 border border-outline-secondary p-3">
+									이어지는 내용이 궁금하세요? 포스트를 구매하고 이어지는 내용을 감상해보세요. <br>
+									<button id="postPurchaseBtn" class="btn btn-dark mt-3">구매하기</button>
+								</div>
+							</c:when>
+							
+							<c:otherwise>
+								<p>
+									${post.content }
+								</p>
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 				
@@ -289,6 +300,14 @@
 <script>
 
 	$(document).ready(function() {
+		
+		$("#postPurchaseBtn").on("click", function(e) {
+			e.preventDefault();
+			
+			alert("유효성 검사");
+			return;
+			
+		});
 		
 		$("#notLoginCommentBtn").on("click", function(e) {
 			e.preventDefault();
