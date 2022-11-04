@@ -84,5 +84,29 @@
   			`channelId` = ${channelId} 
   	</select>
   	
+  	<insert id="insertPointWithdraw" parameterType="map">
+  		INSERT INTO
+  			`point`
+  		(
+  			`userId`
+  			,`methodOfPayment`
+  			,`price`
+  			,`postId`
+  			,`channelId`
+  			,`createdAt`
+  			,`updatedAt`
+  		)
+  		VALUES
+  		(
+  			#{userId}
+  			,#{methodOfPayment}
+  			,#{price}
+  			,0
+  			,#{channelId}
+  			,now()
+  			,now()
+  		)
+  	</insert>
+  	
   
   </mapper>

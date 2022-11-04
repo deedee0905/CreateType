@@ -35,7 +35,7 @@
 						<label>포스트 수익</label> <br>
 						<div class="d-flex justify-content-between">
 							<label class="mt-1 font-weight-bold"><fmt:formatNumber value="${revenue }" type="number"/>P</label> 
-							<a href="#" class="btn btn-primary ml-3 text-white">출금하기</a>
+							<button class="btn btn-primary ml-3 text-white" data-toggle="modal" data-target="#exampleModal">출금하기</button>
 						</div>
 					</div>
 				</div>
@@ -67,6 +67,90 @@
 			<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 		</footer>
 	</div>
+	
+	<!--출금하기 Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	      
+	        <table class="table text-center">
+	        	<thead>
+	        		<tr>
+	        			<th>출금 가능 포인트</th>
+	        			<th>출금할 포인트</th>
+	        			
+	        		</tr>
+	        	</thead>
+	        		
+	        	<tbody>
+	        		<tr>
+	        			<c:set var="revenue" value="${revenue }"/>
+	        			<td><fmt:formatNumber value="${revenue }" type="number" />P</td>
+	        			<td><input id="withdrawInput" class="form-control form-control-sm"></td>
+	        			
+	        		</tr>
+	        	</tbody>
+	        </table>
+	        
+	        <hr>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+	        <button id="withdrawBtn" type="button" class="btn btn-primary">출금하기</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<script>
+		$(document).ready(function() {
+			
+			$("#withdrawBtn").on("click", function(e) {
+				e.preventDefault();
+				
+				let myPoint = ${revenue}
+				let price = $("#withdrawInput").val();
+				let balance = myPoint - price;
+				let methodOfPayment = "출금";
+				let channelId = ${channelId}
+				
+				if(balance < 0){
+					alert("수익 포인트 이상으로 출금 할 수 없습니다.");
+					return;
+				}
+				
+				$.ajax({
+					type:"get"
+					, url:"/individual/point/withdraw"
+					, data:{"methodOfPayment":methodOfPayment, "price":price}
+					, success: function(data){
+						
+						if(data.result == "success"){
+							alert("포인트 출금 성공");
+							return;
+						} else {
+							alert("포인트 출금 실패");
+							return;
+						}
+						
+					}
+					, error: function(){
+						alert("포인트 출금 에러");
+						return
+					}
+				});
+				
+			});
+			
+		});
+	</script>
 
 </body>
 </html>

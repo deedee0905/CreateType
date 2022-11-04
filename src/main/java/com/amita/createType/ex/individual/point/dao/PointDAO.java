@@ -29,5 +29,13 @@ public interface PointDAO {
 	// 세션에 저장된 channelId를 기반으로 해당 계정이 가지고있는 포인트 수익 조회하기
 	public Integer selectRevenueByChannelId(@Param("channelId") int channelId);	
 	
+	// 포인트 출금 api
+	public int insertPointWithdraw(
+			@Param("userId") int userId
+			, @Param("methodOfPayment") String methodOfPayment
+			, @Param("price") int price
+			, @Param("channelId") int channelId
+			);
+	
 
 }

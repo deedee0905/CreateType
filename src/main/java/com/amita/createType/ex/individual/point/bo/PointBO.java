@@ -86,5 +86,10 @@ public class PointBO {
 			return pointDAO.selectRevenueByChannelId(channelId);
 		}
 		
+		// 출금 api
+		public int pointWithdraw(int userId, String methodOfPayment, int price, int channelId) {
+			return pointDAO.insertPointWithdraw(userId, methodOfPayment, price, channelId);
+		}
+		
 
 }
