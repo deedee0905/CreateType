@@ -60,7 +60,7 @@
 							<c:when test="${post.price != 0 }">
 								<div class="text-center mt-5 mb-5 border border-outline-secondary p-3">
 									이어지는 내용이 궁금하세요? 포스트를 구매하고 이어지는 내용을 감상해보세요. <br>
-									<button id="postPurchaseBtn" class="btn btn-dark mt-3">구매하기</button>
+									<button class="btn btn-dark mt-3" data-toggle="modal" data-target="#purchase">구매하기</button>
 								</div>
 							</c:when>
 							
@@ -296,6 +296,54 @@
 		  </div>
 		</div>
 	
+	<%--구매하기 모달 --%>
+	<div class="modal fade" id="purchase" tabindex="-1">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">구매하기</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	      
+	        <table class="table text-center">
+	        	<thead>
+	        		<tr>
+	        			<th>보유 포인트</th>
+	        			<th>사용할 포인트</th>
+	        			<th>남은 포인트</th>
+	        		</tr>
+	        	</thead>
+	        		
+	        	<tbody>
+	        		<tr>
+	        			<c:set var="point" value="5000"/>
+	        			<td><fmt:formatNumber value="${point }" type="number" /></td>
+	        			<td><fmt:formatNumber value="${post.price }" type="number" /></td>
+	        			<td><fmt:formatNumber value="${point - post.price }" type="number"/></td>
+	        		</tr>
+	        	</tbody>
+	        </table>
+	        
+	        <hr>
+	        
+	        <div class="mt-2" style="font-size:12px">
+	        	주식회사 크리에이트타입은 회원 상호 간 콘텐츠 거래를 위한 중개 시스템을 제공할 뿐, 회원을 대리하지 않습니다. 
+	        	환급, 취소 등 회원 간 성립된 거래에 대한 모든 책임은 회원이 직접 부담합니다. <br>
+	        	자세한 내용은 서비스 이용 전 동의하신 <span class="text-primary">이용약관</span>을 참고해주세요.
+	        </div>
+	        
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+	        <button id="postPurchaseBtn" type="button" class="btn btn-primary">구매하기</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
 
 <script>
 
@@ -304,8 +352,29 @@
 		$("#postPurchaseBtn").on("click", function(e) {
 			e.preventDefault();
 			
-			alert("유효성 검사");
-			return;
+			let methodOfPayment = "구매";
+			let price = -${post.price}
+			let postId = ${post.id}
+			
+			$.ajax({
+				type:"get"
+				, url:"/post/purchase"
+				, data:{"methodOfPayment":methodOfPayment, "price":price, "postId":postId}
+				, success: function(data){
+					
+					if(data.result == "success"){
+						location.reload();
+					} else {
+						alert("구매 실패");
+						return;
+					}
+					
+				}
+				, error: function(){
+					alert("구매 에러");
+					return;
+				}
+			});
 			
 		});
 		

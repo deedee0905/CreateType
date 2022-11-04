@@ -2,7 +2,7 @@ package com.amita.createType.ex.post;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -129,7 +129,29 @@ public class PostRestController {
 		
 	}
 
-	
+	// 포스트 구매 api
+	@GetMapping("/purchase")
+	public Map<String, String> postPurchase(
+			HttpServletRequest request
+			, @RequestParam("methodOfPayment") String methodOfPayment
+			, @RequestParam("price") int price
+			, @RequestParam("postId") int postId
+			){
+		
+		HttpSession session = request.getSession();
+		int userId = (Integer)session.getAttribute("userId");
+		
+		int count = postBO.postPurchase(userId, methodOfPayment, price, postId);
+		
+		Map<String, String> result = new HashMap<>();
+		
+		if(count == 1) {
+			result.put("result", "success");
+		} else {
+			result.put("result", "fail");
+		}
+		return result;
+	}
 	
 	
 	

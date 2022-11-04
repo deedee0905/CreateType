@@ -187,6 +187,31 @@
 			`userId` = #{userId}
   	</select>
   	
+  	<insert	id="postPurchase" parameterType="map">
+  		INSERT INTO
+  			`point`
+  		(
+  			`userId`
+  			,`methodOfPayment`
+  			,`price`
+  			,`postId`
+  			,`createdAt`
+  			,`updatedAt`
+  		)
+  		VALUES
+  		(
+  			#{userId}
+  			,#{methodOfPayment}
+  			,#{price}
+  			,#{postId}
+  			,now()
+  			,now()
+  		)
+  		
+  	</insert>
+  	
+  	
+  	
   
   </mapper>
   

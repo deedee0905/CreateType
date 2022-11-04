@@ -195,4 +195,10 @@ public class PostBO {
 		return postDAO.selectChannelInfoByUserId(userId);
 	}
 	
+	// 특정 창작 컨텐츠 구매 api
+	public int postPurchase(int userId, String methodOfPayment, int price, int postId) {
+		return postDAO.postPurchase(userId, methodOfPayment, price, postId);
+	}
+	
+	
 }

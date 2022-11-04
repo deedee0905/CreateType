@@ -59,4 +59,14 @@ public interface PostDAO {
 	// 로그인한 userId를 기반으로 채널 정보를 가져오기
 	public Channel selectChannelInfoByUserId(@Param("userId") int userId);
 	
+	// 특정 창작 컨텐츠 구매 api
+	public int postPurchase(
+			@Param("userId") int userId
+			, @Param("methodOfPayment") String methodOfPayment
+			, @Param("price") int price
+			, @Param("postId") int postId
+			);
+	
+	
+	
 }
