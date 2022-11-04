@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.amita.createType.ex.individual.bo.IndividualBO;
 import com.amita.createType.ex.individual.model.Channel;
+import com.amita.createType.ex.individual.point.bo.PointBO;
 import com.amita.createType.ex.post.bo.PostBO;
 import com.amita.createType.ex.post.comment.bo.CommentBO;
 import com.amita.createType.ex.post.comment.model.CommentDetail;
@@ -44,6 +45,9 @@ public class PostController {
 	
 	@Autowired
 	private IndividualBO individualBO;
+	
+	@Autowired
+	private PointBO pointBO;
 	
 	
 	// 크리에이트 타입 메인 view
@@ -109,9 +113,15 @@ public class PostController {
 			int userid = (Integer)session.getAttribute("userId");
 			int like = likeBO.isLike(userid, id);
 			int subscription = subscriptionBO.duplicateSubscription(userid, channelId);
+			Integer point = pointBO.getTotalPoint(userid);
+			
+			if(point == null) {
+				point = 0;
+			}
 
 			model.addAttribute("like", like);
 			model.addAttribute("subscription", subscription);
+			model.addAttribute("point", point);
 			
 		}
 		

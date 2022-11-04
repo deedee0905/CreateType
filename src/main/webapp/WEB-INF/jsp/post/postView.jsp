@@ -57,6 +57,12 @@
 				<div>
 					<div>
 						<c:choose>
+							<c:when test="${post.userId == userId }">
+								<p>
+									${post.content }
+								</p>
+							</c:when>
+						
 							<c:when test="${post.price != 0 }">
 								<div class="text-center mt-5 mb-5 border border-outline-secondary p-3">
 									이어지는 내용이 궁금하세요? 포스트를 구매하고 이어지는 내용을 감상해보세요. <br>
@@ -222,10 +228,10 @@
 	        		
 	        	<tbody>
 	        		<tr>
-	        			<c:set var="point" value="5000"/>
-	        			<td><fmt:formatNumber value="${point }" type="number" /></td>
+	        			<c:set var="totalPoint" value="${point }"/>
+	        			<td><fmt:formatNumber value="${totalPoint }" type="number" /></td>
 	        			<td><input class="form-control form-control-sm"></td>
-	        			<td><fmt:formatNumber value="${point }" type="number"/></td>
+	        			<td><fmt:formatNumber value="${totalPoint }" type="number"/></td>
 	        		</tr>
 	        	</tbody>
 	        </table>
@@ -319,10 +325,10 @@
 	        		
 	        	<tbody>
 	        		<tr>
-	        			<c:set var="point" value="5000"/>
-	        			<td><fmt:formatNumber value="${point }" type="number" /></td>
+	        			<c:set var="totalPoint" value="${point }"/>
+	        			<td><fmt:formatNumber value="${totalPoint }" type="number" /></td>
 	        			<td><fmt:formatNumber value="${post.price }" type="number" /></td>
-	        			<td><fmt:formatNumber value="${point - post.price }" type="number"/></td>
+	        			<td><fmt:formatNumber value="${totalPoint - post.price }" type="number"/></td>
 	        		</tr>
 	        	</tbody>
 	        </table>
@@ -355,6 +361,13 @@
 			let methodOfPayment = "구매";
 			let price = -${post.price}
 			let postId = ${post.id}
+			
+			let balance = ${point} - ${post.price}
+			
+			if(balance < 0){
+				alert("보유하고 있는 포인트가 부족합니다.");
+				return;
+			}
 			
 			$.ajax({
 				type:"get"
