@@ -66,7 +66,15 @@
 							<c:when test="${post.price != 0 }">
 								<div class="text-center mt-5 mb-5 border border-outline-secondary p-3">
 									이어지는 내용이 궁금하세요? 포스트를 구매하고 이어지는 내용을 감상해보세요. <br>
-									<button class="btn btn-dark mt-3" data-toggle="modal" data-target="#purchase">구매하기</button>
+									<c:choose>
+										<c:when test="${userId == null }">
+											<button id="notLoginPurchaseBtn" class="btn btn-dark mt-3">구매하기</button>
+										</c:when>
+										
+										<c:otherwise>
+											<button class="btn btn-dark mt-3" data-toggle="modal" data-target="#purchase">구매하기</button>
+										</c:otherwise>
+									</c:choose>
 								</div>
 							</c:when>
 							
@@ -354,6 +362,13 @@
 <script>
 
 	$(document).ready(function() {
+		
+		$("#notLoginPurchaseBtn").on("click", function(e) {
+			e.preventDefault();
+			
+			alert("포스트 구매는 로그인한 사용자만 이용할 수 있습니다.");
+			location.href="/user/signin/view";
+		});
 		
 		$("#postPurchaseBtn").on("click", function(e) {
 			e.preventDefault();
