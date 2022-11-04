@@ -197,8 +197,8 @@ public class PostBO {
 	}
 	
 	// 특정 창작 컨텐츠 구매 api
-	public int postPurchase(int userId, String methodOfPayment, int price, int postId) {
-		return postDAO.postPurchase(userId, methodOfPayment, price, postId);
+	public int postPurchase(int userId, String methodOfPayment, int price, int postId, int channelId) {
+		return postDAO.postPurchase(userId, methodOfPayment, price, postId, channelId);
 	}
 	
 	// userId와 postId로 `point` 컬럼에서 구매 여부 조회하기
@@ -206,12 +206,7 @@ public class PostBO {
 		return postDAO.getPurchaseRecord(userId, postId);
 	}
 	
-	// userId를 기반으로 point 테이블에서 구매/후원한 기록 List 조회하기
-	public List<Point> getPurchaseList(int userId){
-		return postDAO.selectPurchaseListByUserId(userId);
-	}
 	
-	// userId를 기반으로 point 테이블에서 구매/후원한 기록 List의 detail 조회하기
 	
 	
 }

@@ -136,12 +136,13 @@ public class PostRestController {
 			, @RequestParam("methodOfPayment") String methodOfPayment
 			, @RequestParam("price") int price
 			, @RequestParam("postId") int postId
+			, @RequestParam("channelId") int channelId
 			){
 		
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
 		
-		int count = postBO.postPurchase(userId, methodOfPayment, price, postId);
+		int count = postBO.postPurchase(userId, methodOfPayment, price, postId, channelId);
 		
 		Map<String, String> result = new HashMap<>();
 		

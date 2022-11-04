@@ -395,6 +395,7 @@
 			let price = -$("#sponsorshipInput").val();
 			let balance = ${point} + price;
 			let postId = ${post.id}
+			let channelId = ${post.channelId}
 			
 			if(balance < 0){
 				alert("보유한 포인트 금액이 부족합니다.");
@@ -404,7 +405,7 @@
 			$.ajax({
 				type:"get"
 				, url:"/post/purchase"
-				, data:{"methodOfPayment":methodOfPayment, "price":price, "postId":postId}
+				, data:{"methodOfPayment":methodOfPayment, "price":price, "postId":postId, "channelId":channelId}
 				, success: function(data){
 					
 					if(data.result == "success"){
@@ -438,6 +439,7 @@
 			let methodOfPayment = "구매";
 			let price = -${post.price}
 			let postId = ${post.id}
+			let channelId = ${post.channelId}
 			
 			let balance = ${point} - ${post.price}
 			
@@ -449,7 +451,7 @@
 			$.ajax({
 				type:"get"
 				, url:"/post/purchase"
-				, data:{"methodOfPayment":methodOfPayment, "price":price, "postId":postId}
+				, data:{"methodOfPayment":methodOfPayment, "price":price, "postId":postId, "channelId":channelId}
 				, success: function(data){
 					
 					if(data.result == "success"){

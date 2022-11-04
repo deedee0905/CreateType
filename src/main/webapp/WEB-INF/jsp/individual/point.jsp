@@ -49,6 +49,7 @@
 							<div class="border border-outline-secondary p-2 mt-2">
 								<a class="font-weight-bold text-dark" href="/post/create/postObject/view?id=${purchaseList.post.id }&channelId=${purchaseList.post.channelId}" style="text-decoration:none"> ${purchaseList.post.title }</a> <br>
 								<a class="text-dark" href="/post/create/postObject/view?id=${purchaseList.post.id }&channelId=${purchaseList.post.channelId}" style="text-decoration:none"> 작성자 : ${purchaseList.user.nickname }</a> <br>
+								<label class="text-info">${purchaseList.point.methodOfPayment }</label>
 							</div>
 						</c:forEach>
 						

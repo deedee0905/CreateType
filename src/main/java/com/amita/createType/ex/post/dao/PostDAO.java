@@ -66,6 +66,7 @@ public interface PostDAO {
 			, @Param("methodOfPayment") String methodOfPayment
 			, @Param("price") int price
 			, @Param("postId") int postId
+			, @Param("channelId") int channelId
 			);
 	
 	// userId와 postId로 `point` 컬럼에서 구매 기록 조회하기
@@ -73,8 +74,6 @@ public interface PostDAO {
 			@Param("userId") int userId
 			, @Param("postId") int postId);
 	
-	// userId를 기반으로 point 테이블에서 구매/후원한 기록 List 조회하기
-	public List<Point> selectPurchaseListByUserId(int userId);
 	
 	
 }
