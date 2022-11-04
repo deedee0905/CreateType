@@ -59,6 +59,15 @@ public class PointBO {
 			return purchaseDetailList;
 		}
 		
+		// channelId를 기반으로 로그인한 사용자가 발행한 게시글의 판매/후원 내역을 가져오기
+		public List<Point> getRevenueList(int channelId){
+			return pointDAO.selectRevenueListByChannelId(channelId);
+		}
+		
+		// 세션에 저장된 channelId를 기반으로 해당 계정이 가지고있는 포인트 수익 조회하기
+		public Integer getTotalrevenue(int channelId) {
+			return pointDAO.selectRevenueByChannelId(channelId);
+		}
 		
 
 }

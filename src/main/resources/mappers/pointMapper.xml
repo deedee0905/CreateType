@@ -59,5 +59,30 @@
   			`id` DESC
   	</select>
   	
+  	<select id="selectRevenueListByChannelId" parameterType="int" resultType="com.amita.createType.ex.individual.point.model.Point">
+  		SELECT
+  			`id`
+  			,`userId`
+  			,`methodOfPayment`
+  			,`price`
+  			,`postId`
+  			,`channelId`
+  			,`createdAt`
+  			,`updatedAt`
+  		FROM
+  			`point`
+  		WHERE
+  			`channelId` = #{channelId}
+  	</select>
+  	
+  	<select id="selectRevenueByChannelId" parameterType="int" resultType="int">
+  		SELECT
+  			sum(price)
+  		FROM
+  			`point`
+  		WHERE
+  			`channelId` = ${channelId} 
+  	</select>
+  	
   
   </mapper>

@@ -34,7 +34,7 @@
 					<div class="rounded p-3" style="width:280px; background-color:rgb(164, 221, 240);">
 						<label>포스트 수익</label> <br>
 						<div class="d-flex justify-content-between">
-							<label class="mt-1 font-weight-bold"><fmt:formatNumber value="${point }" type="number"/>P</label> 
+							<label class="mt-1 font-weight-bold"><fmt:formatNumber value="${revenue }" type="number"/>P</label> 
 							<a href="#" class="btn btn-primary ml-3 text-white">출금하기</a>
 						</div>
 					</div>
@@ -46,7 +46,11 @@
 						<hr>
 						
 						<div>
-							반복문 돌릴 부분
+							<c:forEach var="revenueList" items="${revenueList }">
+								<div>
+									반복문 돌릴 부분
+								</div>
+							</c:forEach>
 						</div>
 						
 						
