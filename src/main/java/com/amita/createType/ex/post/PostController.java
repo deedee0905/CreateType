@@ -114,6 +114,11 @@ public class PostController {
 			int like = likeBO.isLike(userid, id);
 			int subscription = subscriptionBO.duplicateSubscription(userid, channelId);
 			Integer point = pointBO.getTotalPoint(userid);
+			Integer record = postBO.getPurchaseRecord(userid, id);
+			
+			if(record == null) {
+				record = 0;
+			}
 			
 			if(point == null) {
 				point = 0;
@@ -122,7 +127,7 @@ public class PostController {
 			model.addAttribute("like", like);
 			model.addAttribute("subscription", subscription);
 			model.addAttribute("point", point);
-			
+			model.addAttribute("record", record);
 		}
 		
 		Post post = postBO.getPost(id);

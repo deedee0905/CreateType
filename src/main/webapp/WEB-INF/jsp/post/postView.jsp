@@ -57,20 +57,32 @@
 				<div>
 					<div>
 						<c:choose>
+							<%--포스트 작성자가 로그인한 상황인 경우 --%>
 							<c:when test="${post.userId == userId }">
 								<p>
 									${post.content }
 								</p>
 							</c:when>
+							
+							<%--구매한 포스트인 경우 --%>
+							<c:when test="${record > 0 }">
+								<p>
+									${post.content }
+								</p>
+							</c:when>
 						
-							<c:when test="${post.price != 0 }">
+							<%--price컬럼의 값이 0이 아니고, 포스트를 구매하지 않은 경우 --%>
+							<c:when test="${post.price != null }">
 								<div class="text-center mt-5 mb-5 border border-outline-secondary p-3">
 									이어지는 내용이 궁금하세요? 포스트를 구매하고 이어지는 내용을 감상해보세요. <br>
 									<c:choose>
+									
+										<%--포스트 구매x, 로그인X인 상황 --%>
 										<c:when test="${userId == null }">
 											<button id="notLoginPurchaseBtn" class="btn btn-dark mt-3">구매하기</button>
 										</c:when>
 										
+										<%--포스트 구매x, 로그인O인 상황 --%>
 										<c:otherwise>
 											<button class="btn btn-dark mt-3" data-toggle="modal" data-target="#purchase">구매하기</button>
 										</c:otherwise>
@@ -78,6 +90,7 @@
 								</div>
 							</c:when>
 							
+							<%--post테이블의 price 컬럼 값이 0인 경우 --%>
 							<c:otherwise>
 								<p>
 									${post.content }

@@ -67,6 +67,10 @@ public interface PostDAO {
 			, @Param("postId") int postId
 			);
 	
+	// userId와 postId로 `point` 컬럼에서 구매 기록 조회하기
+	public Integer getPurchaseRecord(
+			@Param("userId") int userId
+			, @Param("postId") int postId);
 	
 	
 }

@@ -200,5 +200,10 @@ public class PostBO {
 		return postDAO.postPurchase(userId, methodOfPayment, price, postId);
 	}
 	
+	// userId와 postId로 `point` 컬럼에서 구매 기록 조회하기
+	public Integer getPurchaseRecord(int userId, int postId) {
+		return postDAO.getPurchaseRecord(userId, postId);
+	}
+	
 	
 }

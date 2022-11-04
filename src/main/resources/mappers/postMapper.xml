@@ -210,6 +210,16 @@
   		
   	</insert>
   	
+  	<select id="getPurchaseRecord" parameterType="map" resultType="Integer">
+  		SELECT
+  			count(1)
+  		FROM
+  			`point`
+  		WHERE
+  			`userId` = #{userId}
+  			AND `postId` = #{postId}
+  	</select>
+  	
   	
   	
   
