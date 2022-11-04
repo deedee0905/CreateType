@@ -133,7 +133,7 @@
 					, success: function(data){
 						
 						if(data.result == "success"){
-							alert("포인트 출금 성공");
+							location.reload();
 							return;
 						} else {
 							alert("포인트 출금 실패");
