@@ -38,5 +38,23 @@
   	
   	</select>
   	
+  	<select id="selectPurchaseListByUserId" parameterType="int" resultType="com.amita.createType.ex.individual.point.model.Point">
+  		SELECT
+  			`id`
+  			,`userId`
+  			,`methodOfPayment`
+  			,`price`
+  			,`postId`
+  			,`createdAt`
+  			,`updatedAt`
+  		FROM
+  			`point`
+  		WHERE
+  			(`userId` = #{userId} AND `methodOfPayment` = '구매')
+  			OR (`userId` = #{userId} AND `methodOfPayment` = '후원')
+  		ORDER BY
+  			`id` DESC
+  	</select>
+  	
   
   </mapper>

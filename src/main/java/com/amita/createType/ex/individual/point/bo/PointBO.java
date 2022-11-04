@@ -1,15 +1,30 @@
 package com.amita.createType.ex.individual.point.bo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.amita.createType.ex.individual.point.dao.PointDAO;
+import com.amita.createType.ex.individual.point.model.Point;
+import com.amita.createType.ex.individual.point.model.PointDetail;
+import com.amita.createType.ex.post.bo.PostBO;
+import com.amita.createType.ex.post.model.Post;
+import com.amita.createType.ex.user.bo.UserBO;
+import com.amita.createType.ex.user.model.User;
 
 @Service
 public class PointBO {
 	
 	@Autowired
 	private PointDAO pointDAO;
+	
+	@Autowired
+	private PostBO postBO;
+	
+	@Autowired
+	private UserBO userBO;
 	
 	// 포인트 충전 insert api
 	public int addPointCharge(int userId, String methodOfPayment, int price) {
@@ -20,5 +35,30 @@ public class PointBO {
 	public Integer getTotalPoint(int userId) {
 		return pointDAO.selectPointByUserId(userId);
 	}
+	
+	// userId를 기반으로 point 테이블에서 구매/후원한 기록 List 조회하기
+		public List<PointDetail> getPurchaseList(int userId){
+			List<Point> purchaseList = pointDAO.selectPurchaseListByUserId(userId);
+			
+			List<PointDetail> purchaseDetailList = new ArrayList<>();
+			
+			for(Point point : purchaseList) {
+				int postId = point.getPostId();
+				Post post = postBO.getPost(postId);
+				int writerId = post.getUserId();
+				User user = userBO.getUserInfo(writerId);
+				
+				PointDetail pointDetail = new PointDetail();
+				
+				pointDetail.setPoint(point);
+				pointDetail.setPost(post);
+				pointDetail.setUser(user);
+				
+				purchaseDetailList.add(pointDetail);
+			}
+			return purchaseDetailList;
+		}
+		
+		
 
 }

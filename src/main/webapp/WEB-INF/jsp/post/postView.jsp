@@ -203,15 +203,19 @@
 								<input id="commentInput" class="form-control" type="text" placeholder="댓글을 입력하세요">
 								
 								<c:choose>
+									<%--로그인 된 상태 --%>
 									<c:when test="${userId != null }">
 										<button id="commentSaveBtn" class="btn btn-primary text-white ml-3" value="${post.id}">덧글입력</button>
+										<button class="btn btn-primary text-white ml-1" data-toggle="modal" data-target="#exampleModal">후원하기</button>
 									</c:when>
 									
+									<%--로그인 안된 상태 --%>
 									<c:otherwise>
 										<button id="notLoginCommentBtn" class="btn btn-primary text-white ml-3">덧글입력</button>
+										<button id="notLoginSponsorshipBtn" class="btn btn-primary text-white ml-1">후원하기</button>
 									</c:otherwise>
 								</c:choose>
-								<button class="btn btn-primary text-white ml-1" data-toggle="modal" data-target="#exampleModal">후원하기</button>
+								
 							</div>
 						</div>
 						
@@ -376,6 +380,13 @@
 
 	$(document).ready(function() {
 		
+		
+		$("#notLoginSponsorshipBtn").on("click", function(e) {
+			e.preventDefault();
+			
+			alert("로그인한 사용자만 후원하기 기능을 이용할 수 있습니다.");
+			return;
+		});
 		
 		$("#sponsorshipBtn").on("click", function(e) {
 			e.preventDefault();

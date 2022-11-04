@@ -45,23 +45,15 @@
 						<h3> 구매/후원 내역 </h3>
 						<hr>
 						
-						<div class="border border-outline-secondary p-2 mt-2">
-							<label> 포스트 제목(사례와 함께하는 회계원리)</label> <br>
-							<label> 포스트 생성자의 닉네임(회계강좌교수님)</label> <br>
-							<label class="font-weight-bold"> 500P</label>
-						</div>
+						<c:forEach var="purchaseList" items="${purchaseList }">
+							<div class="border border-outline-secondary p-2 mt-2">
+								<a class="font-weight-bold text-dark" href="/post/create/postObject/view?id=${purchaseList.post.id }&channelId=${purchaseList.post.channelId}" style="text-decoration:none"> ${purchaseList.post.title }</a> <br>
+								<a class="text-dark" href="/post/create/postObject/view?id=${purchaseList.post.id }&channelId=${purchaseList.post.channelId}" style="text-decoration:none"> 작성자 : ${purchaseList.user.nickname }</a> <br>
+							</div>
+						</c:forEach>
 						
-						<div class="border border-outline-secondary p-2 mt-2">
-							<label> 포스트 제목(사례와 함께하는 회계원리)</label> <br>
-							<label> 포스트 생성자의 닉네임(회계강좌교수님)</label> <br>
-							<label class="font-weight-bold"> 500P</label>
-						</div>
 						
-						<div class="border border-outline-secondary p-2 mt-2">
-							<label> 포스트 제목(사례와 함께하는 회계원리)</label> <br>
-							<label> 포스트 생성자의 닉네임(회계강좌교수님)</label> <br>
-							<label class="font-weight-bold"> 500P</label>
-						</div>
+		
 						
 					</div>
 				</div>

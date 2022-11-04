@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.amita.createType.ex.individual.model.Channel;
+import com.amita.createType.ex.individual.point.model.Point;
 import com.amita.createType.ex.post.model.Post;
 
 
@@ -71,6 +72,9 @@ public interface PostDAO {
 	public Integer getPurchaseRecord(
 			@Param("userId") int userId
 			, @Param("postId") int postId);
+	
+	// userId를 기반으로 point 테이블에서 구매/후원한 기록 List 조회하기
+	public List<Point> selectPurchaseListByUserId(int userId);
 	
 	
 }

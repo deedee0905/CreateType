@@ -1,5 +1,7 @@
 package com.amita.createType.ex.individual.point;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.amita.createType.ex.individual.point.bo.PointBO;
+import com.amita.createType.ex.individual.point.model.PointDetail;
 
 @Controller
 @RequestMapping("/individual/point")
@@ -29,12 +32,14 @@ public class PointController {
 			int userId = (Integer)session.getAttribute("userId");
 			
 			Integer point = pointBO.getTotalPoint(userId);
+			List<PointDetail> purchaseList = pointBO.getPurchaseList(userId);
 			
 			if(point == null) {
 				point = 0;
 			}
 			
 			model.addAttribute("point", point);
+			model.addAttribute("purchaseList", purchaseList);
 			
 			return "individual/point";
 		}

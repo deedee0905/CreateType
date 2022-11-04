@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.amita.createType.ex.common.FileManagerService;
 import com.amita.createType.ex.individual.model.Channel;
+import com.amita.createType.ex.individual.point.model.Point;
 import com.amita.createType.ex.post.comment.bo.CommentBO;
 import com.amita.createType.ex.post.dao.PostDAO;
 import com.amita.createType.ex.post.like.bo.LikeBO;
@@ -200,10 +201,17 @@ public class PostBO {
 		return postDAO.postPurchase(userId, methodOfPayment, price, postId);
 	}
 	
-	// userId와 postId로 `point` 컬럼에서 구매 기록 조회하기
+	// userId와 postId로 `point` 컬럼에서 구매 여부 조회하기
 	public Integer getPurchaseRecord(int userId, int postId) {
 		return postDAO.getPurchaseRecord(userId, postId);
 	}
+	
+	// userId를 기반으로 point 테이블에서 구매/후원한 기록 List 조회하기
+	public List<Point> getPurchaseList(int userId){
+		return postDAO.selectPurchaseListByUserId(userId);
+	}
+	
+	// userId를 기반으로 point 테이블에서 구매/후원한 기록 List의 detail 조회하기
 	
 	
 }
