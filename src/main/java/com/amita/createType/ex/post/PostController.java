@@ -122,7 +122,7 @@ public class PostController {
 			
 			if(point == null) {
 				point = 0;
-			}
+			} 
 
 			model.addAttribute("like", like);
 			model.addAttribute("subscription", subscription);

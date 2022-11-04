@@ -243,7 +243,7 @@
 	        		<tr>
 	        			<th>보유 포인트</th>
 	        			<th>사용할 포인트</th>
-	        			<th>남은 포인트</th>
+	        			
 	        		</tr>
 	        	</thead>
 	        		
@@ -251,8 +251,8 @@
 	        		<tr>
 	        			<c:set var="totalPoint" value="${point }"/>
 	        			<td><fmt:formatNumber value="${totalPoint }" type="number" /></td>
-	        			<td><input class="form-control form-control-sm"></td>
-	        			<td><fmt:formatNumber value="${totalPoint }" type="number"/></td>
+	        			<td><input id="sponsorshipInput" class="form-control form-control-sm"></td>
+	        			
 	        		</tr>
 	        	</tbody>
 	        </table>
@@ -268,7 +268,7 @@
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-	        <button id="btn" type="button" class="btn btn-primary">후원하기</button>
+	        <button id="sponsorshipBtn" type="button" class="btn btn-primary">후원하기</button>
 	      </div>
 	    </div>
 	  </div>
@@ -375,6 +375,44 @@
 <script>
 
 	$(document).ready(function() {
+		
+		
+		$("#sponsorshipBtn").on("click", function(e) {
+			e.preventDefault();
+		
+			let methodOfPayment = "후원";
+			let price = -$("#sponsorshipInput").val();
+			let balance = ${point} + price;
+			let postId = ${post.id}
+			
+			if(balance < 0){
+				alert("보유한 포인트 금액이 부족합니다.");
+				return;
+			}
+			
+			$.ajax({
+				type:"get"
+				, url:"/post/purchase"
+				, data:{"methodOfPayment":methodOfPayment, "price":price, "postId":postId}
+				, success: function(data){
+					
+					if(data.result == "success"){
+						location.reload();
+					} else {
+						alert("후원 실패");
+						return;
+					}
+					
+				}
+				, error: function(){
+					alert("후원 에러");
+					return;
+				}
+			});
+			
+		});
+		
+		
 		
 		$("#notLoginPurchaseBtn").on("click", function(e) {
 			e.preventDefault();
