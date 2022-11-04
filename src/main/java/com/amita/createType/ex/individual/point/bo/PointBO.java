@@ -17,7 +17,7 @@ public class PointBO {
 	}
 	
 	// 세션에 저장된 userId를 기반으로 해당 계정이 가지고있는 point 조회하기
-	public int getTotalPoint(int userId) {
+	public Integer getTotalPoint(int userId) {
 		return pointDAO.selectPointByUserId(userId);
 	}
 

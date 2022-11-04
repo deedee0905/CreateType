@@ -28,9 +28,9 @@ public class PointController {
 			HttpSession session = request.getSession();
 			int userId = (Integer)session.getAttribute("userId");
 			
-			int point = pointBO.getTotalPoint(userId);
+			Integer point = pointBO.getTotalPoint(userId);
 			
-			if(point == 0) {
+			if(point == null) {
 				point = 0;
 			}
 			
