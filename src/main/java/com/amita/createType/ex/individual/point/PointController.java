@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.amita.createType.ex.individual.point.bo.PointBO;
-import com.amita.createType.ex.individual.point.model.Point;
 import com.amita.createType.ex.individual.point.model.PointDetail;
 
 @Controller
@@ -61,7 +60,7 @@ public class PointController {
 			HttpSession session = request.getSession();
 			int channelId = (Integer)session.getAttribute("channelId");
 			
-			List<Point> revenueList = pointBO.getRevenueList(channelId);
+			List<PointDetail> revenueList = pointBO.getRevenueList(channelId);
 			Integer revenue = pointBO.getTotalrevenue(channelId);
 			
 			if(revenue == null) {

@@ -72,7 +72,7 @@
 							</c:when>
 						
 							<%--price컬럼의 값이 0이 아니고, 포스트를 구매하지 않은 경우 --%>
-							<c:when test="${post.price != null }">
+							<c:when test="${post.price != 0 }">
 								<div class="text-center mt-5 mb-5 border border-outline-secondary p-3">
 									이어지는 내용이 궁금하세요? 포스트를 구매하고 이어지는 내용을 감상해보세요. <br>
 									<c:choose>
@@ -204,7 +204,11 @@
 								
 								<c:choose>
 									<%--로그인 된 상태 --%>
-									<c:when test="${userId != null }">
+									<c:when test="${userId != null && post.price != 0 }">
+										<button id="commentSaveBtn" class="btn btn-primary text-white ml-3" value="${post.id}">덧글입력</button>
+									</c:when>
+									
+									<c:when test="${userId != null && post.price == 0 }">
 										<button id="commentSaveBtn" class="btn btn-primary text-white ml-3" value="${post.id}">덧글입력</button>
 										<button class="btn btn-primary text-white ml-1" data-toggle="modal" data-target="#exampleModal">후원하기</button>
 									</c:when>

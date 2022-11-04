@@ -47,8 +47,10 @@
 						
 						<div>
 							<c:forEach var="revenueList" items="${revenueList }">
-								<div>
-									반복문 돌릴 부분
+								<div class="border border-outline-secondary p-2 mt-2">
+									<a class="font-weight-bold text-dark" href="/post/create/postObject/view?id=${revenueList.post.id }&channelId=${revenueList.post.channelId}" style="text-decoration:none"> ${revenueList.post.title }</a> <br>
+									<a class="text-dark" href="/post/create/postObject/view?id=${revenueList.post.id }&channelId=${revenueList.post.channelId}" style="text-decoration:none"> 구매자 : ${revenueList.user.nickname }</a> <br>
+									<label class="text-info">${revenueList.point.methodOfPayment }</label>
 								</div>
 							</c:forEach>
 						</div>

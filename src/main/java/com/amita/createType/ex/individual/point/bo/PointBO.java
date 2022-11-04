@@ -60,8 +60,25 @@ public class PointBO {
 		}
 		
 		// channelId를 기반으로 로그인한 사용자가 발행한 게시글의 판매/후원 내역을 가져오기
-		public List<Point> getRevenueList(int channelId){
-			return pointDAO.selectRevenueListByChannelId(channelId);
+		public List<PointDetail> getRevenueList(int channelId){
+			List<Point> revenueList = pointDAO.selectRevenueListByChannelId(channelId);
+			
+			List<PointDetail> revenueDetailList = new ArrayList<>();
+			for(Point point : revenueList) {
+				int postId = point.getPostId();
+				int purchaserId = point.getUserId();
+				Post post = postBO.getPost(postId);
+				User user = userBO.getUserInfo(purchaserId);
+				
+				PointDetail pointDetail = new PointDetail();
+				
+				pointDetail.setPoint(point);
+				pointDetail.setPost(post);
+				pointDetail.setUser(user);
+				
+				revenueDetailList.add(pointDetail);
+			}
+			return revenueDetailList;
 		}
 		
 		// 세션에 저장된 channelId를 기반으로 해당 계정이 가지고있는 포인트 수익 조회하기
