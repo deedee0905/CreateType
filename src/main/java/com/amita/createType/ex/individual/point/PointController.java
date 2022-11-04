@@ -49,5 +49,12 @@ public class PointController {
 		public String pointChargeView() {
 			return "individual/pointCharge";
 		}
+		
+		// 수익내역 view 페이지
+		@GetMapping("/revenue/view")
+		public String myRevenueView() {
+			return "individual/revenue";
+		}
+		
 
 }

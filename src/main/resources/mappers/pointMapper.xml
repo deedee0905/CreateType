@@ -47,6 +47,7 @@
   			,`methodOfPayment`
   			,`price`
   			,`postId`
+  			,`channelId`
   			,`createdAt`
   			,`updatedAt`
   		FROM

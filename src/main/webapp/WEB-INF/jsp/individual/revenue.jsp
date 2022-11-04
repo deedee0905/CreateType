@@ -18,7 +18,7 @@
 
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
-<title>Insert title here</title>
+<title>내 수익내역</title>
 </head>
 <body>
 
@@ -32,29 +32,22 @@
 			<div class="d-flex justify-content-center">
 				<div>
 					<div class="rounded p-3" style="width:280px; background-color:rgb(164, 221, 240);">
-						<label>보유포인트</label> <br>
+						<label>포스트 수익</label> <br>
 						<div class="d-flex justify-content-between">
 							<label class="mt-1 font-weight-bold"><fmt:formatNumber value="${point }" type="number"/>P</label> 
-							<a href="/individual/point/charge/view" class="btn btn-primary ml-3 text-white">충전하기</a>
+							<a href="#" class="btn btn-primary ml-3 text-white">출금하기</a>
 						</div>
 					</div>
 				</div>
 				
 				<div style="width:400px;">
 					<div class="ml-3">
-						<div class="d-flex justify-content-between">
-							<h3> 구매/후원 내역 </h3>
-							<a href="/individual/point/revenue/view" class="btn btn-secondary text-white">내 수익내역</a>
-						</div>
+						<h3> 수익 내역 </h3>
 						<hr>
 						
-						<c:forEach var="purchaseList" items="${purchaseList }">
-							<div class="border border-outline-secondary p-2 mt-2">
-								<a class="font-weight-bold text-dark" href="/post/create/postObject/view?id=${purchaseList.post.id }&channelId=${purchaseList.post.channelId}" style="text-decoration:none"> ${purchaseList.post.title }</a> <br>
-								<a class="text-dark" href="/post/create/postObject/view?id=${purchaseList.post.id }&channelId=${purchaseList.post.channelId}" style="text-decoration:none"> 작성자 : ${purchaseList.user.nickname }</a> <br>
-								<label class="text-info">${purchaseList.point.methodOfPayment }</label>
-							</div>
-						</c:forEach>
+						<div>
+							반복문 돌릴 부분
+						</div>
 						
 						
 		
