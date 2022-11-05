@@ -38,6 +38,9 @@ public class LikeBO {
 		return likeDAO.selectCountLike(postId);
 	}
 	
-	
+	// commisionPost의 commisionPostId 기반으로 북마크를 삭제하기
+	public int deleteBookmarkByChannelId(int commisionPostId) {
+		return likeDAO.deleteBookmarkByCommisionPostId(commisionPostId);
+	}
 
 }

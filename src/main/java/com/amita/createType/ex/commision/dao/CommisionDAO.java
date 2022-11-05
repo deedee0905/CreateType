@@ -84,7 +84,11 @@ public interface CommisionDAO {
 			, @Param("thumbnail") String thumbnail
 			);
 	
-
+	// 커미션 포스트 삭제(delete) api
+	public int deleteCommisionPost(
+			@Param("userId") int userId
+			, @Param("id") int id
+			);
 	
 	
 	

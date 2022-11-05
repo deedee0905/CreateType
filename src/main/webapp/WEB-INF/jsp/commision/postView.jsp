@@ -37,12 +37,12 @@
 				<div class="ml-3" id="infoBox" style="width: 380px">
 					<div>
 						<div class="d-flex justify-content-between">
-							<div class="d-flex justify-content-between" style="width:400px">
+							<div>
 								<label class="font-weight-bold" style="font-size:25px">${postInfo.title }</label>
-								<div>
+								<div class="mb-2">
 									<c:if test="${postInfo.userId == userId }">
 										<a href="/commision/postUpdate/view?id=${postInfo.id }&channelId=${postInfo.channelId}" class="btn btn-dark btn-sm">수정하기</a>
-										<a href="#" class="btn btn-dark ml-1 btn-sm">삭제하기</a>
+										<button class="btn btn-dark ml-1 btn-sm" data-toggle="modal" data-target="#exampleModal">삭제하기</button>
 									</c:if>
 									
 								</div>
@@ -80,7 +80,7 @@
 						
 						<label>${postInfo.deadline }일 이내 전달</label> <br>
 						
-						<div style="height: 156px">
+						<div style="height: 117px">
 							<%-- 버튼 높이 맞추기용 --%>
 						</div>
 						
@@ -118,8 +118,57 @@
 		</footer>
 	</div>
 	
+	<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">커미션 포스트 삭제</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       해당 게시글을 삭제하시겠습니까?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+        <button id="deleteBtn" type="button" class="btn btn-danger">삭제하기</button>
+      </div>
+    </div>
+  </div>
+</div>
+	
 	<script>
 		$(document).ready(function() {
+			
+			$("#deleteBtn").on("click", function(){
+				
+				let commisionPostId = ${postInfo.id}
+				
+				$.ajax({
+					type:"get"
+					, url:"/commision/postDelete"
+					, data:{"commisionPostId":commisionPostId}
+					, success : function(data){
+						
+						if(data.result == "success"){
+							alert("커미션 포스트 삭제 성공");
+							return;
+						} else {
+							alert("커미션 포스트 삭제 실패");
+							return;
+						}
+						
+					}
+					, error : function(){
+						alert("커미션 포스트 삭제 에러");
+						return;
+					}
+					
+				});
+				
+			});
 			
 			$("#notLoginInsertBtn").on("click", function(e) {
 				e.preventDefault();

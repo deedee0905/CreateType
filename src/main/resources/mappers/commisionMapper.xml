@@ -291,6 +291,15 @@
 			
 	</update>
 	
+	<delete id="deleteCommisionPost" parameterType="map">
+		DELETE FROM
+			`commisionPost`
+		WHERE
+			`userId` = #{userId}
+			AND `id` = #{id}
+	</delete>
+	
+	
 
 
 	

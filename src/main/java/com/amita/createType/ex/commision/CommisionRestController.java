@@ -128,5 +128,28 @@ public class CommisionRestController {
 		return result;
 	}
 	
+	// 커미션 포스트 삭제 api
+	@GetMapping("/postDelete")
+	public Map<String, String> postDelete(
+			HttpServletRequest request
+			, @RequestParam("commisionPostId") int commisionPostId
+			){
+		
+		HttpSession session = request.getSession();
+		int userId = (Integer)session.getAttribute("userId");
+		int channelId = (Integer)session.getAttribute("channelId");
+		
+		int count = commisionBO.postDelete(userId, commisionPostId, channelId);
+		
+		Map<String, String> result = new HashMap<>();
+		
+		if(count == 1) {
+			result.put("result", "success");
+		} else {
+			result.put("result", "fail");
+		}
+		return result;
+	}
+	
 	
 }

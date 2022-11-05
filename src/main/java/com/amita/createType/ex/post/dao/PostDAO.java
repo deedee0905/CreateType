@@ -75,5 +75,6 @@ public interface PostDAO {
 			, @Param("postId") int postId);
 	
 	
+		
 	
 }

@@ -60,7 +60,13 @@
   	
   	</delete>
   	
-  	
+  	<delete id="deleteBookmarkByCommisionPostId" parameterType="int">
+		DELETE FROM
+			`commisionPost`
+		WHERE
+			`id` = #{id}
+		
+	</delete>
 
 
 </mapper>
