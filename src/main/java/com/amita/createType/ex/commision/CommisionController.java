@@ -248,7 +248,16 @@ public class CommisionController {
 		
 		// 커미션 포스트 수정
 		@GetMapping("/postUpdate/view")
-		public String postUpdateView() {
+		public String postUpdateView(
+				@RequestParam("id") int id
+				, @RequestParam("channelId") int channelId
+				, Model model
+				) {
+			
+			CommisionPost postInfo = commisionBO.getCommisionPostInfoById(id);
+			
+			model.addAttribute("postInfo", postInfo);
+			
 			return "commision/postUpdate";
 		}
 		

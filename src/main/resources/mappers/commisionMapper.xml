@@ -278,7 +278,7 @@
 		SET
 			`title` = #{title}
 			, `content` = #{content}
-			, `category = #{category}
+			, `category` = #{category}
 			, `minimumPrice` = #{minimumPrice}
 			, `maximumPrice` = #{maximumPrice}
 			, `deadline` = #{deadline}
@@ -290,6 +290,8 @@
 			AND `id` = ${commisionPostId}
 			
 	</update>
+	
+
 
 	
 

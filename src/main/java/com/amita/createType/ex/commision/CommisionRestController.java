@@ -105,7 +105,7 @@ public class CommisionRestController {
 			HttpServletRequest request
 			, @RequestParam("commisionPostId") int commisionPostId
 			, @RequestParam("title") String title
-			, @RequestParam("content") String title
+			, @RequestParam("content") String content
 			, @RequestParam("category") int category
 			, @RequestParam("minimumPrice") int minimumPrice
 			, @RequestParam("maximumPrice") int maximumPrice
@@ -117,6 +117,15 @@ public class CommisionRestController {
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
 		
+		int count = commisionBO.commisionPostUpdate(userId, commisionPostId, title, content, category, minimumPrice, maximumPrice, deadline, question, file);
+		
+		Map<String, String> result = new HashMap<>();
+		if(count == 1) {
+			result.put("result", "success");
+		} else {
+			result.put("result", "fail");
+		}
+		return result;
 	}
 	
 	

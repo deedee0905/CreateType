@@ -46,16 +46,17 @@
 	
 		<section>
 			<div class="mt-2">
-				<input id="titleInput" class=" mt-3 form-control form-control-lg" value="" type="text"> <br>
+				<input id="titleInput" class=" mt-3 form-control form-control-lg" value="${postInfo.title }" type="text"> <br>
 				
 			</div>
 			
 			<div id="summernote">
+				${postInfo.content }
 			</div>
 			
 			<div>
 				<label style="font-size:20px">커미션 신청폼 질문</label> <br>
-				<textarea id="questionInput" class="form-control" rows="10"></textarea>
+				<textarea id="questionInput" class="form-control" rows="10">${postInfo.question }</textarea>
 			</div>
 		</section>
 	
@@ -88,17 +89,18 @@
 					  <option value="3">디자인</option>
 					</select>
 		        </div>
+		        <label class="text-sm text-danger">*발행 카테고리를 확인하세요.</label>
 		        
 		        <div class="d-flex mt-5">
 		        	<span class="font-weight-bold mt-2" style="font-size:15px">커미션 가격</span>
-		        	<input id="minimumPriceInput" class="form-control col-3 ml-3" type="text">
+		        	<input id="minimumPriceInput" class="form-control col-3 ml-3" type="text" value="${postInfo.minimumPrice }">
 		        	<label class="ml-2 mr-2 mt-1" style="font-size:16px"> ~ </label>
-		        	<input id="maximumPriceInput" class="form-control col-3 ml-1" type="text">
+		        	<input id="maximumPriceInput" class="form-control col-3 ml-1" type="text" value="${postInfo.maximumPrice }">
 		        </div>
 		        
 		        <div class="d-flex mt-5">
 		        	<span class="font-weight-bold mt-2" style="font-size:16px">마감기한</span>
-		        	<input id="deadlineInput" class="form-control col-3 ml-3"> <label class="mt-2 ml-1">일 이내 전달</label>
+		        	<input id="deadlineInput" class="form-control col-3 ml-3" value="${postInfo.deadline }"> <label class="mt-2 ml-1">일 이내 전달</label>
 		        </div>
 		        
 		      </div>
@@ -112,15 +114,132 @@
 		<%--~모달--%>
 		
 		<script>
-		// 썸머노트 기초값 셋팅
-		$('#summernote').summernote({
-			height : 400, // set editor height
-			minHeight : null, 
-			maxHeight : null, 
-			focus : true,
-			lang : 'ko-KR'
+		$(document).ready(function() {
+			
+			$("#imageDelete").on("click", function() {
+				let file = $("#thumbnailInput").val("");
+			});
+			
+			$("#publishBtn").on("click", function(e) {
+				e.preventDefault();
+				
+				let title = $("#titleInput").val();
+				let content = $("#summernote").summernote("code");
+				let category = $("#category").val();
+				let minimumPrice = $("#minimumPriceInput").val();
+				let maximumPrice = $("#maximumPriceInput").val();
+				let deadline = $("#deadlineInput").val();
+				let question = $("#questionInput").val();
+				let file = $("#thumbnailInput").val();
+				let commisionPostId = ${postInfo.id}
+				let url = "/commision/postObject/view?id=" + ${postInfo.id} + "&channelId=" + ${postInfo.channelId}
+				
+				
+				if(title == ""){
+					 alert("제목을 입력하세요");
+					 return
+				 }
+				 
+				 if(content == "" || content == ("<p><br></p>")){
+					 alert("내용을 입력하세요");
+					 return
+				 }
+				 
+				 if(file == ""){
+					 alert("섬네일을 설정해주세요.");
+					 return
+				 }
+				 
+				 if(minimumPrice == ""){
+					 alert("최소 가격을 설정해주세요.");
+					 return
+				 }
+				 
+				 if(maximumPrice == ""){
+					 alert("최대 가격을 설정해주세요.");
+					 return
+				 }
+				 
+				 if(deadline == ""){
+					 alert("마감 기한을 설정해주세요.");
+					 return
+				 }
+				 
+				 if(question == ""){
+					 alert("커미션 신청을 위한 질문사항을 체크해주세요.");
+					 return
+				 }
+				 
+				 var formData = new FormData();
+				 formData.append("title", title);
+				 formData.append("content", content);
+				 formData.append("category", category);
+				 formData.append("minimumPrice", minimumPrice);
+				 formData.append("maximumPrice", maximumPrice);
+				 formData.append("deadline", deadline);
+				 formData.append("question", question);
+				 formData.append("file", $("#thumbnailInput")[0].files[0]);
+				 formData.append("commisionPostId", commisionPostId);
+				
+				$.ajax({
+					type:"post"
+					, url:"/commision/postUpdate"
+					, data: formData
+					, enctype:"multipart/form-data"
+					, processData:false
+					, contentType:false
+					, success: function(data){
+						if(data.result == "success"){
+							location.href= url;
+							return;
+						} else {
+							alert("커미션 포스트 수정 실패");
+							return;
+						}
+					}
+					, error: function(){
+						alert("커미션 포스트 수정 에러");
+						return
+					}
+					
+				});
+				
+			});
+			
+			// 썸머노트 기초값 셋팅
+			$('#summernote').summernote({
+				height : 400, // set editor height
+				minHeight : null, 
+				maxHeight : null, 
+				focus : true,
+				lang : 'ko-KR',
+				callbacks: {
+				    onImageUpload: function(files) {
+				    	uploadSummernoteImageFile(files[0],this);
+				    }
+				  }
+				
+			});
+			
+			function uploadSummernoteImageFile(file, editor) {
+				data = new FormData();
+				data.append("file", file);
+				$.ajax({
+					data : data,
+					type : "POST",
+					url : "/post/uploadSummernoteImageFile",
+					contentType : false,
+					processData : false,
+					enctype : 'multipart/form-data',
+					success : function(data) {
+		            	//항상 업로드된 파일의 url이 있어야 한다.
+						$(editor).summernote('insertImage', data.url);
+					}
+				});
+			}
 			
 		});
+		
 		</script>
 
 

@@ -84,6 +84,7 @@ public interface CommisionDAO {
 			, @Param("thumbnail") String thumbnail
 			);
 	
+
 	
 	
 	

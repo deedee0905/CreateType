@@ -184,9 +184,26 @@ public class CommisionBO {
 			, String question
 			, MultipartFile file
 			) {
-		return commisionDAO.updatePost(userId, commisionPostId, title, content, category, minimumPrice, maximumPrice, deadline, question, question);
+		
+
+		String imagePath = null;
+		if(file != null) {
+			imagePath = FileManagerService.saveFile(userId, file);
+			
+			if(imagePath == null) {
+				return 0;
+			}
+		}
+
+		return commisionDAO.updatePost(userId, commisionPostId, title, content, category, minimumPrice, maximumPrice, deadline, question, imagePath);
 	}
 	
+	// 커미션 포스트의 id로 commisionPost의 정보 가져오기
+	public CommisionPost getCommisionPostInfoById(int id) {
+		return commisionDAO.selectPostInfoByCommisionPostId(id);
+	}
+	
+
 	
 
 }
