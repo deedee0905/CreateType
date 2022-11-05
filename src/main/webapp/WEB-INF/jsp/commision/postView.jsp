@@ -40,8 +40,11 @@
 							<div class="d-flex justify-content-between" style="width:400px">
 								<label class="font-weight-bold" style="font-size:25px">${postInfo.title }</label>
 								<div>
-									<a href="/commision/postUpdate/view?id=${postInfo.id }&channelId=${postInfo.channelId}" class="btn btn-dark btn-sm">수정하기</a>
-									<a href="#" class="btn btn-dark ml-1 btn-sm">삭제하기</a>
+									<c:if test="${postInfo.userId == userId }">
+										<a href="/commision/postUpdate/view?id=${postInfo.id }&channelId=${postInfo.channelId}" class="btn btn-dark btn-sm">수정하기</a>
+										<a href="#" class="btn btn-dark ml-1 btn-sm">삭제하기</a>
+									</c:if>
+									
 								</div>
 							</div>
 							
