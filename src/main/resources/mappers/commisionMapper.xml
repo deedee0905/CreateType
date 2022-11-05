@@ -272,6 +272,24 @@
 			`id` = #{id}
 	</update>
 	
+	<update id="updatePost" parameterType="map">
+		update
+			`commisionPost`
+		SET
+			`title` = #{title}
+			, `content` = #{content}
+			, `category = #{category}
+			, `minimumPrice` = #{minimumPrice}
+			, `maximumPrice` = #{maximumPrice}
+			, `deadline` = #{deadline}
+			, `question` = #{question}
+			, `thumbnail` = #{thumbnail}
+			, `updatedAt` = now()
+		WHERE
+			`userId` = #{userId}
+			AND `id` = ${commisionPostId}
+			
+	</update>
 
 	
 

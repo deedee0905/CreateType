@@ -171,5 +171,22 @@ public class CommisionBO {
 		return commisionDAO.updateCommisionProposalProcessingColumn(id, processing);
 	}
 	
+	// 커미션 포스트 수정 update api
+	public int commisionPostUpdate(
+			int userId
+			, int commisionPostId
+			, String title
+			, String content
+			, int category
+			, int minimumPrice
+			, int maximumPrice
+			, int deadline
+			, String question
+			, MultipartFile file
+			) {
+		return commisionDAO.updatePost(userId, commisionPostId, title, content, category, minimumPrice, maximumPrice, deadline, question, question);
+	}
+	
+	
 
 }

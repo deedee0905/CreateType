@@ -99,5 +99,25 @@ public class CommisionRestController {
 		return result;
 	}
 	
+	// 커미션 포스트 수정 update api
+	@PostMapping("/postUpdate")
+	public Map<String, String> commisionPostUpdate(
+			HttpServletRequest request
+			, @RequestParam("commisionPostId") int commisionPostId
+			, @RequestParam("title") String title
+			, @RequestParam("content") String title
+			, @RequestParam("category") int category
+			, @RequestParam("minimumPrice") int minimumPrice
+			, @RequestParam("maximumPrice") int maximumPrice
+			, @RequestParam("deadline") int deadline
+			, @RequestParam("question") String question
+			, @RequestParam("file") MultipartFile file
+			){
+		
+		HttpSession session = request.getSession();
+		int userId = (Integer)session.getAttribute("userId");
+		
+	}
+	
 	
 }

@@ -70,6 +70,21 @@ public interface CommisionDAO {
 			,@Param("processing") String processing
 			);
 	
+	// 커미션 포스트 수정 update api
+	public int updatePost(
+			@Param("userId") int userId
+			, @Param("commisionPostId") int commisionPostId
+			, @Param("title") String title
+			, @Param("content") String content
+			, @Param("category") int category
+			, @Param("minimumPrice") int minimumPrice
+			, @Param("maximumPrice") int maximumPrice
+			, @Param("deadline") int deadline
+			, @Param("question") String question
+			, @Param("thumbnail") String thumbnail
+			);
+	
+	
 	
 	
 	

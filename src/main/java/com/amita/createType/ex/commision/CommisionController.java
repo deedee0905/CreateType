@@ -246,6 +246,11 @@ public class CommisionController {
 				return "commision/appliedForCommisionObjectView";
 			}
 		
+		// 커미션 포스트 수정
+		@GetMapping("/postUpdate/view")
+		public String postUpdateView() {
+			return "commision/postUpdate";
+		}
 		
 
 }
