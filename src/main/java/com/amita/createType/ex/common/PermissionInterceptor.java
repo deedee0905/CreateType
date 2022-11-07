@@ -40,6 +40,9 @@ public class PermissionInterceptor implements HandlerInterceptor {
 			if(uri.startsWith("/individual")) {
 				response.sendRedirect("/user/signin/view");
 				return false;
+			} else if(uri.startsWith("/post")) {
+				response.sendRedirect("/user/signin/view");
+				return false;
 			}
 			
 		}

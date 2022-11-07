@@ -25,8 +25,12 @@ public class WebMvcConfig implements WebMvcConfigurer {
 				, "/images/**"
 				, "/user/signout" // 로그아웃 기능
 				, "/individual/channel/view" //individual 관련 기능
-				, "/individual/channel/create/view"
 				, "/individual/profile/view"
+				, "/post/main/view" // post 관련 기능
+				, "/post/create/postObject/view"
+				, "/post/createList/view"
+				, "/post/postAll/view"
+				, "/post/search/view"
 				);
 		
 	}
