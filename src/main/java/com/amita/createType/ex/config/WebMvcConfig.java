@@ -20,7 +20,14 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		
 		resgisty.addInterceptor(interceptor)
 		.addPathPatterns("/**") //인터셉터를 거쳐서 처리할 페이지 규칙
-		.excludePathPatterns("/static/**", "/images/**", "/user/signout"); // 예외적으로 처리하지 않는 url 설정하기
+		 // 예외적으로 처리하지 않는 url 설정하기
+		.excludePathPatterns("/static/**"
+				, "/images/**"
+				, "/user/signout" // 로그아웃 기능
+				, "/individual/channel/view" //individual 관련 기능
+				, "/individual/channel/create/view"
+				, "/individual/profile/view"
+				);
 		
 	}
 	
