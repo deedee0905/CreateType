@@ -145,6 +145,7 @@
 			$("#deleteBtn").on("click", function(){
 				
 				let commisionPostId = ${postInfo.id}
+				let url = "/commision/List/view?category=" + ${postInfo.category}
 				
 				$.ajax({
 					type:"get"
@@ -153,7 +154,7 @@
 					, success : function(data){
 						
 						if(data.result == "success"){
-							alert("커미션 포스트 삭제 성공");
+							location.href = url
 							return;
 						} else {
 							alert("커미션 포스트 삭제 실패");
