@@ -25,7 +25,7 @@ public interface LikeDAO {
 	public int selectCountLike(@Param("postId") int postId);
 	
 	// commisionPost의 commisionPostId 기반으로 북마크를 삭제하기
-		public int deleteBookmarkByCommisionPostId(@Param("id") int id);
+		public int deleteBookmarkByCommisionPostId(@Param("commisionPostId") int commisionPostId);
 	
 	
 	

@@ -62,9 +62,9 @@
   	
   	<delete id="deleteBookmarkByCommisionPostId" parameterType="int">
 		DELETE FROM
-			`commisionPost`
+			`bookmark`
 		WHERE
-			`id` = #{id}
+			`commisionPostId` = #{commisionPostId}
 		
 	</delete>
 
