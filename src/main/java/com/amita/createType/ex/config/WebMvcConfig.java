@@ -31,6 +31,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
 				, "/post/createList/view"
 				, "/post/postAll/view"
 				, "/post/search/view"
+				, "/commision/postObject/view" // commision 관련 기능
+				, "/commision/List/view"
+				, "/commision/postAll/view"
 				);
 		
 	}
