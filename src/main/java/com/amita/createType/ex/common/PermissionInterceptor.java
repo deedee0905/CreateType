@@ -32,9 +32,17 @@ public class PermissionInterceptor implements HandlerInterceptor {
 			if(uri.startsWith("/user")) {
 				response.sendRedirect("/post/main/view");
 				return false;
+			} 
+			
+		} else { // 로그인이 되어있지 않은 경우
+			
+			//individual에 관련한 페이지를 접속한 경우
+			if(uri.startsWith("/individual")) {
+				response.sendRedirect("/user/signin/view");
+				return false;
 			}
 			
-		} 
+		}
 	
 		return true;
 	}
