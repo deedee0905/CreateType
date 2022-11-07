@@ -7,18 +7,20 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.amita.createType.ex.common.FileManagerService;
+import com.amita.createType.ex.common.PermissionInterceptor;
 
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 	
 	@Autowired
+	private PermissionInterceptor interceptor;
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry resgisty) {
 		
-		resgisty.addInterceptor(??)
-		.addPathPatterns("") //인터셉터를 거쳐서 처리할 페이지 규칙
-		.excludePathPatterns("/static/**", "/images/**");
+		resgisty.addInterceptor(interceptor)
+		.addPathPatterns("/**") //인터셉터를 거쳐서 처리할 페이지 규칙
+		.excludePathPatterns("/static/**", "/images/**", "/user/signout"); // 예외적으로 처리하지 않는 url 설정하기
 		
 	}
 	
