@@ -13,7 +13,6 @@ import com.amita.createType.ex.commision.model.CommisionPostDetail;
 import com.amita.createType.ex.commision.model.CommisionProposal;
 import com.amita.createType.ex.commision.model.CommisionProposalDetail;
 import com.amita.createType.ex.common.FileManagerService;
-import com.amita.createType.ex.post.like.bo.LikeBO;
 import com.amita.createType.ex.user.bo.UserBO;
 import com.amita.createType.ex.user.model.User;
 
@@ -25,9 +24,7 @@ public class CommisionBO {
 	
 	@Autowired
 	private UserBO userBO;
-	
-	@Autowired
-	private LikeBO likeBO;
+
 	
 
 	
@@ -209,20 +206,10 @@ public class CommisionBO {
 		return commisionDAO.selectPostInfoByCommisionPostId(id);
 	}
 
-	// 커미션 포스트 삭제(delete) api
-	public int postDelete(int userId, int commisionPostId, int channelId) {
-		CommisionPost commisionPost = commisionDAO.selectCommisionPostInfoByPostId(commisionPostId);
-					
-		if(commisionPost == null) {
-			return 0;
-			}
-					
-		//게시글과 연결된 파일 삭제하기
-		FileManagerService.removeFile(commisionPost.getThumbnail());
-					
-		likeBO.deleteBookmarkByChannelId(commisionPostId);
-					
-		return commisionDAO.deleteCommisionPost(userId, commisionPostId);
+
+	// 커미션 포스트 마감(update) api
+	public int commisionPostFinishUpdate(int userId, int commisionPostId, int deadline) {
+		return commisionDAO.commisionPostFinishUpdate(userId, commisionPostId, deadline);
 	}
 	
 	

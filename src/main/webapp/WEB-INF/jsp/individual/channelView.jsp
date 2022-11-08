@@ -35,8 +35,12 @@
 		<div>
 			<div class="d-flex justify-content-between">
 				<div>
-					<img class="rounded ml-1" width="90" height="90" alt="채널 프로필" src="${channel.channelImagePath }">
-					<h5 class="font-weight-bold mt-2 ml-1">${channel.channelName }</h5>
+					<a href="/individual/profile/view?userId=${channel.userId }&channelId=${channel.id}">
+						<img class="rounded ml-1" width="90" height="90" alt="채널 프로필" src="${channel.channelImagePath }">
+					</a>
+					<a href="/individual/profile/view?userId=${channel.userId }&channelId=${channel.id}" style="text-decoration:none">
+						<h5 class="text-dark font-weight-bold mt-2 ml-1">${channel.channelName }</h5>
+					</a>
 					<div class="d-flex mt-2 mb-3 ml-1">
 						<span class="text-secondary">구독자 ${subscirber }명</span> 
 						

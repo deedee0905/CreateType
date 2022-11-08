@@ -583,6 +583,13 @@
 			e.preventDefault();
 			
 			let postId = $(this).data("post-id");
+			let postWriterId = ${post.userId}
+			let likeInsertUserid = ${userId}
+
+			if(postWriterId == likeInsertUserid){
+				alert("자신의 게시물에는 좋아요를 체크할 수 없습니다.");
+				return;
+			}
 			
 			$.ajax({
 				type:"get"

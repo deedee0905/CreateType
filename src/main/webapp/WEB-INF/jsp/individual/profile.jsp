@@ -138,8 +138,8 @@
 		      </div>
 		      
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		        <button id="saveBtn" type="button" class="btn btn-primary">Send message</button>
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+		        <button id="saveBtn" type="button" class="btn btn-primary">메세지 보내기</button>
 		      </div>
 		    </div>
 		  </div>

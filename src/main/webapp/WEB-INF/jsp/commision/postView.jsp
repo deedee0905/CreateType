@@ -40,10 +40,18 @@
 							<div>
 								<label class="font-weight-bold" style="font-size:25px">${postInfo.title }</label>
 								<div class="mb-2">
-									<c:if test="${postInfo.userId == userId }">
-										<a href="/commision/postUpdate/view?id=${postInfo.id }&channelId=${postInfo.channelId}" class="btn btn-dark btn-sm">수정하기</a>
-										<button class="btn btn-dark ml-1 btn-sm" data-toggle="modal" data-target="#exampleModal">삭제하기</button>
-									</c:if>
+									<c:choose>
+										<c:when test="${postInfo.deadline == 0 && postInfo.userId == userId}">
+											<label class="text-danger">*신청마감하신 커미션 포스트입니다.</label>
+										</c:when>
+										
+										<c:when test="${postInfo.userId == userId && postInfo.deadline != 0 }">
+											<a href="/commision/postUpdate/view?id=${postInfo.id }&channelId=${postInfo.channelId}" class="btn btn-dark btn-sm">수정하기</a>
+											<button class="btn btn-dark ml-1 btn-sm" data-toggle="modal" data-target="#exampleModal">마감하기</button>
+										</c:when>
+									</c:choose>
+								
+									
 									
 								</div>
 							</div>
@@ -79,13 +87,22 @@
 						<br>
 						
 						<label>${postInfo.deadline }일 이내 전달</label> <br>
+						<c:if test="${postInfo.deadline == 0 && postInfo.userId != userId}">
+							<label class="text-danger font-weight-bold">*신청이 마감된 커미션입니다.*</label> <br>　 
+						</c:if>
 						
 						<div style="height: 117px">
 							<%-- 버튼 높이 맞추기용 --%>
 						</div>
 						
 						<c:choose>
-							<c:when test="${userId != null }">
+							<c:when test="${userId eq postInfo.userId}">
+							</c:when>
+							
+							<c:when test="${postInfo.deadline == 0 }">
+							</c:when>
+							
+							<c:when test="${userId != null and userId != postInfo.userId}">
 								<a href="/commision/proposal/view?commisionPostId=${postInfo.id }&userId=${postInfo.userId}" class="btn btn-dark btn-lg form-control mt-5 text-white" style="position:relative; bottom:50;">
 									신청하기
 								</a>
@@ -104,7 +121,6 @@
 			<hr>
 			<div class="d-flex justify-content-center">
 				<div style="width: 600px; " class="text-center mt-3 mb-5">
-					　 
 					${postInfo.content }
 				
 				</div>
@@ -123,17 +139,17 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">커미션 포스트 삭제</h5>
+        <h5 class="modal-title" id="exampleModalLabel">커미션 포스트 마감</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-       해당 게시글을 삭제하시겠습니까?
+       해당 커미션 신청을 마감하시겠습니까?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-        <button id="deleteBtn" type="button" class="btn btn-danger">삭제하기</button>
+        <button id="finishBtn" type="button" class="btn btn-danger">마감하기</button>
       </div>
     </div>
   </div>
@@ -142,28 +158,29 @@
 	<script>
 		$(document).ready(function() {
 			
-			$("#deleteBtn").on("click", function(){
+			$("#finishBtn").on("click", function(){
 				
 				let commisionPostId = ${postInfo.id}
-				let url = "/commision/List/view?category=" + ${postInfo.category}
+				let deadline = 0;
+				let url = "/commision/postObject/view?id=" + ${postInfo.id} + "&channelId=" + ${postInfo.channelId}
 				
 				$.ajax({
 					type:"get"
-					, url:"/commision/postDelete"
-					, data:{"commisionPostId":commisionPostId}
+					, url:"/commision/finish"
+					, data:{"commisionPostId":commisionPostId, "deadline":deadline}
 					, success : function(data){
 						
 						if(data.result == "success"){
 							location.href = url
 							return;
 						} else {
-							alert("커미션 포스트 삭제 실패");
+							alert("커미션 포스트 마감 실패");
 							return;
 						}
 						
 					}
 					, error : function(){
-						alert("커미션 포스트 삭제 에러");
+						alert("커미션 포스트 마감 에러");
 						return;
 					}
 					

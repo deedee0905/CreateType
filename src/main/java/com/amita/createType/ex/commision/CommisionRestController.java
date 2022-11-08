@@ -128,18 +128,18 @@ public class CommisionRestController {
 		return result;
 	}
 	
-	// 커미션 포스트 삭제 api
-	@GetMapping("/postDelete")
-	public Map<String, String> postDelete(
+	// 커미션 포스트 마감(update) api
+	@GetMapping("/finish")
+	public Map<String, String> commisionPostFinishUpdate(
 			HttpServletRequest request
 			, @RequestParam("commisionPostId") int commisionPostId
+			, @RequestParam("deadline") int deadline
 			){
 		
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
-		int channelId = (Integer)session.getAttribute("channelId");
 		
-		int count = commisionBO.postDelete(userId, commisionPostId, channelId);
+		int count = commisionBO.commisionPostFinishUpdate(userId, commisionPostId, deadline);
 		
 		Map<String, String> result = new HashMap<>();
 		
@@ -148,6 +148,7 @@ public class CommisionRestController {
 		} else {
 			result.put("result", "fail");
 		}
+		
 		return result;
 	}
 	

@@ -160,7 +160,7 @@
 					 return
 				 }
 				 
-				 if(deadline == ""){
+				 if(deadline == ("" || 0)){
 					 alert("마감 기한을 설정해주세요.");
 					 return
 				 }

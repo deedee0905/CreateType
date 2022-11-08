@@ -287,18 +287,20 @@
 			, `updatedAt` = now()
 		WHERE
 			`userId` = #{userId}
-			AND `id` = ${commisionPostId}
+			AND `id` = #{commisionPostId}
 			
 	</update>
 	
-	<delete id="deleteCommisionPost" parameterType="map">
-		DELETE FROM
+	<update id="commisionPostFinishUpdate" parameterType="map">
+		update
 			`commisionPost`
+		SET
+			 `deadline` = #{deadline}
+			, `updatedAt` = now()
 		WHERE
 			`userId` = #{userId}
 			AND `id` = #{id}
-	</delete>
-	
+	</update>
 	
 
 

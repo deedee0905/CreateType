@@ -55,6 +55,8 @@
 								</div>
 							</div>
 						</div>
+						
+						
 					</c:forEach>
 					
 					<c:forEach var="commisionPostList" items="${commisionPostList }">

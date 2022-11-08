@@ -100,21 +100,6 @@
 		        	<input id="priceInput" class="form-control col-8 ml-3" type="text" value="${post.price }">
 		        </div>
 		        
-		        <div class="d-flex mt-5">
-		        	<span class="font-weight-bold mt-2" style="font-size:16px">발행시간</span>
-		        	<div class="ml-3 mt-2">
-			        	<div class="form-check form-check-inline">
-						  <input class="form-check-input now" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-						  <label class="form-check-label now" for="inlineRadio1">지금</label>
-						</div>
-						<div class="form-check form-check-inline">
-						  <input class="form-check-input reservation" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-						  <label class="form-check-label reservation" for="inlineRadio2">예약</label>
-						</div>
-						<input id="postReservationDate" class="form-control ml-4 d-none" type="date">
-		        	</div>
-		        </div>
-		        
 		      </div>
 		      <div class="modal-footer">
 		        <button id="publishBtn" type="button" class="btn btn-primary">발행하기</button>
