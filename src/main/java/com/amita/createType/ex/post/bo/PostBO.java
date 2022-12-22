@@ -11,7 +11,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.amita.createType.ex.commision.bookmark.bo.BookmarkBO;
 import com.amita.createType.ex.commision.dao.CommisionDAO;
-import com.amita.createType.ex.commision.model.CommisionPost;
 import com.amita.createType.ex.common.FileManagerService;
 import com.amita.createType.ex.individual.model.Channel;
 import com.amita.createType.ex.post.comment.bo.CommentBO;
@@ -43,12 +42,7 @@ public class PostBO {
 	@Autowired
 	private CommentBO commentBO;
 	
-	@Autowired
-	private CommisionDAO commisionDAO;
-	
-	@Autowired
-	private BookmarkBO bookmarkBO;
-	
+
 
 	// 포스트 입력
 	public int addNewPost(

@@ -79,6 +79,7 @@
 			$(".count").on("click", function(e) {
 				let postId = $(this).data("post-id");
 				
+				
 				$.ajax({
 					type:"get"
 					, url:"/viewCount"

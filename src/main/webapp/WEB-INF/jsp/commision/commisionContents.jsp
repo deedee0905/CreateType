@@ -54,7 +54,17 @@
 							<a class="" href="/commision/postObject/view?id=${commisionList.commisionPost.id }&channelId=${commisionList.commisionPost.channelId}" style="text-decoration:none">
 								<h3 class="text-dark">${commisionList.commisionPost.title }</h3>
 								<h5 class="text-dark"> ${commisionList.user.nickname } </h5>
-								<h5 class="text-dark">${commisionList.commisionPost.deadline } 일 이내 전달</h5>		
+								
+								<c:choose>
+									<c:when test="${commisionList.commisionPost.deadline == 0}">
+										<label class="text-danger">*신청 마감된 커미션입니다.</label>
+									</c:when>
+									
+									<c:otherwise>
+										<h5 class="text-dark">${commisionList.commisionPost.deadline } 일 이내 전달</h5>	
+									</c:otherwise>
+								</c:choose>
+									
 							</a>
 							
 										

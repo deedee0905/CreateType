@@ -40,7 +40,7 @@
 	          </form>
 	
 	          <div class="mt-4 text-center">
-	            <label>계정이 없으신가요? <a href="http://localhost:8080/user/signup/view" style="color:deepskyblue">회원가입</a></label>
+	            <label>계정이 없으신가요? <a href="/user/signup/view" style="color:deepskyblue">회원가입</a></label>
 	          </div>
 	        </div>
 	
@@ -49,7 +49,7 @@
     	</div>
     	
     		<div class="mt-3">
-    			<a href="http://localhost:8080/post/main/view" style="color:deepskyblue"><h5 class="text-center">메인 페이지로 돌아가기</h5></a>
+    			<a href="/post/main/view" style="color:deepskyblue"><h5 class="text-center">메인 페이지로 돌아가기</h5></a>
     		</div>
   	</div>
   	

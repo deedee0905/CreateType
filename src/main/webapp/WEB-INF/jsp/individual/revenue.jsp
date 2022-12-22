@@ -34,7 +34,16 @@
 					<div class="rounded p-3" style="width:280px; background-color:rgb(164, 221, 240);">
 						<label>포스트 수익</label> <br>
 						<div class="d-flex justify-content-between">
-							<label class="mt-1 font-weight-bold"><fmt:formatNumber value="${revenue }" type="number"/>P</label> 
+							<c:choose>
+								<c:when test="${channelId == 0 }">
+									<label class="mt-1 font-weight-bold">0P</label> 
+								</c:when>
+								
+								<c:otherwise>
+									<label class="mt-1 font-weight-bold"><fmt:formatNumber value="${revenue }" type="number"/>P</label> 
+								</c:otherwise>
+							</c:choose>
+							
 							<button class="btn btn-primary ml-3 text-white" data-toggle="modal" data-target="#exampleModal">출금하기</button>
 						</div>
 					</div>
@@ -47,11 +56,20 @@
 						
 						<div>
 							<c:forEach var="revenueList" items="${revenueList }">
-								<div class="border border-outline-secondary p-2 mt-2">
-									<a class="font-weight-bold text-dark" href="/post/create/postObject/view?id=${revenueList.post.id }&channelId=${revenueList.post.channelId}" style="text-decoration:none"> ${revenueList.post.title }</a> <br>
-									<a class="text-dark" href="/post/create/postObject/view?id=${revenueList.post.id }&channelId=${revenueList.post.channelId}" style="text-decoration:none"> 구매자 : ${revenueList.user.nickname }</a> <br>
-									<label class="text-info">${revenueList.point.methodOfPayment }</label>
-								</div>
+								<c:choose>
+									<c:when test="${channelId == 0 }">
+										<%--channelId가 0일 경우에는 아직 채널 생성이 되지 않았으므로 수익내역 자체가 존재x라 비워둠 --%>
+									</c:when>
+									
+									<c:otherwise>
+										<div class="border border-outline-secondary p-2 mt-2">
+										<a class="font-weight-bold text-dark" href="/post/create/postObject/view?id=${revenueList.post.id }&channelId=${revenueList.post.channelId}" style="text-decoration:none"> ${revenueList.post.title }</a> <br>
+										<a class="text-dark" href="/post/create/postObject/view?id=${revenueList.post.id }&channelId=${revenueList.post.channelId}" style="text-decoration:none"> 구매자 : ${revenueList.user.nickname }</a> <br>
+										<label class="text-info">${revenueList.point.methodOfPayment }</label>
+									</div>
+									</c:otherwise>
+								</c:choose>
+								
 							</c:forEach>
 						</div>
 						
@@ -73,7 +91,7 @@
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+	        <h5 class="modal-title" id="exampleModalLabel">포인트 출금</h5>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
 	        </button>
@@ -124,6 +142,8 @@
 				if(balance < 0){
 					alert("수익 포인트 이상으로 출금 할 수 없습니다.");
 					return;
+				} else if(balance == 0) {
+					alert("출금 포인트가 0인 경우 출금 할 수 없습니다.");
 				}
 				
 				$.ajax({

@@ -72,11 +72,11 @@
     </div>
     
     <div class="text-center mt-3">
-    	<label><a href="http://localhost:8080/user/signin/view" style="color:deepskyblue">로그인 하기</a></label>
+    	<label><a href="/user/signin/view" style="color:deepskyblue">로그인 하기</a></label>
     </div>
     
     <div class="text-center">
-    	<label><a href="http://localhost:8080/post/main/view" style="color:deepskyblue">메인페이지로 돌아가기</a></label>
+    	<label><a href="/post/main/view" style="color:deepskyblue">메인페이지로 돌아가기</a></label>
     </div>
 
 <script>

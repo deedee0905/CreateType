@@ -54,14 +54,11 @@
 									
 									<div class="ml-3">
 										<%--제목 --%>
-										<a href="#" style="text-decoration:none">
+										<a href="/post/create/postObject/view?id=${postList.post.id }&channelId=${postList.channel.id}" style="text-decoration:none">
 											<h3 class="text-dark">${postList.post.title }</h3>
 										</a>
 										<%--작성자 / 조회수 / 덧글수 / 좋아요수 --%>
 										<h5 class="text-dark">${postList.user.nickname }  <label class="ml-1">조회수 ${postList.viewCount }</label>   <i class="bi bi-chat-dots ml-2"></i> ${postList.commentCount }  <i class="bi bi-suit-heart ml-2"></i> ${postList.likeCount } </h5>
-										<p>
-											<a href="#" class="text-dark count" style="text-decoration:none"> </a>
-										</p>
 										
 									</div>
 								</div>

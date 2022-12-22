@@ -148,6 +148,10 @@
 						</c:when>	
 						
 					<%-- 로그인한 사용자가 좋아요를 누르지 않은 게시물 --%>
+						<c:when test="${userId eq post.userId }">
+							<a id="writerAddLike" href="#"><i class="bi bi-heart text-danger ml-2"></i></a>
+						</c:when>
+					
 						<c:when test="${like == 0 && userId != null}">
 							<a id="addLike" href="#" data-post-id="${post.id }"><i class="bi bi-heart text-danger ml-2"></i></a>
 						</c:when>
@@ -384,6 +388,13 @@
 
 	$(document).ready(function() {
 		
+		$("#writerAddLike").on("click", function(e){
+			e.preventDefault();
+			
+			alert("본인의 게시물에는 좋아요를 체크할 수 없습니다..");
+			return;
+			
+		});
 		
 		$("#notLoginSponsorshipBtn").on("click", function(e) {
 			e.preventDefault();
@@ -583,13 +594,6 @@
 			e.preventDefault();
 			
 			let postId = $(this).data("post-id");
-			let postWriterId = ${post.userId}
-			let likeInsertUserid = ${userId}
-
-			if(postWriterId == likeInsertUserid){
-				alert("자신의 게시물에는 좋아요를 체크할 수 없습니다.");
-				return;
-			}
 			
 			$.ajax({
 				type:"get"

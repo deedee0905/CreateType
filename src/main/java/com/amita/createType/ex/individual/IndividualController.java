@@ -154,7 +154,7 @@ public class IndividualController {
 		return "individual/channelCreate";
 	}
 	
-	// 보관함 view 페이지
+	// 보관함 view 페이지(좋아요)
 	@GetMapping("/library/view")
 	public String libraryView(
 			HttpServletRequest request

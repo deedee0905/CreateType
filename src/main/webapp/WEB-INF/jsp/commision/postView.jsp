@@ -86,7 +86,16 @@
 						
 						<br>
 						
-						<label>${postInfo.deadline }일 이내 전달</label> <br>
+						<c:choose>
+							<c:when test="${postInfo.deadline == 0 }">
+								<%-- `deadline` 컬럼이 0인 경우 nn일 이내 전달 문구 숨기기 --%>
+							</c:when>
+							
+							<c:otherwise>
+								<label>${postInfo.deadline }일 이내 전달</label> <br>
+							</c:otherwise>
+						</c:choose>
+						
 						<c:if test="${postInfo.deadline == 0 && postInfo.userId != userId}">
 							<label class="text-danger font-weight-bold">*신청이 마감된 커미션입니다.*</label> <br>　 
 						</c:if>

@@ -81,7 +81,7 @@
   		FROM
   			`point`
   		WHERE
-  			`channelId` = ${channelId} 
+  			`channelId` = #{channelId}
   	</select>
   	
   	<insert id="insertPointWithdraw" parameterType="map">

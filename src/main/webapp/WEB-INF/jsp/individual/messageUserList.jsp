@@ -28,14 +28,12 @@
 	
 		<section>
 			<div>
-				<label class="font-weight-bold" style="font-size:25px">메세지</label>
+				<label class="font-weight-bold" style="font-size:25px">메세지 목록</label>
 				<hr>
 			</div>
 			
 			<div class="d-flex justify-content-center">
 				<div>
-					
-					<div class="text-center mb-3"><h4>메세지 목록</h4></div>
 					
 					<div>
 						<c:forEach var="dms" items="${dms }">
