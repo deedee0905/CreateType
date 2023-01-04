@@ -81,7 +81,7 @@
 									<span class="text-secondary mt-1">아직 채널이 없습니다.</span> <br>
 									
 									<c:choose>
-										<c:when test="${channelId == 0 && id == userId}">
+										<c:when test="${channelId == -1 && id == userId}">
 											<a href="/individual/channel/create/view" class="btn btn-outline-secondary mt-3" href="#">채널 만들기</a>
 										</c:when>
 										
