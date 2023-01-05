@@ -411,11 +411,17 @@
 			let balance = ${point} + price;
 			let postId = ${post.id}
 			let channelId = ${post.channelId}
+		
+			
 			
 			if(balance < 0){
 				alert("보유한 포인트 금액이 부족합니다.");
 				return;
+			} else if(price == 0){
+				alert("0 포인트는 후원할 수 없습니다.");
+				return;
 			}
+			
 			
 			$.ajax({
 				type:"get"
