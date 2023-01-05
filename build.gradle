@@ -9,6 +9,11 @@ group = 'com.amita'
 version = '0.9'
 sourceCompatibility = '11'
 
+bootWar {
+	archiveBaseName = 'demoproject'
+ 	archiveVersion="0.0.1-SNAPSHOT"
+}
+
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
@@ -33,6 +38,8 @@ dependencies {
   	
   	// json 라이브러리
   	implementation group: 'org.json', name: 'json', version: '20090211'
+  	
+  
 	
 }
 
