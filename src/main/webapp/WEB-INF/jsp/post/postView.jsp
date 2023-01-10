@@ -214,7 +214,17 @@
 									
 									<c:when test="${userId != null && post.price == 0 }">
 										<button id="commentSaveBtn" class="btn btn-primary text-white ml-3" value="${post.id}">덧글입력</button>
-										<button class="btn btn-primary text-white ml-1" data-toggle="modal" data-target="#exampleModal">후원하기</button>
+										
+										<c:choose>
+											<c:when test="${userId == post.userId }">
+												<button class="btn btn-primary text-white ml-1 d-none" data-toggle="modal" data-target="#exampleModal">후원하기</button>
+											</c:when>
+											
+											<c:otherwise>
+												<button class="btn btn-primary text-white ml-1" data-toggle="modal" data-target="#exampleModal">후원하기</button>
+											</c:otherwise>
+										</c:choose>
+										
 									</c:when>
 									
 									<%--로그인 안된 상태 --%>

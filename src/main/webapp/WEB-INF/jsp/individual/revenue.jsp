@@ -142,9 +142,10 @@
 				if(balance < 0){
 					alert("수익 포인트 이상으로 출금 할 수 없습니다.");
 					return;
-				} else if(balance == 0) {
+				} else if(price == 0) {
 					alert("출금 포인트가 0인 경우 출금 할 수 없습니다.");
-				}
+					return;
+				} 
 				
 				$.ajax({
 					type:"get"
